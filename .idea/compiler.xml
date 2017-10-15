@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="IAA_Hausarbeit" />
         <module name="roommgmt-orm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="IAA_Hausarbeit" target="1.8" />
       <module name="roommgmt-orm" target="1.8" />
     </bytecodeTargetLevel>
   </component>

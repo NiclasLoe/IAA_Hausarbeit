@@ -5,23 +5,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.nordakademie.iaa</groupId>
-    <artifactId>roommgmt-orm</artifactId>
+    <artifactId>IAA_Hausarbeit</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <description>Room management application using ORM framework and console-based client</description>
+    <description>Description of application</description>
     <organization>
         <name>Nordakademie gAG Elmshorn</name>
         <url>http://www.nordakademie.de</url>
     </organization>
     <developers>
         <developer>
-            <name>Stephan Anft</name>
-            <email>stephan.anft@nordakademie.de</email>
+            <name>Adnan Ait Oufkir</name>
+            <email>adnan.ait_oufkir@nordakademie.de</email>
         </developer>
         <developer>
-            <name>Stefan Reichert</name>
-            <email>stefan.reichert@nordakademie.de</email>
+            <name>Niclas Loeding</name>
+            <email>niclas.loeding@nordakademie.de</email>
+        </developer>
+        <developer>
+            <name>Lennart Meincke</name>
+            <email>lennart.meincke@nordakademie.de</email>
         </developer>
     </developers>
 
