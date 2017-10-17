@@ -38,7 +38,7 @@
 	<!-- Applicant form -->
 	<definition name="applicantForm" extends="mainTemplate">
 		<put-attribute name="header" value="/tiles/headers/headerNewApplicant.jsp"/>
-		<put-attribute name="content" value="tiles/content/emptyApplicantForm.jsp"/>
+		<put-attribute name="content" value="/tiles/content/applicantForm.jsp"/>
 	</definition>
 
 </tiles-definitions>

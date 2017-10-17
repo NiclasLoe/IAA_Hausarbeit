@@ -21,5 +21,9 @@
         <action name="addApplicant">
             <result>applicantForm</result>
         </action>
+
+        <action name="cancelApplicant">
+            <result type="redirectAction">showApplicantList</result>
+        </action>
     </package>
 </struts>

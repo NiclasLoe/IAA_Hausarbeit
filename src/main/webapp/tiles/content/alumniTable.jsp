@@ -1,16 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: niclas
-  Date: 17.10.17
-  Time: 12:17
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
-</body>
-</html>
+<s:form>
+    <table>
+        <tr>
+            <td>
+                <s:text name="Bewerberübersicht"/>
+            </td>
+            <td>
+                <s:text name="Bewerber"/>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <s:submit key="button.goBack" action="showMainPage"/>
+    <s:submit key="button.downloadList" action="downloadCurrentList"/>
+
+</s:form>

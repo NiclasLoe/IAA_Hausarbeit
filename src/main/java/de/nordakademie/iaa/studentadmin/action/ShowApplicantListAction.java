@@ -14,7 +14,7 @@ public class ShowApplicantListAction implements Action {
 
     @Override
     public String execute() throws Exception {
-        // personList = applicantService.listApplicants();
+        personList = applicantService.listApplicants();
         return SUCCESS;
     }
 

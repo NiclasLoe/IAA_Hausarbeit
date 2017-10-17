@@ -1,16 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: niclas
-  Date: 17.10.17
-  Time: 12:16
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
-</body>
-</html>
+<h2><s:text name="newApplicant.header"/></h2>

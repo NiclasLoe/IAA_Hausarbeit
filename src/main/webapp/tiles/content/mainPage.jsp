@@ -33,10 +33,10 @@
         <s:text name="mainPage.forMoreInformation"/>
     </p>
 
-    <s:submit key="mainPage.showApplicants" action="showApplicantList" cssClass="submitButton"/>
-    <s:submit key="mainPage.showStudents" action="showStudentList" cssClass="submitButton"/>
-    <s:submit key="mainPage.showAlumni" action="showAlumniList" cssClass="submitButton"/>
-    <s:submit key="mainPage.showAdministrationArea" action="showAdminArea" cssClass="submitButton"/>
+    <s:submit key="button.showApplicants" action="showApplicantList" cssClass="submitButton"/>
+    <s:submit key="button.showStudents" action="showStudentList" cssClass="submitButton"/>
+    <s:submit key="button.showAlumni" action="showAlumniList" cssClass="submitButton"/>
+    <s:submit key="button.showAdministrationArea" action="showAdminArea" cssClass="submitButton"/>
 
 
 </s:form>
