@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+}
+
+.tdQuantity {
+    width: 300px;
+}
+
+.submitButton {
+    width: 200px;
+    float: left;
+}
+

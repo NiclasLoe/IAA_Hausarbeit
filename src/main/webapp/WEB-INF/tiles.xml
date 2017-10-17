@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
+
 <!DOCTYPE tiles-definitions PUBLIC
 		"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 		"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
@@ -7,17 +8,37 @@
 <tiles-definitions>
 	<!-- Main template -->
 	<definition name="mainTemplate" template="/template/mainTemplate.jsp">
-		<put-attribute name="title" value="Struts Room Management"/>
-		<put-attribute name="header" value="/tiles/header.jsp"/>
+		<put-attribute name="title" value="title.title"/>
+		<put-attribute name="header" value="/tiles/headers/header.jsp"/>
 	</definition>
 
-	<!-- Room table -->
-	<definition name="roomTable" extends="mainTemplate">
-		<put-attribute name="content" value="/tiles/roomTable.jsp"/>
+	<!-- Main Page -->
+	<definition name="mainPage" extends="mainTemplate">
+		<put-attribute name="content" value="/tiles/content/mainPage.jsp"/>
 	</definition>
 
-	<!-- Room form -->
-	<definition name="roomForm" extends="mainTemplate">
-		<put-attribute name="content" value="/tiles/roomForm.jsp"/>
+	<!-- Applicant Overview -->
+	<definition name="applicantTable" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerApplicantOverview.jsp"/>
+		<put-attribute name="content" value="/tiles/content/applicantTable.jsp"/>
 	</definition>
+
+	<!-- Student Overview -->
+	<definition name="studentTable" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerStudentOverview.jsp"/>
+		<put-attribute name="content" value="/tiles/content/studentTable.jsp"/>
+	</definition>
+
+	<!-- Alumni Overview -->
+	<definition name="alumniTable" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerAlumniOverview.jsp"/>
+		<put-attribute name="content" value="/tiles/content/alumniTable.jsp"/>
+	</definition>
+
+	<!-- Applicant form -->
+	<definition name="applicantForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerNewApplicant.jsp"/>
+		<put-attribute name="content" value="tiles/content/emptyApplicantForm.jsp"/>
+	</definition>
+
 </tiles-definitions>

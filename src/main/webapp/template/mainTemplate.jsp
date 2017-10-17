@@ -5,11 +5,11 @@
 <html>
 <head>
     <title><tiles:insertAttribute name="title"/></title>
+    <link rel="stylesheet" href="<s:url value="/css/style.css"/>" type="text/css">
     <s:head/>
 </head>
 <body>
 <tiles:insertAttribute name="header"/>
-<hr/>
 <tiles:insertAttribute name="content"/>
 </body>
 </html>

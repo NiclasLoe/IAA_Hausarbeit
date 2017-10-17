@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="IAA_Hausarbeit" />
         <module name="roommgmt-orm" />
+        <module name="studentAdministration" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="IAA_Hausarbeit" target="1.8" />
       <module name="roommgmt-orm" target="1.8" />
+      <module name="studentAdministration" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -7,6 +7,7 @@
 
     <!-- Enable annotation config -->
     <context:annotation-config/>
+    <context:component-scan base-package="de.nordakademie.iaa.studentadmin"/>
 
     <!-- Data source -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
@@ -21,7 +22,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="NakDB"/>
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="de.nordakademie.iaa.roommgmt.model"/>
+        <property name="packagesToScan" value="de.nordakademie.iaa.studentadmin.model"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
@@ -51,22 +52,8 @@
 
     <!-- AOP configuration with pointcut -->
     <aop:config>
-        <aop:pointcut id="serviceMethods" expression="execution(* de.nordakademie.iaa.roommgmt.service.*.*(..))"/>
+        <aop:pointcut id="serviceMethods" expression="execution(* de.nordakademie.iaa.studentadmin.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
     </aop:config>
-
-    <!-- DAOs -->
-    <bean id="roomDAO" class="de.nordakademie.iaa.roommgmt.dao.RoomDAO"/>
-
-    <bean id="courseDAO" class="de.nordakademie.iaa.roommgmt.dao.CourseDAO"/>
-
-    <bean id="lectureDAO" class="de.nordakademie.iaa.roommgmt.dao.LectureDAO"/>
-
-    <!-- Services -->
-    <bean id="roomService" class="de.nordakademie.iaa.roommgmt.service.RoomServiceImpl"/>
-
-    <bean id="courseService" class="de.nordakademie.iaa.roommgmt.service.CourseServiceImpl"/>
-
-    <bean id="lectureService" class="de.nordakademie.iaa.roommgmt.service.LectureServiceImpl"/>
 
 </beans>
