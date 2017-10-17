@@ -8,7 +8,7 @@
 <tiles-definitions>
 	<!-- Main template -->
 	<definition name="mainTemplate" template="/template/mainTemplate.jsp">
-		<put-attribute name="title" value="title.title"/>
+        <put-attribute name="title" value="Nordakademie"/>
 		<put-attribute name="header" value="/tiles/headers/header.jsp"/>
 	</definition>
 

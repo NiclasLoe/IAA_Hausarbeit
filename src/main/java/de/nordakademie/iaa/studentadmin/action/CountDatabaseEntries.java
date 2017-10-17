@@ -9,18 +9,19 @@ import java.util.ArrayList;
 public class CountDatabaseEntries implements Action {
     private StudentService studentService;
     private ApplicantService applicantService;
-    private ArrayList<Integer> quantityList;
+    private ArrayList<Long> quantityList;
 
     @Override
     public String execute() throws Exception {
+        Long applicants = applicantService.countEntries();
         quantityList = new ArrayList<>();
-        quantityList.add(1);
-        quantityList.add(2);
-        quantityList.add(4);
+        quantityList.add(applicants);
+        quantityList.add((long) 2);
+        quantityList.add((long) 4);
         return SUCCESS;
     }
 
-    public ArrayList<Integer> getQuantityList() {
+    public ArrayList<Long> getQuantityList() {
         return quantityList;
     }
 

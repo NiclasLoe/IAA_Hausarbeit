@@ -1,7 +1,3 @@
-table {
-    width: 100%;
-}
-
 .tdQuantity {
     width: 300px;
 }
@@ -11,3 +7,27 @@ table {
     float: left;
 }
 
+.trSubHeader {
+    height: 40px;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+table {
+    horiz-align: left;
+    vertical-align: center;
+}
+
+select {
+    width: 200px;
+}
+
+.textInput {
+    width: 200px;
+    text-align: left;
+}
+
+.tdApplicantView {
+    width: 200px;
+    text-align: center;
+}

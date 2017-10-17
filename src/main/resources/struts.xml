@@ -25,5 +25,22 @@
         <action name="cancelApplicant">
             <result type="redirectAction">showApplicantList</result>
         </action>
+
+        <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="loadApplicant">
+            <result name="input" type="chain">showApplicantList</result>
+            <result>applicantForm</result>
+        </action>
+
+        <action name="saveRoom" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction" method="saveApplicant">
+            <result name="input">applicantForm</result>
+            <result type="redirectAction">showApplicantList</result>
+        </action>
+
+        <action name="deleteApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="deleteApplicant">
+            <result name="input" type="chain">showApplicantList</result>
+            <result type="redirectAction">showApplicantList</result>
+        </action>
     </package>
 </struts>
