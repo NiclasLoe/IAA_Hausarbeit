@@ -14,8 +14,10 @@
         <s:textfield key="applicant.firstName" cssClass="textInput"/>
         <s:textfield key="applicant.lastName" cssClass="textInput"/>
         <s:select key="applicant.gender" list="@de.nordakademie.iaa.studentadmin.model.Gender@values()"/>
-        <s:textfield key="applicant.dateOfBirth" type="date" format="dd.MM.yyy" cssClass="textInput"/>
-        <s:textfield key="applicant.birthplace" cssClass="textInput"/>
+        <s:date name="applicant.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
+        <s:textfield key="applicant.dateOfBirth" type="date"
+                     cssClass="textInput"
+                     value="%{dateOfBirthId}"/>
         <tr class="trSubHeader">
             <td>
                 <s:text name="applicant.contactInformation"/>
