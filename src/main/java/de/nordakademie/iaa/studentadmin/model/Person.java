@@ -16,7 +16,7 @@ public abstract class Person {
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private String birthplace;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String emailAddress;
     private String streetName;
     private String houseNumber;
@@ -79,11 +79,11 @@ public abstract class Person {
         this.birthplace = birthplace;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
