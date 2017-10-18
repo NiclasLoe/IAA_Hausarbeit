@@ -110,5 +110,6 @@
     <orderEntry type="library" name="Maven: org.apache.struts:struts2-spring-plugin:2.5.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" level="project" />
+    <orderEntry type="library" name="com.jgeppert.struts2.jquery:struts2-jquery-plugin:3.3.1" level="project" />
   </component>
 </module>
