@@ -13,11 +13,13 @@ public class CountDatabaseEntries implements Action {
 
     @Override
     public String execute() throws Exception {
-        Long applicants = applicantService.countEntries();
+        Long applicantCount = applicantService.countEntries();
+        Long enrolledStudentCount = studentService.countEnrolledStudents();
+        Long alumniCount = studentService.countAlumni();
         quantityList = new ArrayList<>();
-        quantityList.add(applicants);
-        quantityList.add((long) 2);
-        quantityList.add((long) 4);
+        quantityList.add(applicantCount);
+        quantityList.add(enrolledStudentCount);
+        quantityList.add(alumniCount);
         return SUCCESS;
     }
 

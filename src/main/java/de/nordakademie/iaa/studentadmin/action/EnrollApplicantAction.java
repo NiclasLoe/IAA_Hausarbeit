@@ -1,67 +1,79 @@
 package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import de.nordakademie.iaa.studentadmin.model.Applicant;
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.model.Company;
 import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 
 import java.util.List;
 
-public class StudentAction extends ActionSupport {
+public class EnrollApplicantAction extends ActionSupport {
 
     private StudentService studentService;
-    private Student student;
-    private Long personId;
+    private ApplicantService applicantService;
     private CompanyService companyService;
     private CenturyService classService;
+    private Student student;
+    private Applicant applicant;
+
     private List<Company> companyList;
     private List<Century> centuryList;
+    private Long applicantId;
 
-    @Override
-    public void validate() {
-        if ((personId == null) && (student == null)) {
-            addActionError(getText("error.selectApplicant"));
-        }
-    }
 
-    public String saveStudent() throws Exception {
-        studentService.saveStudent(student);
+    public String enrollApplicant() throws Exception {
+        studentService.saveNewStudent(student);
+        Long applicantToDeleteId = applicant.getId();
+        applicantService.delete(applicantToDeleteId);
         return SUCCESS;
     }
 
-    public String loadStudent() {
+    public String loadApplicant() {
+        applicant = applicantService.loadApplicant(applicantId);
         companyList = companyService.listCompanies();
         centuryList = classService.listCenturies();
-        student = studentService.loadStudent(personId);
         return SUCCESS;
     }
 
-    public String saveNewStudent() throws Exception {
-        studentService.saveNewStudent(student);
-        return SUCCESS;
+    public void setClassService(CenturyService classService) {
+        this.classService = classService;
+    }
+
+    public Long getApplicantId() {
+        return applicantId;
+    }
+
+    public void setApplicantId(Long applicantId) {
+        this.applicantId = applicantId;
     }
 
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setApplicantService(ApplicantService applicantService) {
+        this.applicantService = applicantService;
     }
 
     public Student getStudent() {
         return student;
     }
 
-    public Long getPersonId() {
-        return personId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public Applicant getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
     }
 
     public List<Company> getCompanyList() {
@@ -82,9 +94,5 @@ public class StudentAction extends ActionSupport {
 
     public void setCompanyService(CompanyService companyService) {
         this.companyService = companyService;
-    }
-
-    public void setClassService(CenturyService classService) {
-        this.classService = classService;
     }
 }

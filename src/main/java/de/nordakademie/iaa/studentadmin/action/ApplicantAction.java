@@ -6,9 +6,9 @@ import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 
 public class ApplicantAction extends ActionSupport {
 
-    public ApplicantService applicantService;
-    public Applicant applicant;
-    public Long applicantId;
+    private ApplicantService applicantService;
+    private Applicant applicant;
+    private Long applicantId;
 
     @Override
     public void validate() {
@@ -51,7 +51,4 @@ public class ApplicantAction extends ActionSupport {
     public void setApplicantId(Long applicantId) {
         this.applicantId = applicantId;
     }
-
-
-
 }

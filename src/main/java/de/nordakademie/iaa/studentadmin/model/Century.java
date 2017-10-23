@@ -4,27 +4,25 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Group {
+@IdClass(CenturyId.class)
+public class Century {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @OneToMany
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //private Long id;
+    @OneToMany(mappedBy = "century")
     private List<Student> studentList;
-    @Column(nullable = false, length = 4)
+    @Id
+    @Column(nullable = false, length = 4, name = "FIELD_OF_STUDY")
     private FieldOfStudy fieldOfStudy;
+    @Id
     @Column(nullable = false, length = 2)
     private Integer year;
-    @Column(nullable = false, length = 1)
+    @Id
+    @Column(nullable = false, length = 1, name = "LETTER_CODE")
     private String letterCode;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Transient
+    private String centuryName;
 
     public List<Student> getStudentList() {
         return studentList;
@@ -56,5 +54,16 @@ public class Group {
 
     public void setLetterCode(String letterCode) {
         this.letterCode = letterCode;
+    }
+
+    public String getCenturyName() {
+        String yearString = "" + year;
+        yearString = yearString.substring(2, 4);
+        centuryName = fieldOfStudy.getShortForm() + yearString + letterCode;
+        return centuryName;
+    }
+
+    public void setCenturyName(String centuryName) {
+        this.centuryName = centuryName;
     }
 }

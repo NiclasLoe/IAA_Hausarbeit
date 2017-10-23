@@ -2,8 +2,8 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form>
-    <s:submit cssClass="submitButton" key="button.newApplicant" action="addApplicant"/>
 
+    <s:submit key="button.newApplicant" action="addApplicant" cssClass="submitButton"/>
     <table>
         <tr>
             <th></th>
@@ -25,7 +25,8 @@
     </table>
     <s:actionerror/>
     <s:submit key="button.seeMore" action="loadApplicant" cssClass="submitButton"/>
-    <s:submit key="button.deleteApplicant" action="deleteApplicant" cssClass="submitButton"/>
     <s:submit key="button.goBack" action="showMainPage" cssClass="submitButton"/>
+    <s:submit key="button.deleteApplicant" action="deleteApplicant" cssClass="submitButton"/>
+    <s:submit key="button.enrollApplicant" action="enrollApplicant" cssClass="submitButton"/>
     <s:submit key="button.downloadList" action="downloadCurrentList" cssClass="submitButton"/>
 </s:form>

@@ -4,7 +4,6 @@
 <s:form>
     <s:hidden name="student.id"/>
     <s:hidden name="student.studentId"/>
-    <s:hidden name="student.status"/>
     <table>
         <tr class="trSubHeader">
             <td>
@@ -43,10 +42,8 @@
                 <s:text name="student.NAKInformation"/>
             </td>
         </tr>
-        <s:select key="student.company_id" list="%{companyList}" listValue="shortName" cssClass="textInput"
-                  value="student.company_id"/>
-        <s:textfield key="student.company_id"/>
-            <%--<s:select key="student.class_id" list="%{groupList}" listValue="className" cssClass="textInput"/>--%>
+        <s:select key="student.company_id" list="%{companyList}" listValue="companyName1" cssClass="textInput"/>
+        <s:select key="student.class_id" list="%{groupList}" listValue="className" cssClass="textInput"/>
         <tr/>
     </table>
     <s:submit key="button.addStudent" action="saveNewStudent" cssClass="submitButton"/>

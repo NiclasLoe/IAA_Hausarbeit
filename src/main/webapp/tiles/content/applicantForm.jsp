@@ -18,6 +18,7 @@
         <s:textfield key="applicant.dateOfBirth" type="date"
                      cssClass="textInput"
                      value="%{dateOfBirthId}"/>
+        <s:textfield key="applicant.birthplace" cssClass="textInput"/>
         <tr class="trSubHeader">
             <td>
                 <s:text name="applicant.contactInformation"/>
@@ -42,7 +43,8 @@
         <s:textfield key="applicant.city" cssClass="textInput"/>
         <tr/>
     </table>
-    <s:submit key="button.save" action="saveRoom" cssClass="submitButton"/>
+    <s:submit key="button.save" action="addApplicant" cssClass="submitButton"/>
+
     <s:submit key="button.cancel" action="cancelApplicant" cssClass="submitButton"/>
 </s:form>
 

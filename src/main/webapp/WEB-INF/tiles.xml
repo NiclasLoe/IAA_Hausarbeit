@@ -41,4 +41,34 @@
 		<put-attribute name="content" value="/tiles/content/applicantForm.jsp"/>
 	</definition>
 
+	<definition name="applicantToStudentForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
+		<put-attribute name="content" value="/tiles/content/applicantToStudentForm.jsp"/>
+	</definition>
+
+	<definition name="newStudentForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
+		<put-attribute name="content" value="/tiles/content/newStudentForm.jsp"/>
+	</definition>
+
+	<definition name="studentForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
+		<put-attribute name="content" value="/tiles/content/studentForm.jsp"/>
+	</definition>
+
+	<definition name="centuryList" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerCenturyList.jsp"/>
+		<put-attribute name="content" value="/tiles/content/centuryTable.jsp"/>
+	</definition>
+
+	<definition name="adminArea" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerAdminArea.jsp"/>
+		<put-attribute name="content" value="/tiles/content/adminArea.jsp"/>
+	</definition>
+
+	<definition name="companyList" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerCompanyList.jsp"/>
+		<put-attribute name="content" value="/tiles/content/companyList.jsp"/>
+	</definition>
+
 </tiles-definitions>
