@@ -19,6 +19,7 @@ public class StudentAction extends ActionSupport {
     private CenturyService classService;
     private List<Company> companyList;
     private List<Century> centuryList;
+    private Long companyId;
 
     @Override
     public void validate() {
@@ -28,19 +29,26 @@ public class StudentAction extends ActionSupport {
     }
 
     public String saveStudent() throws Exception {
-        studentService.saveStudent(student);
+        Company company = companyService.loadCompany(companyId);
+        studentService.saveStudent(student, company, new Century());
         return SUCCESS;
     }
 
     public String loadStudent() {
-        companyList = companyService.listCompanies();
-        centuryList = classService.listCenturies();
+        this.prepareEmptyForm();
         student = studentService.loadStudent(personId);
         return SUCCESS;
     }
 
     public String saveNewStudent() throws Exception {
-        studentService.saveNewStudent(student);
+        Company company = companyService.loadCompany(companyId);
+        studentService.saveNewStudent(student, company, new Century());
+        return SUCCESS;
+    }
+
+    public String prepareEmptyForm() {
+        companyList = companyService.listCompanies();
+        centuryList = classService.listCenturies();
         return SUCCESS;
     }
 
@@ -86,5 +94,23 @@ public class StudentAction extends ActionSupport {
 
     public void setClassService(CenturyService classService) {
         this.classService = classService;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public String endActiveStudies() throws Exception {
+        studentService.endActiveStudies(personId);
+        return SUCCESS;
+    }
+
+    public String exmatriculateStudent() throws Exception {
+        studentService.exmatriculateStudent(personId);
+        return "success";
     }
 }

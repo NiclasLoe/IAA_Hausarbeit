@@ -1,6 +1,8 @@
 package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.StudentDAO;
+import de.nordakademie.iaa.studentadmin.model.Century;
+import de.nordakademie.iaa.studentadmin.model.Company;
 import de.nordakademie.iaa.studentadmin.model.Status;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,23 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveStudent(Student student) {
+    public void saveStudent(Student student, Company company, Century century) {
+        student.setCompany(company);
+        student.setCentury(century);
+        studentDAO.saveStudent(student);
+    }
+
+    @Override
+    public void endActiveStudies(Long personId) {
+        Student student = studentDAO.load(personId);
+        student.setStatus(Status.ALUMNI);
+        studentDAO.saveStudent(student);
+    }
+
+    @Override
+    public void exmatriculateStudent(Long personId) {
+        Student student = studentDAO.load(personId);
+        student.setStatus(Status.DROPPED_OUT);
         studentDAO.saveStudent(student);
     }
 
@@ -45,8 +63,10 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveNewStudent(Student student) {
+    public void saveNewStudent(Student student, Company company, Century century) {
         student.setStatus(Status.ENROLLED);
+        student.setCentury(century);
+        student.setCompany(company);
         studentDAO.saveStudent(student);
     }
 

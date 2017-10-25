@@ -2,6 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form>
+    <s:submit name="button.addCentury" action="addCentury" cssClass="submitButton"/>
     <table>
         <tr>
             <th><s:text name="tableView.fieldOfStudy"/></th>
@@ -19,4 +20,5 @@
         </s:iterator>
         <tr></tr>
     </table>
+
 </s:form>

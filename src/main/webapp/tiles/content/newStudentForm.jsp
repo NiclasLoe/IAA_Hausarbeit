@@ -43,7 +43,7 @@
             </td>
         </tr>
         <s:select key="student.company_id" list="%{companyList}" listValue="companyName1" cssClass="textInput"/>
-        <s:select key="student.class_id" list="%{groupList}" listValue="className" cssClass="textInput"/>
+            <%--<s:select key="student.class_id" list="%{groupList}" listValue="className" cssClass="textInput"/>--%>
         <tr/>
     </table>
     <s:submit key="button.addStudent" action="saveNewStudent" cssClass="submitButton"/>

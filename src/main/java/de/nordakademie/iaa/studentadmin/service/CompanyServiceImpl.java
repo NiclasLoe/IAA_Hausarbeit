@@ -17,4 +17,9 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> listCompanies() {
         return companyDAO.listAll();
     }
+
+    @Override
+    public Company loadCompany(Long companyId) {
+        return companyDAO.loadByID(companyId);
+    }
 }

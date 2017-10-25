@@ -71,4 +71,14 @@
 		<put-attribute name="content" value="/tiles/content/companyList.jsp"/>
 	</definition>
 
+	<definition name="alumniList" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerAlumniForm.jsp"/>
+		<put-attribute name="content" value="/tiles/content/alumniForm.jsp"/>
+	</definition>
+
+	<definition name="centuryForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerCenturyForm.jsp"/>
+		<put-attribute name="content" value="/tiles/content/centuryForm.jsp"/>
+	</definition>
+
 </tiles-definitions>

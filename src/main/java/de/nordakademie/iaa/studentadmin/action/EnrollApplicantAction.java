@@ -1,15 +1,13 @@
 package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import de.nordakademie.iaa.studentadmin.model.Applicant;
-import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.model.Company;
-import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.model.*;
 import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EnrollApplicantAction extends ActionSupport {
@@ -17,17 +15,23 @@ public class EnrollApplicantAction extends ActionSupport {
     private StudentService studentService;
     private ApplicantService applicantService;
     private CompanyService companyService;
-    private CenturyService classService;
+    private CenturyService centuryService;
     private Student student;
     private Applicant applicant;
-
+    private Long companyId;
     private List<Company> companyList;
-    private List<Century> centuryList;
+    private ArrayList<Century> centuryList;
     private Long applicantId;
+    private String centuryString;
 
 
     public String enrollApplicant() throws Exception {
-        studentService.saveNewStudent(student);
+        CenturyId centuryId = centuryService.returnId(centuryString);
+        Century century = centuryService.loadCentury(centuryId);
+        Company company = companyService.loadCompany(companyId);
+        studentService.saveNewStudent(student, company, century);
+        Student studentTemp = studentService.loadStudent(student.getId());
+        centuryService.addStudent(century, studentTemp);
         Long applicantToDeleteId = applicant.getId();
         applicantService.delete(applicantToDeleteId);
         return SUCCESS;
@@ -36,12 +40,14 @@ public class EnrollApplicantAction extends ActionSupport {
     public String loadApplicant() {
         applicant = applicantService.loadApplicant(applicantId);
         companyList = companyService.listCompanies();
-        centuryList = classService.listCenturies();
+        centuryList = new ArrayList<>();
+        centuryList.addAll(centuryService.listCenturies());
+
         return SUCCESS;
     }
 
-    public void setClassService(CenturyService classService) {
-        this.classService = classService;
+    public void setCenturyService(CenturyService centuryService) {
+        this.centuryService = centuryService;
     }
 
     public Long getApplicantId() {
@@ -84,15 +90,31 @@ public class EnrollApplicantAction extends ActionSupport {
         this.companyList = companyList;
     }
 
-    public List<Century> getCenturyList() {
+    public void setCompanyService(CompanyService companyService) {
+        this.companyService = companyService;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public ArrayList<Century> getCenturyList() {
         return centuryList;
     }
 
-    public void setCenturyList(List<Century> centuryList) {
+    public void setCenturyList(ArrayList<Century> centuryList) {
         this.centuryList = centuryList;
     }
 
-    public void setCompanyService(CompanyService companyService) {
-        this.companyService = companyService;
+    public String getCenturyString() {
+        return centuryString;
+    }
+
+    public void setCenturyString(String centuryString) {
+        this.centuryString = centuryString;
     }
 }

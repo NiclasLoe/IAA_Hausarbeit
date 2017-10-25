@@ -13,7 +13,6 @@ public class Student extends Person {
     @JoinColumn
     private Company company;
     @ManyToOne
-    @JoinColumn
     private Century century;
     private Integer username;
 

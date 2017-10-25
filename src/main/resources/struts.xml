@@ -30,6 +30,14 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
+        <action name="cancelAlumni">
+            <result type="redirectAction">showAlumniList</result>
+        </action>
+
+        <action name="cancelCentury">
+            <result type="redirectAction">showCenturyList</result>
+        </action>
+
         <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
                 method="loadApplicant">
             <result name="input" type="chain">showApplicantList</result>
@@ -69,13 +77,26 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
-        <action name="addStudent">
+        <action name="addStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="prepareEmptyForm">
             <result>newStudentForm</result>
         </action>
 
         <action name="loadStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
             <result name="input" type="chain">showStudentList</result>
             <result>studentForm</result>
+        </action>
+
+        <action name="endActiveStudies" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="endActiveStudies">
+            <result name="input" type="chain">showStudentList</result>
+            <result type="redirectAction">showStudentList</result>
+        </action>
+
+        <action name="exmatriculateStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="exmatriculateStudent">
+            <result name="input" type="chain">showStudentList</result>
+            <result type="redirectAction">showStudentList</result>
         </action>
 
         <action name="saveNewStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
@@ -102,5 +123,19 @@
             <result>companyList</result>
         </action>
 
+        <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+            <result name="input" type="chain">showAlumniList</result>
+            <result>alumniList</result>
+        </action>
+
+        <action name="addCentury">
+            <result>centuryForm</result>
+        </action>
+
+        <action name="saveCentury" class="de.nordakademie.iaa.studentadmin.action.CenturyAction"
+                method="saveCentury">
+            <result name="input">centuryForm</result>
+            <result type="redirectAction">showCenturyList</result>
+        </action>
     </package>
 </struts>

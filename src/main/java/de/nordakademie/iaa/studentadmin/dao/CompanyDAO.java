@@ -16,4 +16,8 @@ public class CompanyDAO {
     public List<Company> listAll() {
         return entityManager.createQuery("SELECT company FROM Company company").getResultList();
     }
+
+    public Company loadByID(Long companyId) {
+        return entityManager.find(Company.class, companyId);
+    }
 }

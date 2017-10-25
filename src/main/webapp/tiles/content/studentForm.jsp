@@ -43,10 +43,8 @@
                 <s:text name="student.NAKInformation"/>
             </td>
         </tr>
-        <s:select key="student.company_id" list="%{companyList}" listValue="shortName" cssClass="textInput"
-                  value="student.company_id"/>
-        <s:textfield key="student.company_id"/>
-            <%--<s:select key="student.class_id" list="%{groupList}" listValue="className" cssClass="textInput"/>--%>
+        <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
+                  cssClass="textInput" value="student.company.id" label="student.company_id"/>
         <tr/>
     </table>
     <s:submit key="button.addStudent" action="saveNewStudent" cssClass="submitButton"/>

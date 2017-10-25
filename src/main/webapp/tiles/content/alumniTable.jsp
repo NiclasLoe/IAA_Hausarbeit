@@ -15,7 +15,7 @@
             <th><s:text name="tableView.fieldOfStudy"/></th>
             <th><s:text name="tableView.emailAddress"/></th>
         </tr>
-        <s:iterator value="alumniList">
+        <s:iterator value="studentList">
             <tr>
                 <td><s:radio name="personId" list="#{id:''}" theme="simple" onselect=""/></td>
                 <td class="tdApplicantView"><s:property value="studentId"/></td>

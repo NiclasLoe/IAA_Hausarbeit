@@ -44,10 +44,14 @@
             <td>
                 <s:text name="student.NAKInformation"/>
             </td>
+
         </tr>
-        <s:select key="student.company_id" list="%{companyList}" listKey="id" listValue="shortName"
-                  cssClass="textInput"/>
-            <%--<s:select key="student.century" list="%{centuryList}" listValue="centuryName" cssClass="textInput"/>--%>
+
+        <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
+                  cssClass="textInput" label="student.company_id"/>
+        <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
+                  listValue="centuryName"
+                  cssClass="textInput" label="student.centuryId"/>
         <tr/>
 
     </table>

@@ -30,5 +30,7 @@
     <s:actionerror/>
     <s:submit key="button.seeMore" action="loadStudent" cssClass="submitButton"/>
     <s:submit key="button.goBack" action="showMainPage" cssClass="submitButton"/>
+    <s:submit key="button.exmatriculateStudent" action="exmatriculateStudent" cssClass="submitButton"/>
+    <s:submit key="button.endActiveStudies" action="endActiveStudies" cssClass="submitButton"/>
     <s:submit key="button.downloadList" action="downloadCurrentList" cssClass="submitButton"/>
 </s:form>
