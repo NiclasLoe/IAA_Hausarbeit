@@ -24,14 +24,18 @@ public class EnrollApplicantAction extends ActionSupport {
     private Long applicantId;
     private String centuryString;
 
+    @Override
+    public void validate() {
+        if ((applicantId == null) && (applicant == null)) {
+            addActionError(getText("error.selectApplicant"));
+        }
+    }
 
     public String enrollApplicant() throws Exception {
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
         Company company = companyService.loadCompany(companyId);
         studentService.saveNewStudent(student, company, century);
-        Student studentTemp = studentService.loadStudent(student.getId());
-        centuryService.addStudent(century, studentTemp);
         Long applicantToDeleteId = applicant.getId();
         applicantService.delete(applicantToDeleteId);
         return SUCCESS;

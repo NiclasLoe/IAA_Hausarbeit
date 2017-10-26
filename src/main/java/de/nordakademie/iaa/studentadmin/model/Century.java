@@ -1,18 +1,11 @@
 package de.nordakademie.iaa.studentadmin.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @IdClass(CenturyId.class)
 public class Century {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    //private Long id;
-    @OneToMany(mappedBy = "century", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "STUDENT_LIST")
-    private List<Student> studentList = new ArrayList<>();
+
     @Id
     @Column(nullable = false, length = 4, name = "FIELD_OF_STUDY")
     private FieldOfStudy fieldOfStudy;
@@ -24,18 +17,6 @@ public class Century {
     private String letterCode;
     @Transient
     private String centuryName;
-
-    public List<Student> getStudentList() {
-        if (studentList == null) {
-            studentList = new ArrayList<>();
-
-        }
-        return studentList;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
-    }
 
     public FieldOfStudy getFieldOfStudy() {
         return fieldOfStudy;

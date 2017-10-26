@@ -14,5 +14,7 @@ public interface CenturyService {
 
     Century loadCentury(CenturyId centuryId);
 
-    void addStudent(Century century, Student student);
+    List<Century> listAll();
+
+    void saveCentury(Century century);
 }

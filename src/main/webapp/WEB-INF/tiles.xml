@@ -52,7 +52,7 @@
 	</definition>
 
 	<definition name="studentForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
+		<put-attribute name="header" value="/tiles/headers/headerStudentForm.jsp"/>
 		<put-attribute name="content" value="/tiles/content/studentForm.jsp"/>
 	</definition>
 
@@ -79,6 +79,11 @@
 	<definition name="centuryForm" extends="mainTemplate">
 		<put-attribute name="header" value="/tiles/headers/headerCenturyForm.jsp"/>
 		<put-attribute name="content" value="/tiles/content/centuryForm.jsp"/>
+	</definition>
+
+	<definition name="showManiplePage" extends="mainPage">
+		<put-attribute name="header" value="/tiles/headers/headerManiplePage.jsp"/>
+		<put-attribute name="content" value="/tiles/content/maniplePage.jsp"/>
 	</definition>
 
 </tiles-definitions>

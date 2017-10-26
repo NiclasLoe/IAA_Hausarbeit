@@ -20,8 +20,6 @@ public class Company {
     private Integer phoneNumber;
     private Integer faxNumber;
     private String mailAddress;
-    @OneToMany(mappedBy = "company")
-    private List<Student> studentList;
 
     public Long getId() {
         return id;
@@ -117,13 +115,5 @@ public class Company {
 
     public void setMailAddress(String mailAddress) {
         this.mailAddress = mailAddress;
-    }
-
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
     }
 }

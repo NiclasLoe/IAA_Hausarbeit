@@ -7,6 +7,9 @@
 
     <s:submit key="button.showCentury" action="showCenturyList" cssClass="submitButton"/>
     <s:submit key="button.showCompanyList" action="showCompanyList" cssClass="submitButton"/>
-    <s:submit key="button.downloadResultList" action="downloadResultList" cssClass="submitButton"/>
-    <s:submit key="button.downloadAttendanceList" action="downloadAttendanceList" cssClass="submitButton"/>
+    <s:submit key="button.downloadResultList" action="chooseManiplePage" cssClass="submitButton"/>
+
+
+
+    <s:submit key="button.goBack" action="showMainPage" cssClass="submitButton"/>
 </s:form>

@@ -9,11 +9,11 @@
             </td>
         </tr>
         <s:select key="century.fieldOfStudy" list="@de.nordakademie.iaa.studentadmin.model.FieldOfStudy@values()"
-                  cssClass="textInput"/>
+                  cssClass="textInput" headerValue="student.pleaseSelect" headerKey=""/>
         <s:textfield key="century.letterCode" cssClass="textInput"/>
         <s:textfield key="century.year" cssClass="textInput"/>
     </table>
 
-    <s:submit key="button.save" action="saveCentury" cssClass="submitButton"/>
-    <s:submit key="button.back" action="cancelCentury" cssClass="submitButton"/>
+    <s:submit key="button.saveCentury" action="saveCentury" cssClass="submitButton"/>
+    <s:submit key="button.goBack" action="cancelCentury" cssClass="submitButton"/>
 </s:form>

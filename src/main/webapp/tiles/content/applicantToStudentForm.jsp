@@ -12,11 +12,11 @@
         </tr>
         <s:select key="student.title" value="%{applicant.title}"
                   list="@de.nordakademie.iaa.studentadmin.model.Title@values()"
-                  cssClass="textInput"/>
+                  cssClass="textInput" headerValue="student.pleaseSelect" headerKey=""/>
         <s:textfield key="student.firstName" value="%{applicant.firstName}" cssClass="textInput"/>
         <s:textfield key="student.lastName" value="%{applicant.lastName}" cssClass="textInput"/>
         <s:select key="student.gender" value="%{applicant.gender}"
-                  list="@de.nordakademie.iaa.studentadmin.model.Gender@values()"/>
+                  list="@de.nordakademie.iaa.studentadmin.model.Gender@values()" headerValue="student.pleaseSelect" headerKey=""/>
         <s:date name="applicant.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
         <s:textfield key="student.dateOfBirth" type="date"
                      cssClass="textInput"
@@ -48,10 +48,10 @@
         </tr>
 
         <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
-                  cssClass="textInput" label="student.company_id"/>
+                  cssClass="textInput" label="student.company_id" headerValue="student.pleaseSelect" headerKey=""/>
         <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                   listValue="centuryName"
-                  cssClass="textInput" label="student.centuryId"/>
+                  cssClass="textInput" label="student.centuryId" headerValue="student.pleaseSelect" headerKey=""/>
         <tr/>
 
     </table>

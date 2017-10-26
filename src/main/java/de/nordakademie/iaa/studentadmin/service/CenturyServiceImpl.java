@@ -35,8 +35,14 @@ public class CenturyServiceImpl implements CenturyService {
     }
 
     @Override
-    public void addStudent(Century century, Student student) {
-        century.getStudentList().add(student);
+    public List<Century> listAll() {
+        return centuryDAO.listAll();
+    }
+
+    @Override
+    public void saveCentury(Century century) {
         centuryDAO.save(century);
     }
+
+
 }

@@ -44,9 +44,12 @@
             </td>
         </tr>
         <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
-                  cssClass="textInput" value="student.company.id" label="student.company_id"/>
+                  cssClass="textInput" value="student.company.id" label="student.company_id" headerValue="student.pleaseSelect" headerKey=""/>
+        <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
+                  listValue="centuryName" value="%{student.century.year + student.century.letterCode + student.century.fieldOfStudy}"
+                  cssClass="textInput" label="student.centuryId" headerValue="student.pleaseSelect" headerKey=""/>
         <tr/>
     </table>
-    <s:submit key="button.addStudent" action="saveNewStudent" cssClass="submitButton"/>
+    <s:submit key="button.saveStudent" action="saveStudent" cssClass="submitButton"/>
     <s:submit key="button.cancel" action="cancelStudent" cssClass="submitButton"/>
 </s:form>

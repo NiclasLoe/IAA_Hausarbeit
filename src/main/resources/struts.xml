@@ -132,10 +132,24 @@
             <result>centuryForm</result>
         </action>
 
+        <action name="downloadAttendanceList" class="de.nordakademie.iaa.studentadmin.action.CenturyAction" method="downloadCenturyList">
+            <result name="input" type="stream">showCenturyList</result>
+            <result name="success"  type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="attendanceList.xls"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+
         <action name="saveCentury" class="de.nordakademie.iaa.studentadmin.action.CenturyAction"
                 method="saveCentury">
             <result name="input">centuryForm</result>
             <result type="redirectAction">showCenturyList</result>
+        </action>
+
+        <action name="chooseManiplePage">
+            <result>showManiplePage</result>
         </action>
     </package>
 </struts>

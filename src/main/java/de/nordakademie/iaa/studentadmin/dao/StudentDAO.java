@@ -1,5 +1,6 @@
 package de.nordakademie.iaa.studentadmin.dao;
 
+import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.model.Status;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import org.springframework.stereotype.Component;
@@ -38,19 +39,17 @@ public class StudentDAO {
     }
 
     public Student load(long id) {
-        return (Student) entityManager
-                .createQuery("SELECT student FROM Student student WHERE (student.id= :id)")
-                .setParameter("id", id)
-                .getSingleResult();
+        return entityManager.find(Student.class, id);
     }
 
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-
-    public Long countEntries() {
-        Long count = (Long) entityManager.createQuery("SELECT count(student) FROM Student student").getSingleResult();
-        return count;
+    public List<Student> findStudentsByCentury(Century century) {
+        return entityManager
+                .createQuery("SELECT s FROM Student s WHERE s.century= :century")
+                .setParameter("century", century)
+                .getResultList();
     }
 }

@@ -2,9 +2,10 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form>
-    <s:submit name="button.addCentury" action="addCentury" cssClass="submitButton"/>
+    <s:submit key="button.addCentury" action="addCentury" cssClass="submitButton"/>
     <table>
         <tr>
+            <td></td>
             <th><s:text name="tableView.fieldOfStudy"/></th>
             <th><s:text name="tableView.year"/></th>
             <th><s:text name="tableView.letterCode"/></th>
@@ -12,6 +13,8 @@
         </tr>
         <s:iterator value="centuryList">
             <tr>
+
+                <td><s:radio name="centuryString" list="#{year+letterCode+fieldOfStudy:''}" theme="simple" onselect=""/></td>
                 <td class="tdApplicantView"><s:property value="fieldOfStudy"/></td>
                 <td class="tdApplicantView"><s:property value="year"/></td>
                 <td class="tdApplicantView"><s:property value="letterCode"/></td>
@@ -20,5 +23,7 @@
         </s:iterator>
         <tr></tr>
     </table>
+    <s:submit key="button.downloadAttendanceList" action="downloadAttendanceList" cssClass="submitButton"/>
+    <s:submit key="button.goBack" action="showAdminArea" cssClass="submitButton"/>
 
 </s:form>

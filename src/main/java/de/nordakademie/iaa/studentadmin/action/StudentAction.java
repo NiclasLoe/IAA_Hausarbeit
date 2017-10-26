@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Century;
+import de.nordakademie.iaa.studentadmin.model.CenturyId;
 import de.nordakademie.iaa.studentadmin.model.Company;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
@@ -13,44 +14,61 @@ import java.util.List;
 public class StudentAction extends ActionSupport {
 
     private StudentService studentService;
+    private CenturyService centuryService;
     private Student student;
-    private Long personId;
+    private Long studentId;
     private CompanyService companyService;
-    private CenturyService classService;
     private List<Company> companyList;
     private List<Century> centuryList;
     private Long companyId;
+    private String centuryString;
 
     @Override
     public void validate() {
-        if ((personId == null) && (student == null)) {
+        if ((studentId == null) && (student == null)) {
             addActionError(getText("error.selectApplicant"));
         }
     }
 
     public String saveStudent() throws Exception {
+        CenturyId centuryId = centuryService.returnId(centuryString);
+        Century century = centuryService.loadCentury(centuryId);
         Company company = companyService.loadCompany(companyId);
-        studentService.saveStudent(student, company, new Century());
+        studentService.saveStudent(student, company, century);
         return SUCCESS;
     }
 
     public String loadStudent() {
         this.prepareEmptyForm();
-        student = studentService.loadStudent(personId);
+        student = studentService.loadStudent(studentId);
         return SUCCESS;
     }
 
     public String saveNewStudent() throws Exception {
+        CenturyId centuryId = centuryService.returnId(centuryString);
+        Century century = centuryService.loadCentury(centuryId);
         Company company = companyService.loadCompany(companyId);
-        studentService.saveNewStudent(student, company, new Century());
+        studentService.saveNewStudent(student, company, century);
         return SUCCESS;
     }
 
     public String prepareEmptyForm() {
         companyList = companyService.listCompanies();
-        centuryList = classService.listCenturies();
+        centuryList = centuryService.listCenturies();
         return SUCCESS;
     }
+
+    public String endActiveStudies() throws Exception {
+        studentService.endActiveStudies(studentId);
+        return SUCCESS;
+    }
+
+    public String exmatriculateStudent() throws Exception {
+        studentService.exmatriculateStudent(studentId);
+        return "success";
+    }
+
+    // Getter and Setter
 
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
@@ -64,12 +82,12 @@ public class StudentAction extends ActionSupport {
         return student;
     }
 
-    public Long getPersonId() {
-        return personId;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public List<Company> getCompanyList() {
@@ -92,10 +110,6 @@ public class StudentAction extends ActionSupport {
         this.companyService = companyService;
     }
 
-    public void setClassService(CenturyService classService) {
-        this.classService = classService;
-    }
-
     public Long getCompanyId() {
         return companyId;
     }
@@ -104,13 +118,15 @@ public class StudentAction extends ActionSupport {
         this.companyId = companyId;
     }
 
-    public String endActiveStudies() throws Exception {
-        studentService.endActiveStudies(personId);
-        return SUCCESS;
+    public void setCenturyService(CenturyService centuryService) {
+        this.centuryService = centuryService;
     }
 
-    public String exmatriculateStudent() throws Exception {
-        studentService.exmatriculateStudent(personId);
-        return "success";
+    public String getCenturyString() {
+        return centuryString;
+    }
+
+    public void setCenturyString(String centuryString) {
+        this.centuryString = centuryString;
     }
 }

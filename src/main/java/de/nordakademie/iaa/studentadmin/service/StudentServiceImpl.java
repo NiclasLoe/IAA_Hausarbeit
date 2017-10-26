@@ -1,10 +1,7 @@
 package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.StudentDAO;
-import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.model.Company;
-import de.nordakademie.iaa.studentadmin.model.Status;
-import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,6 +55,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<Student> listStudentsByCentury(Century century) {
+        return studentDAO.findStudentsByCentury(century);
+    }
+
+    @Override
     public Student loadStudent(long personId) {
         return studentDAO.load(personId);
     }
@@ -73,4 +75,6 @@ public class StudentServiceImpl implements StudentService {
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }
+
+
 }
