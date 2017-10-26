@@ -8,6 +8,7 @@ import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,41 +55,41 @@ public class CenturyAction extends ActionSupport {
         }
 
         return SUCCESS;
-}
+    }
 
-public void setCentury(Century century){
-        this.century=century;
-        }
+    public void setCentury(Century century) {
+        this.century = century;
+    }
 
-public Century getCentury(){
+    public Century getCentury() {
         return century;
-        }
+    }
 
-public List<Century> getCenturyList(){
+    public List<Century> getCenturyList() {
         return centuryList;
-        }
+    }
 
-public void setCenturyService(CenturyService centuryService){
-        this.centuryService=centuryService;
-        }
+    public void setCenturyService(CenturyService centuryService) {
+        this.centuryService = centuryService;
+    }
 
-public String getCenturyString(){
+    public String getCenturyString() {
         return centuryString;
-        }
+    }
 
-public void setCenturyString(String centuryString){
-        this.centuryString=centuryString;
-        }
+    public void setCenturyString(String centuryString) {
+        this.centuryString = centuryString;
+    }
 
-public void setStudentService(StudentService studentService){
-        this.studentService=studentService;
-        }
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
-public InputStream getFileInputStream(){
+    public InputStream getFileInputStream() {
         return fileInputStream;
-        }
+    }
 
-public void setFileInputStream(InputStream fileInputStream){
-        this.fileInputStream=fileInputStream;
-        }
-        }
+    public void setFileInputStream(InputStream fileInputStream) {
+        this.fileInputStream = fileInputStream;
+    }
+}

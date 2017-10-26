@@ -72,6 +72,11 @@ public class StudentServiceImpl implements StudentService {
         studentDAO.saveStudent(student);
     }
 
+    @Override
+    public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
+        return studentDAO.findStudentsByManiple(fieldOfStudy, year);
+    }
+
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }

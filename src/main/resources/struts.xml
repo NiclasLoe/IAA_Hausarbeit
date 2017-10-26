@@ -148,8 +148,18 @@
             <result type="redirectAction">showCenturyList</result>
         </action>
 
-        <action name="chooseManiplePage">
+        <action name="chooseManiplePage" class="de.nordakademie.iaa.studentadmin.action.ManipleAction" method="listAllManiple">
             <result>showManiplePage</result>
+        </action>
+
+        <action name="downloadResultList" class="de.nordakademie.iaa.studentadmin.action.ManipleAction" method="downloadResultList">
+            <result name="input" type="stream">showManiplePage</result>
+            <result name="success"  type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="resultList.xls"</param>
+                <param name="bufferSize">4096</param>
+            </result>
         </action>
     </package>
 </struts>

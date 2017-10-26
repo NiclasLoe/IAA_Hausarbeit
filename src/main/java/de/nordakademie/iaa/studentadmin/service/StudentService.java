@@ -1,9 +1,6 @@
 package de.nordakademie.iaa.studentadmin.service;
 
-import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.model.CenturyId;
-import de.nordakademie.iaa.studentadmin.model.Company;
-import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.model.*;
 
 import java.util.List;
 
@@ -27,4 +24,6 @@ public interface StudentService {
     void exmatriculateStudent(Long personId);
 
     List<Student> listStudentsByCentury(Century century);
+
+    List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year);
 }

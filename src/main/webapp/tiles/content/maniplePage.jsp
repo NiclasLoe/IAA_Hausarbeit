@@ -2,12 +2,9 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form>
-    <s:select list="">
+    <s:select name="maniple" label="tableView.maniple" list="%{manipleList}"/>
 
-    </s:select>
-
-    </table>
-    <s:submit key="button.save" action="saveApplicantToStudent" cssClass="submitButton"/>
+    <s:submit key="button.downloadResultList" action="downloadResultList" cssClass="submitButton"/>
     <s:submit key="button.cancel" action="cancelApplicant" cssClass="submitButton"/>
 </s:form>
 

@@ -1,6 +1,7 @@
 package de.nordakademie.iaa.studentadmin.dao;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
+import de.nordakademie.iaa.studentadmin.model.FieldOfStudy;
 import de.nordakademie.iaa.studentadmin.model.Status;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import org.springframework.stereotype.Component;
@@ -50,6 +51,14 @@ public class StudentDAO {
         return entityManager
                 .createQuery("SELECT s FROM Student s WHERE s.century= :century")
                 .setParameter("century", century)
+                .getResultList();
+    }
+
+    public List<Student> findStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
+        return entityManager
+                .createQuery("SELECT s FROM Student s WHERE s.century.fieldOfStudy = :fos and s.century.year = :year")
+                .setParameter("fos", fieldOfStudy)
+                .setParameter("year", year)
                 .getResultList();
     }
 }
