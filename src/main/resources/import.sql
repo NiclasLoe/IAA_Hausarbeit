@@ -10,7 +10,6 @@ INSERT INTO STUDENT (ID, lastname, firstname, emailAddress, studentId, status) V
 INSERT INTO STUDENT (ID, lastname, firstname, emailAddress, studentId, status) VALUES (hibernate_sequence.nextval, 'ALUMNI', 'first1', 'first.last@domain.com', 1002, 2);
 INSERT INTO STUDENT (ID, lastname, firstname, emailAddress, studentId, status) VALUES (hibernate_sequence.nextval, 'ALUMNI', 'first2', 'first.last@domain.com', 1003, 2);
 
--- noinspection SyntaxError
 INSERT INTO COMPANY (ID, COMPANYNAME1, COMPANYNAME2, SHORTNAME) VALUES (hibernate_sequence.nextval, 'COMPANY_NAME 1', 'COMPANY_NAME 2', 'SHORT NAME')
 INSERT INTO COMPANY (ID, COMPANYNAME1, COMPANYNAME2, SHORTNAME) VALUES (hibernate_sequence.nextval, 'COMPANY_NAME 12', 'COMPANY_NAME 22', 'SHORT NAME2')
 

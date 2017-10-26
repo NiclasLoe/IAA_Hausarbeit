@@ -1,4 +1,4 @@
-package de.nordakademie.iaa.studentadmin.model;
+package de.nordakademie.iaa.studentadmin.utilities;
 
 public enum FieldOfStudy {
     AINF("A"), WINF("I"), WING("W"), BWL("B");

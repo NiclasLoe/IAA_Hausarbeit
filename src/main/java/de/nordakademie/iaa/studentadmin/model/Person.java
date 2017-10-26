@@ -1,6 +1,7 @@
 package de.nordakademie.iaa.studentadmin.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import de.nordakademie.iaa.studentadmin.utilities.Gender;
+import de.nordakademie.iaa.studentadmin.utilities.Title;
 
 import javax.persistence.*;
 import java.util.Date;

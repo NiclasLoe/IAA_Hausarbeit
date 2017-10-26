@@ -2,6 +2,8 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.StudentDAO;
 import de.nordakademie.iaa.studentadmin.model.*;
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
+import de.nordakademie.iaa.studentadmin.utilities.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

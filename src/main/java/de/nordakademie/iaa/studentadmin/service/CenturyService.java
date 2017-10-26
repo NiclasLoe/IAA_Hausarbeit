@@ -1,8 +1,7 @@
 package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.model.CenturyId;
-import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 
 import java.util.List;
 

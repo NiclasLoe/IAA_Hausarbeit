@@ -61,6 +61,11 @@
 		<put-attribute name="content" value="/tiles/content/centuryTable.jsp"/>
 	</definition>
 
+	<definition name="alumniForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerAlumniForm.jsp"/>
+		<put-attribute name="content" value="/tiles/content/alumniForm.jsp"/>
+	</definition>
+
 	<definition name="adminArea" extends="mainTemplate">
 		<put-attribute name="header" value="/tiles/headers/headerAdminArea.jsp"/>
 		<put-attribute name="content" value="/tiles/content/adminArea.jsp"/>
@@ -84,6 +89,11 @@
 	<definition name="showManiplePage" extends="mainPage">
 		<put-attribute name="header" value="/tiles/headers/headerManiplePage.jsp"/>
 		<put-attribute name="content" value="/tiles/content/maniplePage.jsp"/>
+	</definition>
+
+	<definition name="companyForm" extends="mainPage">
+		<put-attribute name="header" value="/tiles/headers/headerCompanyForm.jsp"/>
+		<put-attribute name="content" value="/tiles/content/companyForm.jsp"/>
 	</definition>
 
 </tiles-definitions>

@@ -1,5 +1,7 @@
 package de.nordakademie.iaa.studentadmin.model;
 
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
+
 import javax.persistence.Entity;
 
 @Entity

@@ -1,8 +1,8 @@
 package de.nordakademie.iaa.studentadmin.dao;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.model.FieldOfStudy;
-import de.nordakademie.iaa.studentadmin.model.Status;
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
+import de.nordakademie.iaa.studentadmin.utilities.Status;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import org.springframework.stereotype.Component;
 

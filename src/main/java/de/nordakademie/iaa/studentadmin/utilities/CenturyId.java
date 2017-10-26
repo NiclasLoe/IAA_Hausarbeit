@@ -1,4 +1,4 @@
-package de.nordakademie.iaa.studentadmin.model;
+package de.nordakademie.iaa.studentadmin.utilities;
 
 import java.io.Serializable;
 

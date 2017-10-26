@@ -20,4 +20,12 @@ public class CompanyDAO {
     public Company loadByID(Long companyId) {
         return entityManager.find(Company.class, companyId);
     }
+
+    public void save(Company company) {
+        if (company.getId() == null) {
+            entityManager.persist(company);
+        } else {
+            entityManager.merge(company);
+        }
+    }
 }

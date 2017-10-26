@@ -9,8 +9,15 @@ import java.util.List;
 public class CompanyAction extends ActionSupport {
 
     private CompanyService companyService;
-
     private List<Company> companyList;
+    private Long companyId;
+    private Company company;
+
+    public void validate() {
+        if ((company == null) && (companyId == null)) {
+            addActionError(getText("error.selectApplicant"));
+        }
+    }
 
     public String listAll() throws Exception {
         companyList = companyService.listCompanies();
@@ -27,5 +34,31 @@ public class CompanyAction extends ActionSupport {
 
     public void setCompanyList(List<Company> companyList) {
         this.companyList = companyList;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public String loadCompany() throws Exception {
+        company = companyService.loadCompany(companyId);
+        return SUCCESS;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public String saveCompany() throws Exception {
+        companyService.save(company);
+        return SUCCESS;
     }
 }

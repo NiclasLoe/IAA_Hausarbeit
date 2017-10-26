@@ -1,7 +1,7 @@
 package de.nordakademie.iaa.studentadmin.dao;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.model.CenturyId;
+import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;

@@ -22,4 +22,9 @@ public class CompanyServiceImpl implements CompanyService {
     public Company loadCompany(Long companyId) {
         return companyDAO.loadByID(companyId);
     }
+
+    @Override
+    public void save(Company company) {
+        companyDAO.save(company);
+    }
 }

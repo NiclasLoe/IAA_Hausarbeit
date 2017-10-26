@@ -1,7 +1,6 @@
 package de.nordakademie.iaa.studentadmin.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Company {
@@ -12,7 +11,7 @@ public class Company {
     private String companyName1;
     private String companyName2;
     private String shortName;
-    private String nameOfContactPerson;
+    private String contactPerson;
     private String streetName;
     private String houseNumber;
     private String city;
@@ -53,12 +52,12 @@ public class Company {
         this.shortName = shortName;
     }
 
-    public String getNameOfContactPerson() {
-        return nameOfContactPerson;
+    public String getContactPerson() {
+        return contactPerson;
     }
 
-    public void setNameOfContactPerson(String nameOfContactPerson) {
-        this.nameOfContactPerson = nameOfContactPerson;
+    public void setContactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
     }
 
     public String getStreetName() {

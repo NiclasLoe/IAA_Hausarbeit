@@ -1,5 +1,7 @@
 package de.nordakademie.iaa.studentadmin.model;
 
+import de.nordakademie.iaa.studentadmin.utilities.Status;
+
 import javax.persistence.*;
 
 @Entity

@@ -1,6 +1,6 @@
 package de.nordakademie.iaa.studentadmin.service;
 
-import de.nordakademie.iaa.studentadmin.model.FieldOfStudy;
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 
 import java.util.List;
 

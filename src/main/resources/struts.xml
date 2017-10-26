@@ -38,6 +38,10 @@
             <result type="redirectAction">showCenturyList</result>
         </action>
 
+        <action name="cancelCompany">
+            <result type="redirectAction">showCompanyList</result>
+        </action>
+
         <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
                 method="loadApplicant">
             <result name="input" type="chain">showApplicantList</result>
@@ -111,6 +115,11 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
+        <action name="saveCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="saveCompany">
+            <result name="input">companyForm</result>
+            <result type="redirectAction">showCompanyList</result>
+        </action>
+
         <action name="showAdminArea">
             <result>adminArea</result>
         </action>
@@ -125,11 +134,20 @@
 
         <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
             <result name="input" type="chain">showAlumniList</result>
-            <result>alumniList</result>
+            <result>alumniForm</result>
+        </action>
+
+        <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="loadCompany">
+            <result name="input" type="chain">showCompanyList</result>
+            <result>companyForm</result>
         </action>
 
         <action name="addCentury">
             <result>centuryForm</result>
+        </action>
+
+        <action name="addCompany">
+            <result>companyForm</result>
         </action>
 
         <action name="downloadAttendanceList" class="de.nordakademie.iaa.studentadmin.action.CenturyAction" method="downloadCenturyList">
