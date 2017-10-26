@@ -121,8 +121,8 @@ public class ExcelCreator {
         sheet.setColumnWidth(1, 4000);
         sheet.setColumnWidth(2, 4000);
         sheet.setColumnWidth(3, 2580);
-        sheet.setColumnWidth(4, 700);
-        sheet.setColumnWidth(5, 700);
+        sheet.setColumnWidth(4, 2580);
+        sheet.setColumnWidth(5, 2580);
 
         /**
          * Style for the header cells.

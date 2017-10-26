@@ -67,9 +67,18 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void saveNewStudent(Student student, Company company, Century century) {
         student.setStatus(Status.ENROLLED);
+        student.setStudentId(createStudentId());
+        student.setUserEmail(createUserMail(student));
+        student.setUsername(createUserName());
         student.setCentury(century);
         student.setCompany(company);
         studentDAO.saveStudent(student);
+    }
+
+    private Integer createUserName() {
+        Integer studentId = (int) (long) studentDAO.countEntries();
+        studentId = studentId + 10000;
+        return studentId;
     }
 
     @Override
@@ -82,4 +91,30 @@ public class StudentServiceImpl implements StudentService {
     }
 
 
+    private Integer createStudentId() {
+        Integer studentId = (int) (long) studentDAO.countEntries();
+        studentId = studentId + 1000;
+        return studentId;
+    }
+
+    private String createUserMail(Student student) {
+        String lastName = student.getLastName();
+        lastName = lastName.replace(" ","_");
+        String firstName = student.getFirstName();
+        String userMail = firstName + "." + lastName + "@nordakademie.de";
+        List<Student> studentListTemp = studentDAO.loadStudentByUserMail(userMail);
+
+        if (studentListTemp.isEmpty()) {
+            return userMail;
+        } else {
+            Integer count = 1;
+            while (!(studentListTemp.isEmpty())) {
+                userMail = firstName + "." + lastName + count + "@nordakademie.de";
+                count = count + 1;
+                studentListTemp = studentDAO.loadStudentByUserMail(userMail);
+            }
+        }
+
+        return userMail;
+    }
 }

@@ -54,7 +54,6 @@ public class ManipleAction extends ActionSupport {
             e.printStackTrace();
         }
 
-
         return SUCCESS;
     }
 

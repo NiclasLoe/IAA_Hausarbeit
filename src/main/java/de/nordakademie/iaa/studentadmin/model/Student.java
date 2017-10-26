@@ -1,8 +1,6 @@
 package de.nordakademie.iaa.studentadmin.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Student extends Person {
@@ -15,8 +13,8 @@ public class Student extends Person {
     @ManyToOne
     private Century century;
     private Integer username;
+    private String userEmail;
 
-    private String userMailAddress;
 
     public Status getStatus() {
         return status;
@@ -58,11 +56,12 @@ public class Student extends Person {
         this.username = username;
     }
 
-    public String getUserMailAdress() {
-        return userMailAddress;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserMailAddress(String userMailAddress) {
-        this.userMailAddress = userMailAddress;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
+
 }

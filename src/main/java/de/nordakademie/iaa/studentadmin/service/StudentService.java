@@ -26,4 +26,5 @@ public interface StudentService {
     List<Student> listStudentsByCentury(Century century);
 
     List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year);
+
 }

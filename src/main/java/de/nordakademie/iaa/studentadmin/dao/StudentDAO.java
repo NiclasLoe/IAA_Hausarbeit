@@ -61,4 +61,18 @@ public class StudentDAO {
                 .setParameter("year", year)
                 .getResultList();
     }
+
+    public Long countEntries() {
+        Long count = (Long) entityManager
+                .createQuery("SELECT COUNT(student) FROM Student student")
+                .getSingleResult();
+        return count;
+    }
+
+    public List<Student> loadStudentByUserMail(String userMail) {
+        return entityManager
+                .createQuery("SELECT s FROM Student s WHERE s.userEmail = :uma")
+                .setParameter("uma", userMail)
+                .getResultList();
+    }
 }
