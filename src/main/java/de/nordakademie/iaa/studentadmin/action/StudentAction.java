@@ -1,6 +1,7 @@
 package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import de.nordakademie.iaa.studentadmin.model.Company;
@@ -11,7 +12,7 @@ import de.nordakademie.iaa.studentadmin.service.StudentService;
 
 import java.util.List;
 
-public class StudentAction extends ActionSupport {
+public class StudentAction extends ActionSupport implements Preparable {
 
     private StudentService studentService;
     private CenturyService centuryService;
@@ -30,10 +31,20 @@ public class StudentAction extends ActionSupport {
         }
     }
 
+    public void validateSaveStudent() {
+        if (centuryString == null || centuryString.isEmpty()) {
+            addFieldError( "centuryString", "Century is required." );
+        }
+    }
+
     public String saveStudent() throws Exception {
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
-        Company company = companyService.loadCompany(companyId);
+        Company company = null;
+        if (companyId != null) {
+            company = companyService.loadCompany(companyId);
+        }
+
         studentService.saveStudent(student, company, century);
         return SUCCESS;
     }
@@ -50,6 +61,11 @@ public class StudentAction extends ActionSupport {
         Company company = companyService.loadCompany(companyId);
         studentService.saveNewStudent(student, company, century);
         return SUCCESS;
+    }
+
+    @Override
+    public void prepare() {
+        prepareEmptyForm();
     }
 
     public String prepareEmptyForm() {
