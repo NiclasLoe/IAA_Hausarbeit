@@ -9,11 +9,11 @@
                 <s:text name="applicant.personalInformation"/>
             </td>
         </tr>
-        <s:select key="applicant.title" list="@de.nordakademie.iaa.studentadmin.model.Title@values()"
+        <s:select key="applicant.title" list="@de.nordakademie.iaa.studentadmin.utilities.Title@values()"
                   cssClass="textInput"/>
         <s:textfield key="applicant.firstName" cssClass="textInput"/>
         <s:textfield key="applicant.lastName" cssClass="textInput"/>
-        <s:select key="applicant.gender" list="@de.nordakademie.iaa.studentadmin.model.Gender@values()"/>
+        <s:select key="applicant.gender" list="@de.nordakademie.iaa.studentadmin.utilities.Gender@values()"/>
         <s:date name="applicant.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
         <s:textfield key="applicant.dateOfBirth" type="date"
                      cssClass="textInput"
@@ -31,7 +31,7 @@
                 <s:text name="applicant.interestedIn"/>
             </td>
         </tr>
-        <s:select key="applicant.fieldOfStudy" list="@de.nordakademie.iaa.studentadmin.model.FieldOfStudy@values()"/>
+        <s:select key="applicant.fieldOfStudy" list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"/>
         <tr class="trSubHeader">
             <td>
                 <s:text name="applicant.addressInformation"/>
@@ -43,7 +43,7 @@
         <s:textfield key="applicant.city" cssClass="textInput"/>
         <tr/>
     </table>
-    <s:submit key="button.save" action="addApplicant" cssClass="submitButton"/>
+    <s:submit key="button.save" action="saveApplicant" cssClass="submitButton"/>
 
     <s:submit key="button.cancel" action="cancelApplicant" cssClass="submitButton"/>
 </s:form>
