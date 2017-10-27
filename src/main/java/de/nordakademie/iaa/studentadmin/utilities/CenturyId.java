@@ -9,7 +9,6 @@ public class CenturyId implements Serializable {
     private FieldOfStudy fieldOfStudy;
 
     public CenturyId() {
-
     }
 
     public CenturyId(Integer year, String letterCode, FieldOfStudy fieldOfStudy) {
@@ -55,7 +54,7 @@ public class CenturyId implements Serializable {
                 return false;
         } else if (!fieldOfStudy.equals(other.fieldOfStudy))
             return false;
-        if (year != other.year)
+        if (!year.equals(other.year))
             return false;
         if (letterCode == null) {
             if (other.letterCode != null)
@@ -64,27 +63,4 @@ public class CenturyId implements Serializable {
             return false;
         return true;
     }
-
-    /*
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        EmployeeId other = (EmployeeId) obj;
-        if (branchName == null) {
-            if (other.branchName != null)
-                return false;
-        } else if (!branchName.equals(other.branchName))
-            return false;
-        if (idEmployee != other.idEmployee)
-            return false;
-        return true;
-    }
-
-
-}*/
 }

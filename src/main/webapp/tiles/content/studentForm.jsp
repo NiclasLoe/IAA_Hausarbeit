@@ -13,11 +13,11 @@
                 <s:text name="student.personalInformation"/>
             </td>
         </tr>
-        <s:select key="student.title" list="@de.nordakademie.iaa.studentadmin.model.Title@values()"
+        <s:select key="student.title" list="@de.nordakademie.iaa.studentadmin.utilities.Title@values()"
                   cssClass="textInput"/>
         <s:textfield key="student.firstName" cssClass="textInput"/>
         <s:textfield key="student.lastName" cssClass="textInput"/>
-        <s:select key="student.gender" list="@de.nordakademie.iaa.studentadmin.model.Gender@values()"/>
+        <s:select key="student.gender" list="@de.nordakademie.iaa.studentadmin.utilities.Gender@values()"/>
         <s:date name="student.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
         <s:textfield key="student.dateOfBirth" type="date"
                      cssClass="textInput"

@@ -11,12 +11,11 @@
             </td>
         </tr>
         <s:select key="student.title" value="%{applicant.title}"
-                  list="@de.nordakademie.iaa.studentadmin.model.Title@values()"
-                  cssClass="textInput" headerValue="student.pleaseSelect" headerKey=""/>
+                  list="@de.nordakademie.iaa.studentadmin.utilities.Title@values()" cssClass="textInput"/>
         <s:textfield key="student.firstName" value="%{applicant.firstName}" cssClass="textInput"/>
         <s:textfield key="student.lastName" value="%{applicant.lastName}" cssClass="textInput"/>
         <s:select key="student.gender" value="%{applicant.gender}"
-                  list="@de.nordakademie.iaa.studentadmin.model.Gender@values()" headerValue="student.pleaseSelect" headerKey=""/>
+                  list="@de.nordakademie.iaa.studentadmin.utilities.Gender@values()"/>
         <s:date name="applicant.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
         <s:textfield key="student.dateOfBirth" type="date"
                      cssClass="textInput"

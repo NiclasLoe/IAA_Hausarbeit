@@ -8,7 +8,7 @@
                 <s:text name="century.addNewCentury"/>
             </td>
         </tr>
-        <s:select key="century.fieldOfStudy" list="@de.nordakademie.iaa.studentadmin.model.FieldOfStudy@values()"
+        <s:select key="century.fieldOfStudy" list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
                   cssClass="textInput" headerValue="student.pleaseSelect" headerKey=""/>
         <s:textfield key="century.letterCode" cssClass="textInput"/>
         <s:textfield key="century.year" cssClass="textInput"/>

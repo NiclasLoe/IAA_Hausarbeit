@@ -28,5 +28,4 @@
     <s:submit key="button.goBack" action="showMainPage" cssClass="submitButton"/>
     <s:submit key="button.deleteApplicant" action="deleteApplicant" cssClass="submitButton"/>
     <s:submit key="button.enrollApplicant" action="enrollApplicant" cssClass="submitButton"/>
-    <s:submit key="button.downloadList" action="downloadCurrentList" cssClass="submitButton"/>
 </s:form>

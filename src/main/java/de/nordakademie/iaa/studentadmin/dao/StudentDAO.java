@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Component
@@ -16,19 +20,49 @@ public class StudentDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Student> findStudents(Status status) {
-        return entityManager
-                .createQuery("SELECT student FROM Student student WHERE (student.status= :status)")
-                .setParameter("status", status)
-                .getResultList();
+    public Long countEntries(Status status) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
+        Root<Student> root = criteriaQuery.from(Student.class);
+        criteriaQuery.select(root);
+
+        if (status != null) {
+            criteriaQuery.where(criteriaBuilder.equal(root.get("status"), status));
+        }
+
+        TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
+        List<Student> queryResult = query.getResultList();
+
+        Long count = (long) queryResult.size();
+        return count;
     }
 
-    public Long countEntriesByStatus(Status status) {
-        Long count = (Long) entityManager
-                .createQuery("SELECT COUNT(student) FROM Student student WHERE (student.status= :status)")
-                .setParameter("status", status)
-                .getSingleResult();
-        return count;
+    public List<Student> findStudents(Status status, Century century, FieldOfStudy fieldOfStudy, Integer year, String userMail) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
+        Root<Student> root = criteriaQuery.from(Student.class);
+        criteriaQuery.select(root);
+
+        if (status != null) {
+            criteriaQuery.where(criteriaBuilder.equal(root.get("status"), status));
+        }
+        if (century != null) {
+            criteriaQuery.where(criteriaBuilder.equal(root.get("century"), century));
+        }
+        if (fieldOfStudy != null) {
+            criteriaQuery.where(criteriaBuilder.equal(root.get("fieldOfStudy"), fieldOfStudy));
+        }
+        if (year != null) {
+            criteriaQuery.where(criteriaBuilder.equal(root.get("status"), year));
+        }
+        if (userMail != null) {
+            criteriaQuery.where(criteriaBuilder.equal(root.get("userMail"), year));
+        }
+
+        TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
+        List<Student> queryResult = query.getResultList();
+
+        return queryResult;
     }
 
     public void saveStudent(Student student) {
@@ -47,32 +81,4 @@ public class StudentDAO {
         this.entityManager = entityManager;
     }
 
-    public List<Student> findStudentsByCentury(Century century) {
-        return entityManager
-                .createQuery("SELECT s FROM Student s WHERE s.century= :century")
-                .setParameter("century", century)
-                .getResultList();
-    }
-
-    public List<Student> findStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
-        return entityManager
-                .createQuery("SELECT s FROM Student s WHERE s.century.fieldOfStudy = :fos and s.century.year = :year")
-                .setParameter("fos", fieldOfStudy)
-                .setParameter("year", year)
-                .getResultList();
-    }
-
-    public Long countEntries() {
-        Long count = (Long) entityManager
-                .createQuery("SELECT COUNT(student) FROM Student student")
-                .getSingleResult();
-        return count;
-    }
-
-    public List<Student> loadStudentByUserMail(String userMail) {
-        return entityManager
-                .createQuery("SELECT s FROM Student s WHERE s.userEmail = :uma")
-                .setParameter("uma", userMail)
-                .getResultList();
-    }
 }

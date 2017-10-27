@@ -17,22 +17,22 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listEnrolledStudent() {
-        return studentDAO.findStudents(Status.ENROLLED);
+        return studentDAO.findStudents(Status.ENROLLED, null, null, null, null);
     }
 
     @Override
     public Long countEnrolledStudents() {
-        return studentDAO.countEntriesByStatus(Status.ENROLLED);
+        return studentDAO.countEntries(Status.ENROLLED);
     }
 
     @Override
     public List<Student> listAlumni() {
-        return studentDAO.findStudents(Status.ALUMNI);
+        return studentDAO.findStudents(Status.ALUMNI, null, null, null, null);
     }
 
     @Override
     public Long countAlumni() {
-        return studentDAO.countEntriesByStatus(Status.ALUMNI);
+        return studentDAO.countEntries(Status.ALUMNI);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listStudentsByCentury(Century century) {
-        return studentDAO.findStudentsByCentury(century);
+        return studentDAO.findStudents(null, century, null, null, null);
     }
 
     @Override
@@ -78,42 +78,43 @@ public class StudentServiceImpl implements StudentService {
     }
 
     private Integer createUserName() {
-        Integer studentId = (int) (long) studentDAO.countEntries();
+        Integer studentId = (int) (long) studentDAO.countEntries(null);
         studentId = studentId + 10000;
         return studentId;
     }
 
     @Override
     public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
-        return studentDAO.findStudentsByManiple(fieldOfStudy, year);
+        return studentDAO.findStudents(null, null, fieldOfStudy, year, null);
     }
 
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }
 
-
     private Integer createStudentId() {
-        Integer studentId = (int) (long) studentDAO.countEntries();
+        Integer studentId = (int) (long) studentDAO.countEntries(null);
         studentId = studentId + 1000;
         return studentId;
     }
 
     private String createUserMail(Student student) {
+        String domain = "@nordakademie.de";
         String lastName = student.getLastName();
-        lastName = lastName.replace(" ","_");
+        lastName = lastName.replace(" ", "_");
         String firstName = student.getFirstName();
-        String userMail = firstName + "." + lastName + "@nordakademie.de";
-        List<Student> studentListTemp = studentDAO.loadStudentByUserMail(userMail);
+        firstName = firstName.replace(" ", "_");
+        String userMail = firstName + "." + lastName + domain;
+        List<Student> studentListTemp = studentDAO.findStudents(null, null, null, null, userMail);
 
         if (studentListTemp.isEmpty()) {
             return userMail;
         } else {
             Integer count = 1;
             while (!(studentListTemp.isEmpty())) {
-                userMail = firstName + "." + lastName + count + "@nordakademie.de";
+                userMail = firstName + "." + lastName + count + domain;
                 count = count + 1;
-                studentListTemp = studentDAO.loadStudentByUserMail(userMail);
+                studentListTemp = studentDAO.findStudents(null, null, null, null, userMail);
             }
         }
 
