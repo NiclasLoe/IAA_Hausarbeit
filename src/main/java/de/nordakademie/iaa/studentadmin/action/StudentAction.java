@@ -30,6 +30,18 @@ public class StudentAction extends ActionSupport implements Preparable {
         }
     }
 
+    public void validateExmatriculateStudent() {
+        if ((studentId == null) && (student == null)) {
+            addActionError(getText("error.selectApplicant"));
+        }
+    }
+
+    public void validateEndActiveStudies() {
+        if ((studentId == null) && (student == null)) {
+            addActionError(getText("error.selectApplicant"));
+        }
+    }
+
     public void validateSaveStudent() {
         addErrorIfNull(student.getTitle(), "student.title", "Title is required.");
         addErrorIfStringIsEmpty(student.getFirstName(), "student.firstName", "First name is required.");

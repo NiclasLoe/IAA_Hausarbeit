@@ -70,6 +70,9 @@
 
         <action name="showAlumniList" class="de.nordakademie.iaa.studentadmin.action.ShowStudentListAction"
                 method="listAlumni">
+            <interceptor-ref name="store">
+                <param name="operationMode">RETRIEVE</param>
+            </interceptor-ref>
             <result>alumniTable</result>
         </action>
 
@@ -99,12 +102,20 @@
 
         <action name="endActiveStudies" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="endActiveStudies">
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
 
         <action name="exmatriculateStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="exmatriculateStudent">
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
@@ -139,6 +150,10 @@
         </action>
 
         <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
             <result name="input" type="chain">showAlumniList</result>
             <result>alumniForm</result>
         </action>
