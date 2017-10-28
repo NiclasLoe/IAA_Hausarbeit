@@ -24,20 +24,54 @@ public class StudentAction extends ActionSupport implements Preparable {
     private Long companyId;
     private String centuryString;
 
-    @Override
-    public void validate() {
+    public void validateLoadStudent() {
         if ((studentId == null) && (student == null)) {
             addActionError(getText("error.selectApplicant"));
         }
     }
 
     public void validateSaveStudent() {
-        if (centuryString == null || centuryString.isEmpty()) {
-            addFieldError( "centuryString", "Century is required." );
+        addErrorIfNull(student.getTitle(), "student.title", "Title is required.");
+        addErrorIfStringIsEmpty(student.getFirstName(), "student.firstName", "First name is required.");
+        addErrorIfStringIsEmpty(student.getLastName(), "student.lastName", "Last name is required.");
+        addErrorIfNull(student.getGender(), "student.gender", "Gender is required.");
+        addErrorIfNull(student.getDateOfBirth(), "student.dateOfBirth", "Date of birth is required.");
+        addErrorIfStringIsEmpty(student.getBirthplace(), "student.birthplace", "Birthplace is required.");
+
+        // Phone number only needs to be numerical, no constraints for length.
+        if (student.getPhoneNumber().length() == 0 || !student.getPhoneNumber().matches("\\+?[0-9]+")) {
+            addFieldError( "student.phoneNumber", "Phone number must be nonempty and only contain numbers. Leading plus (+) is allowed." );
         }
 
-        if (student.getPhoneNumber().length() > 0 && !student.getPhoneNumber().matches("\\+?[0-9]+")) {
-            addFieldError( "student.phoneNumber", "Only numbers are allowed." );
+        // It's almost impossible to perfectly check for all RFC822 compliant emails, so before we reject a valid email, we just have a very basic check for @.
+        if (student.getEmailAddress() == null || !student.getEmailAddress().contains("@")) {
+            addFieldError( "student.emailAddress", "Email address must be nonempty and contain at least one @ character." );
+        }
+
+        // Postal code only needs to be numerical, no constraints for length (to support different countries).
+        if (student.getPostalCode() == null || student.getPostalCode().toString().length() == 0 || !student.getPostalCode().toString().matches("[0-9]+")) {
+            addFieldError( "student.postalCode", "Postal code must be nonempty and only contain numbers." );
+        }
+
+        addErrorIfStringIsEmpty(student.getStreetName(), "student.streetName", "Street name is required.");
+        addErrorIfStringIsEmpty(student.getHouseNumber(), "student.houseNumber", "House number is required.");
+        addErrorIfStringIsEmpty(student.getCity(), "student.city", "City is required.");
+        addErrorIfStringIsEmpty(centuryString, "centuryString", "Century is required.");
+    }
+
+    public void validateSaveNewStudent() {
+        validateSaveStudent();
+    }
+
+    private void addErrorIfNull(Object object, String fieldName, String errorMessage) {
+        if (object == null) {
+            addFieldError(fieldName, errorMessage);
+        }
+    }
+
+    private void addErrorIfStringIsEmpty(String string, String fieldName, String errorMessage) {
+        if (string == null || string.length() == 0) {
+            addFieldError(fieldName, errorMessage);
         }
     }
 
@@ -45,6 +79,7 @@ public class StudentAction extends ActionSupport implements Preparable {
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
         Company company = null;
+        // TODO: If company null, create new one.
         if (companyId != null) {
             company = companyService.loadCompany(companyId);
         }
