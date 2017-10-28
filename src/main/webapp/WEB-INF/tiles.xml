@@ -96,4 +96,9 @@
 		<put-attribute name="content" value="/tiles/content/companyForm.jsp"/>
 	</definition>
 
+	<definition name="loginForm" extends="mainTemplate">
+		<put-attribute name="header" value="/tiles/headers/headerLoginForm.jsp"/>
+		<put-attribute name="content" value="/tiles/content/loginForm.jsp"/>
+	</definition>
+
 </tiles-definitions>

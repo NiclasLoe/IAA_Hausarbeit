@@ -10,6 +10,21 @@
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true" />
         </result-types>
 
+        <interceptors>
+            <interceptor class="de.nordakademie.iaa.studentadmin.interceptors.LoginInterceptor" name="loginInterceptor">
+            </interceptor>
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="loginInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="loginStack" />
+
+        <global-results>
+            <result name="login">loginForm</result>
+        </global-results>
+
         <action name="showMainPage" class="de.nordakademie.iaa.studentadmin.action.CountDatabaseEntries">
             <result>mainPage</result>
         </action>
@@ -65,6 +80,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
+            <interceptor-ref name="loginStack" />
             <result>studentTable</result>
         </action>
 
@@ -73,6 +89,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
+            <interceptor-ref name="loginStack" />
             <result>alumniTable</result>
         </action>
 
@@ -95,7 +112,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="loginStack" />
             <result name="input" type="redirectAction">showStudentList</result>
             <result name="success">studentForm</result>
         </action>
@@ -105,7 +122,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="loginStack" />
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
@@ -115,7 +132,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="loginStack" />
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
@@ -153,7 +170,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="loginStack" />
             <result name="input" type="chain">showAlumniList</result>
             <result>alumniForm</result>
         </action>
@@ -199,6 +216,21 @@
                 <param name="contentDisposition">attachment;filename="resultList.xls"</param>
                 <param name="bufferSize">4096</param>
             </result>
+        </action>
+
+        <action name="loginUser" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="login">
+            <interceptor-ref name="defaultStack" />
+            <result name="success" type="redirectAction">homeAction</result>
+            <result name="login">loginForm</result>
+        </action>
+
+        <action name="homeAction" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="home">
+            <result name="login">loginForm</result>
+            <result type="redirectAction">showMainPage</result>
+        </action>
+
+        <action name="logOut" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="logOut">
+            <result>loginForm</result>
         </action>
     </package>
 </struts>
