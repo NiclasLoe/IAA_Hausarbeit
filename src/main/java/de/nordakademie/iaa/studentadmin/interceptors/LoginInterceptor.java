@@ -14,13 +14,16 @@ public class LoginInterceptor extends AbstractInterceptor {
 
         String loginId = (String) session.get("loginId");
 
-        if (loginId == null)
+        // Bypass login for now.
+        return invocation.invoke();
+
+/*        if (loginId == null)
         {
             return Action.LOGIN;
         }
         else
         {
             return invocation.invoke();
-        }
+        }*/
     }
 }
