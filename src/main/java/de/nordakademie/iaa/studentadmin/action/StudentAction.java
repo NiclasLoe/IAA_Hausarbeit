@@ -35,6 +35,10 @@ public class StudentAction extends ActionSupport implements Preparable {
         if (centuryString == null || centuryString.isEmpty()) {
             addFieldError( "centuryString", "Century is required." );
         }
+
+        if (student.getPhoneNumber().length() > 0 && !student.getPhoneNumber().matches("\\+?[0-9]+")) {
+            addFieldError( "student.phoneNumber", "Only numbers are allowed." );
+        }
     }
 
     public String saveStudent() throws Exception {
