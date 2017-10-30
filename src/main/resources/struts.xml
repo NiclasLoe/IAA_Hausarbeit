@@ -138,11 +138,11 @@
             <result>adminArea</result>
         </action>
 
-        <action name="showCenturyList" class="de.nordakademie.iaa.studentadmin.action.CenturyAction" method="listAll">
+        <action name="showCenturyList" class="de.nordakademie.iaa.studentadmin.action.ShowCenturyListAction">
             <result>centuryList</result>
         </action>
 
-        <action name="showCompanyList" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="listAll">
+        <action name="showCompanyList" class="de.nordakademie.iaa.studentadmin.action.ShowCompanyListAction">
             <result>companyList</result>
         </action>
 
@@ -165,7 +165,7 @@
         </action>
 
         <action name="downloadAttendanceList" class="de.nordakademie.iaa.studentadmin.action.CenturyAction" method="downloadCenturyList">
-            <result name="input" type="stream">showCenturyList</result>
+            <result name="input" type="chain">showCenturyList</result>
             <result name="success"  type="stream">
                 <param name="contentType">application/vnd.ms-excel</param>
                 <param name="inputName">fileInputStream</param>
@@ -185,7 +185,7 @@
         </action>
 
         <action name="downloadResultList" class="de.nordakademie.iaa.studentadmin.action.ManipleAction" method="downloadResultList">
-            <result name="input" type="stream">showManiplePage</result>
+            <result name="input" type="chain">showManiplePage</result>
             <result name="success"  type="stream">
                 <param name="contentType">application/vnd.ms-excel</param>
                 <param name="inputName">fileInputStream</param>

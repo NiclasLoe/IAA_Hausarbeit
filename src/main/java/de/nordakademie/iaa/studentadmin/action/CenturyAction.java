@@ -17,16 +17,16 @@ import java.io.InputStream;
 
 public class CenturyAction extends ActionSupport {
 
-    private List<Century> centuryList;
     private CenturyService centuryService;
     private Century century;
     private String centuryString;
     private StudentService studentService;
     private InputStream fileInputStream;
 
-    public String listAll() throws Exception {
-        centuryList = centuryService.listAll();
-        return SUCCESS;
+    public void validateDownloadCenturyList() {
+        if ((century == null) && (centuryString == null)) {
+            addActionError(getText("error.selectApplicant"));
+        }
     }
 
     public String saveCentury() throws Exception {
@@ -64,10 +64,6 @@ public class CenturyAction extends ActionSupport {
 
     public Century getCentury() {
         return century;
-    }
-
-    public List<Century> getCenturyList() {
-        return centuryList;
     }
 
     public void setCenturyService(CenturyService centuryService) {

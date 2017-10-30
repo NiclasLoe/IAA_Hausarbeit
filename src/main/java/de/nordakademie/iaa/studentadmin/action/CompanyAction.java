@@ -9,7 +9,6 @@ import java.util.List;
 public class CompanyAction extends ActionSupport {
 
     private CompanyService companyService;
-    private List<Company> companyList;
     private Long companyId;
     private Company company;
 
@@ -19,21 +18,8 @@ public class CompanyAction extends ActionSupport {
         }
     }
 
-    public String listAll() throws Exception {
-        companyList = companyService.listCompanies();
-        return SUCCESS;
-    }
-
     public void setCompanyService(CompanyService companyService) {
         this.companyService = companyService;
-    }
-
-    public List<Company> getCompanyList() {
-        return companyList;
-    }
-
-    public void setCompanyList(List<Company> companyList) {
-        this.companyList = companyList;
     }
 
     public Long getCompanyId() {

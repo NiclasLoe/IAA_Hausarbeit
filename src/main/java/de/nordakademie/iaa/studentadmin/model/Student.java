@@ -1,5 +1,6 @@
 package de.nordakademie.iaa.studentadmin.model;
 
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import de.nordakademie.iaa.studentadmin.utilities.Status;
 
 import javax.persistence.*;
@@ -16,6 +17,8 @@ public class Student extends Person {
     private Century century;
     private Integer username;
     private String userEmail;
+
+    private FieldOfStudy fieldOfStudy;
 
 
     public Status getStatus() {
@@ -64,6 +67,14 @@ public class Student extends Person {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public FieldOfStudy getFieldOfStudy() {
+        return fieldOfStudy;
+    }
+
+    public void setFieldOfStudy(FieldOfStudy fieldOfStudy) {
+        this.fieldOfStudy = fieldOfStudy;
     }
 
 }
