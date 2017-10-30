@@ -10,6 +10,7 @@ import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 
+import java.util.Date;
 import java.util.List;
 
 public class StudentAction extends ActionSupport implements Preparable {
@@ -48,6 +49,10 @@ public class StudentAction extends ActionSupport implements Preparable {
         addErrorIfStringIsEmpty(student.getLastName(), "student.lastName", "Last name is required.");
         addErrorIfNull(student.getGender(), "student.gender", "Gender is required.");
         addErrorIfNull(student.getDateOfBirth(), "student.dateOfBirth", "Date of birth is required.");
+        if (student.getDateOfBirth() != null && student.getDateOfBirth().after(new Date())) {
+            addFieldError( "student.dateOfBirth", "Date of birth must not be in the future." );
+        }
+
         addErrorIfStringIsEmpty(student.getBirthplace(), "student.birthplace", "Birthplace is required.");
 
         // Phone number only needs to be numerical, no constraints for length.

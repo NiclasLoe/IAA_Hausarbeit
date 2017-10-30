@@ -4,6 +4,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
 import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 
+import java.util.Date;
+
 public class ApplicantAction extends ActionSupport {
 
     private ApplicantService applicantService;
@@ -23,6 +25,10 @@ public class ApplicantAction extends ActionSupport {
         addErrorIfStringIsEmpty(applicant.getLastName(), "applicant.lastName", "Last name is required.");
         addErrorIfNull(applicant.getGender(), "applicant.gender", "Gender is required.");
         addErrorIfNull(applicant.getDateOfBirth(), "applicant.dateOfBirth", "Date of birth is required.");
+        if (applicant.getDateOfBirth() != null && applicant.getDateOfBirth().after(new Date())) {
+            addFieldError( "applicant.dateOfBirth", "Date of birth must not be in the future." );
+        }
+
         addErrorIfStringIsEmpty(applicant.getBirthplace(), "applicant.birthplace", "Birthplace is required.");
 
         // Phone number only needs to be numerical, no constraints for length.
