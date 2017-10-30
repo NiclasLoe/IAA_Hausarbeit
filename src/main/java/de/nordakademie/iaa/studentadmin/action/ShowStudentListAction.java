@@ -1,12 +1,13 @@
 package de.nordakademie.iaa.studentadmin.action;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 
 import java.util.List;
 
-public class ShowStudentListAction extends ActionSupport {
+public class ShowStudentListAction implements Action {
 
     private StudentService studentService;
     private List<Student> studentList;
@@ -27,5 +28,10 @@ public class ShowStudentListAction extends ActionSupport {
 
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    @Override
+    public String execute() throws Exception {
+        return SUCCESS;
     }
 }
