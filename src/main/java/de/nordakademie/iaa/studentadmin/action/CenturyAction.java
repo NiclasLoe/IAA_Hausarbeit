@@ -29,6 +29,24 @@ public class CenturyAction extends ActionSupport {
         }
     }
 
+    public void validateSaveCentury() {
+        addErrorIfNull(century.getFieldOfStudy(), "century.fieldOfStudy", "Field of study is required.");
+        addErrorIfStringIsEmpty(century.getLetterCode(), "century.letterCode", "Letter code is required.");
+        addErrorIfNull(century.getYear(), "century.year", "Year is required.");
+    }
+
+    private void addErrorIfNull(Object object, String fieldName, String errorMessage) {
+        if (object == null) {
+            addFieldError(fieldName, errorMessage);
+        }
+    }
+
+    private void addErrorIfStringIsEmpty(String string, String fieldName, String errorMessage) {
+        if (string == null || string.length() == 0) {
+            addFieldError(fieldName, errorMessage);
+        }
+    }
+
     public String saveCentury() throws Exception {
         centuryService.saveCentury(century);
         return SUCCESS;
