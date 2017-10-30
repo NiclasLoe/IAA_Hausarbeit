@@ -3,14 +3,15 @@ package de.nordakademie.iaa.studentadmin.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import de.nordakademie.iaa.studentadmin.model.Century;
+import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import de.nordakademie.iaa.studentadmin.model.Company;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
+import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
-import java.util.Date;
 import java.util.List;
 
 public class StudentAction extends ActionSupport implements Preparable {
@@ -44,52 +45,27 @@ public class StudentAction extends ActionSupport implements Preparable {
     }
 
     public void validateSaveStudent() {
-        addErrorIfNull(student.getTitle(), "student.title", "Title is required.");
-        addErrorIfStringIsEmpty(student.getFirstName(), "student.firstName", "First name is required.");
-        addErrorIfStringIsEmpty(student.getLastName(), "student.lastName", "Last name is required.");
-        addErrorIfNull(student.getGender(), "student.gender", "Gender is required.");
-        addErrorIfNull(student.getDateOfBirth(), "student.dateOfBirth", "Date of birth is required.");
-        if (student.getDateOfBirth() != null && student.getDateOfBirth().after(new Date())) {
-            addFieldError( "student.dateOfBirth", "Date of birth must not be in the future." );
-        }
-
-        addErrorIfStringIsEmpty(student.getBirthplace(), "student.birthplace", "Birthplace is required.");
-
-        // Phone number only needs to be numerical, no constraints for length.
-        if (student.getPhoneNumber().length() == 0 || !student.getPhoneNumber().matches("\\+?[0-9]+")) {
-            addFieldError( "student.phoneNumber", "Phone number must be nonempty and only contain numbers. Leading plus (+) is allowed." );
-        }
-
-        // It's almost impossible to perfectly check for all RFC822 compliant emails, so before we reject a valid email, we just have a very basic check for @.
-        if (student.getEmailAddress() == null || !student.getEmailAddress().contains("@")) {
-            addFieldError( "student.emailAddress", "Email address must be nonempty and contain at least one @ character." );
-        }
-
-        // Postal code only needs to be numerical, no constraints for length (to support different countries).
-        if (student.getPostalCode() == null || student.getPostalCode().toString().length() == 0 || !student.getPostalCode().toString().matches("[0-9]+")) {
-            addFieldError( "student.postalCode", "Postal code must be nonempty and only contain numbers." );
-        }
-
-        addErrorIfStringIsEmpty(student.getStreetName(), "student.streetName", "Street name is required.");
-        addErrorIfStringIsEmpty(student.getHouseNumber(), "student.houseNumber", "House number is required.");
-        addErrorIfStringIsEmpty(student.getCity(), "student.city", "City is required.");
-        addErrorIfStringIsEmpty(centuryString, "centuryString", "Century is required.");
+        ActionSupportValidator validator = new ActionSupportValidator(this);
+        validator.fieldValidated(Validator.isNull(student.getTitle()), "student.title", "Title is required.");
+        validator.fieldValidated(Validator.isStringEmpty(student.getFirstName()), "student.firstName", "First name is required.");
+        validator.fieldValidated(Validator.isStringEmpty(student.getLastName()), "student.lastName", "Last name is required.");
+        validator.fieldValidated(Validator.isNull(student.getGender()), "student.gender", "Gender is required.");
+        validator.fieldValidated(Validator.isValidDate(student.getDateOfBirth()), "student.dateOfBirth", "Date of birth is required and must not be in the future.");
+        validator.fieldValidated(Validator.isStringEmpty(student.getBirthplace()), "student.birthplace", "Birthplace is required.");
+        validator.fieldValidated(!Validator.isValidPhoneNumber(student.getPhoneNumber()), "student.phoneNumber",
+                "Phone number must be nonempty and only contain numbers. Leading plus (+) is allowed." );
+        validator.fieldValidated(!Validator.isValidEmail(student.getEmailAddress()), "student.emailAddress",
+                "Email address must be nonempty and contain at least one @ character." );
+        validator.fieldValidated(!Validator.isValidNumber(student.getPostalCode()), "student.postalCode",
+                "Postal code must be nonempty and only contain numbers." );
+        validator.fieldValidated(Validator.isStringEmpty(student.getStreetName()), "student.streetName", "Street name is required.");
+        validator.fieldValidated(Validator.isStringEmpty(student.getHouseNumber()), "student.houseNumber", "House number is required.");
+        validator.fieldValidated(Validator.isStringEmpty(student.getCity()), "student.city", "City is required.");
+        validator.fieldValidated(Validator.isStringEmpty(centuryString), "centuryString", "Century is required.");
     }
 
     public void validateSaveNewStudent() {
         validateSaveStudent();
-    }
-
-    private void addErrorIfNull(Object object, String fieldName, String errorMessage) {
-        if (object == null) {
-            addFieldError(fieldName, errorMessage);
-        }
-    }
-
-    private void addErrorIfStringIsEmpty(String string, String fieldName, String errorMessage) {
-        if (string == null || string.length() == 0) {
-            addFieldError(fieldName, errorMessage);
-        }
     }
 
     public String saveStudent() throws Exception {
