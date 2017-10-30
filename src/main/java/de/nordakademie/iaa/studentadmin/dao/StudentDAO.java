@@ -50,13 +50,13 @@ public class StudentDAO {
             criteriaQuery.where(criteriaBuilder.equal(root.get("century"), century));
         }
         if (fieldOfStudy != null) {
-            criteriaQuery.where(criteriaBuilder.equal(root.get("fieldOfStudy"), fieldOfStudy));
+            criteriaQuery.where(criteriaBuilder.equal(root.get("century").get("fieldOfStudy"), fieldOfStudy));
         }
         if (year != null) {
-            criteriaQuery.where(criteriaBuilder.equal(root.get("status"), year));
+            criteriaQuery.where(criteriaBuilder.equal(root.get("century").get("year"), year));
         }
         if (userMail != null) {
-            criteriaQuery.where(criteriaBuilder.equal(root.get("userMail"), year));
+            criteriaQuery.where(criteriaBuilder.equal(root.get("userEmail"), userMail));
         }
 
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);

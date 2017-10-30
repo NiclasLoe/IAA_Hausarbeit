@@ -18,9 +18,6 @@ public class Student extends Person {
     private Integer username;
     private String userEmail;
 
-    private FieldOfStudy fieldOfStudy;
-
-
     public Status getStatus() {
         return status;
     }
@@ -67,14 +64,6 @@ public class Student extends Person {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-
-    public FieldOfStudy getFieldOfStudy() {
-        return fieldOfStudy;
-    }
-
-    public void setFieldOfStudy(FieldOfStudy fieldOfStudy) {
-        this.fieldOfStudy = fieldOfStudy;
     }
 
 }
