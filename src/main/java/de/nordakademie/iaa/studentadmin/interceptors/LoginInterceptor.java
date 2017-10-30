@@ -17,7 +17,7 @@ public class LoginInterceptor extends AbstractInterceptor {
         // Bypass login for now.
         return invocation.invoke();
 
-/*        if (loginId == null)
+        /*if (loginId == null)
         {
             return Action.LOGIN;
         }

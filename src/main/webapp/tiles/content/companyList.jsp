@@ -23,6 +23,7 @@
         </s:iterator>
         <tr></tr>
     </table>
+    <s:actionerror/>
     <s:submit key="button.seeMore" action="loadCompany" cssClass="submitButton"/>
     <s:submit key="button.goBack" action="showAdminArea" cssClass="submitButton"/>
 

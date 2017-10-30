@@ -13,7 +13,7 @@ public class CompanyAction extends ActionSupport {
     private Long companyId;
     private Company company;
 
-    public void validate() {
+    public void validateLoadCompany() {
         if ((company == null) && (companyId == null)) {
             addActionError(getText("error.selectApplicant"));
         }

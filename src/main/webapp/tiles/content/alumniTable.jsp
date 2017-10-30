@@ -17,7 +17,7 @@
         </tr>
         <s:iterator value="studentList">
             <tr>
-                <td><s:radio name="personId" list="#{id:''}" theme="simple" onselect=""/></td>
+                <td><s:radio name="studentId" list="#{id:''}" theme="simple" onselect=""/></td>
                 <td class="tdApplicantView"><s:property value="studentId"/></td>
                 <td class="tdApplicantView"><s:property value="lastName"/></td>
                 <td class="tdApplicantView"><s:property value="firstName"/></td>

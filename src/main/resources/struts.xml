@@ -15,7 +15,16 @@
             </interceptor>
             <interceptor-stack name="loginStack">
                 <interceptor-ref name="loginInterceptor" />
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="validation"/>
+                <interceptor-ref name="workflow"/>
                 <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+            <interceptor-stack name="storeErrorStack">
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="validation"/>
+                <interceptor-ref name="workflow"/>
+                <interceptor-ref name="loginStack" />
             </interceptor-stack>
         </interceptors>
 
@@ -80,7 +89,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="loginStack"/>
             <result>studentTable</result>
         </action>
 
@@ -89,7 +98,7 @@
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="loginStack"/>
             <result>alumniTable</result>
         </action>
 
@@ -109,30 +118,21 @@
         </action>
 
         <action name="loadStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="storeErrorStack"/>
             <result name="input" type="redirectAction">showStudentList</result>
             <result name="success">studentForm</result>
         </action>
 
         <action name="endActiveStudies" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="endActiveStudies">
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="storeErrorStack"/>
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
 
         <action name="exmatriculateStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="exmatriculateStudent">
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="loginStack" />
+            <interceptor-ref name="storeErrorStack"/>
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
@@ -163,20 +163,22 @@
         </action>
 
         <action name="showCompanyList" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="listAll">
+            <interceptor-ref name="store">
+                <param name="operationMode">RETRIEVE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
             <result>companyList</result>
         </action>
 
         <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="loginStack" />
-            <result name="input" type="chain">showAlumniList</result>
+            <interceptor-ref name="storeErrorStack"/>
+            <result name="input" type="redirectAction">showAlumniList</result>
             <result>alumniForm</result>
         </action>
 
         <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="loadCompany">
-            <result name="input" type="chain">showCompanyList</result>
+            <interceptor-ref name="storeErrorStack"/>
+            <result name="input" type="redirectAction">showCompanyList</result>
             <result>companyForm</result>
         </action>
 
