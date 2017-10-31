@@ -2,7 +2,9 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form>
-    <s:submit cssClass="submitButton" key="button.newStudent" action="addStudent"/>
+    <s:submit key="button.newStudent" action="addStudent" cssClass="submitButton" />
+    <s:submit key="button.filterList" action="filterStudent" cssClass="submitButton" />
+    <s:submit key="button.clearFilter" action="showStudentList" cssClass="submitButton" />
 
     <table>
         <tr>

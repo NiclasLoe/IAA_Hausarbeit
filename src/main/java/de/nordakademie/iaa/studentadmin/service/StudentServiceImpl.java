@@ -7,6 +7,7 @@ import de.nordakademie.iaa.studentadmin.utilities.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 @Component
@@ -17,7 +18,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listEnrolledStudent() {
-        return studentDAO.findStudents(Status.ENROLLED, null, null, null, null);
+        return studentDAO.findStudents(Status.ENROLLED, null, null, null, null,
+                null, null, null, null);
     }
 
     @Override
@@ -27,7 +29,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listAlumni() {
-        return studentDAO.findStudents(Status.ALUMNI, null, null, null, null);
+        return studentDAO.
+                findStudents(Status.ALUMNI, null, null, null, null,
+                        null, null, null, null);
     }
 
     @Override
@@ -58,7 +62,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listStudentsByCentury(Century century) {
-        return studentDAO.findStudents(null, century, null, null, null);
+        return studentDAO.
+                findStudents(null, century, null, null, null,
+                        null, null, null, null);
     }
 
     @Override
@@ -85,7 +91,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
-        return studentDAO.findStudents(null, null, fieldOfStudy, year, null);
+        return studentDAO.
+                findStudents(null, null, fieldOfStudy, year, null,
+                        null, null, null, null);
     }
 
     public void setStudentDAO(StudentDAO studentDAO) {
@@ -105,7 +113,9 @@ public class StudentServiceImpl implements StudentService {
         String firstName = student.getFirstName();
         firstName = firstName.replace(" ", "_");
         String userMail = firstName + "." + lastName + domain;
-        List<Student> studentListTemp = studentDAO.findStudents(null, null, null, null, userMail);
+        List<Student> studentListTemp = studentDAO.
+                findStudents(null, null, null, null, userMail,
+                        null, null, null, null);
 
         if (studentListTemp.isEmpty()) {
             return userMail;
@@ -114,10 +124,77 @@ public class StudentServiceImpl implements StudentService {
             while (!(studentListTemp.isEmpty())) {
                 userMail = firstName + "." + lastName + count + domain;
                 count = count + 1;
-                studentListTemp = studentDAO.findStudents(null, null, null, null, userMail);
+                studentListTemp = studentDAO.
+                        findStudents(null, null, null, null, userMail,
+                                null, null, null, null);
             }
         }
-
         return userMail;
     }
+
+    @Override
+    public List<Student> filterActiveStudentList(String selectedFirstName, String selectedLastName,
+                                                 String selectedStudentId, Company company, Century century,
+                                                 FieldOfStudy selectedFieldOfStudy, String selectedYear) {
+        String firstName = null;
+        String lastName = null;
+        Integer studentId = null;
+        Integer year = null;
+        FieldOfStudy fieldOfStudy = null;
+
+        if (selectedFirstName != "") {
+            firstName = selectedFirstName;
+        }
+        if (selectedLastName != "") {
+            lastName = selectedLastName;
+        }
+        if (selectedStudentId != "") {
+            studentId = Integer.parseInt(selectedStudentId);
+        }
+
+        if (century == null) {
+            if (selectedYear != "" ) {
+                studentId = Integer.parseInt(selectedYear);
+            }
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+
+        return studentDAO.
+                findStudents(Status.ENROLLED, century, fieldOfStudy, year, null,
+                        company, firstName, lastName, studentId);
+    }
+
+    @Override
+    public List<Student> filterAlumniList(String selectedFirstName, String selectedLastName,
+                                                 String selectedStudentId, Company company, Century century,
+                                                 FieldOfStudy selectedFieldOfStudy, String selectedYear) {
+        String firstName = null;
+        String lastName = null;
+        Integer studentId = null;
+        Integer year = null;
+        FieldOfStudy fieldOfStudy = null;
+
+        if (selectedFirstName != "") {
+            firstName = selectedFirstName;
+        }
+        if (selectedLastName != "") {
+            lastName = selectedLastName;
+        }
+        if (selectedStudentId != "") {
+            studentId = Integer.parseInt(selectedStudentId);
+        }
+
+        if (century == null) {
+            if (selectedYear != "" ) {
+                studentId = Integer.parseInt(selectedYear);
+            }
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+
+        List<Student> students = studentDAO.
+                findStudents(Status.ALUMNI, century, fieldOfStudy, year, null,
+                        company, firstName, lastName, studentId);
+        return students;
+    }
 }
+

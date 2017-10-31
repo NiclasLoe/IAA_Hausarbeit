@@ -1,6 +1,7 @@
 package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.Action;
+import de.nordakademie.iaa.studentadmin.model.Applicant;
 import de.nordakademie.iaa.studentadmin.model.Person;
 import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 
@@ -10,7 +11,7 @@ public class ShowApplicantListAction implements Action {
 
     private ApplicantService applicantService;
 
-    private List<Person> personList;
+    private List<Applicant> personList;
 
     @Override
     public String execute() throws Exception {
@@ -18,7 +19,7 @@ public class ShowApplicantListAction implements Action {
         return SUCCESS;
     }
 
-    public List<Person> getPersonList() {
+    public List<Applicant> getPersonList() {
         return personList;
     }
 

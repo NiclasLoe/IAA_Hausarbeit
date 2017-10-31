@@ -2,103 +2,113 @@
 
 
 <!DOCTYPE tiles-definitions PUBLIC
-		"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-		"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-	<!-- Main template -->
-	<definition name="mainTemplate" template="/template/mainTemplate.jsp">
+    <!-- Main template -->
+    <definition name="mainTemplate" template="/template/mainTemplate.jsp">
         <put-attribute name="title" value="Nordakademie"/>
-		<put-attribute name="header" value="/tiles/headers/header.jsp"/>
-	</definition>
+        <put-attribute name="header" value="/tiles/headers/header.jsp"/>
+    </definition>
 
-	<!-- Main Page -->
-	<definition name="mainPage" extends="mainTemplate">
-		<put-attribute name="content" value="/tiles/content/mainPage.jsp"/>
-	</definition>
+    <!-- Main Page -->
+    <definition name="mainPage" extends="mainTemplate">
+        <put-attribute name="content" value="/tiles/content/mainPage.jsp"/>
+    </definition>
 
-	<!-- Applicant Overview -->
-	<definition name="applicantTable" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerApplicantOverview.jsp"/>
-		<put-attribute name="content" value="/tiles/content/applicantTable.jsp"/>
-	</definition>
+    <!-- Applicant Overview -->
+    <definition name="applicantTable" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerApplicantOverview.jsp"/>
+        <put-attribute name="content" value="/tiles/content/applicantTable.jsp"/>
+    </definition>
 
-	<!-- Student Overview -->
-	<definition name="studentTable" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerStudentOverview.jsp"/>
-		<put-attribute name="content" value="/tiles/content/studentTable.jsp"/>
-	</definition>
+    <!-- Student Overview -->
+    <definition name="studentTable" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerStudentOverview.jsp"/>
+        <put-attribute name="content" value="/tiles/content/studentTable.jsp"/>
+    </definition>
 
-	<!-- Alumni Overview -->
-	<definition name="alumniTable" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerAlumniOverview.jsp"/>
-		<put-attribute name="content" value="/tiles/content/alumniTable.jsp"/>
-	</definition>
+    <!-- Alumni Overview -->
+    <definition name="alumniTable" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerAlumniOverview.jsp"/>
+        <put-attribute name="content" value="/tiles/content/alumniTable.jsp"/>
+    </definition>
 
-	<!-- Applicant form -->
-	<definition name="applicantForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerNewApplicant.jsp"/>
-		<put-attribute name="content" value="/tiles/content/applicantForm.jsp"/>
-	</definition>
+    <!-- Applicant form -->
+    <definition name="applicantForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerNewApplicant.jsp"/>
+        <put-attribute name="content" value="/tiles/content/applicantForm.jsp"/>
+    </definition>
 
-	<definition name="applicantToStudentForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
-		<put-attribute name="content" value="/tiles/content/applicantToStudentForm.jsp"/>
-	</definition>
+    <definition name="applicantToStudentForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
+        <put-attribute name="content" value="/tiles/content/applicantToStudentForm.jsp"/>
+    </definition>
 
-	<definition name="newStudentForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
-		<put-attribute name="content" value="/tiles/content/newStudentForm.jsp"/>
-	</definition>
+    <definition name="newStudentForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerNewStudent.jsp"/>
+        <put-attribute name="content" value="/tiles/content/newStudentForm.jsp"/>
+    </definition>
 
-	<definition name="studentForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerStudentForm.jsp"/>
-		<put-attribute name="content" value="/tiles/content/studentForm.jsp"/>
-	</definition>
+    <definition name="studentForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerStudentForm.jsp"/>
+        <put-attribute name="content" value="/tiles/content/studentForm.jsp"/>
+    </definition>
 
-	<definition name="centuryList" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerCenturyList.jsp"/>
-		<put-attribute name="content" value="/tiles/content/centuryTable.jsp"/>
-	</definition>
+    <definition name="centuryList" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerCenturyList.jsp"/>
+        <put-attribute name="content" value="/tiles/content/centuryTable.jsp"/>
+    </definition>
 
-	<definition name="alumniForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerAlumniForm.jsp"/>
-		<put-attribute name="content" value="/tiles/content/alumniForm.jsp"/>
-	</definition>
+    <definition name="alumniForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerAlumniForm.jsp"/>
+        <put-attribute name="content" value="/tiles/content/alumniForm.jsp"/>
+    </definition>
 
-	<definition name="adminArea" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerAdminArea.jsp"/>
-		<put-attribute name="content" value="/tiles/content/adminArea.jsp"/>
-	</definition>
+    <definition name="adminArea" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerAdminArea.jsp"/>
+        <put-attribute name="content" value="/tiles/content/adminArea.jsp"/>
+    </definition>
 
-	<definition name="companyList" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerCompanyList.jsp"/>
-		<put-attribute name="content" value="/tiles/content/companyList.jsp"/>
-	</definition>
+    <definition name="companyList" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerCompanyList.jsp"/>
+        <put-attribute name="content" value="/tiles/content/companyList.jsp"/>
+    </definition>
 
-	<definition name="alumniList" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerAlumniForm.jsp"/>
-		<put-attribute name="content" value="/tiles/content/alumniForm.jsp"/>
-	</definition>
+    <definition name="centuryForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerCenturyForm.jsp"/>
+        <put-attribute name="content" value="/tiles/content/centuryForm.jsp"/>
+    </definition>
 
-	<definition name="centuryForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerCenturyForm.jsp"/>
-		<put-attribute name="content" value="/tiles/content/centuryForm.jsp"/>
-	</definition>
+    <definition name="showManiplePage" extends="mainPage">
+        <put-attribute name="header" value="/tiles/headers/headerManiplePage.jsp"/>
+        <put-attribute name="content" value="/tiles/content/maniplePage.jsp"/>
+    </definition>
 
-	<definition name="showManiplePage" extends="mainPage">
-		<put-attribute name="header" value="/tiles/headers/headerManiplePage.jsp"/>
-		<put-attribute name="content" value="/tiles/content/maniplePage.jsp"/>
-	</definition>
+    <definition name="companyForm" extends="mainPage">
+        <put-attribute name="header" value="/tiles/headers/headerCompanyForm.jsp"/>
+        <put-attribute name="content" value="/tiles/content/companyForm.jsp"/>
+    </definition>
 
-	<definition name="companyForm" extends="mainPage">
-		<put-attribute name="header" value="/tiles/headers/headerCompanyForm.jsp"/>
-		<put-attribute name="content" value="/tiles/content/companyForm.jsp"/>
-	</definition>
+    <definition name="loginForm" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerLoginForm.jsp"/>
+        <put-attribute name="content" value="/tiles/content/loginForm.jsp"/>
+    </definition>
 
-	<definition name="loginForm" extends="mainTemplate">
-		<put-attribute name="header" value="/tiles/headers/headerLoginForm.jsp"/>
-		<put-attribute name="content" value="/tiles/content/loginForm.jsp"/>
-	</definition>
+    <definition name="filterPageStudent" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerFilterPage.jsp"/>
+        <put-attribute name="content" value="/tiles/content/filterFormStudent.jsp"/>
+    </definition>
+
+    <definition name="filterPageAlumni" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerFilterPage.jsp"/>
+        <put-attribute name="content" value="/tiles/content/filterFormAlumni.jsp"/>
+    </definition>
+
+    <definition name="filterPageApplicant" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerFilterPage.jsp"/>
+        <put-attribute name="content" value="/tiles/content/filterFormApplicant.jsp"/>
+    </definition>
 
 </tiles-definitions>

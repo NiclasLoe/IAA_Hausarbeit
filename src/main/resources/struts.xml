@@ -57,6 +57,18 @@
             <result type="redirectAction">showCompanyList</result>
         </action>
 
+        <action name="cancelStudentFilter">
+            <result type="redirectAction">showStudentList</result>
+        </action>
+
+        <action name="cancelApplicantFilter">
+            <result type="redirectAction">showApplicantList</result>
+        </action>
+
+        <action name="cancelAlumniFilter">
+            <result type="redirectAction">showAlumniList</result>
+        </action>
+
         <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
                 method="loadApplicant">
             <result name="input" type="chain">showApplicantList</result>
@@ -207,6 +219,33 @@
 
         <action name="logOut" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="logOut">
             <result>loginForm</result>
+        </action>
+
+        <action name="filterStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+            <result>filterPageStudent</result>
+        </action>
+
+        <action name="applyFilterStudent" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterStudentList">
+            <result name="input">filterPageStudent</result>
+            <result>studentTable</result>
+        </action>
+
+        <action name="filterAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+            <result>filterPageAlumni</result>
+        </action>
+
+        <action name="applyFilterAlumni" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterAlumniList">
+            <result name="input">filterPageAlumni</result>
+            <result>alumniTable</result>
+        </action>
+
+        <action name="filterApplicants">
+            <result>filterPageApplicant</result>
+        </action>
+
+        <action name="applyFilterApplicant" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterApplicantList">
+            <result name="input">filterPageApplicant</result>
+            <result>applicantTable</result>
         </action>
     </package>
 </struts>

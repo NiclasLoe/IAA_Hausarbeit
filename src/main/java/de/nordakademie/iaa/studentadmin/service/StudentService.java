@@ -28,4 +28,9 @@ public interface StudentService {
 
     List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year);
 
+    List<Student> filterActiveStudentList(String selectedFirstName, String selectedLastName, String selectedStudentId, Company company, Century century, FieldOfStudy fieldOfStudy, String year);
+
+    List<Student> filterAlumniList(String selectedFirstName, String selectedLastName,
+                                          String selectedStudentId, Company company, Century century,
+                                          FieldOfStudy selectedFieldOfStudy, String selectedYear);
 }

@@ -4,6 +4,8 @@
 <s:form>
 
     <s:submit key="button.newApplicant" action="addApplicant" cssClass="submitButton"/>
+    <s:submit key="button.filterList" action="filterApplicants" cssClass="submitButton" />
+    <s:submit key="button.clearFilter" action="showApplicantList" cssClass="submitButton" />
     <table>
         <tr>
             <th></th>

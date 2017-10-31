@@ -1,0 +1,190 @@
+package de.nordakademie.iaa.studentadmin.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
+import de.nordakademie.iaa.studentadmin.model.Applicant;
+import de.nordakademie.iaa.studentadmin.model.Century;
+import de.nordakademie.iaa.studentadmin.model.Company;
+import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.service.ApplicantService;
+import de.nordakademie.iaa.studentadmin.service.CenturyService;
+import de.nordakademie.iaa.studentadmin.service.CompanyService;
+import de.nordakademie.iaa.studentadmin.service.StudentService;
+import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
+import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
+import de.nordakademie.iaa.studentadmin.utilities.Validator;
+
+import java.util.List;
+
+public class FilterAction extends ActionSupport implements Preparable {
+
+    private StudentService studentService;
+    private CenturyService centuryService;
+    private CompanyService companyService;
+    private ApplicantService applicantService;
+    private String selectedFirstName;
+    private String selectedLastName;
+    private String selectedStudentId;
+    private String selectedYear;
+    private FieldOfStudy selectedFieldOfStudy;
+    private Long selectedCompanyId;
+    private String selectedCenturyString;
+    private List<Student> studentList;
+    private List<Applicant> personList;
+
+    @Override
+    public void prepare() throws Exception {
+    }
+
+    /*public void validateFilterStudentList() {
+        ActionSupportValidator validator = new ActionSupportValidator(this);
+        validator.fieldValidated(Validator.
+                isValidNumber(selectedStudentId), selectedStudentId, "error.noValidNumber");
+        validator.fieldValidated(Validator.
+                isValidNumber(selectedYear), selectedYear, "error.noValidNumber");
+    }*/
+
+    public String filterStudentList() {
+        Century century = null;
+        if (selectedCenturyString != "") {
+            CenturyId centuryId = centuryService.returnId(selectedCenturyString);
+            century = centuryService.loadCentury(centuryId);
+        }
+        Company company = null;
+        if (selectedCompanyId != null) {
+            company = companyService.loadCompany(selectedCompanyId);
+        }
+        FieldOfStudy fieldOfStudy = null;
+        if (selectedFieldOfStudy != null) {
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+        studentList = studentService.
+                filterActiveStudentList(selectedFirstName, selectedLastName, selectedStudentId,
+                        company, century, fieldOfStudy, selectedYear);
+        return SUCCESS;
+    }
+
+    public String filterAlumniList() {
+        Century century = null;
+        if (selectedCenturyString != "") {
+            CenturyId centuryId = centuryService.returnId(selectedCenturyString);
+            century = centuryService.loadCentury(centuryId);
+        }
+        Company company = null;
+
+        if (selectedCompanyId != null) {
+            company = companyService.loadCompany(selectedCompanyId);
+        }
+        FieldOfStudy fieldOfStudy = null;
+        if (selectedFieldOfStudy != null) {
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+        studentList = studentService.
+                filterAlumniList(selectedFirstName, selectedLastName, selectedStudentId,
+                        company, century, fieldOfStudy, selectedYear);
+        return SUCCESS;
+    }
+
+    public String filterApplicantList() {
+
+        FieldOfStudy fieldOfStudy = null;
+        if (selectedFieldOfStudy != null) {
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+        personList = applicantService.
+                filterApplicantList(selectedFirstName, selectedLastName,
+                         fieldOfStudy);
+        return SUCCESS;
+    }
+
+    // Getter and setter
+
+    public void setApplicantService(ApplicantService applicantService) {
+        this.applicantService = applicantService;
+    }
+
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    public String getSelectedFirstName() {
+        return selectedFirstName;
+    }
+
+    public void setSelectedFirstName(String selectedFirstName) {
+        this.selectedFirstName = selectedFirstName;
+    }
+
+    public String getSelectedLastName() {
+        return selectedLastName;
+    }
+
+    public void setSelectedLastName(String selectedLastName) {
+        this.selectedLastName = selectedLastName;
+    }
+
+    public String getSelectedStudentId() {
+        return selectedStudentId;
+    }
+
+    public void setSelectedStudentId(String selectedStudentId) {
+        this.selectedStudentId = selectedStudentId;
+    }
+
+    public Long getSelectedCompanyId() {
+        return selectedCompanyId;
+    }
+
+    public void setSelectedCompanyId(Long selectedCompanyId) {
+        this.selectedCompanyId = selectedCompanyId;
+    }
+
+    public String getSelectedCenturyString() {
+        return selectedCenturyString;
+    }
+
+    public void setSelectedCenturyString(String selectedCenturyString) {
+        this.selectedCenturyString = selectedCenturyString;
+    }
+
+    public void setCenturyService(CenturyService centuryService) {
+        this.centuryService = centuryService;
+    }
+
+    public void setCompanyService(CompanyService companyService) {
+        this.companyService = companyService;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public String getSelectedYear() {
+        return selectedYear;
+    }
+
+    public void setSelectedYear(String selectedYear) {
+        this.selectedYear = selectedYear;
+    }
+
+    public FieldOfStudy getSelectedFieldOfStudy() {
+        return selectedFieldOfStudy;
+    }
+
+    public void setSelectedFieldOfStudy(FieldOfStudy selectedFieldOfStudy) {
+        this.selectedFieldOfStudy = selectedFieldOfStudy;
+    }
+
+    public List<Applicant> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(List<Applicant> applicantList) {
+        this.personList = personList;
+    }
+}

@@ -1,5 +1,6 @@
 package de.nordakademie.iaa.studentadmin.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import de.nordakademie.iaa.studentadmin.model.Century;
@@ -114,6 +115,11 @@ public class StudentAction extends ActionSupport implements Preparable {
     public String exmatriculateStudent() throws Exception {
         studentService.exmatriculateStudent(studentId);
         return "success";
+    }
+
+    public String filterList() throws Exception {
+        prepareEmptyForm();
+        return SUCCESS;
     }
 
     // Getter and Setter

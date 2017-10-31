@@ -3,6 +3,8 @@ package de.nordakademie.iaa.studentadmin.service;
 import de.nordakademie.iaa.studentadmin.dao.ApplicantDAO;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
 import de.nordakademie.iaa.studentadmin.model.Person;
+import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
+import de.nordakademie.iaa.studentadmin.utilities.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +17,8 @@ public class ApplicantServiceImpl implements ApplicantService {
     private ApplicantDAO applicantDAO;
 
     @Override
-    public List<Person> listApplicants() {
-        return applicantDAO.findAll();
+    public List<Applicant> listApplicants() {
+        return applicantDAO.findApplicants(null, null, null);
     }
 
     @Override
@@ -42,6 +44,22 @@ public class ApplicantServiceImpl implements ApplicantService {
         } else {
             applicantDAO.delete(applicant);
         }
+    }
+
+    @Override
+    public List<Applicant> filterApplicantList(String selectedFirstName, String selectedLastName, FieldOfStudy selectedFieldOfStudy) {
+        String firstName = null;
+        String lastName = null;
+
+        if (selectedFirstName != "") {
+            firstName = selectedFirstName;
+        }
+        if (selectedLastName != "") {
+            lastName = selectedLastName;
+        }
+
+        return applicantDAO.
+                findApplicants(firstName, lastName, selectedFieldOfStudy);
     }
 }
 
