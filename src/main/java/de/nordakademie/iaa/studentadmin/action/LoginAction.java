@@ -1,30 +1,62 @@
 package de.nordakademie.iaa.studentadmin.action;
 
 import java.util.Map;
+
 import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Class that contains all methods concerning login/logout.
+ *
+ * @author Lennart Meincke
+ */
 public class LoginAction extends ActionSupport implements SessionAware {
 
+    /**
+     * TODO
+     */
     private static final long serialVersionUID = 1L;
+    /**
+     * The admin username.
+     */
     private static final String adminUser = "admin";
-    private static final String adminPassword ="admin"; // Normally this would be a salted and hashed in a DB.
+    /**
+     * The admin password.
+     */
+    private static final String adminPassword = "admin"; // Normally this would be a salted and hashed in a DB.
+    /**
+     * The username that was typed in..
+     */
     private String userName;
+    /**
+     * The password that was typed in.
+     */
     private String password;
+    /**
+     * TODO
+     */
     private Map<String, Object> session;
 
     public String home() {
         return SUCCESS;
     }
 
-    // Log Out user
+    /**
+     * Logout method.
+     *
+     * @return Struts outcome.
+     */
     public String logOut() {
         session.remove("loginId");
         addActionMessage("You have been Successfully Logged Out");
         return SUCCESS;
     }
 
-    // Login user
+    /**
+     * Login method.
+     *
+     * @return Struts outcome.
+     */
     public String login() {
         if (userName.isEmpty() || !userName.equals(adminUser) || password.isEmpty() || !password.equals(adminPassword)) {
             addActionError("Wrong username or password");
@@ -34,6 +66,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
             return SUCCESS;
         }
     }
+
+    // Getter and setter
 
     public String getUserName() {
         return userName;

@@ -16,8 +16,8 @@ public class Company {
     private String houseNumber;
     private String city;
     private Integer postalCode;
-    private Integer phoneNumber;
-    private Integer faxNumber;
+    private String phoneNumber;
+    private String faxNumber;
     private String mailAddress;
 
     public Long getId() {
@@ -92,19 +92,19 @@ public class Company {
         this.postalCode = postalCode;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getFaxNumber() {
+    public String getFaxNumber() {
         return faxNumber;
     }
 
-    public void setFaxNumber(Integer faxNumber) {
+    public void setFaxNumber(String faxNumber) {
         this.faxNumber = faxNumber;
     }
 

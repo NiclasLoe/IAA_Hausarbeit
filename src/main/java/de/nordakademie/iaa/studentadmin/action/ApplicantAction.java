@@ -6,14 +6,31 @@ import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
-import java.util.Date;
+/**
+ * Class that contains all action methods for applicants.
+ *
+ * @author Niclas Loeding
+ */
 
 public class ApplicantAction extends ActionSupport {
 
+    /**
+     * The applicant service.
+     */
     private ApplicantService applicantService;
+    /**
+     * The applicant currently edited.
+     */
     private Applicant applicant;
+    /**
+     * The applicant's identifier.
+     */
     private Long applicantId;
 
+
+    /**
+     * Validates whether an applicant is selected.
+     */
     @Override
     public void validate() {
         if ((applicantId == null) && (applicant == null)) {
@@ -21,40 +38,68 @@ public class ApplicantAction extends ActionSupport {
         }
     }
 
+    /**
+     * Validates input before saving the currently edited applicant.
+     */
     public void validateSaveApplicant() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
-        validator.fieldValidated(Validator.isNull(applicant.getTitle()), "applicant.title", "Title is required.");
-        validator.fieldValidated(Validator.isStringEmpty(applicant.getFirstName()), "applicant.firstName", "First name is required.");
-        validator.fieldValidated(Validator.isStringEmpty(applicant.getLastName()), "applicant.lastName", "Last name is required.");
-        validator.fieldValidated(Validator.isNull(applicant.getGender()), "applicant.gender", "Gender is required.");
-        validator.fieldValidated(Validator.isValidDate(applicant.getDateOfBirth()), "applicant.dateOfBirth", "Date of birth is required and must not be in the future.");
-        validator.fieldValidated(Validator.isStringEmpty(applicant.getBirthplace()), "applicant.birthplace", "Birthplace is required.");
-        validator.fieldValidated(!Validator.isValidPhoneNumber(applicant.getPhoneNumber()), "applicant.phoneNumber",
-                "Phone number must be nonempty and only contain numbers. Leading plus (+) is allowed." );
-        validator.fieldValidated(!Validator.isValidEmail(applicant.getEmailAddress()), "applicant.emailAddress",
-                "Email address must be nonempty and contain at least one @ character." );
-        validator.fieldValidated(!Validator.isValidNumber(applicant.getPostalCode()), "applicant.postalCode",
-                "Postal code must be nonempty and only contain numbers." );
-        validator.fieldValidated(Validator.isStringEmpty(applicant.getStreetName()), "applicant.streetName", "Street name is required.");
-        validator.fieldValidated(Validator.isStringEmpty(applicant.getHouseNumber()), "applicant.houseNumber", "House number is required.");
-        validator.fieldValidated(Validator.isStringEmpty(applicant.getCity()), "applicant.city", "City is required.");
+        validator.fieldValidated(Validator.isNull(applicant.getTitle()),
+                "applicant.title", "error.title");
+        validator.fieldValidated(Validator.isStringEmpty(applicant.getFirstName()),
+                "applicant.firstName", "error.firstName");
+        validator.fieldValidated(Validator.isStringEmpty(applicant.getLastName()),
+                "applicant.lastName", "error.lastName");
+        validator.fieldValidated(Validator.isNull(applicant.getGender()),
+                "applicant.gender", "error.gender");
+        validator.fieldValidated(Validator.isValidDate(applicant.getDateOfBirth()),
+                "applicant.dateOfBirth", "error.dateOfBirth");
+        validator.fieldValidated(Validator.isStringEmpty(applicant.getBirthplace()),
+                "applicant.birthplace", "error.birthplace");
+        validator.fieldValidated(!Validator.isValidPhoneNumber(applicant.getPhoneNumber()),
+                "applicant.phoneNumber", "error.phoneNumber");
+        validator.fieldValidated(!Validator.isValidEmail(applicant.getEmailAddress()),
+                "applicant.emailAddress", "error.email");
+        validator.fieldValidated(!Validator.isValidNumber(applicant.getPostalCode()),
+                "applicant.postalCode", "error.postalCode");
+        validator.fieldValidated(Validator.isStringEmpty(applicant.getStreetName()),
+                "applicant.streetName", "error.street");
+        validator.fieldValidated(Validator.isStringEmpty(applicant.getHouseNumber()),
+                "applicant.houseNumber", "error.houseNumber");
+        validator.fieldValidated(Validator.isStringEmpty(applicant.getCity()),
+                "applicant.city", "error.city");
     }
 
+    /**
+     * Loads the selected applicant.
+     *
+     * @return Struts outcome
+     */
     public String loadApplicant() {
         applicant = applicantService.loadApplicant(applicantId);
         return SUCCESS;
     }
 
+    /**
+     * Save the currently edited applicant.
+     *
+     * @return Struts outcome.
+     */
     public String saveApplicant() throws Exception {
         applicantService.save(applicant);
         return SUCCESS;
     }
 
+    /**
+     * Deletes the applicant with the current identifier.
+     *
+     * @return Struts outcome
+     */
     public String deleteApplicant() throws Exception {
         applicantService.delete(applicantId);
         return SUCCESS;
     }
 
+    // Getter and setter
     public void setApplicantService(ApplicantService applicantService) {
         this.applicantService = applicantService;
     }

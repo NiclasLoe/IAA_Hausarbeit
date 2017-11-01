@@ -11,20 +11,61 @@ import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that contains required methods to enroll an applicant as a student.
+ *
+ * @author Niclas Loeding
+ */
 public class EnrollApplicantAction extends ActionSupport {
 
+    /**
+     * The student service.
+     */
     private StudentService studentService;
+    /**
+     * The applicant service.
+     */
     private ApplicantService applicantService;
+    /**
+     * The company Service.
+     */
     private CompanyService companyService;
+    /**
+     * The century service.
+     */
     private CenturyService centuryService;
+    /**
+     * The student to be enrolled.
+     */
     private Student student;
+    /**
+     * The applicant to be transformed to be a student.
+     */
     private Applicant applicant;
+    /**
+     * The company's identifier.
+     */
     private Long companyId;
+    /**
+     * The list of all available companies.
+     */
     private List<Company> companyList;
+    /**
+     * The list of all available centuries.
+     */
     private ArrayList<Century> centuryList;
+    /**
+     * The applicant's identifier.
+     */
     private Long applicantId;
+    /**
+     * The century's identifier as a String.
+     */
     private String centuryString;
 
+    /**
+     * Validates whether an applicant is selected.
+     */
     @Override
     public void validate() {
         if ((applicantId == null) && (applicant == null)) {
@@ -32,16 +73,29 @@ public class EnrollApplicantAction extends ActionSupport {
         }
     }
 
+    /**
+     * Method to enroll applicant and delete it afterwards.
+     *
+     * @return Struts outcome.
+     */
     public String enrollApplicant() throws Exception {
+        // Load century and company
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
         Company company = companyService.loadCompany(companyId);
+
+        // Save new student and delete applicant entry
         studentService.saveNewStudent(student, company, century);
         Long applicantToDeleteId = applicant.getId();
         applicantService.delete(applicantToDeleteId);
         return SUCCESS;
     }
 
+    /**
+     * Load selected applicant.
+     *
+     * @return Struts outcome.
+     */
     public String loadApplicant() {
         applicant = applicantService.loadApplicant(applicantId);
         companyList = companyService.listCompanies();
@@ -50,6 +104,8 @@ public class EnrollApplicantAction extends ActionSupport {
 
         return SUCCESS;
     }
+
+    // Getter and setter
 
     public void setCenturyService(CenturyService centuryService) {
         this.centuryService = centuryService;

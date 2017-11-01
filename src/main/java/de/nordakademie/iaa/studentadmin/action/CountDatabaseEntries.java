@@ -6,11 +6,30 @@ import de.nordakademie.iaa.studentadmin.service.StudentService;
 
 import java.util.ArrayList;
 
+/**
+ * Class that provides numbers regarding database entries.
+ *
+ * @author Niclas Loeding
+ */
 public class CountDatabaseEntries implements Action {
+    /**
+     * The student service.
+     */
     private StudentService studentService;
+    /**
+     * The applicant service.
+     */
     private ApplicantService applicantService;
+    /**
+     * List containing the number of database entries.
+     */
     private ArrayList<Long> quantityList;
 
+    /**
+     * Methods counts applicant, student and alumni entries from the database.
+     *
+     * @return Struts outcome
+     */
     @Override
     public String execute() throws Exception {
         Long applicantCount = applicantService.countEntries();
@@ -22,6 +41,8 @@ public class CountDatabaseEntries implements Action {
         quantityList.add(alumniCount);
         return SUCCESS;
     }
+
+    // Getter and setter
 
     public ArrayList<Long> getQuantityList() {
         return quantityList;

@@ -17,20 +17,46 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.InputStream;
 
+/**
+ * Class that contains all action methods for centuries.
+ *
+ * @author Niclas Loeding
+ */
 public class CenturyAction extends ActionSupport {
 
+    /**
+     * The century service.
+     */
     private CenturyService centuryService;
+    /**
+     * The century currently edited.
+     */
     private Century century;
+    /**
+     * The century's identifier as String.
+     */
     private String centuryString;
+    /**
+     * The student service.
+     */
     private StudentService studentService;
+    /**
+     * The input stream to allow the download of the excel file.
+     */
     private InputStream fileInputStream;
 
+    /**
+     * Validates whether a century is selected.
+     */
     public void validateDownloadCenturyList() {
         if ((century == null) && (centuryString == null)) {
-            addActionError(getText("error.selectApplicant"));
+            addActionError(getText("error.selectCentury"));
         }
     }
 
+    /**
+     * Validates input before saving the currently edited century.
+     */
     public void validateSaveCentury() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isNull(century.getFieldOfStudy()), "century.fieldOfStudy", "Field of study is required.");
@@ -38,34 +64,48 @@ public class CenturyAction extends ActionSupport {
         validator.fieldValidated(Validator.isNull(century.getYear()), "century.year", "Year is required.");
     }
 
+    /**
+     * Saves the currently created century.
+     *
+     * @return Struts outcome
+     */
     public String saveCentury() throws Exception {
         centuryService.saveCentury(century);
         return SUCCESS;
     }
 
+    /**
+     * Method to download an excel file of the selected century.
+     *
+     * @return Struts outcome.
+     */
     public String downloadCenturyList() throws Exception {
+        // Load Century by identifier (identifier as string)
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century centuryTemp = centuryService.loadCentury(centuryId);
-        ExcelCreator excelCreator = new ExcelCreator();
+
+        // Get list of students for the workbook
         List<Student> students = studentService.listStudentsByCentury(centuryTemp);
         ArrayList<Student> studentList = new ArrayList<>();
         studentList.addAll(students);
 
+        // Create attendance list
+        ExcelCreator excelCreator = new ExcelCreator();
         HSSFWorkbook wb = excelCreator.createAttendanceList(studentList, centuryTemp.getCenturyName());
 
-
+        // try to export the created workbook
         try {
-
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             wb.write(baos);
             setFileInputStream(new ByteArrayInputStream(baos.toByteArray()));
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return SUCCESS;
     }
+
+    // Getter and setter
 
     public void setCentury(Century century) {
         this.century = century;
