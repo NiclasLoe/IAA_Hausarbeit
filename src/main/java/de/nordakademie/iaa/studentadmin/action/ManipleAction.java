@@ -14,35 +14,65 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that contain methods to make result list available.
+ *
+ * @author Niclas Loeding
+ */
 public class ManipleAction extends ActionSupport {
 
+    /**
+     * The maniple service.
+     */
     private ManipleService manipleService;
+    /**
+     * The student Service.
+     */
     private StudentService studentService;
+    /**
+     * The list of available maniple.
+     */
     private List<String> manipleList;
+    /**
+     * The selected maniple as String.
+     */
     private String maniple;
+    /**
+     * The input stream to allow file export.
+     */
     private InputStream fileInputStream;
 
+    /**
+     * Method to list all available maniple.
+     *
+     * @return Struts outcome.
+     */
     public String listAllManiple() {
         manipleList = manipleService.getAvailableManiple();
         return SUCCESS;
     }
 
+    /**
+     * Method to download an excel file of the selected maniple.
+     *
+     * @return Struts outcome.
+     */
     public String downloadResultList() throws Exception {
-
-
+        // Convert selected maniple into fields of year and field of study
         FieldOfStudy fieldOfStudy = manipleService.returnFieldOfStudy(maniple);
         Integer year = manipleService.returnYear(maniple);
         String fieldOfStudyString = "" + fieldOfStudy;
 
-
-        ExcelCreator excelCreator = new ExcelCreator();
-
+        // Load list of student for selected maniple
         List<Student> students = studentService.listStudentsByManiple(fieldOfStudy, year);
-
         ArrayList<Student> studentList = new ArrayList<>();
         studentList.addAll(students);
+
+        // Create result list
+        ExcelCreator excelCreator = new ExcelCreator();
         HSSFWorkbook wb = excelCreator.createResultList(studentList, fieldOfStudyString, year);
 
+        // Try to export excel workbook
         try {
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -55,6 +85,8 @@ public class ManipleAction extends ActionSupport {
 
         return SUCCESS;
     }
+
+    // Getter and setter
 
     public String getManiple() {
         return maniple;
