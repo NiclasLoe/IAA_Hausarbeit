@@ -5,19 +5,36 @@ import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 
 import javax.persistence.*;
 
+/**
+ * Century entity.
+ *
+ * @author Niclas Loeding
+ */
 @Entity
 @IdClass(CenturyId.class)
 public class Century {
 
+    /**
+     * The field of study and part of the id.
+     */
     @Id
     @Column(nullable = false, length = 4, name = "FIELD_OF_STUDY")
     private FieldOfStudy fieldOfStudy;
+    /**
+     * The year and part of the id.
+     */
     @Id
     @Column(nullable = false, length = 2)
     private Integer year;
+    /**
+     * The letter code and part of the id.
+     */
     @Id
     @Column(nullable = false, length = 1, name = "LETTER_CODE")
     private String letterCode;
+    /**
+     *
+     */
     @Transient
     private String centuryName;
 
@@ -45,6 +62,11 @@ public class Century {
         this.letterCode = letterCode;
     }
 
+    /**
+     * Generates the name of the century by its id.
+     *
+     * @return Name of the century.
+     */
     public String getCenturyName() {
         String yearString = "" + year;
         yearString = yearString.substring(2, 4);

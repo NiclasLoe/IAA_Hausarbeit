@@ -6,24 +6,80 @@ import de.nordakademie.iaa.studentadmin.utilities.Title;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Superclass for applicant and student entities.
+ *
+ * @author Niclas Loeding
+ */
 @MappedSuperclass
 public abstract class Person {
 
+    /**
+     * The identifier.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * The last name.
+     */
+    @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
+    /**
+     * The first name.
+     */
+    @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
+    /**
+     * The gender.
+     */
+    @Column(name = "GENDER", nullable = false)
     private Gender gender;
+    /**
+     * The title.
+     */
+    @Column(name = "TITLE", nullable = false)
     private Title title;
+    /**
+     * The date of birth.
+     */
+    @Column(name = "DATE_OF_BIRTH", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
+    /**
+     * The birthplace.
+     */
+    @Column(name = "BIRTHPLACE", nullable = false)
     private String birthplace;
+    /**
+     * The phone number.
+     */
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
+    /**
+     * The private mail address.
+     */
+    @Column(name = "EMAIL_ADDRESS", nullable = false)
     private String emailAddress;
+    /**
+     * The street name.
+     */
+    @Column(name = "STREET_NAME", nullable = false)
     private String streetName;
+    /**
+     * The house number.
+     */
+    @Column(name = "HOUSE_NUMBER", nullable = false)
     private String houseNumber;
+    /**
+     * The city.
+     */
+    @Column(name = "CITY", nullable = false)
     private String city;
+    /**
+     * The postal code.
+     */
+    @Column(name = "POSTAL_CODE", nullable = false)
     private Integer postalCode;
 
     public Long getId() {

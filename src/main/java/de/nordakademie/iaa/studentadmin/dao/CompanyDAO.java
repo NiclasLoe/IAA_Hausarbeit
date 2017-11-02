@@ -30,10 +30,21 @@ public class CompanyDAO {
         return entityManager.createQuery("SELECT company FROM Company company").getResultList();
     }
 
+    /**
+     * Load company by a given identifier.
+     *
+     * @param companyId The company's identifier.
+     * @return The found entity.
+     */
     public Company loadByID(Long companyId) {
         return entityManager.find(Company.class, companyId);
     }
 
+    /**
+     * Save a given company into the database.
+     *
+     * @param company The company to be saved.
+     */
     public void save(Company company) {
         if (company.getId() == null) {
             entityManager.persist(company);

@@ -2,22 +2,74 @@ package de.nordakademie.iaa.studentadmin.model;
 
 import javax.persistence.*;
 
+/**
+ * Company entity.
+ *
+ * @author Niclas Loeding
+ */
 @Entity
 public class Company {
 
+    /**
+     * The identifier.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * First part of the company name.
+     */
+    @Column(name = "COMPANY_NAME_1", nullable = false)
     private String companyName1;
+    /**
+     * Second part of the company name.
+     */
+    @Column(name = "COMPANY_NAME_2", nullable = true)
     private String companyName2;
+    /**
+     * The short company name.
+     */
+    @Column(name = "SHORT_NAME", nullable = false)
     private String shortName;
+    /**
+     * The contact person.
+     */
+    @Column(name = "CONTACT_PERSON", nullable = false)
     private String contactPerson;
+    /**
+     * The street name.
+     */
+    @Column(name = "STREET_NAME", nullable = false)
     private String streetName;
+    /**
+     * The house number.
+     */
+    @Column(name = "HOUSE_NUMBER", nullable = false)
     private String houseNumber;
+    /**
+     * The city.
+     */
+    @Column(name = "CITY", nullable = false)
     private String city;
+    /**
+     * The postal code.
+     */
+    @Column(name = "POSTAL_CODE", nullable = false)
     private Integer postalCode;
+    /**
+     * The phone number.
+     */
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
+    /**
+     * The fax number.
+     */
+    @Column(name = "FAX_NUMBER", nullable = false)
     private String faxNumber;
+    /**
+     * The mail address.
+     */
+    @Column(name = "MAIL_ADDRESS", nullable = false)
     private String mailAddress;
 
     public Long getId() {
