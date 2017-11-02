@@ -16,7 +16,7 @@ public class Applicant extends Person {
     /**
      * The field of study.
      */
-    @Column(name = "FIELD_OF_STUDY", nullable = false)
+    @Column(nullable = false)
     private FieldOfStudy fieldOfStudy;
 
     public FieldOfStudy getFieldOfStudy() {

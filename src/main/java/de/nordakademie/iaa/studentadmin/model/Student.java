@@ -15,35 +15,33 @@ public class Student extends Person {
     /**
      * The status.
      */
-    @Column(name = "STATUS", nullable = false)
+    @Column(nullable = false)
     private Status status;
     /**
      * The student id.
      */
-    @Column(name = "STUDENT_ID", nullable = false)
+    @Column(nullable = false)
     private Integer studentId;
     /**
      * The company.
      */
-    @Column(name = "COMPANY", nullable = false)
     @ManyToOne
     @JoinColumn
     private Company company;
     /**
      * The century.
      */
-    @Column(name = "CENTURY", nullable = false)
     @ManyToOne
     private Century century;
     /**
      * The username
      */
-    @Column(name = "USERNAME", nullable = false)
+    @Column(nullable = false)
     private Integer username;
     /**
      * The user email address.
      */
-    @Column(name = "USER_EMAIL", nullable = false)
+    @Column(nullable = false)
     private String userEmail;
 
     public Status getStatus() {
