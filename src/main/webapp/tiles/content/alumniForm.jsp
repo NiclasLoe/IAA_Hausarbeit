@@ -16,7 +16,7 @@
         <s:textfield key="student.firstName" cssClass="textInput" disabled="true"/>
         <s:textfield key="student.lastName" cssClass="textInput" disabled="true"/>
         <s:select key="student.gender" list="@de.nordakademie.iaa.studentadmin.utilities.Gender@values()" disabled="true"/>
-        <s:date name="applicant.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
+        <s:date name="student.dateOfBirth" var="dateOfBirthId" format="yyyy-MM-dd"/>
         <s:textfield key="student.dateOfBirth" type="date"
                      cssClass="textInput"
                      value="%{dateOfBirthId}" disabled="true"/>

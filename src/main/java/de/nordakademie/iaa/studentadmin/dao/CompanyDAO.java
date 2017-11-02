@@ -52,4 +52,8 @@ public class CompanyDAO {
             entityManager.merge(company);
         }
     }
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 }
