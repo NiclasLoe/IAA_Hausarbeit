@@ -17,38 +17,58 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DAO class for students.
+ *
+ * @author Niclas Loeding
+ */
 @Component
 public class StudentDAO {
 
+    /**
+     * The current entity manager.
+     */
     @PersistenceContext
     private EntityManager entityManager;
 
+    /**
+     * Method that counts the students with a given status.
+     *
+     * @param status Status input for query.
+     * @return number of students with that status.
+     */
     public Long countEntries(Status status) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
-        Root<Student> root = criteriaQuery.from(Student.class);
-        criteriaQuery.select(root);
-
-        if (status != null) {
-            criteriaQuery.where(criteriaBuilder.equal(root.get("status"), status));
-        }
-
-        TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
-        List<Student> queryResult = query.getResultList();
-
-        Long count = (long) queryResult.size();
-        return count;
+        List<Student> students = findStudents(status, null, null, null,
+                null, null, null,
+                null, null);
+        return (long) students.size();
     }
 
+    /**
+     * Method to create a query with several parameters.
+     *
+     * @param status       Status input.
+     * @param century      Century input.
+     * @param fieldOfStudy Field of Study input.
+     * @param year         Year input.
+     * @param userMail     UserMail input.
+     * @param company      Company input.
+     * @param firstName    First name input.
+     * @param lastName     Last name input.
+     * @param studentId    Student id input.
+     * @return List of students that match the criteria.
+     */
     public List<Student> findStudents(Status status, Century century, FieldOfStudy fieldOfStudy, Integer year,
                                       String userMail, Company company, String firstName,
                                       String lastName, Integer studentId) {
+        // Create new query
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
-        List<Predicate> predicates = new ArrayList<>();
         criteriaQuery.select(root);
 
+        // Build criteria list
+        List<Predicate> predicates = new ArrayList<>();
         if (status != null) {
             predicates.add(criteriaBuilder.equal(root.get("status"), status));
         }
@@ -76,15 +96,20 @@ public class StudentDAO {
         if (studentId != null) {
             predicates.add(criteriaBuilder.equal(root.get("studentId"), studentId));
         }
-
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
 
+        // Get list from query
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> queryResult = query.getResultList();
 
         return queryResult;
     }
 
+    /**
+     * Method to save a given student.
+     *
+     * @param student The student to be saved.
+     */
     public void saveStudent(Student student) {
         if (student.getId() == null) {
             entityManager.persist(student);
@@ -93,9 +118,17 @@ public class StudentDAO {
         }
     }
 
+    /**
+     * Method to load a student with a given id.
+     *
+     * @param id The student's identifier.
+     * @return the found entity.
+     */
     public Student load(long id) {
         return entityManager.find(Student.class, id);
     }
+
+    // Getter and setter
 
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;

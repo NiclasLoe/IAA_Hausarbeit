@@ -6,7 +6,13 @@ import de.nordakademie.iaa.studentadmin.service.CompanyService;
 
 import java.util.List;
 
+/**
+ * Class that contain methods to make list of companies available.
+ *
+ * @author Niclas Loeding
+ */
 public class ShowCompanyListAction implements Action {
+
 
     private CompanyService companyService;
     private List<Company> companyList;
