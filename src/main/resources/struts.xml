@@ -222,20 +222,38 @@
         </action>
 
         <action name="filterStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+            <interceptor-ref name="store">
+                <param name="operationMode">RETRIEVE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
+            <result name="input">filterPageStudent</result>
             <result>filterPageStudent</result>
         </action>
 
         <action name="applyFilterStudent" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterStudentList">
-            <result name="input">filterPageStudent</result>
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
+            <result name="input" type="redirectAction">filterStudent</result>
             <result>studentTable</result>
         </action>
 
         <action name="filterAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+            <interceptor-ref name="store">
+                <param name="operationMode">RETRIEVE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
+            <result name="input">filterPageAlumni</result>
             <result>filterPageAlumni</result>
         </action>
 
         <action name="applyFilterAlumni" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterAlumniList">
-            <result name="input">filterPageAlumni</result>
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
+            <result name="input" type="redirectAction">filterAlumni</result>
             <result>alumniTable</result>
         </action>
 

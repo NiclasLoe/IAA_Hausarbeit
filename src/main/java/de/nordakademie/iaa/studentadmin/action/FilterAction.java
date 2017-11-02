@@ -10,8 +10,10 @@ import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
+import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
+import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
 import java.util.List;
 
@@ -74,6 +76,18 @@ public class FilterAction extends ActionSupport implements Preparable {
      * The list of applicants.
      */
     private List<Applicant> personList;
+
+    @Override
+    public void validate() {
+        ActionSupportValidator validator = new ActionSupportValidator(this);
+        if (selectedStudentId != null && selectedStudentId.length() > 0) {
+            validator.fieldValidated(!Validator.isValidNumber(selectedStudentId), "selectedStudentId", "Student ID must be a number.");
+        }
+
+        if (selectedYear != null && selectedYear.length() > 0) {
+            validator.fieldValidated(!Validator.isValidNumber(selectedYear), "selectedYear", "Year must be a number.");
+        }
+    }
 
     @Override
     public void prepare() throws Exception {
