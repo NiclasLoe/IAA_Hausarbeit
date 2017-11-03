@@ -48,7 +48,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
      */
     public String logOut() {
         session.remove("loginId");
-        addActionMessage("You have been Successfully Logged Out");
+        addActionMessage("success.logOut");
         return SUCCESS;
     }
 
@@ -59,7 +59,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
      */
     public String login() {
         if (userName.isEmpty() || !userName.equals(adminUser) || password.isEmpty() || !password.equals(adminPassword)) {
-            addActionError("Wrong username or password");
+            addActionError("error.userNameOrPassword");
             return LOGIN;
         } else {
             session.put("loginId", userName);

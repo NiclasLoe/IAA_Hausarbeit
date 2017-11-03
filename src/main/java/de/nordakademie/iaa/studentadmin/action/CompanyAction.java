@@ -49,7 +49,7 @@ public class CompanyAction extends ActionSupport {
      */
     public void validateLoadCompany() {
         if ((company == null) && (companyId == null)) {
-            addActionError(getText("error.selectApplicant"));
+            addActionError(getText("error.selectCompany"));
         }
     }
 
@@ -60,8 +60,6 @@ public class CompanyAction extends ActionSupport {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isStringEmpty(company.getCompanyName1()),
                 "company.companyName1", "error.companyName");
-        /* validator.fieldValidated(Validator.isStringEmpty(company.getCompanyName2()),
-                "company.companyName2", "Company name 2 is required.");*/
         validator.fieldValidated(Validator.isStringEmpty(company.getShortName()),
                 "company.shortName", "error.shortName");
         validator.fieldValidated(Validator.isStringEmpty(company.getContactPerson()),

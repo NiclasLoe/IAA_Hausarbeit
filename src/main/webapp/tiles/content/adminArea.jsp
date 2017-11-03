@@ -2,9 +2,6 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <s:form>
-    <s:text name="mainPage.applicantCount"/>
-
-
     <s:submit key="button.showCentury" action="showCenturyList" cssClass="submitButton"/>
     <s:submit key="button.showCompanyList" action="showCompanyList" cssClass="submitButton"/>
     <s:submit key="button.downloadResultList" action="chooseManiplePage" cssClass="submitButton"/>

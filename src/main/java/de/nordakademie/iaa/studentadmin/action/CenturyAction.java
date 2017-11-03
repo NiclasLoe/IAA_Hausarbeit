@@ -59,9 +59,12 @@ public class CenturyAction extends ActionSupport {
      */
     public void validateSaveCentury() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
-        validator.fieldValidated(Validator.isNull(century.getFieldOfStudy()), "century.fieldOfStudy", "Field of study is required.");
-        validator.fieldValidated(Validator.isStringEmpty(century.getLetterCode()), "century.letterCode", "Letter code is required.");
-        validator.fieldValidated(Validator.isNull(century.getYear()), "century.year", "Year is required.");
+        validator.fieldValidated(Validator.isNull(century.getFieldOfStudy()),
+                "century.fieldOfStudy", "error.fieldOfStudy");
+        validator.fieldValidated(Validator.isStringEmpty(century.getLetterCode()),
+                "century.letterCode", "error.letterCode");
+        validator.fieldValidated(Validator.isNull(century.getYear()),
+                "century.year", "error.year");
     }
 
     /**

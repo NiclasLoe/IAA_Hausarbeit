@@ -63,7 +63,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     public void validateLoadStudent() {
         if ((studentId == null) && (student == null)) {
-            addActionError(getText("error.selectApplicant"));
+            addActionError(getText("error.selectStudent"));
         }
     }
 
@@ -72,7 +72,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     public void validateExmatriculateStudent() {
         if ((studentId == null) && (student == null)) {
-            addActionError(getText("error.selectApplicant"));
+            addActionError(getText("error.selectStudent"));
         }
     }
 
@@ -81,7 +81,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     public void validateEndActiveStudies() {
         if ((studentId == null) && (student == null)) {
-            addActionError(getText("error.selectApplicant"));
+            addActionError(getText("error.selectStudent"));
         }
     }
 

@@ -7,220 +7,184 @@
 <struts>
     <package name="default" extends="struts-default">
         <result-types>
-            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true" />
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
         </result-types>
 
         <interceptors>
             <interceptor class="de.nordakademie.iaa.studentadmin.interceptors.LoginInterceptor" name="loginInterceptor">
             </interceptor>
             <interceptor-stack name="loginStack">
-                <interceptor-ref name="loginInterceptor" />
-                <interceptor-ref name="defaultStack" />
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>
 
-        <default-interceptor-ref name="loginStack" />
+        <default-interceptor-ref name="loginStack"/>
 
         <global-results>
             <result name="login">loginForm</result>
         </global-results>
 
+        <!--General actions-->
         <action name="showMainPage" class="de.nordakademie.iaa.studentadmin.action.CountDatabaseEntries">
             <result>mainPage</result>
         </action>
-
-        <action name="showApplicantList" class="de.nordakademie.iaa.studentadmin.action.ShowApplicantListAction">
-            <result>applicantTable</result>
+        <action name="showAdminArea">
+            <result>adminArea</result>
         </action>
 
-        <action name="addApplicant">
-            <result>applicantForm</result>
-        </action>
-
-        <action name="cancelApplicant">
-            <result type="redirectAction">showApplicantList</result>
-        </action>
-
-        <action name="cancelStudent">
-            <result type="redirectAction">showStudentList</result>
-        </action>
-
-        <action name="cancelAlumni">
-            <result type="redirectAction">showAlumniList</result>
-        </action>
-
-        <action name="cancelCentury">
-            <result type="redirectAction">showCenturyList</result>
-        </action>
-
-        <action name="cancelCompany">
-            <result type="redirectAction">showCompanyList</result>
-        </action>
-
-        <action name="cancelStudentFilter">
-            <result type="redirectAction">showStudentList</result>
-        </action>
-
-        <action name="cancelApplicantFilter">
-            <result type="redirectAction">showApplicantList</result>
-        </action>
-
-        <action name="cancelAlumniFilter">
-            <result type="redirectAction">showAlumniList</result>
-        </action>
-
-        <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
-                method="loadApplicant">
-            <result name="input" type="chain">showApplicantList</result>
-            <result>applicantForm</result>
-        </action>
-
-        <action name="saveApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
-                method="saveApplicant">
-            <result name="input">applicantForm</result>
-            <result type="redirectAction">showApplicantList</result>
-        </action>
-
-        <action name="deleteApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
-                method="deleteApplicant">
-            <result name="input" type="chain">showApplicantList</result>
-            <result type="redirectAction">showApplicantList</result>
-        </action>
-
+        <!--Student action-->
         <action name="showStudentList" class="de.nordakademie.iaa.studentadmin.action.ShowStudentListAction"
                 method="listEnrolledStudents">
             <result>studentTable</result>
         </action>
-
         <action name="showAlumniList" class="de.nordakademie.iaa.studentadmin.action.ShowStudentListAction"
                 method="listAlumni">
             <result>alumniTable</result>
         </action>
-
-        <action name="enrollApplicant" class="de.nordakademie.iaa.studentadmin.action.EnrollApplicantAction"
-                method="loadApplicant">
-            <result name="input" type="chain">showApplicantList</result>
-            <result>applicantToStudentForm</result>
+        <action name="cancelStudent">
+            <result type="redirectAction">showStudentList</result>
         </action>
-
+        <action name="cancelAlumni">
+            <result type="redirectAction">showAlumniList</result>
+        </action>
+        <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+            <result name="input" type="chain">showAlumniList</result>
+            <result>alumniForm</result>
+        </action>
         <action name="saveStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="saveStudent">
             <result name="input">studentForm</result>
             <result type="redirectAction">showStudentList</result>
         </action>
-
         <action name="addStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction">
             <result>newStudentForm</result>
         </action>
-
         <action name="loadStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
             <result name="input" type="chain">showStudentList</result>
             <result name="success">studentForm</result>
         </action>
-
         <action name="endActiveStudies" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="endActiveStudies">
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
-
         <action name="exmatriculateStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="exmatriculateStudent">
             <result name="input" type="chain">showStudentList</result>
             <result type="redirectAction">showStudentList</result>
         </action>
-
         <action name="saveNewStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="saveNewStudent">
             <result name="input">newStudentForm</result>
             <result type="redirectAction">showStudentList</result>
         </action>
 
+        <!--Applicant actions-->
+        <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="loadApplicant">
+            <result name="input" type="chain">showApplicantList</result>
+            <result>applicantForm</result>
+        </action>
+        <action name="saveApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="saveApplicant">
+            <result name="input">applicantForm</result>
+            <result type="redirectAction">showApplicantList</result>
+        </action>
+        <action name="deleteApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="deleteApplicant">
+            <result name="input" type="chain">showApplicantList</result>
+            <result type="redirectAction">showApplicantList</result>
+        </action>
+        <action name="enrollApplicant" class="de.nordakademie.iaa.studentadmin.action.EnrollApplicantAction"
+                method="loadApplicant">
+            <result name="input" type="chain">showApplicantList</result>
+            <result>applicantToStudentForm</result>
+        </action>
+        <action name="showApplicantList" class="de.nordakademie.iaa.studentadmin.action.ShowApplicantListAction">
+            <result>applicantTable</result>
+        </action>
+        <action name="addApplicant">
+            <result>applicantForm</result>
+        </action>
+        <action name="cancelApplicant">
+            <result type="redirectAction">showApplicantList</result>
+        </action>
         <action name="saveApplicantToStudent" class="de.nordakademie.iaa.studentadmin.action.EnrollApplicantAction"
                 method="enrollApplicant">
             <result name="input">applicantToStudentForm</result>
             <result type="redirectAction">showStudentList</result>
         </action>
 
-        <action name="saveCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="saveCompany">
-            <result name="input">companyForm</result>
-            <result type="redirectAction">showCompanyList</result>
-        </action>
-
-        <action name="showAdminArea">
-            <result>adminArea</result>
-        </action>
-
-        <action name="showCenturyList" class="de.nordakademie.iaa.studentadmin.action.ShowCenturyListAction">
-            <result>centuryList</result>
-        </action>
-
-        <action name="showCompanyList" class="de.nordakademie.iaa.studentadmin.action.ShowCompanyListAction">
-            <result>companyList</result>
-        </action>
-
-        <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
-            <result name="input" type="chain">showAlumniList</result>
-            <result>alumniForm</result>
-        </action>
-
+        <!--Company Actions-->
         <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="loadCompany">
             <result name="input" type="chain">showCompanyList</result>
             <result>companyForm</result>
         </action>
-
-        <action name="addCentury">
-            <result>centuryForm</result>
-        </action>
-
         <action name="addCompany">
             <result>companyForm</result>
         </action>
-
-        <action name="downloadAttendanceList" class="de.nordakademie.iaa.studentadmin.action.CenturyAction" method="downloadCenturyList">
-            <result name="input" type="chain">showCenturyList</result>
-            <result name="success"  type="stream">
-                <param name="contentType">application/vnd.ms-excel</param>
-                <param name="inputName">fileInputStream</param>
-                <param name="contentDisposition">attachment;filename="attendanceList.xls"</param>
-                <param name="bufferSize">4096</param>
-            </result>
+        <action name="saveCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="saveCompany">
+            <result name="input">companyForm</result>
+            <result type="redirectAction">showCompanyList</result>
+        </action>
+        <action name="showCompanyList" class="de.nordakademie.iaa.studentadmin.action.ShowCompanyListAction">
+            <result>companyList</result>
+        </action>
+        <action name="cancelCompany">
+            <result type="redirectAction">showCompanyList</result>
         </action>
 
+        <!--Century actions-->
+        <action name="showCenturyList" class="de.nordakademie.iaa.studentadmin.action.ShowCenturyListAction">
+            <result>centuryList</result>
+        </action>
         <action name="saveCentury" class="de.nordakademie.iaa.studentadmin.action.CenturyAction"
                 method="saveCentury">
             <result name="input">centuryForm</result>
             <result type="redirectAction">showCenturyList</result>
         </action>
+        <action name="addCentury">
+            <result>centuryForm</result>
+        </action>
+        <action name="cancelCentury">
+            <result type="redirectAction">showCenturyList</result>
+        </action>
 
-        <action name="chooseManiplePage" class="de.nordakademie.iaa.studentadmin.action.ManipleAction" method="listAllManiple">
+        <!--Maniple actions-->
+        <action name="chooseManiplePage" class="de.nordakademie.iaa.studentadmin.action.ManipleAction"
+                method="listAllManiple">
             <result>showManiplePage</result>
         </action>
 
-        <action name="downloadResultList" class="de.nordakademie.iaa.studentadmin.action.ManipleAction" method="downloadResultList">
-            <result name="input" type="chain">showManiplePage</result>
-            <result name="success"  type="stream">
-                <param name="contentType">application/vnd.ms-excel</param>
-                <param name="inputName">fileInputStream</param>
-                <param name="contentDisposition">attachment;filename="resultList.xls"</param>
-                <param name="bufferSize">4096</param>
-            </result>
-        </action>
-
+        <!--Login actions-->
         <action name="loginUser" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="login">
-            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="defaultStack"/>
             <result name="success" type="redirectAction">homeAction</result>
             <result name="login">loginForm</result>
         </action>
-
         <action name="homeAction" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="home">
             <result name="login">loginForm</result>
             <result type="redirectAction">showMainPage</result>
         </action>
-
         <action name="logOut" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="logOut">
             <result>loginForm</result>
         </action>
 
+        <!--Filter actions-->
+        <action name="cancelStudentFilter">
+            <result type="redirectAction">showStudentList</result>
+        </action>
+        <action name="cancelApplicantFilter">
+            <result type="redirectAction">showApplicantList</result>
+        </action>
+        <action name="cancelAlumniFilter">
+            <result type="redirectAction">showAlumniList</result>
+        </action>
+        <action name="applyFilterApplicant" class="de.nordakademie.iaa.studentadmin.action.FilterAction"
+                method="filterApplicantList">
+            <result name="input">filterPageApplicant</result>
+            <result>applicantTable</result>
+        </action>
         <action name="filterStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
@@ -229,8 +193,8 @@
             <result name="input">filterPageStudent</result>
             <result>filterPageStudent</result>
         </action>
-
-        <action name="applyFilterStudent" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterStudentList">
+        <action name="applyFilterStudent" class="de.nordakademie.iaa.studentadmin.action.FilterAction"
+                method="filterStudentList">
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
@@ -238,7 +202,6 @@
             <result name="input" type="redirectAction">filterStudent</result>
             <result>studentTable</result>
         </action>
-
         <action name="filterAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
@@ -247,8 +210,8 @@
             <result name="input">filterPageAlumni</result>
             <result>filterPageAlumni</result>
         </action>
-
-        <action name="applyFilterAlumni" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterAlumniList">
+        <action name="applyFilterAlumni" class="de.nordakademie.iaa.studentadmin.action.FilterAction"
+                method="filterAlumniList">
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
@@ -256,19 +219,35 @@
             <result name="input" type="redirectAction">filterAlumni</result>
             <result>alumniTable</result>
         </action>
-
         <action name="filterApplicants">
             <result>filterPageApplicant</result>
         </action>
 
-        <action name="applyFilterApplicant" class="de.nordakademie.iaa.studentadmin.action.FilterAction" method="filterApplicantList">
-            <result name="input">filterPageApplicant</result>
-            <result>applicantTable</result>
+        <!--Download actions-->
+        <action name="downloadResultList" class="de.nordakademie.iaa.studentadmin.action.ManipleAction"
+                method="downloadResultList">
+            <result name="input" type="chain">showManiplePage</result>
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="resultList.xls"</param>
+                <param name="bufferSize">4096</param>
+            </result>
         </action>
-
-        <action name="downloadCompanyList" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="downloadCompanyList">
+        <action name="downloadAttendanceList" class="de.nordakademie.iaa.studentadmin.action.CenturyAction"
+                method="downloadCenturyList">
+            <result name="input" type="chain">showCenturyList</result>
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="attendanceList.xls"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+        <action name="downloadCompanyList" class="de.nordakademie.iaa.studentadmin.action.CompanyAction"
+                method="downloadCompanyList">
             <result name="input" type="chain">showCompanyList</result>
-            <result name="success"  type="stream">
+            <result name="success" type="stream">
                 <param name="contentType">application/vnd.ms-excel</param>
                 <param name="inputName">fileInputStream</param>
                 <param name="contentDisposition">attachment;filename="companyList.xls"</param>
