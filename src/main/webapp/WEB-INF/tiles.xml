@@ -111,4 +111,9 @@
         <put-attribute name="content" value="/tiles/content/filterFormApplicant.jsp"/>
     </definition>
 
+    <definition name="profilePictureUpload" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerPictureUpload.jsp"/>
+        <put-attribute name="content" value="/tiles/content/profilePictureUpload.jsp"/>
+    </definition>
+
 </tiles-definitions>

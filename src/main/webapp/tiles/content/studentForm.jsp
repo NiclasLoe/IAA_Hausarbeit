@@ -7,6 +7,7 @@
     <s:hidden name="student.studentId"/>
     <s:hidden name="student.userEmail"/>
     <s:hidden name="student.username"/>
+    <s:submit key="button.addPicture" action="uploadPicture" cssClass="submitButton"/>
     <table>
         <tr class="trSubHeader">
             <td>

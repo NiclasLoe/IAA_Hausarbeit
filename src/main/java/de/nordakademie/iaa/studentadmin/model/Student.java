@@ -43,6 +43,11 @@ public class Student extends Person {
      */
     @Column(nullable = false)
     private String userEmail;
+    /**
+     * The profile picture.
+     */
+    @OneToOne
+    private ProfilePicture profilePicture;
 
     public Status getStatus() {
         return status;
@@ -92,4 +97,11 @@ public class Student extends Person {
         this.userEmail = userEmail;
     }
 
+    public ProfilePicture getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(ProfilePicture profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 }
