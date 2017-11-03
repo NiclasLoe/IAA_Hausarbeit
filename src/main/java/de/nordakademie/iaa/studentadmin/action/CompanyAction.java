@@ -2,9 +2,19 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Company;
+import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
+import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
+import de.nordakademie.iaa.studentadmin.utilities.ExcelCreator;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class that contains all action methods for companies.
@@ -18,6 +28,10 @@ public class CompanyAction extends ActionSupport {
      */
     private CompanyService companyService;
     /**
+     * The student service.
+     */
+    private StudentService studentService;
+    /**
      * The company's identifier.
      */
     private Long companyId;
@@ -25,6 +39,10 @@ public class CompanyAction extends ActionSupport {
      * The currently edited company.
      */
     private Company company;
+    /**
+     * Input stream to export file.
+     */
+    private InputStream fileInputStream;
 
     /**
      * Validates whether a company is selected.
@@ -65,6 +83,15 @@ public class CompanyAction extends ActionSupport {
     }
 
     /**
+     * Validates whether a company is selected.
+     */
+    public void validateDownloadCompanyList() {
+        if ((companyId == null) && (company == null)) {
+            addActionError(getText("error.selectCompany"));
+        }
+    }
+
+    /**
      * Loads the selected company.
      *
      * @return Struts outcome
@@ -84,7 +111,45 @@ public class CompanyAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * Method to download excel including all active students from that company.
+     *
+     * @return Struts outcome.
+     */
+    public String downloadCompanyList() {
+        // Load Company by identifier
+        Company companyTemp = companyService.loadCompany(companyId);
+
+        // Get list of students for the workbook
+        List<Student> students = studentService.listStudentsByCompany(companyTemp);
+        ArrayList<Student> studentList = new ArrayList<>();
+        studentList.addAll(students);
+
+        // Create attendance list
+        ExcelCreator excelCreator = new ExcelCreator();
+        HSSFWorkbook wb = excelCreator.createCompanyList(studentList, companyTemp.getShortName());
+
+        // try to export the created workbook
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            wb.write(baos);
+            setFileInputStream(new ByteArrayInputStream(baos.toByteArray()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return SUCCESS;
+    }
+
     // Getter and setter
+
+    public InputStream getFileInputStream() {
+        return fileInputStream;
+    }
+
+    public void setFileInputStream(InputStream fileInputStream) {
+        this.fileInputStream = fileInputStream;
+    }
 
     public void setCompanyService(CompanyService companyService) {
         this.companyService = companyService;
@@ -106,5 +171,7 @@ public class CompanyAction extends ActionSupport {
         this.company = company;
     }
 
-
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
 }

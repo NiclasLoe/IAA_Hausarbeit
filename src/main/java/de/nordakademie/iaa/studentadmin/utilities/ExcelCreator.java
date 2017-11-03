@@ -191,4 +191,81 @@ public class ExcelCreator {
             cell.setCellValue(studentId);
         }
     }
+
+    public HSSFWorkbook createCompanyList(ArrayList<Student> studentList, String shortName) {
+        String sheetName = "Firmenliste";
+        HSSFSheet sheet = wb.createSheet(sheetName);
+
+        /**
+         * Setting the width of the first three columns.
+         */
+        sheet.setColumnWidth(0, 3000);
+        sheet.setColumnWidth(1, 4000);
+        sheet.setColumnWidth(2, 4000);
+        sheet.setColumnWidth(3, 2580);
+        sheet.setColumnWidth(4, 2580);
+        sheet.setColumnWidth(5, 2580);
+
+        /**
+         * Style for the header cells.
+         */
+        HSSFCellStyle headerCellStyle = wb.createCellStyle();
+        HSSFFont boldFont = wb.createFont();
+        boldFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+        headerCellStyle.setFont(boldFont);
+
+        HSSFRow row = sheet.createRow(0);
+        HSSFCell cell = row.createCell(0);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Firmenliste"));
+
+        row = sheet.createRow(1);
+        cell = row.createCell(0);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Firma:"));
+        cell = row.createCell(1);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("" + shortName));
+
+        row = sheet.createRow(2);
+        cell = row.createCell(0);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Index"));
+        cell = row.createCell(1);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Nachname"));
+        cell = row.createCell(2);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Vorname"));
+        cell = row.createCell(3);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Matr.-Nr."));
+        cell = row.createCell(4);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Studiengang"));
+
+        for (int index = 0; index < studentList.size(); index++) {
+            row = sheet.createRow(index + 3);
+            cell = row.createCell(0);
+            cell.setCellValue(new HSSFRichTextString("" + (index + 1)));
+            cell = row.createCell(1);
+            Student studentTemp = (Student) studentList.get(index);
+            HSSFRichTextString lastName = new HSSFRichTextString(studentTemp.getLastName());
+            cell.setCellValue(lastName);
+            cell = row.createCell(2);
+            HSSFRichTextString firstName = new HSSFRichTextString(studentTemp.getFirstName());
+            cell.setCellValue(firstName);
+            cell = row.createCell(3);
+            HSSFRichTextString studentId = new HSSFRichTextString(studentTemp.getStudentId().toString());
+            cell.setCellValue(studentId);
+            cell = row.createCell(4);
+            HSSFRichTextString fieldOfStudy = new HSSFRichTextString(studentTemp.getCentury().getFieldOfStudy().toString());
+            cell.setCellValue(fieldOfStudy);
+        }
+
+        return wb;
+
+
+
+    }
 }

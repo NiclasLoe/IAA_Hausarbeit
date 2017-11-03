@@ -2,9 +2,8 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.ApplicantDAO;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
-import de.nordakademie.iaa.studentadmin.model.Person;
+import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
-import de.nordakademie.iaa.studentadmin.utilities.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,7 +36,7 @@ public class ApplicantServiceImpl implements ApplicantService {
     }
 
     @Override
-    public void delete(Long applicantId) throws Exception {
+    public void delete(Long applicantId) throws EntityNotFoundException {
         Applicant applicant = loadApplicant(applicantId);
         if (applicant == null) {
             throw new EntityNotFoundException();

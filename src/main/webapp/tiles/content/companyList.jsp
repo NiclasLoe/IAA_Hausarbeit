@@ -25,6 +25,7 @@
     </table>
     <s:actionerror/>
     <s:submit key="button.seeMore" action="loadCompany" cssClass="submitButton"/>
+    <s:submit key="button.downloadCompanyList" action="downloadCompanyList" cssClass="submitButton"/>
     <s:submit key="button.goBack" action="showAdminArea" cssClass="submitButton"/>
 
 </s:form>

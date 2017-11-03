@@ -33,4 +33,6 @@ public interface StudentService {
     List<Student> filterAlumniList(String selectedFirstName, String selectedLastName,
                                           String selectedStudentId, Company company, Century century,
                                           FieldOfStudy selectedFieldOfStudy, String selectedYear);
+
+    List<Student> listStudentsByCompany(Company companyTemp);
 }

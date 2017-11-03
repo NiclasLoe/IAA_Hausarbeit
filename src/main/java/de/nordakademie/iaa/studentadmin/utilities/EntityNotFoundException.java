@@ -1,4 +1,4 @@
-package de.nordakademie.iaa.studentadmin.service;
+package de.nordakademie.iaa.studentadmin.utilities;
 
 public class EntityNotFoundException extends Exception {
 

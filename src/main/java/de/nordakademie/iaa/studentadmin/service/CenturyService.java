@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
+import de.nordakademie.iaa.studentadmin.utilities.EntityAlreadyPresentException;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface CenturyService {
 
     List<Century> listAll();
 
-    void saveCentury(Century century);
+    void saveCentury(Century century) throws EntityAlreadyPresentException;
 }

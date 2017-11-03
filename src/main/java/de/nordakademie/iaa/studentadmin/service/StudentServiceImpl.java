@@ -196,5 +196,13 @@ public class StudentServiceImpl implements StudentService {
                         company, firstName, lastName, studentId);
         return students;
     }
+
+    @Override
+    public List<Student> listStudentsByCompany(Company company) {
+        return studentDAO.
+                findStudents(Status.ENROLLED, null, null,
+                        null, null, company, null,
+                        null, null);
+    }
 }
 

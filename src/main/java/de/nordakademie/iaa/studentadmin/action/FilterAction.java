@@ -77,15 +77,20 @@ public class FilterAction extends ActionSupport implements Preparable {
      */
     private List<Applicant> personList;
 
+    /**
+     * Validates whether the student id and the year is a number
+     */
     @Override
     public void validate() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         if (selectedStudentId != null && selectedStudentId.length() > 0) {
-            validator.fieldValidated(!Validator.isValidNumber(selectedStudentId), "selectedStudentId", "Student ID must be a number.");
+            validator.fieldValidated(!Validator.isValidNumber(selectedStudentId),
+                    "selectedStudentId", "error.studentId");
         }
 
         if (selectedYear != null && selectedYear.length() > 0) {
-            validator.fieldValidated(!Validator.isValidNumber(selectedYear), "selectedYear", "Year must be a number.");
+            validator.fieldValidated(!Validator.isValidNumber(selectedYear),
+                    "selectedYear", "error.year");
         }
     }
 
