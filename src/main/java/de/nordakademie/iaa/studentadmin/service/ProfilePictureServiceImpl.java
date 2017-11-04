@@ -13,7 +13,9 @@ public class ProfilePictureServiceImpl implements ProfilePictureService {
     private ProfilePictureDAO profilePictureDAO;
 
     @Override
-    public Long saveImage(ProfilePicture profilePicture) {
+    public Long saveNewImage(byte[] fileContent) {
+        ProfilePicture profilePicture = new ProfilePicture();
+        profilePicture.setImage(fileContent);
         return profilePictureDAO.save(profilePicture);
     }
 

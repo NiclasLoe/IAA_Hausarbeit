@@ -258,7 +258,7 @@
 
         <!--Upload files-->
 
-        <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddProfilePictureAction" method="addProfilePictureToStudent">
+        <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addProfilePictureToStudent">
             <interceptor-ref name="fileUpload">
                 <param name="maxSize">20000000</param>
                 <param name="allowedTypes">
@@ -277,6 +277,28 @@
         </action>
 
         <action name="deletePicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteProfilePicture">
+            <result type="redirectAction">showStudentList</result>
+        </action>
+
+        <action name="userDocument" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addDocumentToStudent">
+            <interceptor-ref name="fileUpload">
+                <param name="maxSize">20000000</param>
+                <param name="allowedTypes">
+                    application/pdf
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success" type="redirectAction">showStudentList</result>
+            <result name="input">documentUploadStudent</result>
+            <result name="error">documentUploadStudent</result>
+        </action>
+
+        <action name="uploadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudentForUpload">
+            <result name="input">studentForm</result>
+            <result>documentUploadStudent</result>
+        </action>
+
+        <action name="deleteStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteDocument">
             <result type="redirectAction">showStudentList</result>
         </action>
     </package>

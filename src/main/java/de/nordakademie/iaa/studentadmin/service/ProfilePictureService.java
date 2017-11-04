@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 
 public interface ProfilePictureService {
 
-    Long saveImage(ProfilePicture profilePicture);
-
     ProfilePicture loadImage(Long photoId);
+
+    Long saveNewImage(byte[] fileContent);
 }

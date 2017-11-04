@@ -6,6 +6,7 @@ import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.ManipleService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.ExcelCreator;
+import de.nordakademie.iaa.studentadmin.utilities.FileInputUtil;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
@@ -58,6 +59,8 @@ public class ManipleAction extends ActionSupport {
      * @return Struts outcome.
      */
     public String downloadResultList() throws Exception {
+        FileInputUtil fileInputUtil = new FileInputUtil();
+
         // Convert selected maniple into fields of year and field of study
         FieldOfStudy fieldOfStudy = manipleService.returnFieldOfStudy(maniple);
         Integer year = manipleService.returnYear(maniple);
@@ -74,11 +77,7 @@ public class ManipleAction extends ActionSupport {
 
         // Try to export excel workbook
         try {
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            wb.write(baos);
-            setFileInputStream(new ByteArrayInputStream(baos.toByteArray()));
-
+            setFileInputStream(fileInputUtil.createFileInputStream(wb));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -82,6 +82,12 @@ public abstract class Person {
     @Column(nullable = false)
     private Integer postalCode;
 
+    /**
+     * The stored file
+     */
+    @OneToOne
+    private Document document;
+
     public Long getId() {
         return id;
     }
@@ -184,5 +190,13 @@ public abstract class Person {
 
     public void setPostalCode(Integer postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
     }
 }

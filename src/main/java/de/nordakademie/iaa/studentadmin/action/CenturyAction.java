@@ -2,13 +2,10 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Century;
-import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
-import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
+import de.nordakademie.iaa.studentadmin.utilities.*;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
-import de.nordakademie.iaa.studentadmin.utilities.ExcelCreator;
-import de.nordakademie.iaa.studentadmin.utilities.Validator;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
@@ -83,6 +80,8 @@ public class CenturyAction extends ActionSupport {
      * @return Struts outcome.
      */
     public String downloadCenturyList() throws Exception {
+        FileInputUtil fileInputUtil = new FileInputUtil();
+
         // Load Century by identifier (identifier as string)
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century centuryTemp = centuryService.loadCentury(centuryId);
@@ -98,9 +97,7 @@ public class CenturyAction extends ActionSupport {
 
         // try to export the created workbook
         try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            wb.write(baos);
-            setFileInputStream(new ByteArrayInputStream(baos.toByteArray()));
+            setFileInputStream(fileInputUtil.createFileInputStream(wb));
         } catch (Exception e) {
             e.printStackTrace();
         }

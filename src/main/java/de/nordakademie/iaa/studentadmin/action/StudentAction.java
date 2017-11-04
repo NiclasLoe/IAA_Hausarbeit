@@ -175,6 +175,12 @@ public class StudentAction extends ActionSupport implements Preparable {
         return SUCCESS;
     }
 
+    public String deleteDocument() throws Exception {
+        Student studentTemp = studentService.loadStudent(student.getId());
+        studentTemp.setDocument(null);
+        studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+        return SUCCESS;
+    }
 
     /**
      * Save new student.
@@ -299,5 +305,6 @@ public class StudentAction extends ActionSupport implements Preparable {
     public void setCenturyString(String centuryString) {
         this.centuryString = centuryString;
     }
+
 
 }

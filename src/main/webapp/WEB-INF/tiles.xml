@@ -120,5 +120,9 @@
         <put-attribute name="content" value="/tiles/content/errorPage.jsp"/>
     </definition>
 
+    <definition name="documentUploadStudent" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerDocumentUpload.jsp"/>
+        <put-attribute name="content" value="/tiles/content/documentUploadStudent.jsp"/>
+    </definition>
 
 </tiles-definitions>

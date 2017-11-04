@@ -1,5 +1,6 @@
 package de.nordakademie.iaa.studentadmin.model;
 
+import de.nordakademie.iaa.studentadmin.utilities.FileConverterUtil;
 import sun.misc.BASE64Encoder;
 
 import javax.persistence.*;
@@ -32,11 +33,8 @@ public class ProfilePicture {
     }
 
     public String getImageString() {
-        BASE64Encoder base64Encoder = new BASE64Encoder();
-        StringBuilder imageString = new StringBuilder();
-        imageString.append("data:image/*;base64,");
-        imageString.append(base64Encoder.encode(image));
-        return imageString.toString();
+        FileConverterUtil fileConverterUtil = new FileConverterUtil();
+        return fileConverterUtil.byteToString(image, "image/*");
     }
 
     public void setImageString(String imageString) {

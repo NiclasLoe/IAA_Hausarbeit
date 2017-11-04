@@ -37,4 +37,6 @@ public interface StudentService {
     List<Student> listStudentsByCompany(Company companyTemp);
 
     void addProfilePic(Student student, ProfilePicture profilePicture);
+
+    void addDocument(Student student, Document documentTemp);
 }

@@ -13,6 +13,9 @@
         <s:hidden name="student.profilePicture.id"/>
         <s:submit key="button.deleteProfilePic" action="deletePicture" cssClass="submitButton"/>
     </s:if>
+    <s:if test="student.document != null">
+        <s:hidden name="student.document.id"/>
+    </s:if>
     <s:set var="centuryString"
            value="%{student.century.year + student.century.letterCode + student.century.fieldOfStudy}"/>
     <s:hidden name="student.company.id"/>
@@ -72,6 +75,11 @@
         <s:textfield key="studentForm.studentId" value="%{student.studentId}"
                      cssClass="textInput" disabled="true"/>
         <tr/>
+        <s:submit key="button.addDocument" action="uploadStudentDocument" cssClass="submitButton"/>
+        <s:if test="student.document != null">
+            <s:submit key="button.downloadDocument" action="downloadStudentDocument" cssClass="submitButton"/>
+            <s:submit key="button.addDocument" action="deleteStudentDocument" cssClass="submitButton"/>
+        </s:if>
     </table>
     <s:submit key="button.saveStudent" action="saveStudent" cssClass="submitButton"/>
     <s:submit key="button.cancel" action="cancelStudent" cssClass="submitButton"/>

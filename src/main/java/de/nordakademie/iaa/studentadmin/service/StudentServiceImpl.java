@@ -102,6 +102,12 @@ public class StudentServiceImpl implements StudentService {
         studentDAO.saveStudent(student);
     }
 
+    @Override
+    public void addDocument(Student student, Document document) {
+        student.setDocument(document);
+        studentDAO.saveStudent(student);
+    }
+
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }
