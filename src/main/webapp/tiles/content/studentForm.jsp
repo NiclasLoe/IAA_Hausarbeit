@@ -9,6 +9,7 @@
     <s:hidden name="student.username"/>
     <s:submit key="button.addPicture" action="uploadPicture" cssClass="submitButton"/>
     <s:set var="profilePic" value="%{student.profilePicture.imageString}"/>
+    <s:set var="documentName" value="%{student.document.fileName}"/>
     <s:if test="student.profilePicture != null">
         <s:hidden name="student.profilePicture.id"/>
         <s:submit key="button.deleteProfilePic" action="deletePicture" cssClass="submitButton"/>
@@ -54,7 +55,6 @@
         <s:textfield key="student.houseNumber" cssClass="textInput"/>
         <s:textfield key="student.postalCode" cssClass="textInput"/>
         <s:textfield key="student.city" cssClass="textInput"/>
-        <tr/>
         <tr class="trSubHeader">
             <td>
                 <s:text name="student.NAKInformation"/>
@@ -74,11 +74,16 @@
                      cssClass="textInput" disabled="true"/>
         <s:textfield key="studentForm.studentId" value="%{student.studentId}"
                      cssClass="textInput" disabled="true"/>
-        <tr/>
         <s:submit key="button.addDocument" action="uploadStudentDocument" cssClass="submitButton"/>
         <s:if test="student.document != null">
-            <s:submit key="button.downloadDocument" action="downloadStudentDocument" cssClass="submitButton"/>
-            <s:submit key="button.deleteDocument" action="deleteStudentDocument" cssClass="submitButton"/>
+        <tr>
+            <td>
+                <s:text name="person.attachedDocument" />
+                <s:text name="%{documentName}" />
+            </td>
+        </tr>
+        <s:submit key="button.downloadDocument"  action="downloadStudentDocument" cssClass="submitButton"/>
+        <s:submit key="button.deleteDocument" action="deleteStudentDocument" cssClass="submitButton"/>
         </s:if>
     </table>
     <s:submit key="button.saveStudent" action="saveStudent" cssClass="submitButton"/>
