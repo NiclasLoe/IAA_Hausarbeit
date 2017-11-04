@@ -78,7 +78,7 @@
         <s:submit key="button.addDocument" action="uploadStudentDocument" cssClass="submitButton"/>
         <s:if test="student.document != null">
             <s:submit key="button.downloadDocument" action="downloadStudentDocument" cssClass="submitButton"/>
-            <s:submit key="button.addDocument" action="deleteStudentDocument" cssClass="submitButton"/>
+            <s:submit key="button.deleteDocument" action="deleteStudentDocument" cssClass="submitButton"/>
         </s:if>
     </table>
     <s:submit key="button.saveStudent" action="saveStudent" cssClass="submitButton"/>

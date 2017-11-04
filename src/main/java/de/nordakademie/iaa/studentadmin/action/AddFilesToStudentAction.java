@@ -8,6 +8,7 @@ import de.nordakademie.iaa.studentadmin.service.DocumentService;
 import de.nordakademie.iaa.studentadmin.service.ProfilePictureService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.FileConverterUtil;
+import de.nordakademie.iaa.studentadmin.utilities.Validator;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import java.io.File;
@@ -46,6 +47,28 @@ public class AddFilesToStudentAction extends ActionSupport {
      * The preferred file name.
       */
     private String selectedFileName;
+
+    /**
+     * Method to ensure a profile picture has been selected before it can be uploaded.
+     */
+    public void validateAddProfilePictureToStudent() {
+        if (fileFileName == null) {
+            addFieldError("file", getText("error.selectPicture"));
+        }
+    }
+
+    /**
+     * Method to ensure a document has been selected before it can be uploaded and the file name is not empty.
+     */
+    public void validateAddDocumentToStudent() {
+        if (fileFileName == null) {
+            addFieldError("file", getText("error.selectDocument"));
+        }
+
+        if (Validator.isStringEmpty(selectedFileName)) {
+            addFieldError("selectedFileName", getText("error.documentName"));
+        }
+    }
 
     /**
      * Method to add a profile pic to a student.
@@ -99,11 +122,11 @@ public class AddFilesToStudentAction extends ActionSupport {
 
             byte fileContent[] = fileConverterUtil.contentInByte(fileToCreate);
 
-            // Save profile picture to database
+            // Save document to database
             Long documentId = documentService.saveNewDocument(fileContent, selectedFileName);
             Document documentTemp = documentService.loadDocument(documentId);
 
-            // Add profile picture to student
+            // Add document to student
             studentService.addDocument(student, documentTemp);
         } catch (IOException e) {
             e.printStackTrace();
