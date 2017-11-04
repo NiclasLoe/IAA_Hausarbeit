@@ -127,6 +127,9 @@ public class StudentAction extends ActionSupport implements Preparable {
                 "student.city", getText("error.city"));
         validator.fieldValidated(Validator.isStringEmpty(centuryString),
                 "centuryString", getText("error.centuryString"));
+
+        Student tempStudent = studentService.loadStudent(student.getId());
+        student.setProfilePicture(tempStudent.getProfilePicture());
     }
 
     /**
