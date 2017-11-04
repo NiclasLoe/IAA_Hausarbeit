@@ -5,6 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <constant name="struts.multipart.maxSize" value="100000000" />
     <package name="default" extends="struts-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true"/>
@@ -259,7 +260,7 @@
 
         <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddProfilePictureAction" method="addProfilePictureToStudent">
             <interceptor-ref name="fileUpload">
-                <param name="maxSize">10000000</param>
+                <param name="maxSize">20000000</param>
                 <param name="allowedTypes">
                     image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
                 </param>
@@ -267,7 +268,7 @@
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="success" type="redirectAction">showStudentList</result>
             <result name="input">profilePictureUpload</result>
-            <result name="error">errorPage</result>
+            <result name="error">profilePictureUpload</result>
         </action>
 
         <action name="uploadPicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudentForUpload">
