@@ -130,6 +130,7 @@ public class StudentAction extends ActionSupport implements Preparable {
 
         Student tempStudent = studentService.loadStudent(student.getId());
         student.setProfilePicture(tempStudent.getProfilePicture());
+        student.setDocument(tempStudent.getDocument());
     }
 
     /**
@@ -148,7 +149,6 @@ public class StudentAction extends ActionSupport implements Preparable {
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
         Company company = null;
-        // TODO: If company null, create new one.
         if (companyId != null) {
             company = companyService.loadCompany(companyId);
         }

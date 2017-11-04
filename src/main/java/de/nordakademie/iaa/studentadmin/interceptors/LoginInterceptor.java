@@ -14,7 +14,7 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 public class LoginInterceptor extends AbstractInterceptor {
 
     /**
-     * TODO
+     * Checks if a our current session has a valid loginId set. If not, return global login action.
      *
      * @param invocation
      * @return Struts outcome.
