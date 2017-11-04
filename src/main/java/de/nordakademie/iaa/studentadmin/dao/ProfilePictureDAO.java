@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.InputStream;
 
 @Component
 public class ProfilePictureDAO {
@@ -17,15 +18,20 @@ public class ProfilePictureDAO {
      *
      * @param profilePicture The profile picture to be saved.
      */
-    public void save(ProfilePicture profilePicture) {
+    public Long save(ProfilePicture profilePicture) {
         if (profilePicture.getId() == null) {
             entityManager.persist(profilePicture);
         } else {
             entityManager.merge(profilePicture);
         }
+        return profilePicture.getId();
     }
 
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
+    }
+
+    public ProfilePicture loadById(Long photoId) {
+        return entityManager.find(ProfilePicture.class, photoId);
     }
 }

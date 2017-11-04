@@ -44,29 +44,29 @@ public class ApplicantAction extends ActionSupport {
     public void validateSaveApplicant() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isNull(applicant.getTitle()),
-                "applicant.title", "error.title");
+                "applicant.title", getText("error.title"));
         validator.fieldValidated(Validator.isStringEmpty(applicant.getFirstName()),
-                "applicant.firstName", "error.firstName");
+                "applicant.firstName", getText("error.firstName"));
         validator.fieldValidated(Validator.isStringEmpty(applicant.getLastName()),
-                "applicant.lastName", "error.lastName");
+                "applicant.lastName", getText("error.lastName"));
         validator.fieldValidated(Validator.isNull(applicant.getGender()),
-                "applicant.gender", "error.gender");
+                "applicant.gender", getText("error.gender"));
         validator.fieldValidated(Validator.isValidDate(applicant.getDateOfBirth()),
-                "applicant.dateOfBirth", "error.dateOfBirth");
+                "applicant.dateOfBirth", getText("error.dateOfBirth"));
         validator.fieldValidated(Validator.isStringEmpty(applicant.getBirthplace()),
-                "applicant.birthplace", "error.birthplace");
+                "applicant.birthplace", getText("error.birthplace"));
         validator.fieldValidated(!Validator.isValidPhoneNumber(applicant.getPhoneNumber()),
-                "applicant.phoneNumber", "error.phoneNumber");
+                "applicant.phoneNumber", getText("error.phoneNumber"));
         validator.fieldValidated(!Validator.isValidEmail(applicant.getEmailAddress()),
-                "applicant.emailAddress", "error.email");
+                "applicant.emailAddress", getText("error.email"));
         validator.fieldValidated(!Validator.isValidNumber(applicant.getPostalCode()),
-                "applicant.postalCode", "error.postalCode");
+                "applicant.postalCode", getText("error.postalCode"));
         validator.fieldValidated(Validator.isStringEmpty(applicant.getStreetName()),
-                "applicant.streetName", "error.street");
+                "applicant.streetName", getText("error.street"));
         validator.fieldValidated(Validator.isStringEmpty(applicant.getHouseNumber()),
-                "applicant.houseNumber", "error.houseNumber");
+                "applicant.houseNumber", getText("error.houseNumber"));
         validator.fieldValidated(Validator.isStringEmpty(applicant.getCity()),
-                "applicant.city", "error.city");
+                "applicant.city", getText("error.city"));
     }
 
     /**

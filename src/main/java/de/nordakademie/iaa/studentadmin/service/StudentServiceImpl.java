@@ -96,6 +96,12 @@ public class StudentServiceImpl implements StudentService {
                         null, null, null, null);
     }
 
+    @Override
+    public void addProfilePic(Student student, ProfilePicture profilePicture) {
+        student.setProfilePicture(profilePicture);
+        studentDAO.saveStudent(student);
+    }
+
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }

@@ -256,21 +256,27 @@
         </action>
 
         <!--Upload files-->
-        <action name="uploadProfilePicture" class="de.nordakademie.iaa.studentadmin.action.AddProfilePictureAction" method="addProfilePictureToStudent">
-            <param name="filesPath">myfiles</param>
-            <result name="success">/UploadFileSuccess.jsp</result>
-            <result name="input">/UploadFile.jsp</result>
 
-            <interceptor-ref name="defaultStack">
-                <param name="fileUpload.maximumSize">10485760</param>
-                <param name="fileUpload.allowedTypes">text/plain,image/jpeg</param>
+        <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddProfilePictureAction" method="addProfilePictureToStudent">
+            <interceptor-ref name="fileUpload">
+                <param name="maxSize">10000000</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
+                </param>
             </interceptor-ref>
-
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success" type="redirectAction">showStudentList</result>
+            <result name="input">profilePictureUpload</result>
+            <result name="error">errorPage</result>
         </action>
 
         <action name="uploadPicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudentForUpload">
             <result name="input">studentForm</result>
             <result>profilePictureUpload</result>
+        </action>
+
+        <action name="deletePicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteProfilePicture">
+            <result type="redirectAction">showStudentList</result>
         </action>
     </package>
 </struts>

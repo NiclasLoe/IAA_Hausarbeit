@@ -85,12 +85,12 @@ public class FilterAction extends ActionSupport implements Preparable {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         if (selectedStudentId != null && selectedStudentId.length() > 0) {
             validator.fieldValidated(!Validator.isValidNumber(selectedStudentId),
-                    "selectedStudentId", "error.studentId");
+                    "selectedStudentId", getText("error.studentId"));
         }
 
         if (selectedYear != null && selectedYear.length() > 0) {
             validator.fieldValidated(!Validator.isValidNumber(selectedYear),
-                    "selectedYear", "error.year");
+                    "selectedYear", getText("error.year"));
         }
     }
 

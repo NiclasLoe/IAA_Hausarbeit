@@ -35,4 +35,6 @@ public interface StudentService {
                                           FieldOfStudy selectedFieldOfStudy, String selectedYear);
 
     List<Student> listStudentsByCompany(Company companyTemp);
+
+    void addProfilePic(Student student, ProfilePicture profilePicture);
 }

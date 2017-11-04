@@ -45,7 +45,7 @@ public class Validator {
     }
 
     public static boolean isValidDate(Date date) {
-        if (date != null && date.after(new Date())) {
+        if (date != null && date.before(new Date())) {
             return false;
         }
 

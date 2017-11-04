@@ -59,25 +59,25 @@ public class CompanyAction extends ActionSupport {
     public void validateSaveCompany() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isStringEmpty(company.getCompanyName1()),
-                "company.companyName1", "error.companyName");
+                "company.companyName1", getText("error.companyName"));
         validator.fieldValidated(Validator.isStringEmpty(company.getShortName()),
-                "company.shortName", "error.shortName");
+                "company.shortName", getText("error.shortName"));
         validator.fieldValidated(Validator.isStringEmpty(company.getContactPerson()),
-                "company.contactPerson", "error.contactPerson");
+                "company.contactPerson", getText("error.contactPerson"));
         validator.fieldValidated(!Validator.isValidPhoneNumber(company.getPhoneNumber()),
-                "company.phoneNumber", "error.phoneNumber");
+                "company.phoneNumber", getText("error.phoneNumber"));
         validator.fieldValidated(!Validator.isValidPhoneNumber(company.getFaxNumber()),
-                "company.faxNumber", "error.faxNumber");
+                "company.faxNumber", getText("error.faxNumber"));
         validator.fieldValidated(!Validator.isValidEmail(company.getMailAddress()),
-                "company.mailAddress", "error.mail");
+                "company.mailAddress", getText("error.mail"));
         validator.fieldValidated(!Validator.isValidNumber(company.getPostalCode()),
-                "company.postalCode", "error.postalCode");
+                "company.postalCode", getText("error.postalCode"));
         validator.fieldValidated(Validator.isStringEmpty(company.getStreetName()),
-                "company.streetName", "error.street");
+                "company.streetName", getText("error.street"));
         validator.fieldValidated(Validator.isStringEmpty(company.getHouseNumber()),
-                "company.houseNumber", "error.houseNumber");
+                "company.houseNumber", getText("error.houseNumber"));
         validator.fieldValidated(Validator.isStringEmpty(company.getCity()),
-                "company.city", "error.city");
+                "company.city", getText("error.city"));
     }
 
     /**

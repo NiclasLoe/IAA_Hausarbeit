@@ -1,0 +1,25 @@
+package de.nordakademie.iaa.studentadmin.service;
+
+import de.nordakademie.iaa.studentadmin.dao.ProfilePictureDAO;
+import de.nordakademie.iaa.studentadmin.model.ProfilePicture;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class ProfilePictureServiceImpl implements ProfilePictureService {
+
+    @Autowired
+    private ProfilePictureDAO profilePictureDAO;
+
+    @Override
+    public Long saveImage(ProfilePicture profilePicture) {
+        return profilePictureDAO.save(profilePicture);
+    }
+
+    @Override
+    public ProfilePicture loadImage(Long photoId) {
+        return profilePictureDAO.loadById(photoId);
+    }
+}
+

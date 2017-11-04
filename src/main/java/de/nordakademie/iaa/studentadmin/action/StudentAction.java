@@ -11,6 +11,7 @@ import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
+import sun.misc.BASE64Encoder;
 
 import java.util.List;
 
@@ -67,6 +68,11 @@ public class StudentAction extends ActionSupport implements Preparable {
         }
     }
 
+    /**
+     * Load student for upload preparation.
+     *
+     * @return Struts outcome.
+     */
     public String loadStudentForUpload() {
         student = studentService.loadStudent(student.getId());
         return SUCCESS;
@@ -96,31 +102,31 @@ public class StudentAction extends ActionSupport implements Preparable {
     public void validateSaveStudent() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isNull(student.getTitle()),
-                "student.title", "error.title");
+                "student.title", getText("error.title"));
         validator.fieldValidated(Validator.isStringEmpty(student.getFirstName()),
-                "student.firstName", "error.firstName");
+                "student.firstName", getText("error.firstName"));
         validator.fieldValidated(Validator.isStringEmpty(student.getLastName()),
-                "student.lastName", "error.lastName");
+                "student.lastName", getText("error.lastName"));
         validator.fieldValidated(Validator.isNull(student.getGender()),
-                "student.gender", "error.gender");
+                "student.gender", getText("error.gender"));
         validator.fieldValidated(Validator.isValidDate(student.getDateOfBirth()),
-                "student.dateOfBirth", "error.date");
+                "student.dateOfBirth", getText("error.date"));
         validator.fieldValidated(Validator.isStringEmpty(student.getBirthplace()),
-                "student.birthplace", "error.birthplace");
+                "student.birthplace", getText("error.birthplace"));
         validator.fieldValidated(!Validator.isValidPhoneNumber(student.getPhoneNumber()),
-                "student.phoneNumber", "error.phoneNumber");
+                "student.phoneNumber", getText("error.phoneNumber"));
         validator.fieldValidated(!Validator.isValidEmail(student.getEmailAddress()),
-                "student.emailAddress", "error.mail");
+                "student.emailAddress", getText("error.mail"));
         validator.fieldValidated(!Validator.isValidNumber(student.getPostalCode()),
-                "student.postalCode", "error.postalCode");
+                "student.postalCode", getText("error.postalCode"));
         validator.fieldValidated(Validator.isStringEmpty(student.getStreetName()),
-                "student.streetName", "error.streetName");
+                "student.streetName", getText("error.streetName"));
         validator.fieldValidated(Validator.isStringEmpty(student.getHouseNumber()),
-                "student.houseNumber", "error.houseNumber");
+                "student.houseNumber", getText("error.houseNumber"));
         validator.fieldValidated(Validator.isStringEmpty(student.getCity()),
-                "student.city", "error.city");
+                "student.city", getText("error.city"));
         validator.fieldValidated(Validator.isStringEmpty(centuryString),
-                "centuryString", "error.centuryString");
+                "centuryString", getText("error.centuryString"));
     }
 
     /**
@@ -158,6 +164,14 @@ public class StudentAction extends ActionSupport implements Preparable {
         student = studentService.loadStudent(studentId);
         return SUCCESS;
     }
+
+    public String deleteProfilePicture() {
+        Student studentTemp = studentService.loadStudent(student.getId());
+        studentTemp.setProfilePicture(null);
+        studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+        return SUCCESS;
+    }
+
 
     /**
      * Save new student.
@@ -282,4 +296,5 @@ public class StudentAction extends ActionSupport implements Preparable {
     public void setCenturyString(String centuryString) {
         this.centuryString = centuryString;
     }
+
 }

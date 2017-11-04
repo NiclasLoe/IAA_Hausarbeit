@@ -115,5 +115,10 @@
         <put-attribute name="header" value="/tiles/headers/headerPictureUpload.jsp"/>
         <put-attribute name="content" value="/tiles/content/profilePictureUpload.jsp"/>
     </definition>
+    <definition name="errorPage" extends="mainTemplate">
+        <put-attribute name="header" value="/tiles/headers/headerPictureUpload.jsp"/>
+        <put-attribute name="content" value="/tiles/content/errorPage.jsp"/>
+    </definition>
+
 
 </tiles-definitions>

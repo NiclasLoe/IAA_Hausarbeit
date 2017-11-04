@@ -8,7 +8,18 @@
     <s:hidden name="student.userEmail"/>
     <s:hidden name="student.username"/>
     <s:submit key="button.addPicture" action="uploadPicture" cssClass="submitButton"/>
+    <s:set var="profilePic" value="%{student.profilePicture.imageString}"/>
+    <s:if test="student.profilePicture != null">
+        <s:hidden name="student.profilePicture.id"/>
+        <s:submit key="button.deleteProfilePic" action="deletePicture" cssClass="submitButton"/>
+    </s:if>
+    <s:set var="centuryString"
+           value="%{student.century.year + student.century.letterCode + student.century.fieldOfStudy}"/>
+    <s:hidden name="student.company.id"/>
     <table>
+        <s:if test="student.profilePicture != null">
+            <img width="100" height="100" src="<s:property value="%{profilePic}" />">
+        </s:if>
         <tr class="trSubHeader">
             <td>
                 <s:text name="student.personalInformation"/>
@@ -47,14 +58,19 @@
             </td>
         </tr>
         <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
-                  cssClass="textInput" value="student.company.id" label="student.company_id" headerValue="student.pleaseSelect" headerKey=""/>
+                  cssClass="textInput" value="student.company.id" label="student.company_id"
+                  headerValue="student.pleaseSelect" headerKey=""/>
         <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
-                  listValue="centuryName" value="%{student.century.year + student.century.letterCode + student.century.fieldOfStudy}"
+                  listValue="centuryName"
+                  value="%{centuryString}"
                   cssClass="textInput" label="student.centuryId" headerValue="student.pleaseSelect" headerKey=""/>
 
-        <s:textfield key="studentForm.userMailAddress" value="%{student.userEmail}" cssClass="textInput" disabled="true"/>
-        <s:textfield key="studentForm.userName" value="%{student.username}" cssClass="textInput" disabled="true"/>
-        <s:textfield key="studentForm.studentId" value="%{student.studentId}" cssClass="textInput" disabled="true"/>
+        <s:textfield key="studentForm.userMailAddress" value="%{student.userEmail}"
+                     cssClass="textInput" disabled="true"/>
+        <s:textfield key="studentForm.userName" value="%{student.username}"
+                     cssClass="textInput" disabled="true"/>
+        <s:textfield key="studentForm.studentId" value="%{student.studentId}"
+                     cssClass="textInput" disabled="true"/>
         <tr/>
     </table>
     <s:submit key="button.saveStudent" action="saveStudent" cssClass="submitButton"/>
