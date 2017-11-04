@@ -87,5 +87,5 @@
         </s:if>
     </table>
     <s:submit key="button.saveStudent" action="saveStudent" cssClass="submitButton"/>
-    <s:submit key="button.cancel" action="cancelStudent" cssClass="submitButton"/>
+    <s:submit key="button.back" action="cancelStudent" cssClass="submitButton"/>
 </s:form>

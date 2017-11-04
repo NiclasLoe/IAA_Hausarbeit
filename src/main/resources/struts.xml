@@ -265,8 +265,8 @@
                     image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
                 </param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="success" type="redirectAction">showStudentList</result>
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <result name="success" type="chain">loadStudent</result>
             <result name="input">profilePictureUpload</result>
             <result name="error">profilePictureUpload</result>
         </action>
@@ -277,7 +277,10 @@
         </action>
 
         <action name="deletePicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteProfilePicture">
-            <result type="redirectAction">showStudentList</result>
+            <result type="redirectAction">
+                <param name="actionName">loadStudent</param>
+                <param name="studentId">${student.id}</param>
+            </result>
         </action>
 
         <action name="userDocument" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addDocumentToStudent">
@@ -287,8 +290,8 @@
                     application/pdf
                 </param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack"></interceptor-ref>
-            <result name="success" type="redirectAction">showStudentList</result>
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <result name="success" type="chain">loadStudent</result>
             <result name="input">documentUploadStudent</result>
             <result name="error">documentUploadStudent</result>
         </action>
@@ -299,7 +302,10 @@
         </action>
 
         <action name="deleteStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteDocument">
-            <result type="redirectAction">showStudentList</result>
+            <result type="redirectAction">
+                <param name="actionName">loadStudent</param>
+                <param name="studentId">${student.id}</param>
+            </result>
         </action>
     </package>
 </struts>

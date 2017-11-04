@@ -44,7 +44,6 @@
         <tr/>
     </table>
     <s:submit key="button.save" action="saveApplicant" cssClass="submitButton"/>
-
-    <s:submit key="button.cancel" action="cancelApplicant" cssClass="submitButton"/>
+    <s:submit key="button.back" action="cancelApplicant" cssClass="submitButton"/>
 </s:form>
 
