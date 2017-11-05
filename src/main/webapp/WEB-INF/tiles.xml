@@ -6,10 +6,14 @@
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-    <!-- Main template -->
+    <!-- Templates -->
     <definition name="mainTemplate" template="/template/mainTemplate.jsp">
         <put-attribute name="title" value="Nordakademie"/>
         <put-attribute name="header" value="/tiles/headers/header.jsp"/>
+    </definition>
+
+    <definition name="simpleTemplate" template="/template/simpleTemplate.jsp">
+        <put-attribute name="title" value="Nordakademie"/>
     </definition>
 
     <!-- Main Page -->
@@ -51,8 +55,7 @@
         <put-attribute name="content" value="/tiles/content/newStudentForm.jsp"/>
     </definition>
 
-    <definition name="studentForm" extends="mainTemplate">
-        <put-attribute name="header" value="/tiles/headers/headerStudentForm.jsp"/>
+    <definition name="studentForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/studentForm.jsp"/>
     </definition>
 
@@ -111,17 +114,14 @@
         <put-attribute name="content" value="/tiles/content/filterFormApplicant.jsp"/>
     </definition>
 
-    <definition name="profilePictureUpload" extends="mainTemplate">
-        <put-attribute name="header" value="/tiles/headers/headerPictureUpload.jsp"/>
+    <definition name="profilePictureUpload" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/profilePictureUpload.jsp"/>
     </definition>
-    <definition name="errorPage" extends="mainTemplate">
-        <put-attribute name="header" value="/tiles/headers/headerPictureUpload.jsp"/>
+    <definition name="errorPage" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/errorPage.jsp"/>
     </definition>
 
-    <definition name="documentUploadStudent" extends="mainTemplate">
-        <put-attribute name="header" value="/tiles/headers/headerDocumentUpload.jsp"/>
+    <definition name="documentUploadStudent" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/documentUploadStudent.jsp"/>
     </definition>
 
