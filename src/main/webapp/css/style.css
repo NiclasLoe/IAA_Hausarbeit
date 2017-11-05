@@ -1,31 +1,21 @@
 body {
-    color: #163B5B !important;
-    background-color: #E0F0FF !important;
 }
 
 .containerMarginTop {
     margin-top: 1em;
 }
 .panel-default>.panel-heading {
-    background-color: #86C6FF !important;
-    border-color: #7BC1FF !important;
+    background: linear-gradient(#002b80 0%,#003cb3 100%) !important;
+    /* Auch schick
+    background: linear-gradient(#333 0%,#444 100%); */
+    color: white !important;
 }
 .panel-default {
-    border-color: #7BC1FF !important;
-}
-
-.container {
-    color: #163B5B !important;
-}
-
-.table {
-    color: #163B5B !important;
-    border-color: #7BC1FF !important;
-    margin-bottom: 0px !important;
+    border-color: lightgray !important;
 }
 
 .notFirst:hover {
-    background-color: #C3E3FF;
+    background-color: #f2f2f2;
 }
 
 .btn:hover {
@@ -33,5 +23,5 @@ body {
 }
 
 h2 {
-    color: #163B5B !important;
+    color: white !important;
 }
