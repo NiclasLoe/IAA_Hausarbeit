@@ -1,22 +1,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
-<s:form>
-    <table>
-        <tr class="trSubHeader">
-            <td>
-                <s:text name="student.personalInformation"/>
-            </td>
-        </tr>
-        <s:textfield name="selectedFirstName" label="filter.selectedFirstName" cssClass="textInput"/>
-        <s:textfield name="selectedLastName" label="filter.selectedFirstName" cssClass="textInput"/>
-        <s:select name="selectedFieldOfStudy" label="filter.selectedFieldOfStudy"
-                  list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
-                  headerValue="student.pleaseSelect" headerKey=""/>
-
-        <tr/>
-    </table>
-
-    <s:submit key="button.applyFilter" action="applyFilterApplicant" cssClass="submitButton"/>
-    <s:submit key="button.cancel" action="cancelApplicantFilter" cssClass="submitButton"/>
-</s:form>
+<div class="container">
+    <s:form theme="bootstrap" cssClass="form-horizontal" key="filter.header">
+        <div class="panel panel-default">
+            <div class="panel-heading"><s:text name="student.personalInformation"/></div>
+            <div class="panel-body">
+                <s:textfield name="selectedFirstName" key="filter.selectedFirstName"/>
+                <s:textfield name="selectedLastName" key="filter.selectedFirstName"/>
+                <s:select name="selectedFieldOfStudy" key="filter.selectedFieldOfStudy"
+                          list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
+                          headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><s:text name="filter.applyFilterOnList"/></div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <s:submit key="button.applyFilter" action="applyFilterApplicant" cssClass="btn"/>
+                    <s:submit key="button.cancel" action="cancelApplicantFilter" cssClass="btn"/>
+                </div>
+            </div>
+        </div>
+    </s:form>
+</div>

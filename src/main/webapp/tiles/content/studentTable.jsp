@@ -7,9 +7,9 @@
         <div class="panel-body">
             <s:form theme="bootstrap">
                 <div class="form-group">
-                    <s:submit key="button.newStudent" action="addStudent" cssClass="btn" />
-                    <s:submit key="button.filterList" action="filterStudent" cssClass="btn" />
-                    <s:submit key="button.clearFilter" action="showStudentList" cssClass="btn" />
+                    <s:submit key="button.newStudent" action="addStudent" cssClass="btn"/>
+                    <s:submit key="button.filterList" action="filterStudent" cssClass="btn"/>
+                    <s:submit key="button.clearFilter" action="showStudentList" cssClass="btn"/>
                 </div>
                 <table class="table table-hover">
                     <tr>
@@ -35,6 +35,7 @@
                     <tr></tr>
                 </table>
                 <s:actionerror/>
+
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadStudent" cssClass="btn"/>
                     <s:submit key="button.exmatriculateStudent" action="exmatriculateStudent" cssClass="btn"/>

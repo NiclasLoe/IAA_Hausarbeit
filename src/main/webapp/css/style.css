@@ -1,8 +1,3 @@
 .containerMarginTop {
     margin-top: 1em;
 }
-.textfieldDisabled {
-    border: none;
-    box-shadow: none;
-    cursor: default;
-}

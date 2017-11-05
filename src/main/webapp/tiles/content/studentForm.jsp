@@ -3,22 +3,22 @@
 
 <div class="container">
     <s:form theme="bootstrap" cssClass="form-horizontal" key="student.header">
-        <s:hidden name="student.id"/>
-        <s:hidden name="student.status"/>
-        <s:hidden name="student.studentId"/>
-        <s:hidden name="student.userEmail"/>
-        <s:hidden name="student.username"/>
-        <s:set var="profilePic" value="%{student.profilePicture.imageString}"/>
-        <s:set var="documentName" value="%{student.document.fileName + student.document.suffix}"/>
+    <s:hidden name="student.id"/>
+    <s:hidden name="student.status"/>
+    <s:hidden name="student.studentId"/>
+    <s:hidden name="student.userEmail"/>
+    <s:hidden name="student.username"/>
+    <s:set var="profilePic" value="%{student.profilePicture.imageString}"/>
+    <s:set var="documentName" value="%{student.document.fileName + student.document.suffix}"/>
     <s:if test="student.profilePicture != null">
         <s:hidden name="student.profilePicture.id"/>
     </s:if>
     <s:if test="student.document != null">
         <s:hidden name="student.document.id"/>
     </s:if>
-        <s:set var="centuryString"
-               value="%{student.century.year + student.century.letterCode + student.century.fieldOfStudy}"/>
-        <s:hidden name="student.company.id"/>
+    <s:set var="centuryString"
+           value="%{student.century.year + student.century.letterCode + student.century.fieldOfStudy}"/>
+    <s:hidden name="student.company.id"/>
     <div class="panel panel-default">
         <div class="panel-heading"><s:text name="student.personalInformation"/></div>
         <div class="panel-body">
@@ -66,11 +66,11 @@
             <div class="panel-heading"><s:text name="student.NAKInformation"/></div>
             <div class="panel-body">
                 <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
-                          value="student.company.id" label="student.company_id"
+                          value="student.company.id" key="student.company_id"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" value="%{centuryString}"
-                          label="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
+                          key="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
 
                 <s:textfield key="studentForm.userMailAddress" value="%{student.userEmail}"
                              disabled="true"/>
@@ -85,7 +85,7 @@
                 <div class="panel-heading"><s:text name="person.attachedDocument"/></div>
                 <div class="panel-body">
                     <div>
-                        <s:textfield label="%{getText('person.fileName')}" value="%{documentName}" disabled="true"
+                        <s:textfield key="person.fileName" value="%{documentName}" disabled="true"
                                      cssStyle="border: none; box-shadow: none; cursor: default; background: none;"/>
                     </div>
                 </div>

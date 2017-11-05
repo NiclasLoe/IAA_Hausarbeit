@@ -1,19 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
-<s:form>
-    <table>
-        <tr class="trSubHeader">
-            <td>
-                <s:text name="century.addNewCentury"/>
-            </td>
-        </tr>
-        <s:select key="century.fieldOfStudy" list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
-                  cssClass="textInput" headerValue="student.pleaseSelect" headerKey=""/>
-        <s:textfield key="century.letterCode" cssClass="textInput"/>
-        <s:textfield key="century.year" cssClass="textInput"/>
-    </table>
-
-    <s:submit key="button.saveCentury" action="saveCentury" cssClass="submitButton"/>
-    <s:submit key="button.goBack" action="cancelCentury" cssClass="submitButton"/>
-</s:form>
+<div class="container">
+    <s:form theme="bootstrap" cssClass="form-horizontal" key="century.header">
+        <div class="panel panel-default">
+            <div class="panel-heading"><s:text name="century.addNewCentury"/></div>
+            <div class="panel-body">
+                <s:select key="century.fieldOfStudy"
+                          list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
+                          headerValue="student.pleaseSelect" headerKey=""/>
+                <s:textfield key="century.letterCode"/>
+                <s:textfield key="century.year"/>
+            </div>
+        </div>
+        <s:submit key="button.saveCentury" action="saveCentury" cssClass="btn"/>
+        <s:submit key="button.goBack" action="cancelCentury" cssClass="btn"/>
+    </s:form>
+</div>
