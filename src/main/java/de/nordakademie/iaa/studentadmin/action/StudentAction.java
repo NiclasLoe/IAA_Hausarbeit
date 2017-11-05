@@ -168,6 +168,11 @@ public class StudentAction extends ActionSupport implements Preparable {
         return SUCCESS;
     }
 
+    /**
+     * Delete the profile picture.
+     *
+     * @return Struts outcome.
+     */
     public String deleteProfilePicture() {
         Student studentTemp = studentService.loadStudent(student.getId());
         studentTemp.setProfilePicture(null);
@@ -175,6 +180,11 @@ public class StudentAction extends ActionSupport implements Preparable {
         return SUCCESS;
     }
 
+    /**
+     * Delete the document.
+     *
+     * @return Struts outcome.
+     */
     public String deleteDocument() throws Exception {
         Student studentTemp = studentService.loadStudent(student.getId());
         studentTemp.setDocument(null);

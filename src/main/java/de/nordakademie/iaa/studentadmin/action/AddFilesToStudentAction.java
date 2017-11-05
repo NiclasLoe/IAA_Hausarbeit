@@ -123,7 +123,7 @@ public class AddFilesToStudentAction extends ActionSupport {
             byte fileContent[] = fileConverterUtil.contentInByte(fileToCreate);
 
             // Save document to database
-            Long documentId = documentService.saveNewDocument(fileContent, selectedFileName);
+            Long documentId = documentService.saveNewDocument(fileContent, selectedFileName, fileContentType);
             Document documentTemp = documentService.loadDocument(documentId);
 
             // Add document to student

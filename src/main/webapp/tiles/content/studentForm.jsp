@@ -9,7 +9,7 @@
     <s:hidden name="student.username"/>
     <s:submit key="button.addPicture" action="uploadPicture" cssClass="submitButton"/>
     <s:set var="profilePic" value="%{student.profilePicture.imageString}"/>
-    <s:set var="documentName" value="%{student.document.fileName}"/>
+    <s:set var="documentName" value="%{student.document.fileName + student.document.suffix}"/>
     <s:if test="student.profilePicture != null">
         <s:hidden name="student.profilePicture.id"/>
         <s:submit key="button.deleteProfilePic" action="deletePicture" cssClass="submitButton"/>

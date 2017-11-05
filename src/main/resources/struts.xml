@@ -287,7 +287,7 @@
             <interceptor-ref name="fileUpload">
                 <param name="maxSize">20000000</param>
                 <param name="allowedTypes">
-                    application/pdf
+                    application/pdf, application/zip
                 </param>
             </interceptor-ref>
             <interceptor-ref name="loginStack"></interceptor-ref>
@@ -307,5 +307,17 @@
                 <param name="studentId">${student.id}</param>
             </result>
         </action>
+
+
+        <action name="downloadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction" method="downloadStudentDocument">
+            <result name="input" type="chain">studentForm</result>
+            <result name="success" type="stream">
+                <param name="contentType">${dataType}</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+
     </package>
 </struts>

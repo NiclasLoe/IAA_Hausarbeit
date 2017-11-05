@@ -11,10 +11,11 @@ public class DocumentServiceImpl implements DocumentService {
     private DocumentDAO documentDAO;
 
     @Override
-    public Long saveNewDocument(byte[] fileContent, String fileName) {
+    public Long saveNewDocument(byte[] fileContent, String fileName, String dataType) {
         Document document = new Document();
         document.setFile(fileContent);
         document.setFileName(fileName);
+        document.setDataType(dataType);
         return documentDAO.save(document);
     }
 

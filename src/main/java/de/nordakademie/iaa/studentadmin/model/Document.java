@@ -13,6 +13,10 @@ public class Document {
     private byte[] file;
     @Column(nullable = false)
     private String fileName;
+    @Column(nullable = false)
+    private String dataType;
+    @Transient
+    private String suffix;
 
     public Long getId() {
         return id;
@@ -36,5 +40,28 @@ public class Document {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(String dataType) {
+        this.dataType = dataType;
+    }
+
+    public String getSuffix() {
+        if (dataType.equals("application/pdf")) {
+            return ".pdf";
+        } else {
+            if (dataType.equals("application/zip")) {
+                return ".zip";
+            }
+        }
+        return "";
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
     }
 }

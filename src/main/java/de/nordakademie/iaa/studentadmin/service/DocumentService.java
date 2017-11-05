@@ -6,5 +6,5 @@ public interface DocumentService {
 
     Document loadDocument(Long documentId);
 
-    Long saveNewDocument(byte[] fileContent, String fileName);
+    Long saveNewDocument(byte[] fileContent, String fileName, String dataType);
 }
