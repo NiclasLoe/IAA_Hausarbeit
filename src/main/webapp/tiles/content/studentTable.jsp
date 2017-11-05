@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <div class="container containerMarginTop">
@@ -11,7 +11,7 @@
                     <s:submit key="button.filterList" action="filterStudent" cssClass="btn"/>
                     <s:submit key="button.clearFilter" action="showStudentList" cssClass="btn"/>
                 </div>
-                <table class="table table-hover">
+                <table class="table">
                     <tr>
                         <th></th>
                         <th><s:text name="tableView.StudentId"/></th>
@@ -22,7 +22,7 @@
                         <th><s:text name="tableView.status"/></th>
                     </tr>
                     <s:iterator value="studentList">
-                        <tr>
+                        <tr class="notFirst">
                             <td><s:radio name="studentId" list="#{id:''}" theme="simple" onselect=""/></td>
                             <td class="tdApplicantView"><s:property value="studentId"/></td>
                             <td class="tdApplicantView"><s:property value="lastName"/></td>

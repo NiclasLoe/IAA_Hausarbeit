@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container containerMarginTop">
@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <s:submit key="button.addCentury" action="addCentury" cssClass="btn"/>
                 </div>
-                <table class="table table-hover">
+                <table class="table">
                     <tr>
                         <td></td>
                         <th><s:text name="tableView.fieldOfStudy"/></th>
@@ -18,7 +18,7 @@
                         <th><s:text name="tableView.centuryName"/></th>
                     </tr>
                     <s:iterator value="centuryList">
-                        <tr>
+                        <tr class="notFirst">
                             <td><s:radio name="centuryString"
                                          list="#{year+letterCode+fieldOfStudy:''}" theme="simple" onselect=""/></td>
                             <td class="tdApplicantView"><s:property value="fieldOfStudy"/></td>

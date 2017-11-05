@@ -1,3 +1,36 @@
+body {
+    color: #163B5B !important;
+}
+
 .containerMarginTop {
     margin-top: 1em;
+}
+.panel-default>.panel-heading {
+    background-color: #86C6FF !important;
+    border-color: #7BC1FF !important;
+}
+.panel-default {
+    border-color: #7BC1FF !important;
+}
+
+.container {
+    color: #163B5B !important;
+}
+
+.table {
+    color: #163B5B !important;
+    border-color: #7BC1FF !important;
+    margin-bottom: 0px !important;
+}
+
+.notFirst:hover {
+    background-color: #C3E3FF;
+}
+
+.btn:hover {
+    color: #2775BA !important;
+}
+
+h2 {
+    color: #163B5B !important;
 }

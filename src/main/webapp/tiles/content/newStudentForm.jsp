@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container">
@@ -7,21 +7,17 @@
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="student.personalInformation"/></div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <s:select key="student.title" list="@de.nordakademie.iaa.studentadmin.utilities.Title@values()"
-                                  cssClass="textInput" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
-                        <s:textfield key="student.firstName" cssClass="textInput"/>
-                        <s:textfield key="student.lastName" cssClass="textInput"/>
-                        <s:select key="student.gender"
-                                  list="@de.nordakademie.iaa.studentadmin.utilities.Gender@values()"
-                                  headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
-                        <s:textfield key="student.dateOfBirth" type="date"
-                                     cssClass="textInput"
-                                     value="%{dateOfBirthId}"/>
-                        <s:textfield key="student.birthplace" cssClass="textInput"/>
-                    </div>
-                </div>
+                <s:select key="student.title" list="@de.nordakademie.iaa.studentadmin.utilities.Title@values()"
+                          cssClass="textInput" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
+                <s:textfield key="student.firstName" cssClass="textInput"/>
+                <s:textfield key="student.lastName" cssClass="textInput"/>
+                <s:select key="student.gender"
+                          list="@de.nordakademie.iaa.studentadmin.utilities.Gender@values()"
+                          headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
+                <s:textfield key="student.dateOfBirth" type="date"
+                             cssClass="textInput"
+                             value="%{dateOfBirthId}"/>
+                <s:textfield key="student.birthplace" cssClass="textInput"/>
             </div>
         </div>
         <div class="panel panel-default">
