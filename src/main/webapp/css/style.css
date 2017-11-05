@@ -1,27 +1,33 @@
-body {
-}
-
 .containerMarginTop {
     margin-top: 1em;
 }
 .panel-default>.panel-heading {
-    background: linear-gradient(#002b80 0%,#003cb3 100%) !important;
-    /* Auch schick
-    background: linear-gradient(#333 0%,#444 100%); */
+   background: linear-gradient(#03A9F4 100%, #0288d1 0%) !important;
+    /*background-color: #03A9F4 !important;
+    background: linear-gradient(#333 0%,#444 100%);*/
     color: white !important;
 }
 .panel-default {
-    border-color: lightgray !important;
+    border-color: #BDBDBD !important;
+    color: #212121 !important;
 }
 
 .notFirst:hover {
-    background-color: #f2f2f2;
+    background-color: #B3E5FC;
 }
 
 .btn:hover {
-    color: #2775BA !important;
+    color: #757575 !important;
 }
 
 h2 {
     color: white !important;
+}
+
+table {
+    color: #212121 !important;
+}
+
+.container {
+    cursor: default;
 }
