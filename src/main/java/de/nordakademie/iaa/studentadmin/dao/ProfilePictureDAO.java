@@ -40,7 +40,7 @@ public class ProfilePictureDAO {
     }
 
     /**
-     * Delete a profile picutre from the database.
+     * Delete a profile picture from the database.
      *
      * @param profilePicture The given profile picture.
      */
