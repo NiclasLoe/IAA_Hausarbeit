@@ -28,7 +28,7 @@ public class ShowApplicantListAction implements Action {
      * @return Struts outcome.
      */
     @Override
-    public String execute() throws Exception {
+    public String execute() {
         personList = applicantService.listApplicants();
         return SUCCESS;
     }

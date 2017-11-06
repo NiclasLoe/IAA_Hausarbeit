@@ -28,7 +28,7 @@ public class ShowCenturyListAction implements Action {
      * @return Struts outcome.
      */
     @Override
-    public String execute() throws Exception {
+    public String execute() {
         centuryList = centuryService.listCenturies();
         return SUCCESS;
     }

@@ -2,14 +2,11 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
-import de.nordakademie.iaa.studentadmin.model.Century;
+import de.nordakademie.iaa.studentadmin.model.*;
+import de.nordakademie.iaa.studentadmin.service.*;
 import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
-import de.nordakademie.iaa.studentadmin.model.Company;
-import de.nordakademie.iaa.studentadmin.model.Student;
-import de.nordakademie.iaa.studentadmin.service.CenturyService;
-import de.nordakademie.iaa.studentadmin.service.CompanyService;
-import de.nordakademie.iaa.studentadmin.service.StudentService;
+import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
 import java.util.List;
@@ -57,6 +54,14 @@ public class StudentAction extends ActionSupport implements Preparable {
      * The century's identifier formatted as a string.
      */
     private String centuryString;
+    /**
+     * The document service.
+     */
+    private DocumentService documentService;
+    /**
+     * The profile picture service.
+     */
+    private ProfilePictureService profilePictureService;
 
     /**
      * Validates whether a student is selected.
@@ -164,8 +169,15 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     public String deleteProfilePicture() {
         Student studentTemp = studentService.loadStudent(student.getId());
+        Long picId = studentTemp.getProfilePicture().getId();
         studentTemp.setProfilePicture(null);
         studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+        try {
+            profilePictureService.deleteImage(picId);
+        } catch (EntityNotFoundException e) {
+            addActionError(getText("error.DocumentNotFound=Document"));
+            return SUCCESS;
+        }
         return SUCCESS;
     }
 
@@ -174,10 +186,16 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String deleteDocument() throws Exception {
-        Student studentTemp = studentService.loadStudent(student.getId());
-        studentTemp.setDocument(null);
-        studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+    public String deleteDocument() {
+        try {
+            Student studentTemp = studentService.loadStudent(student.getId());
+            Long docId = studentTemp.getDocument().getId();
+            studentTemp.setDocument(null);
+            studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+            documentService.deleteDocument(docId);
+        } catch (EntityNotFoundException e) {
+            addActionError(getText("error.DocumentNotFound"));
+        }
         return SUCCESS;
     }
 
@@ -304,5 +322,11 @@ public class StudentAction extends ActionSupport implements Preparable {
         this.centuryString = centuryString;
     }
 
+    public void setDocumentService(DocumentService documentService) {
+        this.documentService = documentService;
+    }
 
+    public void setProfilePictureService(ProfilePictureService profilePictureService) {
+        this.profilePictureService = profilePictureService;
+    }
 }

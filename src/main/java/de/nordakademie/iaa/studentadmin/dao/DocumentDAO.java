@@ -33,4 +33,8 @@ public class DocumentDAO {
     public Document loadById(Long id) {
         return entityManager.find(Document.class, id);
     }
+
+    public void delete(Document document) {
+        entityManager.remove(document);
+    }
 }

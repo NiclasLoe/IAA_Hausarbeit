@@ -14,7 +14,5 @@ public interface CenturyService {
 
     Century loadCentury(CenturyId centuryId);
 
-    List<Century> listAll();
-
-    void saveCentury(Century century) throws EntityAlreadyPresentException;
+    void saveCentury(Century century);
 }

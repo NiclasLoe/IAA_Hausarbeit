@@ -62,7 +62,7 @@ public class DownloadAction extends ActionSupport {
      *
      * @return Struts outcome.
      */
-    public String downloadApplicantDocument() throws Exception {
+    public String downloadApplicantDocument() {
         Applicant applicantTemp = applicantService.loadApplicant(applicant.getId());
         Document documentTemp = documentService.loadDocument(applicantTemp.getDocument().getId());
         setInputStream(createByteArrayInputStream(documentTemp));

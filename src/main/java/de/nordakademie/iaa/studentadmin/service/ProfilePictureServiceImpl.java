@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.ProfilePictureDAO;
 import de.nordakademie.iaa.studentadmin.model.ProfilePicture;
+import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,16 @@ public class ProfilePictureServiceImpl implements ProfilePictureService {
     @Override
     public ProfilePicture loadImage(Long photoId) {
         return profilePictureDAO.loadById(photoId);
+    }
+
+    @Override
+    public void deleteImage(Long picId) throws EntityNotFoundException {
+        ProfilePicture profilePicture = loadImage(picId);
+        if (profilePicture == null) {
+            throw new EntityNotFoundException();
+        } else {
+            profilePictureDAO.delete(profilePicture);
+        }
     }
 }
 

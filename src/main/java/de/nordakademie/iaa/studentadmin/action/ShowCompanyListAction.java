@@ -18,7 +18,7 @@ public class ShowCompanyListAction implements Action {
     private List<Company> companyList;
 
     @Override
-    public String execute() throws Exception {
+    public String execute() {
         companyList = companyService.listCompanies();
         return SUCCESS;
     }

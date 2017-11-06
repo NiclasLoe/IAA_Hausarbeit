@@ -56,7 +56,7 @@ public class ManipleAction extends ActionSupport {
      *
      * @return Struts outcome.
      */
-    public String downloadResultList() throws Exception {
+    public String downloadResultList() {
         FileInputUtil fileInputUtil = new FileInputUtil();
 
         // Convert selected maniple into fields of year and field of study
@@ -69,15 +69,14 @@ public class ManipleAction extends ActionSupport {
         ArrayList<Student> studentList = new ArrayList<>();
         studentList.addAll(students);
 
-        // Create result list
-        ExcelCreator excelCreator = new ExcelCreator();
-        HSSFWorkbook wb = excelCreator.createResultList(studentList, fieldOfStudyString, year);
-
-        // Try to export excel workbook
         try {
+            // Create and export result list
+            ExcelCreator excelCreator = new ExcelCreator();
+            HSSFWorkbook wb = excelCreator.createResultList(studentList, fieldOfStudyString, year);
             setFileInputStream(fileInputUtil.createFileInputStream(wb));
         } catch (Exception e) {
-            e.printStackTrace();
+            addActionError(getText("error.fileCouldNotBeCreated"));
+            return SUCCESS;
         }
 
         return SUCCESS;

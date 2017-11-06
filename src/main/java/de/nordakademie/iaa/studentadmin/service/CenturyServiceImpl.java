@@ -36,12 +36,7 @@ public class CenturyServiceImpl implements CenturyService {
     }
 
     @Override
-    public List<Century> listAll() {
-        return centuryDAO.listAll();
-    }
-
-    @Override
-    public void saveCentury(Century century) throws EntityAlreadyPresentException {
+    public void saveCentury(Century century) {
         centuryDAO.save(century);
     }
 

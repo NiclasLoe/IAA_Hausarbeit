@@ -7,6 +7,7 @@ import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
+import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,17 +79,22 @@ public class EnrollApplicantAction extends ActionSupport {
      *
      * @return Struts outcome.
      */
-    public String enrollApplicant() throws Exception {
-        // Load century and company
-        CenturyId centuryId = centuryService.returnId(centuryString);
-        Century century = centuryService.loadCentury(centuryId);
-        Company company = companyService.loadCompany(companyId);
+    public String enrollApplicant() {
+        try {
+            // Load century and company
+            CenturyId centuryId = centuryService.returnId(centuryString);
+            Century century = centuryService.loadCentury(centuryId);
+            Company company = companyService.loadCompany(companyId);
 
-        // Save new student and delete applicant entry
-        studentService.saveNewStudent(student, company, century);
-        Long applicantToDeleteId = applicant.getId();
-        applicantService.delete(applicantToDeleteId);
+            // Save new student and delete applicant entry
+            studentService.saveNewStudent(student, company, century);
+            Long applicantToDeleteId = applicant.getId();
+            applicantService.delete(applicantToDeleteId);
+        } catch (EntityNotFoundException e) {
+            addActionError(getText("error.ApplicantNotFound"));
+        }
         return SUCCESS;
+
     }
 
     /**

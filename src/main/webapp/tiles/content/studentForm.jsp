@@ -92,6 +92,7 @@
                 </div>
             </div>
         </s:if>
+        <s:actionerror/>
         <s:submit key="button.addPicture" action="uploadPicture" cssClass="btn"/>
         <s:if test="student.profilePicture != null">
             <s:submit key="button.deleteProfilePic" action="deletePicture" cssClass="btn"/>

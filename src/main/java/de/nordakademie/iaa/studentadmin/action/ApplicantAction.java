@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
 import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
+import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
 /**
@@ -84,7 +85,7 @@ public class ApplicantAction extends ActionSupport {
      *
      * @return Struts outcome.
      */
-    public String saveApplicant() throws Exception {
+    public String saveApplicant() {
         applicantService.save(applicant);
         return SUCCESS;
     }
@@ -94,8 +95,12 @@ public class ApplicantAction extends ActionSupport {
      *
      * @return Struts outcome
      */
-    public String deleteApplicant() throws Exception {
-        applicantService.delete(applicantId);
+    public String deleteApplicant() {
+        try {
+            applicantService.delete(applicantId);
+        } catch(EntityNotFoundException e) {
+            addActionError(getText("error.ApplicantNotFound"));
+        }
         return SUCCESS;
     }
 

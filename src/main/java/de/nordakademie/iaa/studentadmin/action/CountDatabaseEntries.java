@@ -31,7 +31,7 @@ public class CountDatabaseEntries implements Action {
      * @return Struts outcome
      */
     @Override
-    public String execute() throws Exception {
+    public String execute() {
         Long applicantCount = applicantService.countEntries();
         Long enrolledStudentCount = studentService.countEnrolledStudents();
         Long alumniCount = studentService.countAlumni();

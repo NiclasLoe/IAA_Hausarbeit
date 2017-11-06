@@ -67,7 +67,7 @@ public class CenturyAction extends ActionSupport {
      *
      * @return Struts outcome
      */
-    public String saveCentury() throws Exception {
+    public String saveCentury() {
         centuryService.saveCentury(century);
         return SUCCESS;
     }

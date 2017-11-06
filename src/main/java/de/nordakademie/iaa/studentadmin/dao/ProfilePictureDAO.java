@@ -33,4 +33,8 @@ public class ProfilePictureDAO {
     public ProfilePicture loadById(Long photoId) {
         return entityManager.find(ProfilePicture.class, photoId);
     }
+
+    public void delete(ProfilePicture profilePicture) {
+        entityManager.remove(profilePicture);
+    }
 }

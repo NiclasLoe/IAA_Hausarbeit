@@ -103,7 +103,7 @@ public class CompanyAction extends ActionSupport {
      *
      * @return Struts outcome
      */
-    public String saveCompany() throws Exception {
+    public String saveCompany() {
         companyService.save(company);
         return SUCCESS;
     }
