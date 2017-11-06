@@ -2,7 +2,6 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
-import de.nordakademie.iaa.studentadmin.utilities.EntityAlreadyPresentException;
 
 import java.util.List;
 

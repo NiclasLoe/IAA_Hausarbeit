@@ -108,7 +108,7 @@ public class FilterAction extends ActionSupport implements Preparable {
         FieldOfStudy fieldOfStudy = null;
         Company company = null;
 
-        if (selectedCenturyString != "") {
+        if (!selectedCenturyString.equals("")) {
             CenturyId centuryId = centuryService.returnId(selectedCenturyString);
             century = centuryService.loadCentury(centuryId);
         }
@@ -138,7 +138,7 @@ public class FilterAction extends ActionSupport implements Preparable {
         Company company = null;
         FieldOfStudy fieldOfStudy = null;
 
-        if (selectedCenturyString != "") {
+        if (!selectedCenturyString.equals("")) {
             CenturyId centuryId = centuryService.returnId(selectedCenturyString);
             century = centuryService.loadCentury(centuryId);
         }
@@ -262,6 +262,6 @@ public class FilterAction extends ActionSupport implements Preparable {
     }
 
     public void setPersonList(List<Applicant> applicantList) {
-        this.personList = personList;
+        this.personList = applicantList;
     }
 }

@@ -154,19 +154,19 @@ public class StudentServiceImpl implements StudentService {
         Integer year = null;
         FieldOfStudy fieldOfStudy = null;
 
-        if (selectedFirstName != "") {
+        if (!selectedFirstName.equals("")) {
             firstName = selectedFirstName;
         }
-        if (selectedLastName != "") {
+        if (!selectedLastName.equals("")) {
             lastName = selectedLastName;
         }
-        if (selectedStudentId != "") {
+        if (!selectedStudentId.equals("")) {
             studentId = Integer.parseInt(selectedStudentId);
         }
 
         if (century == null) {
-            if (selectedYear != "" ) {
-                studentId = Integer.parseInt(selectedYear);
+            if (!selectedYear.equals("")) {
+                year = Integer.parseInt(selectedYear);
             }
             fieldOfStudy = selectedFieldOfStudy;
         }
@@ -186,19 +186,19 @@ public class StudentServiceImpl implements StudentService {
         Integer year = null;
         FieldOfStudy fieldOfStudy = null;
 
-        if (selectedFirstName != "") {
+        if (!selectedFirstName.equals("")) {
             firstName = selectedFirstName;
         }
-        if (selectedLastName != "") {
+        if (!selectedLastName.equals("")) {
             lastName = selectedLastName;
         }
-        if (selectedStudentId != "") {
+        if (!selectedStudentId.equals("")) {
             studentId = Integer.parseInt(selectedStudentId);
         }
 
         if (century == null) {
-            if (selectedYear != "" ) {
-                studentId = Integer.parseInt(selectedYear);
+            if (!selectedYear.equals("") ) {
+                year = Integer.parseInt(selectedYear);
             }
             fieldOfStudy = selectedFieldOfStudy;
         }

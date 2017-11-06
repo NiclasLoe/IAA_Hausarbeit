@@ -9,7 +9,7 @@ public class ExcelCreator {
 
     private HSSFWorkbook wb = new HSSFWorkbook();
 
-    public HSSFWorkbook createAttendanceList(ArrayList personList, String centuryName) throws Exception {
+    public HSSFWorkbook createAttendanceList(ArrayList personList, String centuryName) {
 
         String sheetName = "Anwesenheitsliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
@@ -107,7 +107,7 @@ public class ExcelCreator {
         return wb;
     }
 
-    public HSSFWorkbook createResultList(ArrayList personList, String fieldOfStudy, Integer year) throws Exception {
+    public HSSFWorkbook createResultList(ArrayList personList, String fieldOfStudy, Integer year) {
         String sheetName = "Ergebnisliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 

@@ -139,7 +139,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String saveStudent() throws Exception {
+    public String saveStudent() {
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
         Company company = null;
@@ -204,7 +204,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String saveNewStudent() throws Exception {
+    public String saveNewStudent() {
         CenturyId centuryId = centuryService.returnId(centuryString);
         Century century = centuryService.loadCentury(centuryId);
         Company company = companyService.loadCompany(companyId);
@@ -222,8 +222,6 @@ public class StudentAction extends ActionSupport implements Preparable {
 
     /**
      * Load centuries and companies.
-     *
-     * @return Struts outcome.
      */
     private void prepareEmptyForm() {
         companyList = companyService.listCompanies();
@@ -235,7 +233,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String endActiveStudies() throws Exception {
+    public String endActiveStudies() {
         studentService.endActiveStudies(studentId);
         return SUCCESS;
     }
@@ -245,7 +243,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String exmatriculateStudent() throws Exception {
+    public String exmatriculateStudent() {
         studentService.exmatriculateStudent(studentId);
         return "success";
     }
@@ -255,7 +253,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String filterList() throws Exception {
+    public String filterList() {
         prepareEmptyForm();
         return SUCCESS;
     }

@@ -3,7 +3,6 @@ package de.nordakademie.iaa.studentadmin.service;
 import de.nordakademie.iaa.studentadmin.dao.CenturyDAO;
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
-import de.nordakademie.iaa.studentadmin.utilities.EntityAlreadyPresentException;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

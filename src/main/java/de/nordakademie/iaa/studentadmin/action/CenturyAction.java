@@ -77,7 +77,7 @@ public class CenturyAction extends ActionSupport {
      *
      * @return Struts outcome.
      */
-    public String downloadCenturyList() throws Exception {
+    public String downloadCenturyList() {
         FileInputUtil fileInputUtil = new FileInputUtil();
 
         // Load Century by identifier (identifier as string)

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
@@ -52,10 +53,10 @@ public class ApplicantServiceImpl implements ApplicantService {
         String firstName = null;
         String lastName = null;
 
-        if (selectedFirstName != "") {
+        if (!selectedFirstName.equals("")) {
             firstName = selectedFirstName;
         }
-        if (selectedLastName != "") {
+        if (!selectedLastName.equals("")) {
             lastName = selectedLastName;
         }
 

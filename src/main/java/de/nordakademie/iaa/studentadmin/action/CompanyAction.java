@@ -93,7 +93,7 @@ public class CompanyAction extends ActionSupport {
      *
      * @return Struts outcome
      */
-    public String loadCompany() throws Exception {
+    public String loadCompany() {
         company = companyService.loadCompany(companyId);
         return SUCCESS;
     }
