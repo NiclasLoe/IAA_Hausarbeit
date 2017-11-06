@@ -5,7 +5,7 @@ public enum FieldOfStudy {
 
     private String shortForm;
 
-    private FieldOfStudy(String shortForm) {
+    FieldOfStudy(String shortForm) {
         this.shortForm = shortForm;
     }
 

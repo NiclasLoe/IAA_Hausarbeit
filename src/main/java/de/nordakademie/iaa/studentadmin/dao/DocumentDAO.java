@@ -15,7 +15,7 @@ public class DocumentDAO {
     /**
      * Saves the given picture into the database.
      *
-     * @param profilePicture The profile picture to be saved.
+     * @param document The document to be saved.
      */
     public Long save(Document document) {
         if (document.getId() == null) {

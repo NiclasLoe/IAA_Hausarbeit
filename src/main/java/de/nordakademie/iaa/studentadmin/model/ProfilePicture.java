@@ -1,7 +1,6 @@
 package de.nordakademie.iaa.studentadmin.model;
 
 import de.nordakademie.iaa.studentadmin.utilities.FileConverterUtil;
-import sun.misc.BASE64Encoder;
 
 import javax.persistence.*;
 
@@ -13,8 +12,6 @@ public class ProfilePicture {
     private Long id;
     @Column(nullable = false, columnDefinition = "mediumblob")
     private byte[] image;
-    @Transient
-    private String imageString;
 
     public Long getId() {
         return id;
@@ -35,9 +32,5 @@ public class ProfilePicture {
     public String getImageString() {
         FileConverterUtil fileConverterUtil = new FileConverterUtil();
         return fileConverterUtil.byteToString(image, "image/*");
-    }
-
-    public void setImageString(String imageString) {
-        this.imageString = imageString;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class CenturyServiceImpl implements CenturyService {
 

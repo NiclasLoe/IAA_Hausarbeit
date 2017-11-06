@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.InputStream;
 
 @Component
 public class ProfilePictureDAO {

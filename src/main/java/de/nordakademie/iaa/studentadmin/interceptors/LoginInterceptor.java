@@ -2,7 +2,6 @@ package de.nordakademie.iaa.studentadmin.interceptors;
 
 import java.util.Map;
 
-import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
@@ -16,7 +15,7 @@ public class LoginInterceptor extends AbstractInterceptor {
     /**
      * Checks if a our current session has a valid loginId set. If not, return global login action.
      *
-     * @param invocation
+     * @param invocation The existing invocation.
      * @return Struts outcome.
      */
     @Override

@@ -3,7 +3,6 @@ package de.nordakademie.iaa.studentadmin.utilities;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import org.apache.poi.hssf.usermodel.*;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ExcelCreator {
@@ -15,9 +14,7 @@ public class ExcelCreator {
         String sheetName = "Anwesenheitsliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 
-        /**
-         * Setting the width of the first three columns.
-         */
+        // Setting the width of the first three columns.
         sheet.setColumnWidth(0, 2000);
         sheet.setColumnWidth(1, 4000);
         sheet.setColumnWidth(2, 4000);
@@ -32,9 +29,9 @@ public class ExcelCreator {
         sheet.setColumnWidth(11, 700);
         sheet.setColumnWidth(12, 700);
 
-        /**
-         * Style for the header cells.
-         */
+
+        // Style for the header cells.
+
         HSSFCellStyle headerCellStyle = wb.createCellStyle();
         HSSFFont boldFont = wb.createFont();
         boldFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
@@ -114,9 +111,9 @@ public class ExcelCreator {
         String sheetName = "Ergebnisliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 
-        /**
-         * Setting the width of the first three columns.
-         */
+
+        // Setting the width of the first three columns.
+
         sheet.setColumnWidth(0, 3000);
         sheet.setColumnWidth(1, 4000);
         sheet.setColumnWidth(2, 4000);
@@ -124,9 +121,7 @@ public class ExcelCreator {
         sheet.setColumnWidth(4, 2580);
         sheet.setColumnWidth(5, 2580);
 
-        /**
-         * Style for the header cells.
-         */
+        // Style for the header cells.
         HSSFCellStyle headerCellStyle = wb.createCellStyle();
         HSSFFont boldFont = wb.createFont();
         boldFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
@@ -173,7 +168,7 @@ public class ExcelCreator {
         return wb;
     }
 
-    private void fillList(String sheetName, ArrayList personList){
+    private void fillList(String sheetName, ArrayList personList) {
         HSSFSheet sheet = wb.getSheet(sheetName);
         for (int index = 0; index < personList.size(); index++) {
             HSSFRow row = sheet.createRow(index + 3);
@@ -196,9 +191,9 @@ public class ExcelCreator {
         String sheetName = "Firmenliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 
-        /**
-         * Setting the width of the first three columns.
-         */
+
+        // Setting the width of the first three columns.
+
         sheet.setColumnWidth(0, 3000);
         sheet.setColumnWidth(1, 4000);
         sheet.setColumnWidth(2, 4000);
@@ -206,9 +201,9 @@ public class ExcelCreator {
         sheet.setColumnWidth(4, 2580);
         sheet.setColumnWidth(5, 2580);
 
-        /**
-         * Style for the header cells.
-         */
+
+        // Style for the header cells.
+
         HSSFCellStyle headerCellStyle = wb.createCellStyle();
         HSSFFont boldFont = wb.createFont();
         boldFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
@@ -249,7 +244,7 @@ public class ExcelCreator {
             cell = row.createCell(0);
             cell.setCellValue(new HSSFRichTextString("" + (index + 1)));
             cell = row.createCell(1);
-            Student studentTemp = (Student) studentList.get(index);
+            Student studentTemp = studentList.get(index);
             HSSFRichTextString lastName = new HSSFRichTextString(studentTemp.getLastName());
             cell.setCellValue(lastName);
             cell = row.createCell(2);
@@ -264,7 +259,6 @@ public class ExcelCreator {
         }
 
         return wb;
-
 
 
     }

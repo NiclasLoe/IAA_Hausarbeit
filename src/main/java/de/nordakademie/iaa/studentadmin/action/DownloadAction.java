@@ -72,7 +72,7 @@ public class DownloadAction extends ActionSupport {
     /**
      * Method to transform document to exporting file.
      *
-     * @return BysteArrayInputStream to export file.
+     * @return ByteArrayInputStream to export file.
      */
     private ByteArrayInputStream createByteArrayInputStream(Document document) {
         byte content[] = document.getFile();

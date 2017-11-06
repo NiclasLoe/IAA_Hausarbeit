@@ -8,15 +8,11 @@ import java.io.IOException;
 
 public class FileConverterUtil {
     public byte[] contentInByte(File fileToCreate) throws IOException {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(fileToCreate);
-            byte fileContent[] = new byte[(int) fileToCreate.length()];
-            fileInputStream.read(fileContent);
-            fileInputStream.close();
-            return fileContent;
-        } catch (IOException e){
-            throw e;
-        }
+        FileInputStream fileInputStream = new FileInputStream(fileToCreate);
+        byte fileContent[] = new byte[(int) fileToCreate.length()];
+        fileInputStream.read(fileContent);
+        fileInputStream.close();
+        return fileContent;
 
     }
 

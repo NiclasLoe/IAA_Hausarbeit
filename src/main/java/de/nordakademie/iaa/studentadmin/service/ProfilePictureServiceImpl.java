@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
+@SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class ProfilePictureServiceImpl implements ProfilePictureService {
 

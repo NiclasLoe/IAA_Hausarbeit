@@ -7,9 +7,9 @@ import de.nordakademie.iaa.studentadmin.utilities.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
+@SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class StudentServiceImpl implements StudentService {
 
@@ -203,10 +203,9 @@ public class StudentServiceImpl implements StudentService {
             fieldOfStudy = selectedFieldOfStudy;
         }
 
-        List<Student> students = studentDAO.
+        return studentDAO.
                 findStudents(Status.ALUMNI, century, fieldOfStudy, year, null,
                         company, firstName, lastName, studentId);
-        return students;
     }
 
     @Override

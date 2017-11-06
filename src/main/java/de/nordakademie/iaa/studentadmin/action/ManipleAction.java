@@ -7,10 +7,8 @@ import de.nordakademie.iaa.studentadmin.service.ManipleService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.ExcelCreator;
 import de.nordakademie.iaa.studentadmin.utilities.FileInputUtil;
-import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;

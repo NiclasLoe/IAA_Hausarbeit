@@ -179,20 +179,18 @@ public class AddFilesToStudentAction extends ActionSupport {
      * @return Document id.
      */
     private Long storeFileToDatabase() throws Exception {
-        try {
-            // Prepare byte array
-            FileConverterUtil fileConverterUtil = new FileConverterUtil();
-            String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("documents");
-            File fileToCreate = new File(filePath, fileFileName);
-            FileUtils.copyFile(this.file, fileToCreate);
 
-            byte fileContent[] = fileConverterUtil.contentInByte(fileToCreate);
+        // Prepare byte array
+        FileConverterUtil fileConverterUtil = new FileConverterUtil();
+        String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("documents");
+        File fileToCreate = new File(filePath, fileFileName);
+        FileUtils.copyFile(this.file, fileToCreate);
 
-            // Save document to database
-            return documentService.saveNewDocument(fileContent, selectedFileName, fileContentType);
-        } catch (IOException e) {
-            throw e;
-        }
+        byte fileContent[] = fileConverterUtil.contentInByte(fileToCreate);
+
+        // Save document to database
+        return documentService.saveNewDocument(fileContent, selectedFileName, fileContentType);
+
     }
 
     // Getter and setter

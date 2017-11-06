@@ -59,4 +59,3 @@
         <s:submit key="button.cancel" action="cancelApplicant" cssClass="btn"/>
     </s:form>
 </div>
-</div>

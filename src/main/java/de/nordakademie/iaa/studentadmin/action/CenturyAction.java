@@ -6,10 +6,8 @@ import de.nordakademie.iaa.studentadmin.utilities.*;
 import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
-import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.InputStream;

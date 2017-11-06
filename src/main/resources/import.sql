@@ -1,3 +1,545 @@
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
+-- noinspection SqlResolveForFile
+
 --@formatter:off
 
 INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'last1', 'first1', 1, 'first.last@domain.com', TO_DATE('01/01/1990', 'DD/MM/YYYY'), 'cityBirth1', 'city1','StreetName1', '123a', 12345, 1, 1, '0123456789');

@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -27,7 +31,16 @@ public class CompanyDAO {
      * @return The list of companies.
      */
     public List<Company> listAll() {
-        return entityManager.createQuery("SELECT company FROM Company company").getResultList();
+        // Create new query
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Company> criteriaQuery = criteriaBuilder.createQuery(Company.class);
+        Root<Company> root = criteriaQuery.from(Company.class);
+        criteriaQuery.select(root);
+
+        // Get list from query
+        TypedQuery<Company> query = entityManager.createQuery(criteriaQuery);
+
+        return query.getResultList();
     }
 
     /**

@@ -11,7 +11,6 @@ import de.nordakademie.iaa.studentadmin.service.CenturyService;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
-import sun.misc.BASE64Encoder;
 
 import java.util.List;
 
@@ -89,7 +88,7 @@ public class StudentAction extends ActionSupport implements Preparable {
     /**
      * Validates the input before saving a student.
      */
-    public void validateSaveStudent() {
+    private void validateSaveStudent() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isNull(student.getTitle()),
                 "student.title", getText("error.title"));
@@ -208,10 +207,9 @@ public class StudentAction extends ActionSupport implements Preparable {
      *
      * @return Struts outcome.
      */
-    public String prepareEmptyForm() {
+    private void prepareEmptyForm() {
         companyList = companyService.listCompanies();
         centuryList = centuryService.listCenturies();
-        return SUCCESS;
     }
 
     /**

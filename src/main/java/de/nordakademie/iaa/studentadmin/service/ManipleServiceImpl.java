@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class ManipleServiceImpl implements ManipleService {
 
@@ -38,8 +39,7 @@ public class ManipleServiceImpl implements ManipleService {
 
     @Override
     public Integer returnYear(String maniple) {
-        Integer year = Integer.parseInt(maniple.substring((maniple.length() - 4)));
-        return year;
+        return Integer.parseInt(maniple.substring((maniple.length() - 4)));
     }
 
     public void setCenturyDAO(CenturyDAO centuryDAO) {

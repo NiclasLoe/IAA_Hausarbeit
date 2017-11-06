@@ -8,7 +8,6 @@ public class Validator {
         if (email == null || !email.contains("@")) {
             return false;
         }
-
         return true;
     }
 

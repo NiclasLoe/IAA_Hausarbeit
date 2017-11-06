@@ -266,13 +266,13 @@
                     image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
                 </param>
             </interceptor-ref>
-            <interceptor-ref name="loginStack"></interceptor-ref>
+            <interceptor-ref name="loginStack"/>
             <result name="success" type="chain">loadStudent</result>
             <result name="input">profilePictureUpload</result>
             <result name="error">profilePictureUpload</result>
         </action>
 
-        <action name="uploadPicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudentForUpload">
+        <action name="uploadPicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
             <result name="input">studentForm</result>
             <result>profilePictureUpload</result>
         </action>
@@ -291,7 +291,7 @@
                     application/pdf, application/zip
                 </param>
             </interceptor-ref>
-            <interceptor-ref name="loginStack"></interceptor-ref>
+            <interceptor-ref name="loginStack"/>
             <result name="success" type="chain">loadStudent</result>
             <result name="input">documentUploadStudent</result>
             <result name="error">documentUploadStudent</result>
@@ -348,7 +348,7 @@
                     application/pdf, application/zip
                 </param>
             </interceptor-ref>
-            <interceptor-ref name="loginStack"></interceptor-ref>
+            <interceptor-ref name="loginStack"/>
             <result name="success" type="chain">loadApplicant</result>
             <result name="input">documentUploadApplicant</result>
             <result name="error">documentUploadApplicant</result>

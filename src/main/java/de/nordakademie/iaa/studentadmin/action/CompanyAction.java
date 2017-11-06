@@ -9,10 +9,8 @@ import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.ExcelCreator;
 import de.nordakademie.iaa.studentadmin.utilities.FileInputUtil;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
-import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;

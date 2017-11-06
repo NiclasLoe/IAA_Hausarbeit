@@ -7,9 +7,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class CompanyServiceImpl implements CompanyService {
 
+    @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
     @Autowired
     private CompanyDAO companyDAO;
 

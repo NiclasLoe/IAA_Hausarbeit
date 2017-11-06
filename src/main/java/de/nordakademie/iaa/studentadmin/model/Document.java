@@ -1,7 +1,5 @@
 package de.nordakademie.iaa.studentadmin.model;
 
-import de.nordakademie.iaa.studentadmin.utilities.FileConverterUtil;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,8 +13,6 @@ public class Document {
     private String fileName;
     @Column(nullable = false)
     private String dataType;
-    @Transient
-    private String suffix;
 
     public Long getId() {
         return id;
@@ -59,9 +55,5 @@ public class Document {
             }
         }
         return "";
-    }
-
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
     }
 }

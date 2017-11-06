@@ -99,9 +99,8 @@ public class ApplicantDAO {
 
         // Get applicant list
         TypedQuery<Applicant> query = entityManager.createQuery(criteriaQuery);
-        List<Applicant> queryResult = query.getResultList();
 
-        return queryResult;
+        return query.getResultList();
     }
 
     // Getter and setter

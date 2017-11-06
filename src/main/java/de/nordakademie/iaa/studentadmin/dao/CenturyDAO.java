@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -28,14 +32,23 @@ public class CenturyDAO {
      * @return List of all centuries.
      */
     public List<Century> listAll() {
-        return entityManager.createQuery("SELECT c FROM Century c").getResultList();
+        // Create new query
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Century> criteriaQuery = criteriaBuilder.createQuery(Century.class);
+        Root<Century> root = criteriaQuery.from(Century.class);
+        criteriaQuery.select(root);
+
+        // Get list from query
+        TypedQuery<Century> query = entityManager.createQuery(criteriaQuery);
+
+        return query.getResultList();
     }
 
     /**
      * Load the century with a given identifier.
      *
      * @param centuryId The century's identifier.
-     * @return The found entitiy.
+     * @return The found entity.
      */
     public Century load(CenturyId centuryId) {
         return entityManager.find(Century.class, centuryId);

@@ -100,9 +100,8 @@ public class StudentDAO {
 
         // Get list from query
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
-        List<Student> queryResult = query.getResultList();
 
-        return queryResult;
+        return query.getResultList();
     }
 
     /**

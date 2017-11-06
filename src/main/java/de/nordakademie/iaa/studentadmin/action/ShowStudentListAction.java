@@ -33,7 +33,7 @@ public class ShowStudentListAction implements Action {
     }
 
     /**
-     * Methood to list all student with status "ENROLLED".
+     * Method to list all student with status "ENROLLED".
      *
      * @return Struts outcome.
      */

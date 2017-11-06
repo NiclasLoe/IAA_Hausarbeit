@@ -2,7 +2,6 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
-import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
