@@ -28,7 +28,6 @@ public class ApplicantAction extends ActionSupport {
      */
     private Long applicantId;
 
-
     /**
      * Validates whether an applicant is selected.
      */
@@ -98,7 +97,7 @@ public class ApplicantAction extends ActionSupport {
     public String deleteApplicant() {
         try {
             applicantService.delete(applicantId);
-        } catch(EntityNotFoundException e) {
+        } catch (EntityNotFoundException e) {
             addActionError(getText("error.ApplicantNotFound"));
         }
         return SUCCESS;
