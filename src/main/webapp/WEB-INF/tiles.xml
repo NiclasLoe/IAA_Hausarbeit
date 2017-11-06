@@ -103,4 +103,8 @@
         <put-attribute name="content" value="/tiles/content/documentUploadStudent.jsp"/>
     </definition>
 
+    <definition name="documentUploadApplicant" extends="simpleTemplate">
+        <put-attribute name="content" value="/tiles/content/documentUploadApplicant.jsp"/>
+    </definition>
+
 </tiles-definitions>

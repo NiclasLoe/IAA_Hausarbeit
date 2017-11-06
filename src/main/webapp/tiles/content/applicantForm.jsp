@@ -5,7 +5,7 @@
     <s:form theme="bootstrap" cssClass="form-horizontal" key="applicantForm.header">
         <s:hidden name="applicant.id"/>
         <s:set var="documentName" value="%{applicant.document.fileName + applicant.document.suffix}"/>
-
+        <s:hidden name="applicantId" value="%{applicant.id}"/>
         <s:if test="applicant.document != null">
             <s:hidden name="applicant.document.id"/>
         </s:if>
@@ -47,7 +47,7 @@
                 <s:textfield key="applicant.city"/>
             </div>
         </div>
-        <s:if test="student.document != null">
+        <s:if test="applicant.document != null">
             <div class="panel panel-default">
                 <div class="panel-heading"><s:text name="person.attachedDocument"/></div>
                 <div class="panel-body">

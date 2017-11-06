@@ -4,6 +4,7 @@
 <div class="container">
     <s:form theme="bootstrap" cssClass="form-horizontal" key="student.header">
     <s:hidden name="student.id"/>
+        <s:hidden name="studentId" value="%{student.id}"/>
     <s:hidden name="student.status"/>
     <s:hidden name="student.studentId"/>
     <s:hidden name="student.userEmail"/>

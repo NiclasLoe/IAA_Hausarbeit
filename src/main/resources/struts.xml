@@ -257,7 +257,7 @@
             </result>
         </action>
 
-        <!--Upload files-->
+        <!--Upload & download files-->
 
         <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addProfilePictureToStudent">
             <interceptor-ref name="fileUpload">
@@ -297,7 +297,7 @@
             <result name="error">documentUploadStudent</result>
         </action>
 
-        <action name="uploadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudentForUpload">
+        <action name="uploadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
             <result name="input">studentForm</result>
             <result>documentUploadStudent</result>
         </action>
@@ -309,7 +309,6 @@
             </result>
         </action>
 
-
         <action name="downloadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction" method="downloadStudentDocument">
             <result name="input" type="chain">studentForm</result>
             <result name="success" type="stream">
@@ -320,5 +319,39 @@
             </result>
         </action>
 
+        <action name="uploadApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction" method="loadApplicant">
+            <result name="input">applicantForm</result>
+            <result>documentUploadApplicant</result>
+        </action>
+
+        <action name="downloadApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction" method="downloadApplicantDocument">
+            <result name="input" type="chain">applicantForm</result>
+            <result name="success" type="stream">
+                <param name="contentType">${dataType}</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+
+        <action name="deleteApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction" method="deleteDocument">
+            <result type="redirectAction">
+                <param name="actionName">loadApplicant</param>
+                <param name="applicantId">${applicant.id}</param>
+            </result>
+        </action>
+
+        <action name="userDocumentApplicant" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addDocumentToApplicant">
+            <interceptor-ref name="fileUpload">
+                <param name="maxSize">20000000</param>
+                <param name="allowedTypes">
+                    application/pdf, application/zip
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"></interceptor-ref>
+            <result name="success" type="chain">loadApplicant</result>
+            <result name="input">documentUploadApplicant</result>
+            <result name="error">documentUploadApplicant</result>
+        </action>
     </package>
 </struts>

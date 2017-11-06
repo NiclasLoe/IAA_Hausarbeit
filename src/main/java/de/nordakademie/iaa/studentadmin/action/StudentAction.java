@@ -69,16 +69,6 @@ public class StudentAction extends ActionSupport implements Preparable {
     }
 
     /**
-     * Load student for upload preparation.
-     *
-     * @return Struts outcome.
-     */
-    public String loadStudentForUpload() {
-        student = studentService.loadStudent(student.getId());
-        return SUCCESS;
-    }
-
-    /**
      * Validates whether a student is selected.
      */
     public void validateExmatriculateStudent() {

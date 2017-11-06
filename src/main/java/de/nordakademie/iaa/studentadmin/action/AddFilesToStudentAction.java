@@ -1,9 +1,11 @@
 package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import de.nordakademie.iaa.studentadmin.model.Applicant;
 import de.nordakademie.iaa.studentadmin.model.Document;
 import de.nordakademie.iaa.studentadmin.model.ProfilePicture;
 import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.service.DocumentService;
 import de.nordakademie.iaa.studentadmin.service.ProfilePictureService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
@@ -11,6 +13,7 @@ import de.nordakademie.iaa.studentadmin.utilities.FileConverterUtil;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -45,8 +48,16 @@ public class AddFilesToStudentAction extends ActionSupport {
     private File file;
     /**
      * The preferred file name.
-      */
+     */
     private String selectedFileName;
+    /**
+     * The applicant service.
+     */
+    private ApplicantService applicantService;
+    /**
+     * The applicant the file is added to.
+     */
+    private Applicant applicant;
 
     /**
      * Method to ensure a profile picture has been selected before it can be uploaded.
@@ -61,6 +72,19 @@ public class AddFilesToStudentAction extends ActionSupport {
      * Method to ensure a document has been selected before it can be uploaded and the file name is not empty.
      */
     public void validateAddDocumentToStudent() {
+        if (fileFileName == null) {
+            addFieldError("file", getText("error.selectDocument"));
+        }
+
+        if (Validator.isStringEmpty(selectedFileName)) {
+            addFieldError("selectedFileName", getText("error.documentName"));
+        }
+    }
+
+    /**
+     * Method to ensure a document has been selected before it can be uploaded and the file name is not empty.
+     */
+    public void validateAddDocumentToApplicant() {
         if (fileFileName == null) {
             addFieldError("file", getText("error.selectDocument"));
         }
@@ -104,7 +128,7 @@ public class AddFilesToStudentAction extends ActionSupport {
     }
 
     /**
-     * Method to add a profile pic to a student.
+     * Method to add a document to a student.
      *
      * @return Struts outcome.
      */
@@ -115,7 +139,49 @@ public class AddFilesToStudentAction extends ActionSupport {
         student = studentService.loadStudent(id);
 
         try {
+            // Store document to database and add document to student
+            Long documentId = storeFileToDatabase();
+            Document documentTemp = documentService.loadDocument(documentId);
+            studentService.addDocument(student, documentTemp);
+        } catch (Exception e) {
+            e.printStackTrace();
+            addActionError(e.getMessage());
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+
+    /**
+     * Method to add a document to an applicant.
+     *
+     * @return Struts outcome.
+     */
+    public String addDocumentToApplicant() {
+        // Load student by id
+        Long id = applicant.getId();
+        applicant = applicantService.loadApplicant(id);
+
+        try {
+            // Store document and add document to applicant
+            Long documentId = storeFileToDatabase();
+            Document documentTemp = documentService.loadDocument(documentId);
+            applicantService.addDocument(applicant, documentTemp);
+        } catch (Exception e) {
+            addActionError(e.getMessage());
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+
+    /**
+     * Method to store file into database and return the new id.
+     *
+     * @return Document id.
+     */
+    private Long storeFileToDatabase() throws Exception {
+        try {
             // Prepare byte array
+            FileConverterUtil fileConverterUtil = new FileConverterUtil();
             String filePath = ServletActionContext.getServletContext().getRealPath("/").concat("documents");
             File fileToCreate = new File(filePath, fileFileName);
             FileUtils.copyFile(this.file, fileToCreate);
@@ -123,17 +189,10 @@ public class AddFilesToStudentAction extends ActionSupport {
             byte fileContent[] = fileConverterUtil.contentInByte(fileToCreate);
 
             // Save document to database
-            Long documentId = documentService.saveNewDocument(fileContent, selectedFileName, fileContentType);
-            Document documentTemp = documentService.loadDocument(documentId);
-
-            // Add document to student
-            studentService.addDocument(student, documentTemp);
+            return documentService.saveNewDocument(fileContent, selectedFileName, fileContentType);
         } catch (IOException e) {
-            e.printStackTrace();
-            addActionError(e.getMessage());
-            return ERROR;
+            throw e;
         }
-        return SUCCESS;
     }
 
     // Getter and setter
@@ -192,6 +251,18 @@ public class AddFilesToStudentAction extends ActionSupport {
 
     public void setDocumentService(DocumentService documentService) {
         this.documentService = documentService;
+    }
+
+    public Applicant getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
+    }
+
+    public void setApplicantService(ApplicantService applicantService) {
+        this.applicantService = applicantService;
     }
 }
 

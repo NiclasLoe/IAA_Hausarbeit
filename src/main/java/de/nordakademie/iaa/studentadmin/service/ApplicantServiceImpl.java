@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.ApplicantDAO;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
+import de.nordakademie.iaa.studentadmin.model.Document;
 import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 
         return applicantDAO.
                 findApplicants(firstName, lastName, selectedFieldOfStudy);
+    }
+
+    @Override
+    public void addDocument(Applicant applicant, Document document) {
+        applicant.setDocument(document);
+        applicantDAO.save(applicant);
     }
 }
 

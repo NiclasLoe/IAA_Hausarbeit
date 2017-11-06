@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Applicant;
+import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.service.ApplicantService;
 import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
@@ -99,6 +100,18 @@ public class ApplicantAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * Method to delete document stored in applicant.
+     *
+     * @return Struts outcome.
+     */
+    public String deleteDocument() {
+        Applicant applicantTemp = applicantService.loadApplicant(applicant.getId());
+        applicantTemp.setDocument(null);
+        applicantService.save(applicantTemp);
+        return SUCCESS;
+    }
+
     // Getter and setter
     public void setApplicantService(ApplicantService applicantService) {
         this.applicantService = applicantService;
@@ -119,4 +132,6 @@ public class ApplicantAction extends ActionSupport {
     public void setApplicantId(Long applicantId) {
         this.applicantId = applicantId;
     }
+
+
 }
