@@ -12,7 +12,7 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th>Count</th>
+                            <th><s:text name="mainPage.count"/></th>
                         </tr>
                         </thead>
                         <tbody>
