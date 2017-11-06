@@ -11,10 +11,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Maniple service implementation.
+ *
+ * @author Niclas Loeding
+ */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class ManipleServiceImpl implements ManipleService {
 
+    /**
+     * The century DAO.
+     */
     @Autowired
     private CenturyDAO centuryDAO;
 

@@ -9,6 +9,9 @@ import javax.persistence.PersistenceContext;
 @Component
 public class ProfilePictureDAO {
 
+    /**
+     * The current entity manager.
+     */
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -26,15 +29,28 @@ public class ProfilePictureDAO {
         return profilePicture.getId();
     }
 
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
+    /**
+     * Load a picture by a given identifier.
+     *
+     * @param photoId The profile picture's identifier.
+     * @return The found entity.
+     */
     public ProfilePicture loadById(Long photoId) {
         return entityManager.find(ProfilePicture.class, photoId);
     }
 
+    /**
+     * Delete a profile picutre from the database.
+     *
+     * @param profilePicture The given profile picture.
+     */
     public void delete(ProfilePicture profilePicture) {
         entityManager.remove(profilePicture);
+    }
+
+    // Getter and setter
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 }

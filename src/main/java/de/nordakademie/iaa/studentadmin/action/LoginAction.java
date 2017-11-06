@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport implements SessionAware {
 
     /**
-     * TODO
+     * The serial version.
      */
     private static final long serialVersionUID = 1L;
     /**
@@ -33,7 +33,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
      */
     private String password;
     /**
-     * TODO
+     * The session map.
      */
     private Map<String, Object> session;
 

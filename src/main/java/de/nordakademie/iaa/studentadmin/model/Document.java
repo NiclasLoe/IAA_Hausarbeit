@@ -2,15 +2,32 @@ package de.nordakademie.iaa.studentadmin.model;
 
 import javax.persistence.*;
 
+/**
+ * Document entity.
+ *
+ * @author Niclas Loeding
+ */
 @Entity
 public class Document {
+    /**
+     * The identifier.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * The data as byte array.
+     */
     @Column(nullable = false, columnDefinition = "mediumblob")
     private byte[] file;
+    /**
+     * The file name.
+     */
     @Column(nullable = false)
     private String fileName;
+    /**
+     * The data type as string.
+     */
     @Column(nullable = false)
     private String dataType;
 

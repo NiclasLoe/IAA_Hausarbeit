@@ -66,6 +66,8 @@ public class CompanyDAO {
         }
     }
 
+    // Getter and setter
+
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

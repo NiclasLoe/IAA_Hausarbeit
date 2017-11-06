@@ -1,6 +1,3 @@
--- noinspection SyntaxErrorForFile
--- noinspection SqlResolveForFile
-
 --@formatter:off
 
 INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'last1', 'first1', 1, 'first.last@domain.com', TO_DATE('01/01/1990', 'DD/MM/YYYY'), 'cityBirth1', 'city1','StreetName1', '123a', 12345, 1, 1, '0123456789');
@@ -8,20 +5,20 @@ INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, date
 INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'last3', 'first3', 3, 'first.last@domain.com', TO_DATE('31/12/2000', 'DD/MM/YYYY'), 'cityBirth3', 'city3','StreetName3', '123c', 98765, 2, 2, '0123456789');
 
 
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2010, 'a')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (0, 2014, 'a')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (1, 2014, 'b')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (2, 2014, 'a')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2014, 'a')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (0, 2015, 'a')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (1, 2015, 'a')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (2, 2015, 'b')
-INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2015, 'b')
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2010, 'a');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (0, 2014, 'a');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (1, 2014, 'b');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (2, 2014, 'a');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2014, 'a');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (0, 2015, 'a');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (1, 2015, 'a');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (2, 2015, 'b');
+INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2015, 'b');
 
-INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'IT-Software', 'Germany GmbH', 'IT GmbH', 'Michael Mueller', '012345678910', '012345678910', 'm.mueller@it-gmbh.de', 'Max-Muster-Str.', '123a', 'MusterCity', 12345)
-INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'Sales Team', 'Germany', 'STG', 'Michelle Muster', '012345678910', '012345678910', 'm.muster@stg.com', 'Max-Muster-Str.', '123a', 'MusterCity', 12345)
-INSERT INTO COMPANY (ID, companyName1, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'Smart Machines', 'SMachines', 'Cornelia Meyer', '012345678910', '012345678910', 'cornelia.meyer@it-gmbh.com', 'Max-Muster-Str.', '123a', 'MusterCity', 12345)
-INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'BigMedia', 'DACH GmbH', 'BigMedia', 'Lutz Schulze', '012345678910', '012345678910', 'lutzschulze@bigmedia.de', 'Max-Muster-Str.', '123a', 'MusterCity', 12345)
+INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'IT-Software', 'Germany GmbH', 'IT GmbH', 'Michael Mueller', '012345678910', '012345678910', 'm.mueller@it-gmbh.de', 'Max-Muster-Str.', '123a', 'MusterCity', 12345);
+INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'Sales Team', 'Germany', 'STG', 'Michelle Muster', '012345678910', '012345678910', 'm.muster@stg.com', 'Max-Muster-Str.', '123a', 'MusterCity', 12345);
+INSERT INTO COMPANY (ID, companyName1, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'Smart Machines', 'SMachines', 'Cornelia Meyer', '012345678910', '012345678910', 'cornelia.meyer@it-gmbh.com', 'Max-Muster-Str.', '123a', 'MusterCity', 12345);
+INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'BigMedia', 'DACH GmbH', 'BigMedia', 'Lutz Schulze', '012345678910', '012345678910', 'lutzschulze@bigmedia.de', 'Max-Muster-Str.', '123a', 'MusterCity', 12345);
 
 
 INSERT INTO STUDENT (ID, lastname, firstname, emailAddress, studentId, status, birthplace, dateofbirth, gender, streetName, houseNumber, city, postalCode, username, userEmail, century_FIELD_OF_STUDY, century_year, century_LETTER_CODE, company_id, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'Last', 'Chris', 'c.last@studend.com', 1000, 2, 'Hamburg', TO_DATE('01/01/1990', 'DD/MM/YYYY'),0,  'ExampleStreetName', '12', 'Hamburg', 98765, 10000, 'chris.last@nordakademie.de', 3, 2010, 'a', 4, 2, '0123456789');

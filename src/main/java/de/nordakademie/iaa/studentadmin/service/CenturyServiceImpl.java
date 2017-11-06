@@ -3,16 +3,25 @@ package de.nordakademie.iaa.studentadmin.service;
 import de.nordakademie.iaa.studentadmin.dao.CenturyDAO;
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
+import de.nordakademie.iaa.studentadmin.utilities.EntityAlreadyPresentException;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Century service implementation.
+ *
+ * @author Niclas Loeding
+ */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class CenturyServiceImpl implements CenturyService {
 
+    /**
+     * The century DAO.
+     */
     @Autowired
     private CenturyDAO centuryDAO;
 
@@ -35,9 +44,19 @@ public class CenturyServiceImpl implements CenturyService {
     }
 
     @Override
-    public void saveCentury(Century century) {
-        centuryDAO.save(century);
+    public void saveCentury(Century century) throws EntityAlreadyPresentException {
+        CenturyId centuryId = new CenturyId(century.getYear(), century.getLetterCode(), century.getFieldOfStudy());
+        Century centuryTemp = loadCentury(centuryId);
+        if (centuryTemp != null) {
+            throw new EntityAlreadyPresentException();
+        } else {
+            centuryDAO.save(century);
+        }
     }
 
+    // Getter and setter
 
+    public void setCenturyDAO(CenturyDAO centuryDAO) {
+        this.centuryDAO = centuryDAO;
+    }
 }

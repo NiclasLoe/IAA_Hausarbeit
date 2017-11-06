@@ -7,10 +7,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Company service implementation.
+ *
+ * @author Niclas Loeding
+ */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class CompanyServiceImpl implements CompanyService {
 
+    /**
+     * The company DAO.
+     */
     @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
     @Autowired
     private CompanyDAO companyDAO;

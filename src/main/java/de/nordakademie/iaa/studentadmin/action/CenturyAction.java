@@ -68,7 +68,11 @@ public class CenturyAction extends ActionSupport {
      * @return Struts outcome
      */
     public String saveCentury() {
-        centuryService.saveCentury(century);
+        try {
+            centuryService.saveCentury(century);
+        } catch (EntityAlreadyPresentException e) {
+            addActionError(getText("error.entityAlreadyPresent"));
+        }
         return SUCCESS;
     }
 

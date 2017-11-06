@@ -9,6 +9,9 @@ import javax.persistence.PersistenceContext;
 @Component
 public class DocumentDAO {
 
+    /**
+     * The current entity manager.
+     */
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -26,15 +29,29 @@ public class DocumentDAO {
         return document.getId();
     }
 
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
+    /**
+     * Load a document.
+     *
+     * @param id The document's identifier.
+     * @return The found entity.
+     */
     public Document loadById(Long id) {
         return entityManager.find(Document.class, id);
     }
 
+    /**
+     * Delete a document from the database.
+     *
+     * @param document Document to be deleted.
+     */
     public void delete(Document document) {
         entityManager.remove(document);
     }
+
+    // Getter and setter
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
 }

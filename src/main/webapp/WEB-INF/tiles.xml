@@ -6,7 +6,7 @@
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-    <!-- Templates -->
+    <!-- Template -->
     <definition name="simpleTemplate" template="/template/simpleTemplate.jsp">
         <put-attribute name="title" value="Nordakademie"/>
     </definition>
@@ -36,73 +36,92 @@
         <put-attribute name="content" value="/tiles/content/applicantForm.jsp"/>
     </definition>
 
+    <!-- Applicant to student form -->
     <definition name="applicantToStudentForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/applicantToStudentForm.jsp"/>
     </definition>
 
+    <!-- New student form -->
     <definition name="newStudentForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/newStudentForm.jsp"/>
     </definition>
 
+    <!-- Student form -->
     <definition name="studentForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/studentForm.jsp"/>
     </definition>
 
+    <!-- Century overview -->
     <definition name="centuryList" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/centuryTable.jsp"/>
     </definition>
 
+    <!-- Alumni form -->
     <definition name="alumniForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/alumniForm.jsp"/>
     </definition>
 
+    <!-- Administration area -->
     <definition name="adminArea" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/adminArea.jsp"/>
     </definition>
 
+    <!-- Company overview -->
     <definition name="companyList" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/companyList.jsp"/>
     </definition>
 
+    <!-- Century form -->
     <definition name="centuryForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/centuryForm.jsp"/>
     </definition>
 
+    <!-- Maniple page -->
     <definition name="showManiplePage" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/maniplePage.jsp"/>
     </definition>
 
+    <!-- Company form -->
     <definition name="companyForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/companyForm.jsp"/>
     </definition>
 
+    <!-- Login form -->
     <definition name="loginForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/loginForm.jsp"/>
     </definition>
 
+    <!-- Filter form -->
     <definition name="filterPageStudent" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/filterFormStudent.jsp"/>
     </definition>
 
+    <!-- Filter form -->
     <definition name="filterPageAlumni" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/filterFormAlumni.jsp"/>
     </definition>
 
+    <!-- Filter form -->
     <definition name="filterPageApplicant" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/filterFormApplicant.jsp"/>
     </definition>
 
+    <!-- Profile picture upload form -->
     <definition name="profilePictureUpload" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/profilePictureUpload.jsp"/>
     </definition>
+
+    <!-- Error page -->
     <definition name="errorPage" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/errorPage.jsp"/>
     </definition>
 
+    <!-- Document upload form -->
     <definition name="documentUploadStudent" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/documentUploadStudent.jsp"/>
     </definition>
 
+    <!-- Document upload form -->
     <definition name="documentUploadApplicant" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/documentUploadApplicant.jsp"/>
     </definition>

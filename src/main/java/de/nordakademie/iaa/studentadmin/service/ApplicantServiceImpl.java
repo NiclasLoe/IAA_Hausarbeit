@@ -10,10 +10,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Applicant service implementation.
+ *
+ * @author Niclas Loeding
+ */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class ApplicantServiceImpl implements ApplicantService {
 
+    /**
+     * The applicant DAO.
+     */
     @Autowired
     private ApplicantDAO applicantDAO;
 
@@ -67,6 +75,12 @@ public class ApplicantServiceImpl implements ApplicantService {
     public void addDocument(Applicant applicant, Document document) {
         applicant.setDocument(document);
         applicantDAO.save(applicant);
+    }
+
+    // Getter and setter
+
+    public void setApplicantDAO(ApplicantDAO applicantDAO) {
+        this.applicantDAO = applicantDAO;
     }
 }
 

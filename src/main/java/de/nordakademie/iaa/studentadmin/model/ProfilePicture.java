@@ -4,12 +4,23 @@ import de.nordakademie.iaa.studentadmin.utilities.FileConverterUtil;
 
 import javax.persistence.*;
 
+/**
+ * Profile picture entity.
+ *
+ * @author Niclas Loeding
+ */
 @Entity
 public class ProfilePicture {
 
+    /**
+     * The identifier.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * The data as byte array.
+     */
     @Column(nullable = false, columnDefinition = "mediumblob")
     private byte[] image;
 

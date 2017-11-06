@@ -6,11 +6,18 @@ import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * Profile picture service implementation.
+ *
+ * @author Niclas Loeding
+ */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class ProfilePictureServiceImpl implements ProfilePictureService {
 
+    /**
+     * The profile picture DAO.
+     */
     @Autowired
     private ProfilePictureDAO profilePictureDAO;
 

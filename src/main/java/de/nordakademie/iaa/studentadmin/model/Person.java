@@ -81,7 +81,6 @@ public abstract class Person {
      */
     @Column(nullable = false)
     private Integer postalCode;
-
     /**
      * The stored file
      */

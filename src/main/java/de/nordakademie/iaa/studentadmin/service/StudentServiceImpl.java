@@ -9,12 +9,35 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Student service implementation.
+ *
+ * @author Niclas Loeding
+ */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component
 public class StudentServiceImpl implements StudentService {
 
+    /**
+     * The student DAO.
+     */
     @Autowired
     private StudentDAO studentDAO;
+
+    /**
+     * The start for the username.
+     */
+    private final Integer firstUsername = 10000;
+
+    /**
+     * The start for the username.
+     */
+    private final Integer firstStudentId = 1000;
+
+    /**
+     * The domain name for the user email address.
+     */
+    private final String domain = "@nordakademie.de";
 
     @Override
     public List<Student> listEnrolledStudent() {
@@ -83,12 +106,6 @@ public class StudentServiceImpl implements StudentService {
         studentDAO.saveStudent(student);
     }
 
-    private Integer createUserName() {
-        Integer studentId = (int) (long) studentDAO.countEntries(null);
-        studentId = studentId + 10000;
-        return studentId;
-    }
-
     @Override
     public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
         return studentDAO.
@@ -106,42 +123,6 @@ public class StudentServiceImpl implements StudentService {
     public void addDocument(Student student, Document document) {
         student.setDocument(document);
         studentDAO.saveStudent(student);
-    }
-
-    public void setStudentDAO(StudentDAO studentDAO) {
-        this.studentDAO = studentDAO;
-    }
-
-    private Integer createStudentId() {
-        Integer studentId = (int) (long) studentDAO.countEntries(null);
-        studentId = studentId + 1000;
-        return studentId;
-    }
-
-    private String createUserMail(Student student) {
-        String domain = "@nordakademie.de";
-        String lastName = student.getLastName();
-        lastName = lastName.replace(" ", "_");
-        String firstName = student.getFirstName();
-        firstName = firstName.replace(" ", "_");
-        String userMail = firstName + "." + lastName + domain;
-        List<Student> studentListTemp = studentDAO.
-                findStudents(null, null, null, null, userMail,
-                        null, null, null, null);
-
-        if (studentListTemp.isEmpty()) {
-            return userMail;
-        } else {
-            Integer count = 1;
-            while (!(studentListTemp.isEmpty())) {
-                userMail = firstName + "." + lastName + count + domain;
-                count = count + 1;
-                studentListTemp = studentDAO.
-                        findStudents(null, null, null, null, userMail,
-                                null, null, null, null);
-            }
-        }
-        return userMail;
     }
 
     @Override
@@ -215,5 +196,73 @@ public class StudentServiceImpl implements StudentService {
                         null, null, company, null,
                         null, null);
     }
+
+    /**
+     * Create username for new student.
+     *
+     * @return The created username.
+     */
+    private Integer createUserName() {
+        Integer studentId = (int) (long) studentDAO.countEntries(null);
+        studentId = studentId + firstUsername;
+        return studentId;
+    }
+
+    /**
+     * Create student id for new student.
+     *
+     * @return The created student id.
+     */
+    private Integer createStudentId() {
+        Integer studentId = (int) (long) studentDAO.countEntries(null);
+        studentId = studentId + firstStudentId;
+        return studentId;
+    }
+
+    /**
+     * Method to create an user email address.
+     *
+     * @param student The related student.
+     * @return User mail address.
+     */
+    private String createUserMail(Student student) {
+        // Create the user email address
+        String lastName = student.getLastName();
+        String firstName = student.getFirstName();
+        String prefix = firstName + "." + lastName;
+        prefix = prefix.replace(" ", "_");
+        prefix = prefix.replace("ö", "oe");
+        prefix = prefix.replace("ä", "ae");
+        prefix = prefix.replace("ü", "ue");
+        prefix = prefix.replace("ß", "ss");
+
+        String userMail = prefix + domain;
+
+        // Load student by user email
+        List<Student> studentListTemp = studentDAO.
+                findStudents(null, null, null, null, userMail,
+                        null, null, null, null);
+
+        // Check whether student with this userMail exists
+        if (!studentListTemp.isEmpty()) {
+            // Add number to the mail until it's unique
+            Integer count = 1;
+            while (!(studentListTemp.isEmpty())) {
+                userMail = prefix + count + domain;
+                count = count + 1;
+                studentListTemp = studentDAO.
+                        findStudents(null, null, null, null, userMail,
+                                null, null, null, null);
+            }
+        }
+        return userMail;
+    }
+
+    // Getter and setter
+
+    public void setStudentDAO(StudentDAO studentDAO) {
+        this.studentDAO = studentDAO;
+    }
+
 }
 
