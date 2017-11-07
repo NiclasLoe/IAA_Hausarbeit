@@ -122,9 +122,11 @@ public class StudentAction extends ActionSupport implements Preparable {
         validator.fieldValidated(Validator.isStringEmpty(centuryString),
                 "centuryString", getText("error.centuryString"));
 
-        Student tempStudent = studentService.loadStudent(student.getId());
-        student.setProfilePicture(tempStudent.getProfilePicture());
-        student.setDocument(tempStudent.getDocument());
+        if (student.getStudentId() != null) {
+            Student tempStudent = studentService.loadStudent(student.getId());
+            student.setProfilePicture(tempStudent.getProfilePicture());
+            student.setDocument(tempStudent.getDocument());
+        }
     }
 
     /**
