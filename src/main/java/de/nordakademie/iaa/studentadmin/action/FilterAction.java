@@ -175,6 +175,36 @@ public class FilterAction extends ActionSupport implements Preparable {
         return SUCCESS;
     }
 
+    /**
+     * Filters dropped out list.
+     *
+     * @return Struts outcome.
+     */
+    public String filterDroppedOutList() {
+        Century century = null;
+        Company company = null;
+        FieldOfStudy fieldOfStudy = null;
+
+        if (!selectedCenturyString.equals("")) {
+            CenturyId centuryId = centuryService.returnId(selectedCenturyString);
+            century = centuryService.loadCentury(centuryId);
+        }
+
+        if (selectedCompanyId != null) {
+            company = companyService.loadCompany(selectedCompanyId);
+        }
+
+        if (selectedFieldOfStudy != null) {
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+
+        studentList = studentService.
+                filterDroppedOutList(selectedFirstName, selectedLastName, selectedStudentId,
+                        company, century, fieldOfStudy, selectedYear);
+
+        return SUCCESS;
+    }
+
     // Getter and setter
 
     public void setApplicantService(ApplicantService applicantService) {

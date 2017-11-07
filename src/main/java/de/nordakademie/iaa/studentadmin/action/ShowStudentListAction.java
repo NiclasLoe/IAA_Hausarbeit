@@ -52,6 +52,16 @@ public class ShowStudentListAction implements Action {
         return SUCCESS;
     }
 
+    /**
+     * Method to list all student with status "DROPPED_OUT".
+     *
+     * @return Struts outcome.
+     */
+    public String listDroppedOut() {
+        studentList = studentService.listDroppedOut();
+        return SUCCESS;
+    }
+
     // Getter and setter
 
     public List<Student> getStudentList() {
@@ -61,4 +71,6 @@ public class ShowStudentListAction implements Action {
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
+
+
 }

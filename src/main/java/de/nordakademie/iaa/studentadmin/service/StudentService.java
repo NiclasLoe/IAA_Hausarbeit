@@ -20,6 +20,13 @@ public interface StudentService {
     List<Student> listEnrolledStudent();
 
     /**
+     * List all dropped outs.
+     *
+     * @return List of students.
+     */
+    List<Student> listDroppedOut();
+
+    /**
      * Count all alumni in database.
      *
      * @return Alumni count.
@@ -152,4 +159,27 @@ public interface StudentService {
      * @param document The document to be added.
      */
     void addDocument(Student student, Document document);
+
+    /**
+     * Filter the list of dropped outs by certain criteria.
+     *
+     * @param selectedFirstName The first name criteria.
+     * @param selectedLastName  The last name criteria.
+     * @param selectedStudentId The student id criteria.
+     * @param company           The company criteria.
+     * @param century           The century criteria.
+     * @param fieldOfStudy      The field of study criteria.
+     * @param selectedYear      The year criteria.
+     * @return List of students.
+     */
+    List<Student> filterDroppedOutList(String selectedFirstName, String selectedLastName,
+                                       String selectedStudentId, Company company, Century century,
+                                       FieldOfStudy fieldOfStudy, String selectedYear);
+
+    /**
+     * Change status to ENROLLED.
+     *
+     * @param studentId The student's identifier.
+     */
+    void reEnrollDroppedOut(Long studentId);
 }

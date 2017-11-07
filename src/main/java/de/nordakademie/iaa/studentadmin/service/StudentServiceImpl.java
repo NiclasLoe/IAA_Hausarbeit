@@ -86,7 +86,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> listStudentsByCentury(Century century) {
         return studentDAO.
-                findStudents(null, century, null, null, null,
+                findStudents(Status.ENROLLED, century, null, null, null,
                         null, null, null, null);
     }
 
@@ -109,7 +109,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
         return studentDAO.
-                findStudents(null, null, fieldOfStudy, year, null,
+                findStudents(Status.ENROLLED, null, fieldOfStudy, year, null,
                         null, null, null, null);
     }
 
@@ -123,6 +123,38 @@ public class StudentServiceImpl implements StudentService {
     public void addDocument(Student student, Document document) {
         student.setDocument(document);
         studentDAO.saveStudent(student);
+    }
+
+    @Override
+    public List<Student> filterDroppedOutList(String selectedFirstName, String selectedLastName,
+                                              String selectedStudentId, Company company, Century century,
+                                              FieldOfStudy selectedFieldOfStudy, String selectedYear) {
+        String firstName = null;
+        String lastName = null;
+        Integer studentId = null;
+        Integer year = null;
+        FieldOfStudy fieldOfStudy = null;
+
+        if (!selectedFirstName.equals("")) {
+            firstName = selectedFirstName;
+        }
+        if (!selectedLastName.equals("")) {
+            lastName = selectedLastName;
+        }
+        if (!selectedStudentId.equals("")) {
+            studentId = Integer.parseInt(selectedStudentId);
+        }
+
+        if (century == null) {
+            if (!selectedYear.equals("")) {
+                year = Integer.parseInt(selectedYear);
+            }
+            fieldOfStudy = selectedFieldOfStudy;
+        }
+
+        return studentDAO.
+                findStudents(Status.DROPPED_OUT, century, fieldOfStudy, year, null,
+                        company, firstName, lastName, studentId);
     }
 
     @Override
@@ -256,6 +288,20 @@ public class StudentServiceImpl implements StudentService {
             }
         }
         return userMail;
+    }
+
+    @Override
+    public List<Student> listDroppedOut() {
+        return studentDAO.findStudents(Status.DROPPED_OUT, null, null,
+                null, null, null, null,
+                null, null);
+    }
+
+    @Override
+    public void reEnrollDroppedOut(Long studentId) {
+        Student student = studentDAO.load(studentId);
+        student.setStatus(Status.ENROLLED);
+        studentDAO.saveStudent(student);
     }
 
     // Getter and setter

@@ -8,7 +8,7 @@
             <div class="panel-body">
                 <s:select key="century.fieldOfStudy"
                           list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
-                          headerValue="student.pleaseSelect" headerKey=""/>
+                          headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
                 <s:textfield key="century.letterCode"/>
                 <s:textfield key="century.year"/>
             </div>

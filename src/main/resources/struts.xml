@@ -31,6 +31,7 @@
         <action name="showMainPage" class="de.nordakademie.iaa.studentadmin.action.CountDatabaseEntries">
             <result>mainPage</result>
         </action>
+
         <action name="showAdminArea">
             <result>adminArea</result>
         </action>
@@ -117,6 +118,29 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
+        <!--Dropped Out student action-->
+        <action name="showDroppedOutStudent" class="de.nordakademie.iaa.studentadmin.action.ShowStudentListAction"
+                method="listDroppedOut">
+            <result>droppedOutTable</result>
+        </action>
+
+        <action name="loadDroppedOut" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="loadStudent">
+            <result name="input" type="chain">showDroppedOutStudent</result>
+            <result name="success">droppedOutForm</result>
+        </action>
+
+        <action name="cancelDroppedOut">
+            <result type="redirectAction">showDroppedOutStudent</result>
+        </action>
+
+        <action name="reEnrollDroppedOut" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="reEnrollDroppedOut">
+            <result type="redirectAction">showStudentList</result>
+        </action>
+
+
+
         <!--Company Actions-->
         <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="loadCompany">
             <result name="input" type="chain">showCompanyList</result>
@@ -173,6 +197,26 @@
         </action>
 
         <!--Filter actions-->
+        <action name="filterDroppedOut" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+            <interceptor-ref name="store">
+                <param name="operationMode">RETRIEVE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
+            <result name="input">filterPageDroppedOut</result>
+            <result>filterPageDroppedOut</result>
+        </action>
+        <action name="applyDroppedOutFilter" class="de.nordakademie.iaa.studentadmin.action.FilterAction"
+                method="filterDroppedOutList">
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="loginStack"/>
+            <result name="input" type="redirectAction">filterDroppedOut</result>
+            <result>droppedOutTable</result>
+        </action>
+        <action name="cancelDroppedOutFilter">
+            <result type="redirectAction">showDroppedOutStudent</result>
+        </action>
         <action name="cancelStudentFilter">
             <result type="redirectAction">showStudentList</result>
         </action>

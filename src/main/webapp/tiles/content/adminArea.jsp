@@ -13,6 +13,7 @@
                     <s:submit key="button.showCentury" action="showCenturyList" cssClass="btn"/>
                     <s:submit key="button.showCompanyList" action="showCompanyList" cssClass="btn"/>
                     <s:submit key="button.downloadResultList" action="chooseManiplePage" cssClass="btn"/>
+                    <s:submit key="button.showDroppedOut" action="showDroppedOutStudent" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </div>

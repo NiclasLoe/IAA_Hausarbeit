@@ -16,6 +16,11 @@
         <put-attribute name="content" value="/tiles/content/mainPage.jsp"/>
     </definition>
 
+    <!-- Dropped out overview-->
+    <definition name="droppedOutTable" extends="simpleTemplate">
+        <put-attribute name="content" value="/tiles/content/droppedOutTable.jsp"/>
+    </definition>
+
     <!-- Applicant Overview -->
     <definition name="applicantTable" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/applicantTable.jsp"/>
@@ -54,6 +59,11 @@
     <!-- Century overview -->
     <definition name="centuryList" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/centuryTable.jsp"/>
+    </definition>
+
+    <!-- Dropped out form -->
+    <definition name="droppedOutForm" extends="simpleTemplate">
+        <put-attribute name="content" value="/tiles/content/droppedOutForm.jsp"/>
     </definition>
 
     <!-- Alumni form -->
@@ -99,6 +109,11 @@
     <!-- Filter form -->
     <definition name="filterPageAlumni" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/filterFormAlumni.jsp"/>
+    </definition>
+
+    <!-- Filter form -->
+    <definition name="filterPageDroppedOut" extends="simpleTemplate">
+        <put-attribute name="content" value="/tiles/content/filterFormDroppedOut.jsp"/>
     </definition>
 
     <!-- Filter form -->

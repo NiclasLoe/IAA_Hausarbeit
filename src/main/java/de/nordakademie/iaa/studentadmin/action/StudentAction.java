@@ -245,7 +245,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     public String exmatriculateStudent() {
         studentService.exmatriculateStudent(studentId);
-        return "success";
+        return SUCCESS;
     }
 
     /**
@@ -255,6 +255,16 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     public String filterList() {
         prepareEmptyForm();
+        return SUCCESS;
+    }
+
+    /**
+     * Change status from DROPPED_OUT to ENROLLED.
+     *
+     * @return Struts outcome.
+     */
+    public String reEnrollDroppedOut() {
+        studentService.reEnrollDroppedOut(studentId);
         return SUCCESS;
     }
 

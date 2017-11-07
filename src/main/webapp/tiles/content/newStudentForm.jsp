@@ -43,7 +43,7 @@
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName"
-                          label="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
+                          key="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
             </div>
         </div>
         <s:submit key="button.addStudent" action="saveNewStudent" cssClass="btn"/>
