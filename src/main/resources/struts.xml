@@ -133,9 +133,9 @@
         <action name="cancelDroppedOut">
             <result type="redirectAction">showDroppedOutStudent</result>
         </action>
-
         <action name="reEnrollDroppedOut" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
                 method="reEnrollDroppedOut">
+            <result name="input" type="chain">showDroppedOutStudent</result>
             <result type="redirectAction">showStudentList</result>
         </action>
 
