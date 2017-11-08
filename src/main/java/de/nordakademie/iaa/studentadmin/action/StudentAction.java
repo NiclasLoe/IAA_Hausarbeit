@@ -91,6 +91,15 @@ public class StudentAction extends ActionSupport implements Preparable {
     }
 
     /**
+     * Validates whether a student is selected.
+     */
+    public void validateReEnrollDroppedOut() {
+        if ((studentId == null) && (student == null)) {
+            addActionError(getText("error.selectStudent"));
+        }
+    }
+
+    /**
      * Validates the input before saving a student.
      */
     private void validateSaveStudent() {
