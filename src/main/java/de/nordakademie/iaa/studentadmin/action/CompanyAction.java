@@ -125,7 +125,8 @@ public class CompanyAction extends ActionSupport {
 
         // Create attendance list
         ExcelCreator excelCreator = new ExcelCreator();
-        HSSFWorkbook wb = excelCreator.createCompanyList(studentList, companyTemp.getShortName());
+        HSSFWorkbook wb = excelCreator.createCompanyList(studentList, companyTemp.getShortName(),
+                companyTemp.getContactPerson());
 
         // try to export the created workbook
         try {

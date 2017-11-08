@@ -96,13 +96,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveNewStudent(Student student, Company company, Century century) {
+    public void saveNewStudent(Student student, Company company, Century century, Document document) {
         student.setStatus(Status.ENROLLED);
         student.setStudentId(createStudentId());
         student.setUserEmail(createUserMail(student));
         student.setUsername(createUserName());
         student.setCentury(century);
         student.setCompany(company);
+        student.setDocument(document);
         studentDAO.saveStudent(student);
     }
 

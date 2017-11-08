@@ -66,12 +66,12 @@ public interface StudentService {
 
     /**
      * Add a new student
-     *
-     * @param student The given
+     *  @param student The given
      * @param company The company of a student.
      * @param century The century of a student.
+     * @param document The document for the student, if any.
      */
-    void saveNewStudent(Student student, Company company, Century century);
+    void saveNewStudent(Student student, Company company, Century century, Document document);
 
     /**
      * Change student status to ALUMNI.

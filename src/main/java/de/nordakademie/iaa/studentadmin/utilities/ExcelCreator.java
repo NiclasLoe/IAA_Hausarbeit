@@ -183,7 +183,7 @@ public class ExcelCreator {
      * @param shortName   The name of the company.
      * @return The created workbook.
      */
-    public HSSFWorkbook createCompanyList(ArrayList<Student> studentList, String shortName) {
+    public HSSFWorkbook createCompanyList(ArrayList<Student> studentList, String shortName, String contactPerson) {
         String sheetName = "Firmenliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 
@@ -214,6 +214,12 @@ public class ExcelCreator {
         cell = row.createCell(1);
         cell.setCellStyle(headerCellStyle);
         cell.setCellValue(new HSSFRichTextString("" + shortName));
+        cell = row.createCell(2);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("Ansprechpartner:"));
+        cell = row.createCell(3);
+        cell.setCellStyle(headerCellStyle);
+        cell.setCellValue(new HSSFRichTextString("" + contactPerson));
         row = sheet.createRow(2);
         cell = row.createCell(0);
         cell.setCellStyle(headerCellStyle);

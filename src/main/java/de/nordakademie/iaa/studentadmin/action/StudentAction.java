@@ -142,14 +142,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      * @return Struts outcome.
      */
     public String saveStudent() {
-        CenturyId centuryId = centuryService.returnId(centuryString);
-        Century century = centuryService.loadCentury(centuryId);
-        Company company = null;
-        if (companyId != null) {
-            company = companyService.loadCompany(companyId);
-        }
-
-        studentService.saveStudent(student, company, century);
+        studentService.saveStudent(student, getCompany(), getCentury());
         return SUCCESS;
     }
 
@@ -207,10 +200,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      * @return Struts outcome.
      */
     public String saveNewStudent() {
-        CenturyId centuryId = centuryService.returnId(centuryString);
-        Century century = centuryService.loadCentury(centuryId);
-        Company company = companyService.loadCompany(companyId);
-        studentService.saveNewStudent(student, company, century);
+        studentService.saveNewStudent(student, getCompany(), getCentury(), null);
         return SUCCESS;
     }
 
@@ -268,6 +258,30 @@ public class StudentAction extends ActionSupport implements Preparable {
     public String reEnrollDroppedOut() {
         studentService.reEnrollDroppedOut(studentId);
         return SUCCESS;
+    }
+
+    /**
+     * Get century.
+     *
+     * @return The found century. Null otherwise.
+     */
+    private Century getCentury() {
+        Century century = null;
+        if (!Validator.isStringEmpty(centuryString)) {
+            CenturyId centuryId = centuryService.returnId(centuryString);
+            century = centuryService.loadCentury(centuryId);
+        }
+
+        return century;
+    }
+
+    /**
+     * Get company.
+     *
+     * @return The found company. Null otherwise.
+     */
+    private Company getCompany() {
+        return (companyId != null) ? companyService.loadCompany(companyId) : null;
     }
 
     // Getter and Setter

@@ -2,12 +2,10 @@ package de.nordakademie.iaa.studentadmin.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.*;
-import de.nordakademie.iaa.studentadmin.service.ApplicantService;
-import de.nordakademie.iaa.studentadmin.service.CenturyService;
-import de.nordakademie.iaa.studentadmin.service.CompanyService;
-import de.nordakademie.iaa.studentadmin.service.StudentService;
+import de.nordakademie.iaa.studentadmin.service.*;
 import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
+import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,12 +80,17 @@ public class EnrollApplicantAction extends ActionSupport {
     public String enrollApplicant() {
         try {
             // Load century and company
-            CenturyId centuryId = centuryService.returnId(centuryString);
-            Century century = centuryService.loadCentury(centuryId);
-            Company company = companyService.loadCompany(companyId);
+            Century century = null;
+            Company company = (!Validator.isStringEmpty(centuryString)) ? companyService.loadCompany(companyId) : null;
+
+            if (!Validator.isStringEmpty(centuryString)) {
+                CenturyId centuryId = centuryService.returnId(centuryString);
+                century = centuryService.loadCentury(centuryId);
+            }
 
             // Save new student and delete applicant entry
-            studentService.saveNewStudent(student, company, century);
+            applicant = applicantService.loadApplicant(applicant.getId());
+            studentService.saveNewStudent(student, company, century, applicant.getDocument());
             Long applicantToDeleteId = applicant.getId();
             applicantService.delete(applicantToDeleteId);
         } catch (EntityNotFoundException e) {
