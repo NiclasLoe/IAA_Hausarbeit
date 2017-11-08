@@ -40,7 +40,7 @@
                               value="%{getText('confirm.reEnrollStudent')}"/>
                     <s:submit key="button.reenrollDroppedOut" onclick="confirmReEnrollAction(this)"
                               cssClass="btn"/>
-                    <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
+                    <s:submit key="button.goBack" action="showAdminArea" cssClass="btn"/>
                 </div>
             </s:form>
         </div>

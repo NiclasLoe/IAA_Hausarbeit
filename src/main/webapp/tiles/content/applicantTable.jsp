@@ -35,11 +35,11 @@
                 <s:actionerror/>
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadApplicant" cssClass="btn"/>
-                    <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                     <s:hidden id="deleteApplicant" name="deleteApplicant"
                               value="%{getText('confirm.deleteApplicant')}"/>
-                    <s:submit key="button.deleteApplicant" onclick="confirmDeleteAction(this);" cssClass="btn"/>
                     <s:submit key="button.enrollApplicant" action="enrollApplicant" cssClass="btn"/>
+                    <s:submit key="button.deleteApplicant" onclick="confirmDeleteAction(this);" cssClass="btn"/>
+                    <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>
         </div>
