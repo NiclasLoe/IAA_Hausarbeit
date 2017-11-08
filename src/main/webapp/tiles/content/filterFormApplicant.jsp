@@ -7,7 +7,7 @@
             <div class="panel-heading"><s:text name="student.personalInformation"/></div>
             <div class="panel-body">
                 <s:textfield name="selectedFirstName" key="filter.selectedFirstName"/>
-                <s:textfield name="selectedLastName" key="filter.selectedFirstName"/>
+                <s:textfield name="selectedLastName" key="filter.selectedLastName"/>
                 <s:select name="selectedFieldOfStudy" key="filter.selectedFieldOfStudy"
                           list="@de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy@values()"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
