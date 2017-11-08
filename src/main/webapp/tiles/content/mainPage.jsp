@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container">
-    <s:form key="title.generalHeader" theme="bootstrap" cssClass="form-horizontal">
+    <s:form key="title.generalHeader" theme="bootstrap" cssClass="form-horizontal" action="">
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="mainPage.databaseInformation"/></div>
             <div class="panel-body">

@@ -139,8 +139,6 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
-
-
         <!--Company Actions-->
         <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="loadCompany">
             <result name="input" type="chain">showCompanyList</result>

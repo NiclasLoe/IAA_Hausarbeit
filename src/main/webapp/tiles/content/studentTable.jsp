@@ -38,8 +38,14 @@
 
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadStudent" cssClass="btn"/>
-                    <s:submit key="button.exmatriculateStudent" action="exmatriculateStudent" cssClass="btn"/>
-                    <s:submit key="button.endActiveStudies" action="endActiveStudies" cssClass="btn"/>
+                    <s:hidden id="exmatriculateStudent" name="exmatriculateStudent"
+                              value="%{getText('confirm.exmatriculateStudent')}"/>
+                    <s:submit key="button.exmatriculateStudent" onclick="confirmExmatriculateAction(this)"
+                              cssClass="btn"/>
+                    <s:hidden id="endActiveStudies" name="endActiveStudies"
+                              value="%{getText('confirm.endActiveStudies')}"/>
+                    <s:submit key="button.endActiveStudies" onclick="confirmEndActiveStudentsAction(this)"
+                              cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>

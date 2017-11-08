@@ -36,7 +36,10 @@
                 <s:actionerror/>
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadDroppedOut" cssClass="btn"/>
-                    <s:submit key="button.reenrollDroppedOut" action="reEnrollDroppedOut" cssClass="btn"/>
+                    <s:hidden id="reEnrollStudent" name="reEnrollStudent"
+                              value="%{getText('confirm.reEnrollStudent')}"/>
+                    <s:submit key="button.reenrollDroppedOut" onclick="confirmReEnrollAction(this)"
+                              cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>
