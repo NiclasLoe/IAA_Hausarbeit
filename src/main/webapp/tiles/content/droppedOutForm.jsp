@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container">
-    <s:form theme="bootstrap" cssClass="form-horizontal" key="student.header">
+    <s:form theme="bootstrap" cssClass="form-horizontal" key="droppedOut.header">
     <s:set var="profilePic" value="%{student.profilePicture.imageString}"/>
     <s:set var="documentName" value="%{student.document.fileName + student.document.suffix}"/>
     <s:set var="centuryString"
