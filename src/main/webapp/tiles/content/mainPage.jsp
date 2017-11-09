@@ -39,12 +39,10 @@
                 <p>
                     <s:text name="mainPage.forMoreInformation"/>
                 </p>
-                <div class="form-group">
                     <s:submit key="button.showApplicants" action="showApplicantList" cssClass="btn"/>
                     <s:submit key="button.showStudents" action="showStudentList" cssClass="btn"/>
                     <s:submit key="button.showAlumni" action="showAlumniList" cssClass="btn"/>
                     <s:submit key="button.showAdministrationArea" action="showAdminArea" cssClass="btn"/>
-                </div>
             </div>
         </div>
     </s:form>

@@ -26,3 +26,15 @@ function confirmAction(that, action, form) {
     });
     return false;
 }
+
+// https://stackoverflow.com/questions/9127498/how-to-perform-a-real-time-search-and-filter-on-a-html-table
+function filterTable(that, table) {
+    var $rows = $(table + ' tbody tr');
+    var val = '^(?=.*\\b' + $.trim($(that).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+        reg = RegExp(val, 'i'),
+        text;
+    $rows.show().filter(function() {
+        text = $(this).text().replace(/\s+/g, ' ');
+        return !reg.test(text);
+    }).hide();
+}

@@ -10,16 +10,21 @@
                     <s:submit key="button.filterList" action="filterDroppedOut" cssClass="btn"/>
                     <s:submit key="button.clearFilter" action="showDroppedOutStudent" cssClass="btn"/>
                 </div>
-                <table class="table">
-                    <tr >
-                        <th></th>
-                        <th><s:text name="tableView.StudentId"/></th>
-                        <th><s:text name="tableView.lastName"/></th>
-                        <th><s:text name="tableView.firstName"/></th>
-                        <th><s:text name="tableView.centuryName"/></th>
-                        <th><s:text name="tableView.emailAddress"/></th>
-                        <th><s:text name="tableView.status"/></th>
-                    </tr>
+                <div class="form-group">
+                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#droppedOutTable')"/>
+                </div>
+                <table class="table" id="droppedOutTable">
+                    <thead>
+                        <tr >
+                            <th></th>
+                            <th><s:text name="tableView.StudentId"/></th>
+                            <th><s:text name="tableView.lastName"/></th>
+                            <th><s:text name="tableView.firstName"/></th>
+                            <th><s:text name="tableView.centuryName"/></th>
+                            <th><s:text name="tableView.emailAddress"/></th>
+                            <th><s:text name="tableView.status"/></th>
+                        </tr>
+                    </thead>
                     <s:iterator value="studentList">
                         <tr class="notFirst">
                             <td><s:radio name="studentId" list="#{id:''}" theme="simple" onselect=""/></td>

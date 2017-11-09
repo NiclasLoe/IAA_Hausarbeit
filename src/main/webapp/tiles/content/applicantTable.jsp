@@ -11,15 +11,20 @@
                     <s:submit key="button.filterList" action="filterApplicants" cssClass="btn"/>
                     <s:submit key="button.clearFilter" action="showApplicantList" cssClass="btn"/>
                 </div>
-                <table class="table">
-                    <tr>
-                        <th></th>
-                        <th><s:text name="tableView.lastName"/></th>
-                        <th><s:text name="tableView.firstName"/></th>
-                        <th><s:text name="tableView.fieldOfStudy"/></th>
-                        <th><s:text name="tableView.emailAddress"/></th>
-                        <th><s:text name="tableView.phoneNumber"/></th>
-                    </tr>
+                <div class="form-group">
+                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#applicantTable')"/>
+                </div>
+                <table class="table" id="applicantTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><s:text name="tableView.lastName"/></th>
+                            <th><s:text name="tableView.firstName"/></th>
+                            <th><s:text name="tableView.fieldOfStudy"/></th>
+                            <th><s:text name="tableView.emailAddress"/></th>
+                            <th><s:text name="tableView.phoneNumber"/></th>
+                        </tr>
+                    </thead>
                     <s:iterator value="personList">
                         <tr class="notFirst">
                             <td><s:radio name="applicantId" list="#{id:''}" theme="simple" onselect=""/></td>
