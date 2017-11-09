@@ -15,7 +15,7 @@ import java.io.InputStream;
 /**
  * Class that contains all action methods for centuries.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke & Adnan Ait Oufkir
  */
 public class CenturyAction extends ActionSupport {
 

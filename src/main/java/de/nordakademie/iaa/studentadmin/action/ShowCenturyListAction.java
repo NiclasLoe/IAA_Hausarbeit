@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Class that contain methods to make list of centuries available.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public class ShowCenturyListAction implements Action {
 

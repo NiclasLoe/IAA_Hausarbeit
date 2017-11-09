@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Interface for the maniple service.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public interface ManipleService {
 

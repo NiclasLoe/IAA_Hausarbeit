@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Interface of the student service.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public interface StudentService {
 

@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Class that contains all filter methods.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public class FilterAction extends ActionSupport implements Preparable {
 

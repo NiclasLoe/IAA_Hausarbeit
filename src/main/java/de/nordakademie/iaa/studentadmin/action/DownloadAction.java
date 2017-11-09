@@ -9,7 +9,11 @@ import de.nordakademie.iaa.studentadmin.service.DocumentService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
 
 import java.io.*;
-
+/**
+ * Class to provide download actions.
+ *
+ * @author Adnan Ait Oufkir
+ */
 public class DownloadAction extends ActionSupport {
 
     /**

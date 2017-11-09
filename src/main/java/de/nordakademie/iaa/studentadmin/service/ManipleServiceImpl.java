@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * Maniple service implementation.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component

@@ -10,7 +10,7 @@ import de.nordakademie.iaa.studentadmin.utilities.Validator;
 /**
  * Class that contains all action methods for applicants.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 
 public class ApplicantAction extends ActionSupport {

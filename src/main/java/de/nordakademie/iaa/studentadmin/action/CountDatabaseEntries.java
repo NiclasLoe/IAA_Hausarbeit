@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Class that provides numbers regarding database entries.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public class CountDatabaseEntries implements Action {
     /**

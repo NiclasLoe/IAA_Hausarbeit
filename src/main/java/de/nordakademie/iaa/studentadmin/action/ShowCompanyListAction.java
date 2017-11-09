@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Class that contain methods to make list of companies available.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public class ShowCompanyListAction implements Action {
 

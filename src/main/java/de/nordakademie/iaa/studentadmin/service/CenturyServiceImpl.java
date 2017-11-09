@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Century service implementation.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component

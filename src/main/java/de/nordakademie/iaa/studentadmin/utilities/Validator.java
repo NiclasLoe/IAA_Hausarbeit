@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Validator class including all validate methods.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public class Validator {
     /**

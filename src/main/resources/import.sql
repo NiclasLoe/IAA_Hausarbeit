@@ -1,11 +1,11 @@
 --@formatter:off
 
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
-INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'last1', 'first1', 1, 'first.last@domain.com', TO_DATE('01/01/1990', 'DD/MM/YYYY'), 'cityBirth1', 'city1', 'StreetName1', '123a', 12345, 1, 1, '0123456789');
+INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'Franz', 'Hans', 1, 'hans.franz@domain.com', TO_DATE('01/01/1990', 'DD/MM/YYYY'), 'Muenchen', 'Hamburg', 'Beispielstraße', '123a', 12345, 1, 1, '0123456789');
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
-INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'last2', 'first2', 2, 'first.last@domain.com', TO_DATE('15/06/1995', 'DD/MM/YYYY'), 'cityBirth2', 'city2', 'StreetName2', '123b', 45678, 2, 2, '0123456789');
+INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'Meier', 'Max', 2, 'max.meier_99@domain.com', TO_DATE('15/06/1995', 'DD/MM/YYYY'), 'Bonn', 'Hamburg', 'Beispielstraße', '123b', 45678, 2, 2, '0123456789');
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
-INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'last3', 'first3', 3, 'first.last@domain.com', TO_DATE('31/12/2000', 'DD/MM/YYYY'), 'cityBirth3', 'city3', 'StreetName3', '123c', 98765, 2, 2, '0123456789');
+INSERT INTO APPLICANT (ID, lastname, firstname, fieldOfStudy, emailAddress, dateOfBirth, birthplace, city, streetName, houseNumber, postalCode, gender, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'Graf', 'Ludwig', 3, 'l.graf@domain.com', TO_DATE('31/12/2000', 'DD/MM/YYYY'), 'Hamburg', 'Elmshorn', 'Beispielstraße', '123c', 98765, 2, 2, '0123456789');
 
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2010, 'a');

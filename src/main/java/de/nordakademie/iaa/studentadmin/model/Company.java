@@ -54,7 +54,7 @@ public class Company {
      * The postal code.
      */
     @Column(nullable = false)
-    private Integer postalCode;
+    private String postalCode;
     /**
      * The phone number.
      */
@@ -135,11 +135,11 @@ public class Company {
         this.city = city;
     }
 
-    public Integer getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(Integer postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

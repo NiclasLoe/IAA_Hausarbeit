@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Interface for the applicant service.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public interface ApplicantService {
 

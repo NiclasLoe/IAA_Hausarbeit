@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Student service implementation.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 @SuppressWarnings("SpringAutowiredFieldsWarningInspection")
 @Component

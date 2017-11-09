@@ -80,7 +80,7 @@ public abstract class Person {
      * The postal code.
      */
     @Column(nullable = false)
-    private Integer postalCode;
+    private String postalCode;
     /**
      * The stored file
      */
@@ -183,11 +183,11 @@ public abstract class Person {
         this.city = city;
     }
 
-    public Integer getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(Integer postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

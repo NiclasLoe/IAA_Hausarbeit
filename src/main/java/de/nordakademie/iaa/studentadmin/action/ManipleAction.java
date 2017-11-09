@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Class that contain methods to make result list available.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke & Adnan Ait Oufkir
  */
 public class ManipleAction extends ActionSupport {
 

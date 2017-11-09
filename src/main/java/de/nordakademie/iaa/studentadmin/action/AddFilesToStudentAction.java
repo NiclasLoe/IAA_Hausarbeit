@@ -17,6 +17,11 @@ import org.apache.struts2.ServletActionContext;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Class that provides options to add files.
+ *
+ * @author Niclas Loeding
+ */
 public class AddFilesToStudentAction extends ActionSupport {
     /**
      * The student service.

@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Class that contains all action methods for companies.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke & Adnan Ait Oufkir
  */
 public class CompanyAction extends ActionSupport {
 

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Interface for the century service.
  *
- * @author Niclas Loeding
+ * @author Lennart Meincke
  */
 public interface CenturyService {
 
