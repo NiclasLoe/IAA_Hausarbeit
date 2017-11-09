@@ -35,13 +35,16 @@
                 <s:actionerror/>
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadApplicant" cssClass="btn"/>
-                    <s:hidden id="deleteApplicant" name="deleteApplicant"
-                              value="%{getText('confirm.deleteApplicant')}"/>
+                    <s:hidden id="buttonYes" name="buttonYes" value="%{getText('button.yes')}"/>
+                    <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
                     <s:submit key="button.enrollApplicant" action="enrollApplicant" cssClass="btn"/>
-                    <s:submit key="button.deleteApplicant" onclick="confirmDeleteAction(this);" cssClass="btn"/>
+                    <s:submit key="button.deleteApplicant" onclick="return confirmAction(this, 'deleteApplicant');" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>
         </div>
     </div>
+</div>
+<div id="dialog-confirm" class="hiddenModal" title="Dialog">
+    <s:text name="confirm.deleteApplicant"></s:text>
 </div>

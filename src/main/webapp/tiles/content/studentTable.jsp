@@ -38,17 +38,19 @@
 
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadStudent" cssClass="btn"/>
-                    <s:hidden id="exmatriculateStudent" name="exmatriculateStudent"
-                              value="%{getText('confirm.exmatriculateStudent')}"/>
-                    <s:submit key="button.exmatriculateStudent" onclick="confirmExmatriculateAction(this)"
-                              cssClass="btn"/>
-                    <s:hidden id="endActiveStudies" name="endActiveStudies"
-                              value="%{getText('confirm.endActiveStudies')}"/>
-                    <s:submit key="button.endActiveStudies" onclick="confirmEndActiveStudentsAction(this)"
-                              cssClass="btn"/>
+                    <s:hidden id="buttonYes" name="buttonYes" value="%{getText('button.yes')}"/>
+                    <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
+                    <s:submit key="button.exmatriculateStudent" onclick="return confirmAction(this, 'exmatriculateStudent');" cssClass="btn"/>
+                    <s:submit key="button.endActiveStudies" onclick="return confirmAction(this, 'endActiveStudies', '#dialog-confirm2');" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>
         </div>
     </div>
+</div>
+<div id="dialog-confirm" class="hiddenModal" title="Dialog">
+    <s:text name="confirm.exmatriculateStudent"></s:text>
+</div>
+<div id="dialog-confirm2" class="hiddenModal" title="Dialog">
+    <s:text name="confirm.endActiveStudies"></s:text>
 </div>

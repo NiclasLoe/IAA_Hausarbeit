@@ -31,3 +31,7 @@ table {
 .container {
     cursor: default;
 }
+
+.hiddenModal {
+    display: none;
+}

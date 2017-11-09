@@ -163,6 +163,10 @@ public class StudentAction extends ActionSupport implements Preparable {
     public String loadStudent() {
         this.prepareEmptyForm();
         student = studentService.loadStudent(studentId);
+        if (student == null) {
+            addActionError(getText("error.selectStudent"));
+        }
+
         return SUCCESS;
     }
 

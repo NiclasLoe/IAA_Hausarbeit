@@ -36,13 +36,15 @@
                 <s:actionerror/>
                 <div class="form-group">
                     <s:submit key="button.seeMore" action="loadDroppedOut" cssClass="btn"/>
-                    <s:hidden id="reEnrollStudent" name="reEnrollStudent"
-                              value="%{getText('confirm.reEnrollStudent')}"/>
-                    <s:submit key="button.reenrollDroppedOut" onclick="confirmReEnrollAction(this)"
-                              cssClass="btn"/>
+                    <s:hidden id="buttonYes" name="buttonYes" value="%{getText('button.yes')}"/>
+                    <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
+                    <s:submit key="button.reenrollDroppedOut" onclick="return confirmAction(this, 'reEnrollStudent');" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showAdminArea" cssClass="btn"/>
                 </div>
             </s:form>
         </div>
     </div>
+</div>
+<div id="dialog-confirm" class="hiddenModal" title="Dialog">
+    <s:text name="confirm.reEnrollStudent"></s:text>
 </div>

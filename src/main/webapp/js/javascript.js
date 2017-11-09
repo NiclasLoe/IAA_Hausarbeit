@@ -1,36 +1,28 @@
-function confirmDeleteAction(that) {
-    var message = that.form.elements['deleteApplicant'].value;
-    var value = confirm(message);
-    if (value) {
-        that.form.action = 'deleteApplicant';
-        that.form.submit();
+function confirmAction(that, action, form) {
+    var buttonYes = that.form.elements['buttonYes'].value;
+    var buttonNo = that.form.elements['buttonNo'].value;
+    if (form === undefined) {
+        form = "#dialog-confirm";
     }
-}
 
-function confirmReEnrollAction(that) {
-    var message = that.form.elements['reEnrollStudent'].value;
-    var value = confirm(message);
-    if (value) {
-        that.form.action = 'reEnrollDroppedOut';
-        that.form.submit();
-    }
+    $( form ).dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: [
+            {
+                text: buttonYes,
+                click: function() {
+                    $( this ).dialog( "close" );
+                    that.form.action = action;
+                    that.form.submit(); }
+            },
+            {
+                text: buttonNo,
+                click: function() { $(this).dialog('close'); }
+            }
+        ]
+    });
+    return false;
 }
-function confirmEndActiveStudentsAction(that) {
-    var message = that.form.elements['endActiveStudies'].value;
-    var value = confirm(message);
-    if (value) {
-        that.form.action = 'endActiveStudies';
-        that.form.submit();
-    }
-}
-function confirmExmatriculateAction(that) {
-    var message = that.form.elements['exmatriculateStudent'].value;
-    var value = confirm(message);
-    if (value) {
-        that.form.action = 'exmatriculateStudent';
-        that.form.submit();
-    }
-}
-
-
-
