@@ -7,6 +7,14 @@ $(document).ready(function() {
             { targets: 'no-sort', orderable: false }
         ]
     } );
+
+    $('.datatable-design tbody tr').click(function() {
+        var control = $(this).find('td input:radio');
+        if (control !== undefined) {
+            control.prop('checked', true);
+            control.click();
+        }
+    })
 } );
 
 // Display a jQuery modal dialog prompting the user.
