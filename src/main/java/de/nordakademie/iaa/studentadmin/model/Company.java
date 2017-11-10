@@ -33,7 +33,7 @@ public class Company {
     /**
      * The contact person.
      */
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String contactPerson;
     /**
      * The street name.

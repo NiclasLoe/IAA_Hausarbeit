@@ -61,8 +61,6 @@ public class CompanyAction extends ActionSupport {
                 "company.companyName1", getText("error.companyName"));
         validator.fieldValidated(Validator.isStringEmpty(company.getShortName()),
                 "company.shortName", getText("error.shortName"));
-        validator.fieldValidated(Validator.isStringEmpty(company.getContactPerson()),
-                "company.contactPerson", getText("error.contactPerson"));
         validator.fieldValidated(!Validator.isValidPhoneNumber(company.getPhoneNumber()),
                 "company.phoneNumber", getText("error.phoneNumber"));
         validator.fieldValidated(!Validator.isValidPhoneNumber(company.getFaxNumber()),
