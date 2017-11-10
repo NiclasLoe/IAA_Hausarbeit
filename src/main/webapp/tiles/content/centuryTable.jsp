@@ -9,14 +9,19 @@
                 <div class="form-group">
                     <s:submit key="button.addCentury" action="addCentury" cssClass="btn"/>
                 </div>
-                <table class="table">
-                    <tr>
-                        <td></td>
-                        <th><s:text name="tableView.fieldOfStudy"/></th>
-                        <th><s:text name="tableView.year"/></th>
-                        <th><s:text name="tableView.letterCode"/></th>
-                        <th><s:text name="tableView.centuryName"/></th>
-                    </tr>
+                <div class="form-group">
+                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#centuryTable')"/>
+                </div>
+                <table class="table" id="centuryTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><s:text name="tableView.fieldOfStudy"/></th>
+                            <th><s:text name="tableView.year"/></th>
+                            <th><s:text name="tableView.letterCode"/></th>
+                            <th><s:text name="tableView.centuryName"/></th>
+                        </tr>
+                    </thead>
                     <s:iterator value="centuryList">
                         <tr class="notFirst">
                             <td><s:radio name="centuryString" list="#{year+letterCode+fieldOfStudy:''}" theme="simple"

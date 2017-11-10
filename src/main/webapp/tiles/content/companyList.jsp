@@ -9,14 +9,19 @@
                 <div class="form-group">
                     <s:submit key="button.addCompany" action="addCompany" cssClass="btn"/>
                 </div>
-                <table class="table table-hover">
-                    <tr>
-                        <td></td>
-                        <th><s:text name="company.companyName1"/></th>
-                        <th><s:text name="company.companyName2"/></th>
-                        <th><s:text name="company.shortName"/></th>
-                        <th><s:text name="company.contactPerson"/></th>
-                    </tr>
+                <div class="form-group">
+                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#companyTable')"/>
+                </div>
+                <table class="table" id="companyTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><s:text name="company.companyName1"/></th>
+                            <th><s:text name="company.companyName2"/></th>
+                            <th><s:text name="company.shortName"/></th>
+                            <th><s:text name="company.contactPerson"/></th>
+                        </tr>
+                    </thead>
                     <s:iterator value="companyList">
                         <tr>
                             <td><s:radio name="companyId" list="#{id:''}" theme="simple"
