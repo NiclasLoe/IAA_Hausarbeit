@@ -59,7 +59,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
      * @return Struts outcome.
      */
     public String login() {
-        if (userName.isEmpty() || !userName.equals(adminUser)
+        if (userName == null || password == null || userName.isEmpty() || !userName.equals(adminUser)
                 || password.isEmpty() || !password.equals(adminPassword)) {
             addActionError(getText("error.userNameOrPassword"));
             return LOGIN;
