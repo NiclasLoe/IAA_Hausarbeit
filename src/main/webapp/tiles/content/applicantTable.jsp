@@ -11,13 +11,10 @@
                     <s:submit key="button.filterList" action="filterApplicants" cssClass="btn"/>
                     <s:submit key="button.clearFilter" action="showApplicantList" cssClass="btn"/>
                 </div>
-                <div class="form-group">
-                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#applicantTable')"/>
-                </div>
-                <table class="table" id="applicantTable">
+                <table class="table datatable-design" id="applicantTable">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th class="no-sort"></th>
                             <th><s:text name="tableView.lastName"/></th>
                             <th><s:text name="tableView.firstName"/></th>
                             <th><s:text name="tableView.fieldOfStudy"/></th>
@@ -36,7 +33,6 @@
                             <td><s:property value="phoneNumber"/></td>
                         </tr>
                     </s:iterator>
-                    <tr></tr>
                 </table>
                 <s:actionerror/>
                 <div class="form-group">

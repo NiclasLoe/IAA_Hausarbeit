@@ -1,3 +1,15 @@
+$(document).ready(function() {
+    // Apply our data table design to all selectors matching. We disable sorting of the first column for this design.
+    $('.datatable-design').DataTable( {
+        "info":     false,
+        "order": [],
+        columnDefs: [
+            { targets: 'no-sort', orderable: false }
+        ]
+    } );
+} );
+
+// Display a jQuery modal dialog prompting the user.
 function confirmAction(that, action, form) {
     var buttonYes = that.form.elements['buttonYes'].value;
     var buttonNo = that.form.elements['buttonNo'].value;
@@ -7,7 +19,7 @@ function confirmAction(that, action, form) {
         form = "#dialog-confirm";
     }
 
-    $( form ).dialog({
+    $(form).dialog({
         resizable: false,
         height: "auto",
         width: 400,
@@ -17,7 +29,7 @@ function confirmAction(that, action, form) {
             {
                 text: buttonYes,
                 click: function() {
-                    $( this ).dialog( "close" );
+                    $(this).dialog('close');
                     that.form.action = action;
                     that.form.submit(); }
             },
@@ -30,18 +42,7 @@ function confirmAction(that, action, form) {
     return false;
 }
 
-// https://stackoverflow.com/questions/9127498/how-to-perform-a-real-time-search-and-filter-on-a-html-table
-function filterTable(that, table) {
-    var $rows = $(table + ' tbody tr');
-    var val = '^(?=.*\\b' + $.trim($(that).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
-        reg = RegExp(val, 'i'),
-        text;
-    $rows.show().filter(function() {
-        text = $(this).text().replace(/\s+/g, ' ');
-        return !reg.test(text);
-    }).hide();
-}
-
+// Enable all controls passed.
 function enableControls(that, controls) {
     $.each( controls, function(key, controlName) {
         var control = $(controlName);

@@ -9,13 +9,10 @@
                 <div class="form-group">
                     <s:submit key="button.addCentury" action="addCentury" cssClass="btn"/>
                 </div>
-                <div class="form-group">
-                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#centuryTable')"/>
-                </div>
-                <table class="table" id="centuryTable">
+                <table class="table datatable-design" id="centuryTable">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th class="no-sort"></th>
                             <th><s:text name="tableView.fieldOfStudy"/></th>
                             <th><s:text name="tableView.year"/></th>
                             <th><s:text name="tableView.letterCode"/></th>

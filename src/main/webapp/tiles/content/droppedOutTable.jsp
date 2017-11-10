@@ -10,13 +10,10 @@
                     <s:submit key="button.filterList" action="filterDroppedOut" cssClass="btn"/>
                     <s:submit key="button.clearFilter" action="showDroppedOutStudent" cssClass="btn"/>
                 </div>
-                <div class="form-group">
-                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#droppedOutTable')"/>
-                </div>
-                <table class="table" id="droppedOutTable">
+                <table class="table datatable-design" id="droppedOutTable">
                     <thead>
                         <tr >
-                            <th></th>
+                            <th class="no-sort"></th>
                             <th><s:text name="tableView.StudentId"/></th>
                             <th><s:text name="tableView.lastName"/></th>
                             <th><s:text name="tableView.firstName"/></th>
@@ -37,7 +34,6 @@
                             <td class="tdApplicantView"><s:property value="status"/></td>
                         </tr>
                     </s:iterator>
-                    <tr></tr>
                 </table>
                 <s:actionerror/>
                 <div class="form-group">

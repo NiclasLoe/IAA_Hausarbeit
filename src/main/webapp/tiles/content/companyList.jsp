@@ -9,13 +9,10 @@
                 <div class="form-group">
                     <s:submit key="button.addCompany" action="addCompany" cssClass="btn"/>
                 </div>
-                <div class="form-group">
-                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#companyTable')"/>
-                </div>
-                <table class="table" id="companyTable">
+                <table class="table datatable-design" id="companyTable">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th class="no-sort"></th>
                             <th><s:text name="company.companyName1"/></th>
                             <th><s:text name="company.companyName2"/></th>
                             <th><s:text name="company.shortName"/></th>

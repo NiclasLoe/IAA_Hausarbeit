@@ -10,13 +10,10 @@
                     <s:submit key="button.filterList" action="filterAlumni" cssClass="btn"/>
                     <s:submit key="button.clearFilter" action="showAlumniList" cssClass="btn"/>
                 </div>
-                <div class="form-group">
-                    <s:textfield key="searchfield.title" onkeyup="filterTable(this, '#alumniTable')"/>
-                </div>
-                <table class="table" id="alumniTable">
+                <table class="table datatable-design" id="alumniTable">
                     <thead>
                         <tr >
-                            <th></th>
+                            <th class="no-sort"></th>
                             <th><s:text name="tableView.StudentId"/></th>
                             <th><s:text name="tableView.lastName"/></th>
                             <th><s:text name="tableView.firstName"/></th>
@@ -27,7 +24,8 @@
                     </thead>
                     <s:iterator value="studentList">
                         <tr class="notFirst">
-                            <td><s:radio name="studentId" list="#{id:''}" theme="simple" onselect=""/></td>
+                            <td><s:radio name="studentId" list="#{id:''}" theme="simple"
+                                         onclick="return enableControls(this, [ '#buttonSeeMore' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="studentId"/></td>
                             <td class="tdApplicantView"><s:property value="lastName"/></td>
                             <td class="tdApplicantView"><s:property value="firstName"/></td>
@@ -36,11 +34,10 @@
                             <td class="tdApplicantView"><s:property value="status"/></td>
                         </tr>
                     </s:iterator>
-                    <tr></tr>
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
-                    <s:submit key="button.seeMore" action="loadAlumni" cssClass="btn"/>
+                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadAlumni" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>
