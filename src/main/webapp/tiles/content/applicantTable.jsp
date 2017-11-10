@@ -27,7 +27,8 @@
                     </thead>
                     <s:iterator value="personList">
                         <tr class="notFirst">
-                            <td><s:radio name="applicantId" list="#{id:''}" theme="simple" onselect=""/></td>
+                            <td><s:radio name="applicantId" list="#{id:''}" theme="simple"
+                                         onclick="return enableControls(this, [ '#buttonSeeMore', '#buttonEnrollApplicant', '#buttonDeleteApplicant' ]);"/></td>
                             <td><s:property value="lastName"/></td>
                             <td><s:property value="firstName"/></td>
                             <td><s:property value="fieldOfStudy"/></td>
@@ -39,11 +40,12 @@
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
-                    <s:submit key="button.seeMore" action="loadApplicant" cssClass="btn"/>
+                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadApplicant" cssClass="btn"/>
                     <s:hidden id="buttonYes" name="buttonYes" value="%{getText('button.yes')}"/>
                     <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
-                    <s:submit key="button.enrollApplicant" action="enrollApplicant" cssClass="btn"/>
-                    <s:submit key="button.deleteApplicant" onclick="return confirmAction(this, 'deleteApplicant');" cssClass="btn"/>
+                    <s:hidden id="modalTitle" name="modalTitle" value="%{getText('confirm.generic')}"/>
+                    <s:submit id="buttonEnrollApplicant" key="button.enrollApplicant" disabled="true" action="enrollApplicant" cssClass="btn"/>
+                    <s:submit id="buttonDeleteApplicant" key="button.deleteApplicant" disabled="true" onclick="return confirmAction(this, 'deleteApplicant');" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>

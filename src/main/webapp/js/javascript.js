@@ -1,6 +1,8 @@
 function confirmAction(that, action, form) {
     var buttonYes = that.form.elements['buttonYes'].value;
     var buttonNo = that.form.elements['buttonNo'].value;
+    var title = that.form.elements['modalTitle'].value;
+
     if (form === undefined) {
         form = "#dialog-confirm";
     }
@@ -10,6 +12,7 @@ function confirmAction(that, action, form) {
         height: "auto",
         width: 400,
         modal: true,
+        title: title,
         buttons: [
             {
                 text: buttonYes,
@@ -37,4 +40,13 @@ function filterTable(that, table) {
         text = $(this).text().replace(/\s+/g, ' ');
         return !reg.test(text);
     }).hide();
+}
+
+function enableControls(that, controls) {
+    $.each( controls, function(key, controlName) {
+        var control = $(controlName);
+        if (control !== undefined) {
+            control.prop('disabled', false);
+        }
+    });
 }

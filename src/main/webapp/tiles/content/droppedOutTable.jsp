@@ -27,7 +27,8 @@
                     </thead>
                     <s:iterator value="studentList">
                         <tr class="notFirst">
-                            <td><s:radio name="studentId" list="#{id:''}" theme="simple" onselect=""/></td>
+                            <td><s:radio name="studentId" list="#{id:''}" theme="simple"
+                                         onclick="return enableControls(this, [ '#buttonSeeMore', '#buttonReenrollDroppedOut' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="studentId"/></td>
                             <td class="tdApplicantView"><s:property value="lastName"/></td>
                             <td class="tdApplicantView"><s:property value="firstName"/></td>
@@ -40,10 +41,11 @@
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
-                    <s:submit key="button.seeMore" action="loadDroppedOut" cssClass="btn"/>
+                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadDroppedOut" cssClass="btn"/>
                     <s:hidden id="buttonYes" name="buttonYes" value="%{getText('button.yes')}"/>
                     <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
-                    <s:submit key="button.reenrollDroppedOut" onclick="return confirmAction(this, 'reEnrollStudent');" cssClass="btn"/>
+                    <s:hidden id="modalTitle" name="modalTitle" value="%{getText('confirm.generic')}"/>
+                    <s:submit id="buttonReenrollDroppedOut" key="button.reenrollDroppedOut" disabled="true" onclick="return confirmAction(this, 'reEnrollStudent');" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showAdminArea" cssClass="btn"/>
                 </div>
             </s:form>

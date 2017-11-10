@@ -19,7 +19,8 @@
                     </tr>
                     <s:iterator value="companyList">
                         <tr>
-                            <td><s:radio name="companyId" list="#{id:''}" theme="simple" onselect=""/></td>
+                            <td><s:radio name="companyId" list="#{id:''}" theme="simple"
+                                         onclick="return enableControls(this, [ '#buttonSeeMore', '#buttonDownloadCompanyList' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="companyName1"/></td>
                             <td class="tdApplicantView"><s:property value="companyName2"/></td>
                             <td class="tdApplicantView"><s:property value="shortName"/></td>
@@ -30,8 +31,8 @@
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
-                    <s:submit key="button.seeMore" action="loadCompany" cssClass="btn"/>
-                    <s:submit key="button.downloadCompanyList" action="downloadCompanyList" cssClass="btn"/>
+                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadCompany" cssClass="btn"/>
+                    <s:submit id="buttonDownloadCompanyList" key="button.downloadCompanyList" disabled="true" action="downloadCompanyList" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showAdminArea" cssClass="btn"/>
                 </div>
             </s:form>

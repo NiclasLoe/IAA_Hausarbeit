@@ -3,8 +3,6 @@
 }
 .panel-default>.panel-heading {
    background: linear-gradient(#03A9F4 100%, #0288d1 0%) !important;
-    /*background-color: #03A9F4 !important;
-    background: linear-gradient(#333 0%,#444 100%);*/
     color: white !important;
 }
 .panel-default {
@@ -34,4 +32,15 @@ table {
 
 .hiddenModal {
     display: none;
+}
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
+.ui-widget-header {
+    background: linear-gradient(#03A9F4 100%, #0288d1 0%);
+    color: white;
+    border: 1px solid #BDBDBD;
+    font-weight: bold;
 }
