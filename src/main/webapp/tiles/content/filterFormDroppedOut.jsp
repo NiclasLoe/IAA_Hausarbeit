@@ -8,7 +8,7 @@
             <div class="panel-body">
 
                 <s:textfield name="selectedFirstName" key="filter.selectedFirstName"/>
-                <s:textfield name="selectedLastName" key="filter.selectedFirstName"/>
+                <s:textfield name="selectedLastName" key="filter.selectedLastName"/>
             </div>
         </div>
         <div class="panel panel-default">
