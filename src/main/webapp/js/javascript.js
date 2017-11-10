@@ -1,5 +1,7 @@
+/**
+ * Apply our data table design to all selectors matching. We disable sorting of the first column for this design.
+ */
 $(document).ready(function() {
-    // Apply our data table design to all selectors matching. We disable sorting of the first column for this design.
     $('.datatable-design').DataTable( {
         "info":     false,
         "order": [],
@@ -17,7 +19,14 @@ $(document).ready(function() {
     })
 } );
 
-// Display a jQuery modal dialog prompting the user.
+/**
+ * Confirm dialog.
+ *
+ * @param that The current 'this'.
+ * @param action The action to be executed.
+ * @param form The used form.
+ * @returns {boolean} confirm-result
+ */
 function confirmAction(that, action, form) {
     var buttonYes = that.form.elements['buttonYes'].value;
     var buttonNo = that.form.elements['buttonNo'].value;
@@ -50,7 +59,12 @@ function confirmAction(that, action, form) {
     return false;
 }
 
-// Enable all controls passed.
+/**
+ * Enable all controls passed.
+ *
+ * @param that The current 'this'.
+ * @param controls The controls to be activated.
+ */
 function enableControls(that, controls) {
     $.each( controls, function(key, controlName) {
         var control = $(controlName);

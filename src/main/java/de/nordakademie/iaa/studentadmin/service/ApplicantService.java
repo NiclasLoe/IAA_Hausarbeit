@@ -59,7 +59,8 @@ public interface ApplicantService {
      * @param fieldOfStudy      The field of study criteria.
      * @return List of applicants.
      */
-    List<Applicant> filterApplicantList(String selectedFirstName, String selectedLastName, FieldOfStudy fieldOfStudy);
+    List<Applicant> filterApplicantList(String selectedFirstName,
+                                        String selectedLastName, FieldOfStudy fieldOfStudy);
 
     /**
      * Add document to an applicant.

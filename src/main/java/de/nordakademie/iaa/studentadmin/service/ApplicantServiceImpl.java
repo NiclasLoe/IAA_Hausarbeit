@@ -56,7 +56,8 @@ public class ApplicantServiceImpl implements ApplicantService {
     }
 
     @Override
-    public List<Applicant> filterApplicantList(String selectedFirstName, String selectedLastName, FieldOfStudy selectedFieldOfStudy) {
+    public List<Applicant> filterApplicantList(String selectedFirstName, String selectedLastName,
+                                               FieldOfStudy selectedFieldOfStudy) {
         String firstName = null;
         String lastName = null;
 

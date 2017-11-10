@@ -81,7 +81,8 @@ public class EnrollApplicantAction extends ActionSupport {
         try {
             // Load century and company
             Century century = null;
-            Company company = (!Validator.isStringEmpty(centuryString)) ? companyService.loadCompany(companyId) : null;
+            Company company = (!Validator.isStringEmpty(centuryString))
+                    ? companyService.loadCompany(companyId) : null;
 
             if (!Validator.isStringEmpty(centuryString)) {
                 CenturyId centuryId = centuryService.returnId(centuryString);

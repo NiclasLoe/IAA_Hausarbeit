@@ -10,12 +10,13 @@ import java.util.Date;
 public class Validator {
     /**
      * Validates the e-mail address.
+     * It's almost impossible to perfectly check for all RFC822 compliant emails,
+     * so before we reject a valid email, we just have a very basic check for @.
      *
      * @param email The given e-mail address.
      * @return Validation result.
      */
     public static boolean isValidEmail(String email) {
-        // It's almost impossible to perfectly check for all RFC822 compliant emails, so before we reject a valid email, we just have a very basic check for @.
         if (email == null || !email.contains("@")) {
             return false;
         }

@@ -22,8 +22,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private static final String adminUser = "admin";
     /**
      * The admin password.
+     * Normally this would be salted and hashed in a DB.
      */
-    private static final String adminPassword = "admin"; // Normally this would be salted and hashed in a DB.
+    private static final String adminPassword = "admin";
     /**
      * The username that was typed in..
      */

@@ -23,7 +23,8 @@
                           key="filter.selectedCompany"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
 
-                <s:select name="selectedCenturyString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
+                <s:select name="selectedCenturyString" list="%{centuryList}"
+                          listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" key="student.centuryId"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
 

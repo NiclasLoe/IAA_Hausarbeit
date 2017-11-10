@@ -37,7 +37,8 @@
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
-                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadAlumni" cssClass="btn"/>
+                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true"
+                              action="loadAlumni" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>

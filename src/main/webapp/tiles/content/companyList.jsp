@@ -22,7 +22,8 @@
                     <s:iterator value="companyList">
                         <tr class="notFirst">
                             <td><s:radio name="companyId" list="#{id:''}" theme="simple"
-                                         onclick="return enableControls(this, [ '#buttonSeeMore', '#buttonDownloadCompanyList' ]);"/></td>
+                                         onclick="return enableControls(this,
+                                         [ '#buttonSeeMore', '#buttonDownloadCompanyList' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="companyName1"/></td>
                             <td class="tdApplicantView"><s:property value="companyName2"/></td>
                             <td class="tdApplicantView"><s:property value="shortName"/></td>

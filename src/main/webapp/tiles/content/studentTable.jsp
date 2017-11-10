@@ -26,7 +26,8 @@
                     <s:iterator value="studentList">
                         <tr class="notFirst">
                             <td><s:radio name="studentId" list="#{id:''}" theme="simple"
-                                         onclick="return enableControls(this, [ '#buttonSeeMore', '#buttonExmatriculateStudent', '#buttonEndActiveStudies' ]);"/></td>
+                                         onclick="return enableControls(this, [ '#buttonSeeMore',
+                                         '#buttonExmatriculateStudent', '#buttonEndActiveStudies' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="studentId"/></td>
                             <td class="tdApplicantView"><s:property value="lastName"/></td>
                             <td class="tdApplicantView"><s:property value="firstName"/></td>
@@ -39,12 +40,16 @@
                 <s:actionerror/>
 
                 <div class="form-group">
-                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadStudent" cssClass="btn"/>
+                    <s:submit id="buttonSeeMore" key="button.seeMore" disabled="true" action="loadStudent"
+                              cssClass="btn"/>
                     <s:hidden id="buttonYes" name="buttonYes" value="%{getText('button.yes')}"/>
                     <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
                     <s:hidden id="modalTitle" name="modalTitle" value="%{getText('confirm.generic')}"/>
-                    <s:submit id="buttonExmatriculateStudent" key="button.exmatriculateStudent" disabled="true" onclick="return confirmAction(this, 'exmatriculateStudent');" cssClass="btn"/>
-                    <s:submit id="buttonEndActiveStudies" key="button.endActiveStudies" disabled="true" onclick="return confirmAction(this, 'endActiveStudies', '#dialog-confirm2');" cssClass="btn"/>
+                    <s:submit id="buttonExmatriculateStudent" key="button.exmatriculateStudent" disabled="true"
+                              onclick="return confirmAction(this, 'exmatriculateStudent');" cssClass="btn"/>
+                    <s:submit id="buttonEndActiveStudies" key="button.endActiveStudies" disabled="true"
+                              onclick="return confirmAction(this, 'endActiveStudies', '#dialog-confirm2');"
+                              cssClass="btn"/>
                     <s:submit key="button.goBack" action="showMainPage" cssClass="btn"/>
                 </div>
             </s:form>

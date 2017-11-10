@@ -21,8 +21,9 @@
                     </thead>
                     <s:iterator value="centuryList">
                         <tr class="notFirst">
-                            <td><s:radio name="centuryString" list="#{year+letterCode+fieldOfStudy:''}" theme="simple"
-                                         onclick="return enableControls(this, [ '#buttonDownloadAttendanceList' ]);"/></td>
+                            <td><s:radio name="centuryString" list="#{year+letterCode+fieldOfStudy:''}"
+                                         theme="simple" onclick="return enableControls(this,
+                                         [ '#buttonDownloadAttendanceList' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="fieldOfStudy"/></td>
                             <td class="tdApplicantView"><s:property value="year"/></td>
                             <td class="tdApplicantView"><s:property value="letterCode"/></td>
@@ -32,7 +33,8 @@
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
-                    <s:submit id="buttonDownloadAttendanceList" key="button.downloadAttendanceList" disabled="true" action="downloadAttendanceList" cssClass="btn"/>
+                    <s:submit id="buttonDownloadAttendanceList" key="button.downloadAttendanceList"
+                              disabled="true" action="downloadAttendanceList" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showAdminArea" cssClass="btn"/>
                 </div>
             </s:form>

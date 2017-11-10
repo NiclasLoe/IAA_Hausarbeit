@@ -183,7 +183,8 @@ public class ExcelCreator {
      * @param shortName   The name of the company.
      * @return The created workbook.
      */
-    public HSSFWorkbook createCompanyList(ArrayList<Student> studentList, String shortName, String contactPerson) {
+    public HSSFWorkbook createCompanyList(ArrayList<Student> studentList,
+                                          String shortName, String contactPerson) {
         String sheetName = "Firmenliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 

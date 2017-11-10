@@ -13,7 +13,8 @@
         </result-types>
 
         <interceptors>
-            <interceptor class="de.nordakademie.iaa.studentadmin.interceptors.LoginInterceptor" name="loginInterceptor">
+            <interceptor class="de.nordakademie.iaa.studentadmin.interceptors.LoginInterceptor"
+                         name="loginInterceptor">
             </interceptor>
             <interceptor-stack name="loginStack">
                 <interceptor-ref name="loginInterceptor"/>
@@ -51,18 +52,21 @@
         <action name="cancelAlumni">
             <result type="redirectAction">showAlumniList</result>
         </action>
-        <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+        <action name="loadAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="loadStudent">
             <result name="input" type="chain">showAlumniList</result>
             <result>alumniForm</result>
         </action>
-        <action name="saveStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="saveStudent">
+        <action name="saveStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="saveStudent">
             <result name="input">studentForm</result>
             <result type="redirectAction">showStudentList</result>
         </action>
         <action name="addStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction">
             <result>newStudentForm</result>
         </action>
-        <action name="loadStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+        <action name="loadStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="loadStudent">
             <result name="input" type="chain">showStudentList</result>
             <result name="success">studentForm</result>
         </action>
@@ -140,14 +144,16 @@
         </action>
 
         <!--Company Actions-->
-        <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="loadCompany">
+        <action name="loadCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction"
+                method="loadCompany">
             <result name="input" type="chain">showCompanyList</result>
             <result>companyForm</result>
         </action>
         <action name="addCompany">
             <result>companyForm</result>
         </action>
-        <action name="saveCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction" method="saveCompany">
+        <action name="saveCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction"
+                method="saveCompany">
             <result name="input">companyForm</result>
             <result type="redirectAction">showCompanyList</result>
         </action>
@@ -181,21 +187,25 @@
         </action>
 
         <!--Login actions-->
-        <action name="loginUser" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="login">
+        <action name="loginUser" class="de.nordakademie.iaa.studentadmin.action.LoginAction"
+                method="login">
             <interceptor-ref name="defaultStack"/>
             <result name="success" type="redirectAction">homeAction</result>
             <result name="login">loginForm</result>
         </action>
-        <action name="homeAction" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="home">
+        <action name="homeAction" class="de.nordakademie.iaa.studentadmin.action.LoginAction"
+                method="home">
             <result name="login">loginForm</result>
             <result type="redirectAction">showMainPage</result>
         </action>
-        <action name="logOut" class="de.nordakademie.iaa.studentadmin.action.LoginAction" method="logOut">
+        <action name="logOut" class="de.nordakademie.iaa.studentadmin.action.LoginAction"
+                method="logOut">
             <result>loginForm</result>
         </action>
 
         <!--Filter actions-->
-        <action name="filterDroppedOut" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+        <action name="filterDroppedOut" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="filterList">
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
@@ -229,7 +239,8 @@
             <result name="input">filterPageApplicant</result>
             <result>applicantTable</result>
         </action>
-        <action name="filterStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+        <action name="filterStudent" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="filterList">
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
@@ -246,7 +257,8 @@
             <result name="input" type="redirectAction">filterStudent</result>
             <result>studentTable</result>
         </action>
-        <action name="filterAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="filterList">
+        <action name="filterAlumni" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="filterList">
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
@@ -301,7 +313,8 @@
 
         <!--Upload & download files-->
 
-        <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addProfilePictureToStudent">
+        <action name="userImage" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction"
+                method="addProfilePictureToStudent">
             <interceptor-ref name="fileUpload">
                 <param name="maxSize">20000000</param>
                 <param name="allowedTypes">
@@ -314,19 +327,22 @@
             <result name="error">profilePictureUpload</result>
         </action>
 
-        <action name="uploadPicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+        <action name="uploadPicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="loadStudent">
             <result name="input">studentForm</result>
             <result>profilePictureUpload</result>
         </action>
 
-        <action name="deletePicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteProfilePicture">
+        <action name="deletePicture" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="deleteProfilePicture">
             <result type="redirectAction">
                 <param name="actionName">loadStudent</param>
                 <param name="studentId">${student.id}</param>
             </result>
         </action>
 
-        <action name="userDocument" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addDocumentToStudent">
+        <action name="userDocument" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction"
+                method="addDocumentToStudent">
             <interceptor-ref name="fileUpload">
                 <param name="maxSize">20000000</param>
                 <param name="allowedTypes">
@@ -339,19 +355,22 @@
             <result name="error">documentUploadStudent</result>
         </action>
 
-        <action name="uploadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="loadStudent">
+        <action name="uploadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="loadStudent">
             <result name="input">studentForm</result>
             <result>documentUploadStudent</result>
         </action>
 
-        <action name="deleteStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction" method="deleteDocument">
+        <action name="deleteStudentDocument" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="deleteDocument">
             <result type="redirectAction">
                 <param name="actionName">loadStudent</param>
                 <param name="studentId">${student.id}</param>
             </result>
         </action>
 
-        <action name="downloadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction" method="downloadStudentDocument">
+        <action name="downloadStudentDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction"
+                method="downloadStudentDocument">
             <result name="input" type="chain">studentForm</result>
             <result name="success" type="stream">
                 <param name="contentType">${dataType}</param>
@@ -361,12 +380,14 @@
             </result>
         </action>
 
-        <action name="uploadApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction" method="loadApplicant">
+        <action name="uploadApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="loadApplicant">
             <result name="input">applicantForm</result>
             <result>documentUploadApplicant</result>
         </action>
 
-        <action name="downloadApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction" method="downloadApplicantDocument">
+        <action name="downloadApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.DownloadAction"
+                method="downloadApplicantDocument">
             <result name="input" type="chain">applicantForm</result>
             <result name="success" type="stream">
                 <param name="contentType">${dataType}</param>
@@ -376,14 +397,16 @@
             </result>
         </action>
 
-        <action name="deleteApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction" method="deleteDocument">
+        <action name="deleteApplicantDocument" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
+                method="deleteDocument">
             <result type="redirectAction">
                 <param name="actionName">loadApplicant</param>
                 <param name="applicantId">${applicant.id}</param>
             </result>
         </action>
 
-        <action name="userDocumentApplicant" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction" method="addDocumentToApplicant">
+        <action name="userDocumentApplicant" class="de.nordakademie.iaa.studentadmin.action.AddFilesToStudentAction"
+                method="addDocumentToApplicant">
             <interceptor-ref name="fileUpload">
                 <param name="maxSize">20000000</param>
                 <param name="allowedTypes">
