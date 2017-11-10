@@ -15,7 +15,7 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script language="JavaScript" src="<s:url value="/js/javascript.js"/>"/>
+    <script language="JavaScript" src="<s:url value="/js/javascript.js"/>"></script>
     <sb:head/>
 </head>
 <body>

@@ -33,10 +33,8 @@
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="filter.applyFilterOnList"/></div>
             <div class="panel-body">
-                <div class="form-group">
                     <s:submit key="button.applyFilter" action="applyDroppedOutFilter" cssClass="btn"/>
                     <s:submit key="button.cancel" action="cancelDroppedOutFilter" cssClass="btn"/>
-                </div>
             </div>
         </div>
     </s:form>
