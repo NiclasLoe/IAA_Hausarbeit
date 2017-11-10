@@ -29,7 +29,6 @@
                             <td class="tdApplicantView"><s:property value="centuryName"/></td>
                         </tr>
                     </s:iterator>
-                    <tr></tr>
                 </table>
                 <s:actionerror/>
                 <div class="form-group">

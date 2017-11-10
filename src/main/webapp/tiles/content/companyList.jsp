@@ -20,7 +20,7 @@
                         </tr>
                     </thead>
                     <s:iterator value="companyList">
-                        <tr>
+                        <tr class="notFirst">
                             <td><s:radio name="companyId" list="#{id:''}" theme="simple"
                                          onclick="return enableControls(this, [ '#buttonSeeMore', '#buttonDownloadCompanyList' ]);"/></td>
                             <td class="tdApplicantView"><s:property value="companyName1"/></td>
@@ -29,7 +29,6 @@
                             <td class="tdApplicantView"><s:property value="contactPerson"/></td>
                         </tr>
                     </s:iterator>
-                    <tr></tr>
                 </table>
                 <s:actionerror/>
                 <div class="form-group">
