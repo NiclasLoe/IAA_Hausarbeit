@@ -44,7 +44,7 @@
                     <s:hidden id="buttonNo" name="buttonNo" value="%{getText('button.no')}"/>
                     <s:hidden id="modalTitle" name="modalTitle" value="%{getText('confirm.generic')}"/>
                     <s:submit id="buttonReenrollDroppedOut" key="button.reenrollDroppedOut" disabled="true"
-                              onclick="return confirmAction(this, 'reEnrollStudent');" cssClass="btn"/>
+                              onclick="return confirmAction(this, 'reEnrollDroppedOut');" cssClass="btn"/>
                     <s:submit key="button.goBack" action="showAdminArea" cssClass="btn"/>
                 </div>
             </s:form>
