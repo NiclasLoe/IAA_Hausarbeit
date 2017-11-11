@@ -73,7 +73,7 @@
                                 headerValue="%{getText('student.pleaseSelect')}" headerKey=""
                                 doubleList="supervisor" doubleName="supervisorId"
                                 doubleListKey="id" doubleListValue="%{firstName + ' ' + lastName}"
-                                doubleValue="student.supervisor.id"></s:doubleselect>
+                                doubleValue="student.supervisor.id" doubleHeaderValue="" doubleHeaderKey=""/>
                 
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" value="%{centuryString}"

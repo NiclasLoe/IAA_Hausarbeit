@@ -204,7 +204,8 @@ public class StudentAction extends ActionSupport implements Preparable {
             Student studentTemp = studentService.loadStudent(student.getId());
             Long docId = studentTemp.getDocument().getId();
             studentTemp.setDocument(null);
-            studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getSupervisor(), studentTemp.getCentury());
+            studentService.saveStudent(studentTemp, studentTemp.getCompany(),
+                    studentTemp.getSupervisor(), studentTemp.getCentury());
             documentService.deleteDocument(docId);
         } catch (EntityNotFoundException e) {
             addActionError(getText("error.DocumentNotFound"));

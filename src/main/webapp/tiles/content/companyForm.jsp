@@ -49,7 +49,8 @@
                         <s:iterator value="supervisorList">
                             <tr class="notFirst">
                                 <td><s:radio name="supervisorId" list="#{id:''}" theme="simple"
-                                             onclick="return enableControls(this, [ '#buttonDeleteSelectedSupervisor' ]);"/></td>
+                                             onclick="return enableControls(this,
+                                             [ '#buttonDeleteSelectedSupervisor' ]);"/></td>
                                 <td><s:property value="firstName"/></td>
                                 <td><s:property value="lastName"/></td>
                             </tr>
