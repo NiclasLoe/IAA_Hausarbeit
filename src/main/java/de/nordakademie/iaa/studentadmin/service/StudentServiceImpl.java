@@ -4,6 +4,7 @@ import de.nordakademie.iaa.studentadmin.dao.StudentDAO;
 import de.nordakademie.iaa.studentadmin.model.*;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import de.nordakademie.iaa.studentadmin.utilities.Status;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -63,8 +64,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveStudent(Student student, Company company, Century century) {
+    public void saveStudent(Student student, Company company, Supervisor supervisor, Century century) {
         student.setCompany(company);
+        student.setSupervisor(supervisor);
         student.setCentury(century);
         studentDAO.saveStudent(student);
     }

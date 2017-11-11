@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container">
-    <s:form theme="bootstrap" cssClass="form-horizontal" key="student.header">
+    <s:form theme="bootstrap" cssClass="form-horizontal" label="%{getText('student.header')}">
     <s:hidden name="student.id"/>
     <s:hidden name="studentId" value="%{student.id}"/>
     <s:hidden name="student.status"/>
@@ -68,23 +68,11 @@
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="student.NAKInformation"/></div>
             <div class="panel-body">
-                <s:select id="company" name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
-                          value="student.company.id" key="student.company_id"
-                          headerValue="%{getText('student.pleaseSelect')}" headerKey=""
-                          onchange="return listSupervisor(this.form)"/>
-
-                <s:iterator value="%{supervisorMap}" var="companyTemp">
-                    <s:if test="companyTemp.key == %{companyId}">
-                        <s:set var="availableSupervisor" value="companyTemp.value"/>
-                    </s:if>
-                </s:iterator>
-
-                <s:if test="%{supervisorMap.size()} == 0">
-                    <s:select id="supervisor" name="supervisorId" list="%{availableSupervisor}"
-                          listKey="id" listValue="lastName"
-                          value="student.supervisor" key="student.supervisor_id"
-                          headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
-                </s:if>
+                <s:doubleselect id="company" name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
+                                value="student.company.id" key="student.company_id" headerValue="%{getText('student.pleaseSelect')}" headerKey=""
+                                doubleList="supervisor" doubleName="supervisorId" doubleListKey="id" doubleListValue="%{firstName + ' ' + lastName}"
+                                doubleValue="student.supervisor.id"></s:doubleselect>
+                
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" value="%{centuryString}"
                           key="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>

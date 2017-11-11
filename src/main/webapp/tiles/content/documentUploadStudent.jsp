@@ -13,10 +13,8 @@
                 <s:file name="file" label="%{getText('profilePicture.selectFile')}"/>
 
                 <s:actionerror/>
-                <div class="form-group">
-                    <s:submit name="submit" key="button.uploadDocument" cssClass="btn"/>
-                    <s:submit key="button.cancel" action="loadStudent" cssClass="btn"/>
-                </div>
+                <s:submit name="submit" key="button.uploadDocument" cssClass="btn"/>
+                <s:submit key="button.cancel" action="loadStudent" cssClass="btn"/>
             </s:form>
         </div>
     </div>

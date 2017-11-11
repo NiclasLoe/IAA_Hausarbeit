@@ -52,9 +52,10 @@ public interface StudentService {
      *
      * @param student The given
      * @param company The company of a student.
+     * @param supervisor The supervisor of a student.
      * @param century The century of a student.
      */
-    void saveStudent(Student student, Company company, Century century);
+    void saveStudent(Student student, Company company, Supervisor supervisor, Century century);
 
     /**
      * Load student by its identifier.

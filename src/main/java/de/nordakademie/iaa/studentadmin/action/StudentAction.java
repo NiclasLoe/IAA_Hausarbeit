@@ -9,10 +9,7 @@ import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Class that contain all action methods for students.
@@ -54,6 +51,10 @@ public class StudentAction extends ActionSupport implements Preparable {
      */
     private Long companyId;
     /**
+     * The supervisor's identifier.
+     */
+    private Long supervisorId;
+    /**
      * The century's identifier formatted as a string.
      */
     private String centuryString;
@@ -65,14 +66,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      * The profile picture service.
      */
     private ProfilePictureService profilePictureService;
-    /**
-     * The list of available supervisor.
-     */
-    private List<Supervisor> supervisorList = new ArrayList<>();
-    /**
-     * The map containing all supervisor.
-     */
-    private Map<Long, List<Supervisor>> supervisorMap = new HashMap<>();
+
     /**
      * Validates whether a student is selected.
      */
@@ -161,7 +155,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      * @return Struts outcome.
      */
     public String saveStudent() {
-        studentService.saveStudent(student, getCompany(), getCentury());
+        studentService.saveStudent(student, getCompany(), getSupervisor(), getCentury());
         return SUCCESS;
     }
 
@@ -189,7 +183,7 @@ public class StudentAction extends ActionSupport implements Preparable {
         Student studentTemp = studentService.loadStudent(student.getId());
         Long picId = studentTemp.getProfilePicture().getId();
         studentTemp.setProfilePicture(null);
-        studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+        studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getSupervisor(), studentTemp.getCentury());
         try {
             profilePictureService.deleteImage(picId);
         } catch (EntityNotFoundException e) {
@@ -209,7 +203,7 @@ public class StudentAction extends ActionSupport implements Preparable {
             Student studentTemp = studentService.loadStudent(student.getId());
             Long docId = studentTemp.getDocument().getId();
             studentTemp.setDocument(null);
-            studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getCentury());
+            studentService.saveStudent(studentTemp, studentTemp.getCompany(), studentTemp.getSupervisor(), studentTemp.getCentury());
             documentService.deleteDocument(docId);
         } catch (EntityNotFoundException e) {
             addActionError(getText("error.DocumentNotFound"));
@@ -241,10 +235,6 @@ public class StudentAction extends ActionSupport implements Preparable {
     private void prepareEmptyForm() {
         companyList = companyService.listCompanies();
         centuryList = centuryService.listCenturies();
-        for (int i = 0; i < companyList.size(); i++) {
-            Company companyTemp = companyList.get(i);
-            supervisorMap.put(companyTemp.getId(), companyTemp.getSupervisor());
-        }
     }
 
     /**
@@ -312,14 +302,23 @@ public class StudentAction extends ActionSupport implements Preparable {
     }
 
     /**
-     * Get supervisor from company
+     * Get supervisor.
      *
-     * @return Struts outcome.
+     * @return The found supervisor. Null otherwise.
      */
-    public String loadSupervisor() {
-        Company companySelected = getCompany();
-        supervisorList = companySelected.getSupervisor();
-        return SUCCESS;
+    private Supervisor getSupervisor() {
+        Company company = getCompany();
+        if (company != null) {
+            Optional<Supervisor> supervisor = company.getSupervisor().stream()
+                    .filter(s -> s.getId() == supervisorId)
+                    .findFirst();
+
+            if (supervisor.isPresent()) {
+                return supervisor.get();
+            }
+        }
+
+        return null;
     }
 
     // Getter and Setter
@@ -372,6 +371,14 @@ public class StudentAction extends ActionSupport implements Preparable {
         this.companyId = companyId;
     }
 
+    public Long getSupervisorId() {
+        return supervisorId;
+    }
+
+    public void setSupervisorId(Long supervisorId) {
+        this.supervisorId = supervisorId;
+    }
+
     public void setCenturyService(CenturyService centuryService) {
         this.centuryService = centuryService;
     }
@@ -390,13 +397,5 @@ public class StudentAction extends ActionSupport implements Preparable {
 
     public void setProfilePictureService(ProfilePictureService profilePictureService) {
         this.profilePictureService = profilePictureService;
-    }
-
-    public List<Supervisor> getSupervisorList() {
-        return supervisorList;
-    }
-
-    public void setSupervisorList(List<Supervisor> supervisorList) {
-        this.supervisorList = supervisorList;
     }
 }
