@@ -42,7 +42,7 @@ public class ManipleServiceImpl implements ManipleService {
 
     @Override
     public FieldOfStudy returnFieldOfStudy(String maniple) {
-        return FieldOfStudy.valueOf(maniple.substring(0, 4));
+        return FieldOfStudy.valueOf(maniple.substring(0, maniple.length()-5));
     }
 
     @Override
