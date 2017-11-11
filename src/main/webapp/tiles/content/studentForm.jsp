@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container">
-    <s:form theme="bootstrap" cssClass="form-horizontal" label="%{getText('student.header')}">
+    <s:form theme="bootstrap" cssClass="form-horizontal has-js-translations" label="%{getText('student.header')}">
     <s:hidden name="student.id"/>
     <s:hidden name="studentId" value="%{student.id}"/>
     <s:hidden name="student.status"/>
@@ -68,15 +68,16 @@
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="student.NAKInformation"/></div>
             <div class="panel-body">
-                <s:hidden name="pleaseSelect" value="%{getText('student.pleaseSelect')}"/>
-                <s:doubleselect id="company" name="companyId" list="%{companyList}" listKey="id"
-                                listValue="shortName" value="student.company.id" key="student.company_id"
-                                headerValue="%{getText('student.pleaseSelect')}" headerKey=""
-                                doubleList="supervisor" doubleName="supervisorId"
-                                doubleListKey="id" doubleListValue="%{firstName + ' ' + lastName}"
-                                doubleValue="student.supervisor.id"
-                                doubleHeaderValue="" doubleHeaderKey=""/>
-                
+                <s:hidden name="student.pleaseSelect" value="%{getText('student.pleaseSelect')}"/>
+                <div class="requires-js-resources">
+                    <s:doubleselect id="company" name="companyId" list="%{companyList}" listKey="id"
+                                    listValue="shortName" value="student.company.id" key="student.company_id"
+                                    headerValue="%{getText('student.pleaseSelect')}" headerKey=""
+                                    doubleList="supervisor" doubleName="supervisorId"
+                                    doubleListKey="id" doubleListValue="%{firstName + ' ' + lastName}"
+                                    doubleValue="student.supervisor.id"
+                                    doubleHeaderValue="%{getText('student.pleaseSelect')}" doubleHeaderKey=""/>
+                </div>
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" value="%{centuryString}"
                           key="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>

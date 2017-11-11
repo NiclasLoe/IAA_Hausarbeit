@@ -18,6 +18,14 @@ $(document).ready(function () {
         }
     })
 
+    /**
+     * Small script to run javascript dependent localization.
+     */
+    $.each( $(".requires-js-resources"), function( i, val ) {
+        var html = $(val).html();
+        html = replaceResourceText(this, html);
+        $(val).html(html);
+    });
 });
 
 /**
@@ -76,4 +84,42 @@ function enableControls(that, controls) {
             control.prop('disabled', false);
         }
     });
+}
+
+/**
+ * JavaScript helper to localize certain elements using Struts2 resources. Returns the localized string if found.
+ *
+ * @param input The input string.
+ * @param resourceName The name of the resource.
+ * @param resourceValue The value of the resource.
+ */
+function replaceResourceText(that, input) {
+    var translationsForm = $(".has-js-translations");
+    if (translationsForm.length === 0) {
+        return input;
+    }
+
+    translationsForm = translationsForm[0].elements;
+
+    const resourceText = "getText";
+    var regex = /%{(.*?)\(\\?'(.*?)\\?'\)}/g;
+    var m;
+    while ((m = regex.exec(input)) !== null) {
+        // This is necessary to avoid infinite loops with zero-width matches.
+        if (m.index === regex.lastIndex) {
+            regex.lastIndex++;
+        }
+
+        if (m.length === 3) {
+            if (m[1] == resourceText) {
+                // Build new regex only masking our current value.
+                var tempRegex = new RegExp("%{(.*?)\\(\\\\?'(" + m[2] +  ")\\\\?'\\)}", "g");
+                var newValue = translationsForm[m[2]].value;
+                return input.replace(tempRegex, newValue);
+            }
+
+        }
+    }
+
+    return input;
 }
