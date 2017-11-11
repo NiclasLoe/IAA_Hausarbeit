@@ -48,8 +48,8 @@
 
                         <s:iterator value="supervisorList">
                             <tr class="notFirst">
-                                <td><s:radio name="supervisorId" list="#{id:''}"
-                                             theme="simple"/></td>
+                                <td><s:radio name="supervisorId" list="#{id:''}" theme="simple"
+                                             onclick="return enableControls(this, [ '#buttonDeleteSelectedSupervisor' ]);"/></td>
                                 <td><s:property value="firstName"/></td>
                                 <td><s:property value="lastName"/></td>
                             </tr>
@@ -59,7 +59,8 @@
                 </s:if>
                 <s:submit key="button.addSupervisor" action="addSupervisor" cssClass="btn"/>
                 <s:if test="supervisorList.size() > 0">
-                    <s:submit key="button.deleteSelectedSupervisor" action="deleteSupervisor" cssClass="btn"/>
+                    <s:submit id="buttonDeleteSelectedSupervisor" key="button.deleteSelectedSupervisor"
+                              disabled="true" action="deleteSupervisor" cssClass="btn"/>
                 </s:if>
             </div>
         </div>
