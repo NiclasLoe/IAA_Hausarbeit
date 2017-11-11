@@ -73,11 +73,18 @@
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""
                           onchange="return listSupervisor(this.form)"/>
 
-                <s:select id="supervisor" name="supervisorId" list="%{supervisorList}"
+                <s:iterator value="%{supervisorMap}" var="companyTemp">
+                    <s:if test="companyTemp.key.Id == %{companyId}">
+                        <s:set var="availableSupervisor" value="companyTemp.value"/>
+                    </s:if>
+                </s:iterator>
+
+                <s:if test="%{supervisorMap.size()} == 0">
+                    <s:select id="supervisor" name="supervisorId" list="%{availableSupervisor}"
                           listKey="id" listValue="lastName"
                           value="student.supervisor" key="student.supervisor_id"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
-
+                </s:if>
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" value="%{centuryString}"
                           key="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
