@@ -1,6 +1,7 @@
 package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.model.Company;
+import de.nordakademie.iaa.studentadmin.model.Supervisor;
 
 import java.util.List;
 
@@ -32,4 +33,12 @@ public interface CompanyService {
      * @param company The given company.
      */
     void save(Company company);
+
+    /**
+     * Removes a supervisor from a company.
+     *
+     * @param company The current company.
+     * @param supervisor The supervisor to be removed.
+     */
+    void removeSupervisor(Company company, Supervisor supervisor);
 }

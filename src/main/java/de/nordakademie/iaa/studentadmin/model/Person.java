@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.model;
 
 import de.nordakademie.iaa.studentadmin.utilities.Gender;
 import de.nordakademie.iaa.studentadmin.utilities.Title;
+import net.bytebuddy.implementation.bind.annotation.Super;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -86,6 +87,12 @@ public abstract class Person {
      */
     @OneToOne
     private Document document;
+
+    /**
+     * The supervisor.
+     */
+    @ManyToOne
+    private Supervisor supervisor;
 
     public Long getId() {
         return id;
@@ -197,5 +204,13 @@ public abstract class Person {
 
     public void setDocument(Document document) {
         this.document = document;
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
     }
 }

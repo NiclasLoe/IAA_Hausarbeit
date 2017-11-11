@@ -3,12 +3,11 @@ package de.nordakademie.iaa.studentadmin.action;
 import com.opensymphony.xwork2.ActionSupport;
 import de.nordakademie.iaa.studentadmin.model.Company;
 import de.nordakademie.iaa.studentadmin.model.Student;
+import de.nordakademie.iaa.studentadmin.model.Supervisor;
 import de.nordakademie.iaa.studentadmin.service.CompanyService;
 import de.nordakademie.iaa.studentadmin.service.StudentService;
-import de.nordakademie.iaa.studentadmin.utilities.ActionSupportValidator;
-import de.nordakademie.iaa.studentadmin.utilities.ExcelCreator;
-import de.nordakademie.iaa.studentadmin.utilities.FileInputUtil;
-import de.nordakademie.iaa.studentadmin.utilities.Validator;
+import de.nordakademie.iaa.studentadmin.service.SupervisorService;
+import de.nordakademie.iaa.studentadmin.utilities.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.InputStream;
@@ -39,9 +38,25 @@ public class CompanyAction extends ActionSupport {
      */
     private Company company;
     /**
+     * List of supervisors.
+     */
+    private List<Supervisor> supervisorList;
+    /**
      * Input stream to export file.
      */
     private InputStream fileInputStream;
+    /**
+     * The edited supervisor.
+     */
+    private Supervisor supervisor;
+    /**
+     * The supervisor service.
+     */
+    private SupervisorService supervisorService;
+    /**
+     * The selected supervisor.
+     */
+    private Long supervisorId;
 
     /**
      * Validates whether a company is selected.
@@ -87,12 +102,24 @@ public class CompanyAction extends ActionSupport {
     }
 
     /**
+     * Validates the supervisor form.
+     */
+    public void validateAddSupervisor() {
+        ActionSupportValidator validator = new ActionSupportValidator(this);
+        validator.fieldValidated(Validator.isStringEmpty(supervisor.getFirstName()),
+                "supervisor.firstName", getText("error.firstName"));
+        validator.fieldValidated(Validator.isStringEmpty(supervisor.getLastName()),
+                "supervisor.lastName", getText("error.lastName"));
+    }
+
+    /**
      * Loads the selected company.
      *
      * @return Struts outcome
      */
     public String loadCompany() {
         company = companyService.loadCompany(companyId);
+        supervisorList = company.getSupervisor();
         return SUCCESS;
     }
 
@@ -136,6 +163,34 @@ public class CompanyAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * Method to add an supervisor to a company.
+     *
+     * @return Struts outcome.
+     */
+    public String addSupervisor() {
+        Long superId = supervisorService.saveSupervisor(supervisor);
+        Supervisor supervisorTemp = supervisorService.loadSupervisor(superId);
+        Long companyIdTemp = company.getId();
+        Company companyTemp = companyService.loadCompany(companyIdTemp);
+        companyTemp.getSupervisor().add(supervisorTemp);
+        companyService.save(companyTemp);
+        return SUCCESS;
+    }
+
+    /**
+     * Remove a supervisor from a company.
+     *
+     * @return Struts outcome.
+     */
+    public String removeSupervisor() {
+        Supervisor supervisorTemp = supervisorService.loadSupervisor(supervisorId);
+        Company companyTemp = companyService.loadCompany(company.getId());
+        companyService.removeSupervisor(companyTemp, supervisorTemp);
+        return SUCCESS;
+    }
+
+
     // Getter and setter
 
     public InputStream getFileInputStream() {
@@ -168,5 +223,33 @@ public class CompanyAction extends ActionSupport {
 
     public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    public List<Supervisor> getSupervisorList() {
+        return supervisorList;
+    }
+
+    public void setSupervisorList(List<Supervisor> supervisorList) {
+        this.supervisorList = supervisorList;
+    }
+
+    public void setSupervisorService(SupervisorService supervisorService) {
+        this.supervisorService = supervisorService;
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public Long getSupervisorId() {
+        return supervisorId;
+    }
+
+    public void setSupervisorId(Long supervisorId) {
+        this.supervisorId = supervisorId;
     }
 }

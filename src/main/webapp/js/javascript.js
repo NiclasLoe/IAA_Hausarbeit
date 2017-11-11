@@ -1,23 +1,24 @@
 /**
  * Apply our data table design to all selectors matching. We disable sorting of the first column for this design.
  */
-$(document).ready(function() {
-    $('.datatable-design').DataTable( {
-        "info":     false,
+$(document).ready(function () {
+    $('.datatable-design').DataTable({
+        "info": false,
         "order": [],
         columnDefs: [
-            { targets: 'no-sort', orderable: false }
+            {targets: 'no-sort', orderable: false}
         ]
-    } );
+    });
 
-    $('.datatable-design tbody tr').click(function() {
+    $('.datatable-design tbody tr').click(function () {
         var control = $(this).find('td input:radio');
         if (control !== undefined) {
             control.prop('checked', true);
             control.click();
         }
     })
-} );
+
+});
 
 /**
  * Confirm dialog.
@@ -45,14 +46,17 @@ function confirmAction(that, action, form) {
         buttons: [
             {
                 text: buttonYes,
-                click: function() {
+                click: function () {
                     $(this).dialog('close');
                     that.form.action = action;
-                    that.form.submit(); }
+                    that.form.submit();
+                }
             },
             {
                 text: buttonNo,
-                click: function() { $(this).dialog('close'); }
+                click: function () {
+                    $(this).dialog('close');
+                }
             }
         ]
     });
@@ -66,10 +70,14 @@ function confirmAction(that, action, form) {
  * @param controls The controls to be activated.
  */
 function enableControls(that, controls) {
-    $.each( controls, function(key, controlName) {
+    $.each(controls, function (key, controlName) {
         var control = $(controlName);
         if (control !== undefined) {
             control.prop('disabled', false);
         }
     });
+}
+
+function listSupervisor(myForm) {
+    myForm.getElementById('supervisor').options.add('test1', 'test2');
 }

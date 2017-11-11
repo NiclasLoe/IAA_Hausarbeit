@@ -2,9 +2,11 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.CompanyDAO;
 import de.nordakademie.iaa.studentadmin.model.Company;
+import de.nordakademie.iaa.studentadmin.model.Supervisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,5 +38,19 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void save(Company company) {
         companyDAO.save(company);
+    }
+
+    @Override
+    public void removeSupervisor(Company company, Supervisor supervisor) {
+        List<Supervisor> supervisorList = company.getSupervisor();
+        List<Supervisor> newSupervisorList = new ArrayList<>();
+        for (int i = 0; i < supervisorList.size(); i++) {
+            if (!supervisorList.get(i).getId().equals(supervisor.getId())) {
+                newSupervisorList.add(supervisorList.get(i));
+            }
+        }
+        company.setSupervisor(newSupervisorList);
+        save(company);
+
     }
 }

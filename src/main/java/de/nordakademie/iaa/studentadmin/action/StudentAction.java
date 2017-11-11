@@ -9,6 +9,7 @@ import de.nordakademie.iaa.studentadmin.utilities.CenturyId;
 import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,6 +63,10 @@ public class StudentAction extends ActionSupport implements Preparable {
      * The profile picture service.
      */
     private ProfilePictureService profilePictureService;
+    /**
+     * The list of available supervisor.
+     */
+    private List<Supervisor> supervisorList = new ArrayList<>();
 
     /**
      * Validates whether a student is selected.
@@ -297,6 +302,17 @@ public class StudentAction extends ActionSupport implements Preparable {
         return (companyId != null) ? companyService.loadCompany(companyId) : null;
     }
 
+    /**
+     * Get supervisor from company
+     *
+     * @return Struts outcome.
+     */
+    public String loadSupervisor() {
+        Company companySelected = getCompany();
+        supervisorList = companySelected.getSupervisor();
+        return SUCCESS;
+    }
+
     // Getter and Setter
 
     public void setStudentService(StudentService studentService) {
@@ -365,5 +381,13 @@ public class StudentAction extends ActionSupport implements Preparable {
 
     public void setProfilePictureService(ProfilePictureService profilePictureService) {
         this.profilePictureService = profilePictureService;
+    }
+
+    public List<Supervisor> getSupervisorList() {
+        return supervisorList;
+    }
+
+    public void setSupervisorList(List<Supervisor> supervisorList) {
+        this.supervisorList = supervisorList;
     }
 }

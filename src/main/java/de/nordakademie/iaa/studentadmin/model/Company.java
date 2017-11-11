@@ -1,6 +1,8 @@
 package de.nordakademie.iaa.studentadmin.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Company entity.
@@ -33,7 +35,6 @@ public class Company {
     /**
      * The contact person.
      */
-    @Column(nullable = true)
     private String contactPerson;
     /**
      * The street name.
@@ -70,7 +71,15 @@ public class Company {
      */
     @Column(nullable = false)
     private String mailAddress;
+    /**
+     * The supervisor.
+     */
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Supervisor> supervisor = new ArrayList<>();
 
+    public Company() {
+        supervisor = new ArrayList<>();
+    }
     public Long getId() {
         return id;
     }
@@ -165,5 +174,13 @@ public class Company {
 
     public void setMailAddress(String mailAddress) {
         this.mailAddress = mailAddress;
+    }
+
+    public List<Supervisor> getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(List<Supervisor> supervisor) {
+        this.supervisor = supervisor;
     }
 }

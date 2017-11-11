@@ -86,6 +86,12 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
+        <action name="loadSupervisor" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
+                method="loadSupervisor">
+            <result name="input">studentForm</result>
+            <result>studentForm</result>
+        </action>
+
         <!--Applicant actions-->
         <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
                 method="loadApplicant">
@@ -162,6 +168,27 @@
         </action>
         <action name="cancelCompany">
             <result type="redirectAction">showCompanyList</result>
+        </action>
+        <action name="addSupervisor" class="de.nordakademie.iaa.studentadmin.action.CompanyAction"
+                method="loadCompany">
+            <result name="input">companyForm</result>
+            <result>supervisorForm</result>
+        </action>
+
+        <action name="addSupervisorToCompany" class="de.nordakademie.iaa.studentadmin.action.CompanyAction"
+                method="addSupervisor">
+            <interceptor-ref name="loginStack"/>
+            <result name="success" type="chain">loadCompany</result>
+            <result name="input">supervisorForm</result>
+            <result name="error">supervisorForm</result>
+        </action>
+
+        <action name="deleteSupervisor" class="de.nordakademie.iaa.studentadmin.action.CompanyAction"
+                method="removeSupervisor">
+                <result type="redirectAction">
+                    <param name="actionName">loadCompany</param>
+                    <param name="companyId">${company.id}</param>
+                </result>
         </action>
 
         <!--Century actions-->

@@ -68,9 +68,16 @@
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="student.NAKInformation"/></div>
             <div class="panel-body">
-                <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
+                <s:select id="company" name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
                           value="student.company.id" key="student.company_id"
+                          headerValue="%{getText('student.pleaseSelect')}" headerKey=""
+                          onchange="return listSupervisor(this.form)"/>
+
+                <s:select id="supervisor" name="supervisorId" list="%{supervisorList}"
+                          listKey="id" listValue="lastName"
+                          value="student.supervisor" key="student.supervisor_id"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>
+
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" value="%{centuryString}"
                           key="student.centuryId" headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>

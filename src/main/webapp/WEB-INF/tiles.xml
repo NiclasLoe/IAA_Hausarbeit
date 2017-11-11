@@ -46,6 +46,11 @@
         <put-attribute name="content" value="/tiles/content/applicantToStudentForm.jsp"/>
     </definition>
 
+    <!-- Supervisor form -->
+    <definition name="supervisorForm" extends="simpleTemplate">
+        <put-attribute name="content" value="/tiles/content/supervisorForm.jsp"/>
+    </definition>
+
     <!-- New student form -->
     <definition name="newStudentForm" extends="simpleTemplate">
         <put-attribute name="content" value="/tiles/content/newStudentForm.jsp"/>
