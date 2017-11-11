@@ -10,7 +10,9 @@ import de.nordakademie.iaa.studentadmin.utilities.EntityNotFoundException;
 import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class that contain all action methods for students.
@@ -67,7 +69,10 @@ public class StudentAction extends ActionSupport implements Preparable {
      * The list of available supervisor.
      */
     private List<Supervisor> supervisorList = new ArrayList<>();
-
+    /**
+     * The map containing all supervisor.
+     */
+    private Map<Long, List<Supervisor>> supervisorMap = new HashMap<>();
     /**
      * Validates whether a student is selected.
      */
@@ -236,6 +241,10 @@ public class StudentAction extends ActionSupport implements Preparable {
     private void prepareEmptyForm() {
         companyList = companyService.listCompanies();
         centuryList = centuryService.listCenturies();
+        for (int i = 0; i < companyList.size(); i++) {
+            Company companyTemp = companyList.get(i);
+            supervisorMap.put(companyTemp.getId(), companyTemp.getSupervisor());
+        }
     }
 
     /**
