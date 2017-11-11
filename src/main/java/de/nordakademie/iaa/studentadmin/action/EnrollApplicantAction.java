@@ -9,6 +9,7 @@ import de.nordakademie.iaa.studentadmin.utilities.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Class that contains required methods to enroll an applicant as a student.
@@ -52,7 +53,7 @@ public class EnrollApplicantAction extends ActionSupport {
     /**
      * The list of all available centuries.
      */
-    private ArrayList<Century> centuryList;
+    private List<Century> centuryList;
     /**
      * The applicant's identifier.
      */
@@ -61,6 +62,10 @@ public class EnrollApplicantAction extends ActionSupport {
      * The century's identifier as a String.
      */
     private String centuryString;
+    /**
+     * The supervisor identifier.
+     */
+    private Long supervisorId;
 
     /**
      * Validates whether an applicant is selected.
@@ -81,16 +86,18 @@ public class EnrollApplicantAction extends ActionSupport {
         try {
             // Load century and company
             Century century = null;
-            Company company = (!Validator.isNull(companyId)) ? companyService.loadCompany(companyId) : null;
+            Company company = getCompany();
 
             if (!Validator.isStringEmpty(centuryString)) {
                 CenturyId centuryId = centuryService.returnId(centuryString);
                 century = centuryService.loadCentury(centuryId);
             }
 
+
+
             // Save new student and delete applicant entry
             applicant = applicantService.loadApplicant(applicant.getId());
-            studentService.saveNewStudent(student, company, century, applicant.getDocument());
+            studentService.saveNewStudent(student, company, century, applicant.getDocument(), getSupervisor());
             Long applicantToDeleteId = applicant.getId();
             applicantService.delete(applicantToDeleteId);
         } catch (EntityNotFoundException e) {
@@ -108,10 +115,38 @@ public class EnrollApplicantAction extends ActionSupport {
     public String loadApplicant() {
         applicant = applicantService.loadApplicant(applicantId);
         companyList = companyService.listCompanies();
-        centuryList = new ArrayList<>();
-        centuryList.addAll(centuryService.listCenturies());
+        centuryList = centuryService.listCenturies();
 
         return SUCCESS;
+    }
+
+    /**
+     * Get supervisor.
+     *
+     * @return The found supervisor. Null otherwise.
+     */
+    private Supervisor getSupervisor() {
+        Company company = getCompany();
+        if (company != null) {
+            Optional<Supervisor> supervisor = company.getSupervisor().stream()
+                    .filter(s -> s.getId() == supervisorId)
+                    .findFirst();
+
+            if (supervisor.isPresent()) {
+                return supervisor.get();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Get company.
+     *
+     * @return The found company. Null otherwise.
+     */
+    private Company getCompany() {
+        return (companyId != null) ? companyService.loadCompany(companyId) : null;
     }
 
     // Getter and setter
@@ -172,7 +207,7 @@ public class EnrollApplicantAction extends ActionSupport {
         this.companyId = companyId;
     }
 
-    public ArrayList<Century> getCenturyList() {
+    public List<Century> getCenturyList() {
         return centuryList;
     }
 
@@ -186,5 +221,13 @@ public class EnrollApplicantAction extends ActionSupport {
 
     public void setCenturyString(String centuryString) {
         this.centuryString = centuryString;
+    }
+
+    public Long getSupervisorId() {
+        return supervisorId;
+    }
+
+    public void setSupervisorId(Long supervisorId) {
+        this.supervisorId = supervisorId;
     }
 }

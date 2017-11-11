@@ -106,7 +106,7 @@ public class StudentAction extends ActionSupport implements Preparable {
     /**
      * Validates the input before saving a student.
      */
-    private void validateSaveStudent() {
+    public void validateSaveStudent() {
         ActionSupportValidator validator = new ActionSupportValidator(this);
         validator.fieldValidated(Validator.isNull(student.getTitle()),
                 "student.title", getText("error.title"));
@@ -219,7 +219,7 @@ public class StudentAction extends ActionSupport implements Preparable {
      * @return Struts outcome.
      */
     public String saveNewStudent() {
-        studentService.saveNewStudent(student, getCompany(), getCentury(), null);
+        studentService.saveNewStudent(student, getCompany(), getCentury(), null, getSupervisor());
         return SUCCESS;
     }
 

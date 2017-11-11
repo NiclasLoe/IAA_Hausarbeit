@@ -86,12 +86,6 @@
             <result type="redirectAction">showStudentList</result>
         </action>
 
-        <action name="loadSupervisor" class="de.nordakademie.iaa.studentadmin.action.StudentAction"
-                method="loadSupervisor">
-            <result name="input">studentForm</result>
-            <result>studentForm</result>
-        </action>
-
         <!--Applicant actions-->
         <action name="loadApplicant" class="de.nordakademie.iaa.studentadmin.action.ApplicantAction"
                 method="loadApplicant">

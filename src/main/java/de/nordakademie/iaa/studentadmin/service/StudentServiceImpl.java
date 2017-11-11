@@ -97,7 +97,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveNewStudent(Student student, Company company, Century century, Document document) {
+    public void saveNewStudent(Student student, Company company, Century century, Document document, Supervisor supervisor) {
         student.setStatus(Status.ENROLLED);
         student.setStudentId(createStudentId());
         student.setUserEmail(createUserMail(student));

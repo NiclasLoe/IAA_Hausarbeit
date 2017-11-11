@@ -2,7 +2,6 @@ package de.nordakademie.iaa.studentadmin.service;
 
 import de.nordakademie.iaa.studentadmin.dao.CompanyDAO;
 import de.nordakademie.iaa.studentadmin.model.Company;
-import de.nordakademie.iaa.studentadmin.model.Student;
 import de.nordakademie.iaa.studentadmin.model.Supervisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

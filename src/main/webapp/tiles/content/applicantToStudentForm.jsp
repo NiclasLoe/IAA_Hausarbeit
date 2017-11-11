@@ -47,9 +47,13 @@
                 <s:text name="student.NAKInformation"/>
             </div>
             <div class="panel-body">
-                <s:select name="companyId" list="%{companyList}" listKey="id" listValue="shortName"
-                          key="student.company_id" headerValue="%{getText('student.pleaseSelect')}"
-                          headerKey=""/>
+                <s:doubleselect id="company" name="companyId" list="%{companyList}" listKey="id"
+                                listValue="shortName" value="student.company.id" key="student.company_id"
+                                headerValue="%{getText('student.pleaseSelect')}" headerKey=""
+                                doubleList="supervisor" doubleName="supervisorId"
+                                doubleListKey="id" doubleListValue="%{firstName + ' ' + lastName}"
+                                doubleValue="student.supervisor.id" doubleHeaderValue="" doubleHeaderKey=""/>
+
                 <s:select name="centuryString" list="%{centuryList}" listKey="year + letterCode + fieldOfStudy"
                           listValue="centuryName" key="student.centuryId"
                           headerValue="%{getText('student.pleaseSelect')}" headerKey=""/>

@@ -77,8 +77,3 @@ function enableControls(that, controls) {
         }
     });
 }
-
-function listSupervisor(myForm) {
-    var optionArray = ['test', 'test2'];
-    myForm.getElementById('supervisor').options.add('test1', 'test2');
-}

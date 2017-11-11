@@ -25,8 +25,6 @@ INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (1, 2015, 'a');
 INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (2, 2015, 'b');
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO CENTURY (FIELD_OF_STUDY, YEAR, LETTER_CODE) VALUES (3, 2015, 'b');
-
-INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Johanna', 'Meier');
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'IT-Software', 'Germany GmbH', 'IT GmbH', 'Michael Mueller', '012345678910', '012345678910', 'm.mueller@it-gmbh.de', 'Max-Muster-Str.', '123a', 'MusterCity', 12345);
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
@@ -36,19 +34,23 @@ INSERT INTO COMPANY (ID, companyName1, shortName, contactPerson, faxNumber, phon
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO COMPANY (ID, companyName1, companyName2, shortName, contactPerson, faxNumber, phoneNumber, mailAddress, streetName, houseNumber, city, postalCode) VALUES (hibernate_sequence.nextval, 'BigMedia', 'DACH GmbH', 'BigMedia', 'Lutz Schulze', '012345678910', '012345678910', 'lutzschulze@bigmedia.de', 'Max-Muster-Str.', '123a', 'MusterCity', 12345);
 
-INSERT INTO SUPERVISOR (ID, firstName, lastName, company_id) VALUES (hibernate.hibernate_sequence.nextval, 'Corinna', 'Bauer', 4);
-
-INSERT INTO SUPERVISOR (ID, firstName, lastName, company_id) VALUES (hibernate.hibernate_sequence.nextval, 'Peter', 'Versuch', 4);
-
-INSERT INTO SUPERVISOR (ID, firstName, lastName, company_id) VALUES (hibernate.hibernate_sequence.nextval, 'Katharina', 'Exemplar', 5);
-
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
+INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Corinna', 'Bauer');
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
+INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Johanna', 'Meier');
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
+INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Peter', 'Versuch');
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
+INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Katharina', 'Exemplar');
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Marit', 'Beispiel');
-
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Klaus', 'Muster');
-
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Max', 'Meyer');
-
+-- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO SUPERVISOR (ID, firstName, lastName) VALUES (hibernate.hibernate_sequence.nextval, 'Joe', 'Brauer');
+
 
 -- noinspection SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve,SqlResolve
 INSERT INTO STUDENT (ID, lastname, firstname, emailAddress, studentId, status, birthplace, dateofbirth, gender, streetName, houseNumber, city, postalCode, username, userEmail, century_FIELD_OF_STUDY, century_year, century_LETTER_CODE, company_id, title, phoneNumber) VALUES (hibernate_sequence.nextval, 'Last', 'Chris', 'c.last@studend.com', 1000, 2, 'Hamburg', TO_DATE('01/01/1990', 'DD/MM/YYYY'), 0, 'ExampleStreetName', '12', 'Hamburg', 98765, 10000, 'chris.last@nordakademie.de', 3, 2010, 'a', 4, 2, '0123456789');
