@@ -23,7 +23,7 @@ $(document).ready(function () {
      */
     $.each( $(".requires-js-resources"), function( i, val ) {
         var html = $(val).html();
-        html = replaceResourceText(this, html);
+        html = replaceResourceText(html);
         $(val).html(html);
     });
 });
@@ -93,7 +93,7 @@ function enableControls(that, controls) {
  * @param resourceName The name of the resource.
  * @param resourceValue The value of the resource.
  */
-function replaceResourceText(that, input) {
+function replaceResourceText(input) {
     var translationsForm = $(".has-js-translations");
     if (translationsForm.length === 0) {
         return input;
