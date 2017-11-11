@@ -88,12 +88,6 @@ public abstract class Person {
     @OneToOne
     private Document document;
 
-    /**
-     * The supervisor.
-     */
-    @ManyToOne
-    private Supervisor supervisor;
-
     public Long getId() {
         return id;
     }
@@ -204,13 +198,5 @@ public abstract class Person {
 
     public void setDocument(Document document) {
         this.document = document;
-    }
-
-    public Supervisor getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Supervisor supervisor) {
-        this.supervisor = supervisor;
     }
 }

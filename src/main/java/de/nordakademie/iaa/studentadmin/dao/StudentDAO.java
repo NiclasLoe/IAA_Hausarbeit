@@ -2,6 +2,7 @@ package de.nordakademie.iaa.studentadmin.dao;
 
 import de.nordakademie.iaa.studentadmin.model.Century;
 import de.nordakademie.iaa.studentadmin.model.Company;
+import de.nordakademie.iaa.studentadmin.model.Supervisor;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import de.nordakademie.iaa.studentadmin.utilities.Status;
 import de.nordakademie.iaa.studentadmin.model.Student;
@@ -40,7 +41,7 @@ public class StudentDAO {
     public Long countEntries(Status status) {
         List<Student> students = findStudents(status, null, null, null,
                 null, null, null,
-                null, null);
+                null, null, null);
         return (long) students.size();
     }
 
@@ -56,11 +57,12 @@ public class StudentDAO {
      * @param firstName    First name input.
      * @param lastName     Last name input.
      * @param studentId    Student id input.
+     * @param supervisor
      * @return List of students that match the criteria.
      */
     public List<Student> findStudents(Status status, Century century, FieldOfStudy fieldOfStudy, Integer year,
                                       String userMail, Company company, String firstName,
-                                      String lastName, Integer studentId) {
+                                      String lastName, Integer studentId, Supervisor supervisor) {
         // Create new query
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
@@ -95,6 +97,9 @@ public class StudentDAO {
         }
         if (studentId != null) {
             predicates.add(criteriaBuilder.equal(root.get("studentId"), studentId));
+        }
+        if (supervisor != null) {
+            predicates.add(criteriaBuilder.equal(root.get("supervisor"), supervisor));
         }
         criteriaQuery.where(predicates.toArray(new Predicate[]{}));
 

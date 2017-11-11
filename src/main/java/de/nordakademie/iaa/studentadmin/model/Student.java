@@ -48,6 +48,11 @@ public class Student extends Person {
      */
     @OneToOne
     private ProfilePicture profilePicture;
+    /**
+     * The supervisor.
+     */
+    @ManyToOne
+    private Supervisor supervisor;
 
     public Status getStatus() {
         return status;
@@ -103,5 +108,13 @@ public class Student extends Person {
 
     public void setProfilePicture(ProfilePicture profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
     }
 }

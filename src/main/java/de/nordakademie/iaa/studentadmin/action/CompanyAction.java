@@ -187,6 +187,7 @@ public class CompanyAction extends ActionSupport {
     public String removeSupervisor() {
         Supervisor supervisorTemp = supervisorService.loadSupervisor(supervisorId);
         Company companyTemp = companyService.loadCompany(company.getId());
+        studentService.removeSupervisorFromStudents(supervisor);
         companyService.removeSupervisor(companyTemp, supervisorTemp);
         return SUCCESS;
     }

@@ -183,4 +183,11 @@ public interface StudentService {
      * @param studentId The student's identifier.
      */
     void reEnrollDroppedOut(Long studentId);
+
+    /**
+     * Method to remove a supervisor for all students.
+     *
+     * @param supervisor The supervisor criteria.
+     */
+    void removeSupervisorFromStudents(Supervisor supervisor);
 }

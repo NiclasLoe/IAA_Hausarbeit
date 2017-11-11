@@ -4,7 +4,6 @@ import de.nordakademie.iaa.studentadmin.dao.StudentDAO;
 import de.nordakademie.iaa.studentadmin.model.*;
 import de.nordakademie.iaa.studentadmin.utilities.FieldOfStudy;
 import de.nordakademie.iaa.studentadmin.utilities.Status;
-import net.bytebuddy.implementation.bind.annotation.Super;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> listEnrolledStudent() {
         return studentDAO.findStudents(Status.ENROLLED, null, null, null, null,
-                null, null, null, null);
+                null, null, null, null, null);
     }
 
     @Override
@@ -55,7 +54,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> listAlumni() {
         return studentDAO.
                 findStudents(Status.ALUMNI, null, null, null, null,
-                        null, null, null, null);
+                        null, null, null, null, null);
     }
 
     @Override
@@ -89,7 +88,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> listStudentsByCentury(Century century) {
         return studentDAO.
                 findStudents(Status.ENROLLED, century, null, null, null,
-                        null, null, null, null);
+                        null, null, null, null, null);
     }
 
     @Override
@@ -113,7 +112,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
         return studentDAO.
                 findStudents(Status.ENROLLED, null, fieldOfStudy, year, null,
-                        null, null, null, null);
+                        null, null, null, null, null);
     }
 
     @Override
@@ -157,7 +156,7 @@ public class StudentServiceImpl implements StudentService {
 
         return studentDAO.
                 findStudents(Status.DROPPED_OUT, century, fieldOfStudy, year, null,
-                        company, firstName, lastName, studentId);
+                        company, firstName, lastName, studentId, null);
     }
 
     @Override
@@ -189,7 +188,7 @@ public class StudentServiceImpl implements StudentService {
 
         return studentDAO.
                 findStudents(Status.ENROLLED, century, fieldOfStudy, year, null,
-                        company, firstName, lastName, studentId);
+                        company, firstName, lastName, studentId, null);
     }
 
     @Override
@@ -221,7 +220,7 @@ public class StudentServiceImpl implements StudentService {
 
         return studentDAO.
                 findStudents(Status.ALUMNI, century, fieldOfStudy, year, null,
-                        company, firstName, lastName, studentId);
+                        company, firstName, lastName, studentId, null);
     }
 
     @Override
@@ -229,7 +228,7 @@ public class StudentServiceImpl implements StudentService {
         return studentDAO.
                 findStudents(Status.ENROLLED, null, null,
                         null, null, company, null,
-                        null, null);
+                        null, null, null);
     }
 
     /**
@@ -276,7 +275,7 @@ public class StudentServiceImpl implements StudentService {
         // Load student by user email
         List<Student> studentListTemp = studentDAO.
                 findStudents(null, null, null, null, userMail,
-                        null, null, null, null);
+                        null, null, null, null, null);
 
         // Check whether student with this userMail exists
         if (!studentListTemp.isEmpty()) {
@@ -287,7 +286,7 @@ public class StudentServiceImpl implements StudentService {
                 count = count + 1;
                 studentListTemp = studentDAO.
                         findStudents(null, null, null, null, userMail,
-                                null, null, null, null);
+                                null, null, null, null, null);
             }
         }
         return userMail;
@@ -297,13 +296,28 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> listDroppedOut() {
         return studentDAO.findStudents(Status.DROPPED_OUT, null, null,
                 null, null, null, null,
-                null, null);
+                null, null, null);
     }
 
     @Override
     public void reEnrollDroppedOut(Long studentId) {
         Student student = studentDAO.load(studentId);
         student.setStatus(Status.ENROLLED);
+        studentDAO.saveStudent(student);
+    }
+
+    @Override
+    public void removeSupervisorFromStudents(Supervisor supervisor) {
+        List<Student> students =  studentDAO.findStudents(null, null, null,
+                null, null, null, null,
+                null, null, supervisor);
+        for (Student studentTemp: students) {
+            saveWithoutSupervisor(studentTemp);
+        }
+    }
+
+    private void saveWithoutSupervisor(Student student) {
+        student.setSupervisor(null);
         studentDAO.saveStudent(student);
     }
 
