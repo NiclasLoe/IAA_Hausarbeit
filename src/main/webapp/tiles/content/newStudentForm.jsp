@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
 <div class="container">
-    <s:form theme="bootstrap" cssClass="form-horizontal" key="newStudent.header">
+    <s:form theme="bootstrap" cssClass="form-horizontal" label="%{getText('newStudent.header')}">
         <s:hidden name="student.id"/>
         <div class="panel panel-default">
             <div class="panel-heading"><s:text name="student.personalInformation"/></div>
