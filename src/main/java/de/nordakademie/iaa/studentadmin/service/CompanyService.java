@@ -31,8 +31,9 @@ public interface CompanyService {
      * Save a company to database.
      *
      * @param company The given company.
+     * @param supervisors The supervisors.
      */
-    void save(Company company);
+    void save(Company company, List<Supervisor> supervisors);
 
     /**
      * Removes a supervisor from a company.

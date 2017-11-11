@@ -36,7 +36,8 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void save(Company company) {
+    public void save(Company company, List<Supervisor> supervisors) {
+        company.setSupervisor(supervisors);
         companyDAO.save(company);
     }
 
@@ -49,8 +50,7 @@ public class CompanyServiceImpl implements CompanyService {
                 newSupervisorList.add(supervisorList.get(i));
             }
         }
-        company.setSupervisor(newSupervisorList);
-        save(company);
 
+        save(company, newSupervisorList);
     }
 }

@@ -37,7 +37,7 @@
             <div class="panel-body">
 
                 <s:if test="supervisorList.size() > 0">
-                    <table class="table">
+                    <table class="table datatable-design">
                         <thead>
                         <tr>
                             <th class="no-sort"></th>

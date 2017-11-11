@@ -129,7 +129,7 @@ public class CompanyAction extends ActionSupport {
      * @return Struts outcome
      */
     public String saveCompany() {
-        companyService.save(company);
+        companyService.save(company, getSupervisors());
         return SUCCESS;
     }
 
@@ -173,8 +173,9 @@ public class CompanyAction extends ActionSupport {
         Supervisor supervisorTemp = supervisorService.loadSupervisor(superId);
         Long companyIdTemp = company.getId();
         Company companyTemp = companyService.loadCompany(companyIdTemp);
-        companyTemp.getSupervisor().add(supervisorTemp);
-        companyService.save(companyTemp);
+        List<Supervisor> supervisorList = companyTemp.getSupervisor();
+        supervisorList.add(supervisorTemp);
+        companyService.save(companyTemp, supervisorList);
         return SUCCESS;
     }
 
@@ -190,6 +191,21 @@ public class CompanyAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * Get supervisors.
+     *
+     * @return The found supervisors. Null otherwise.
+     */
+    private List<Supervisor> getSupervisors() {
+        if (companyId != null) {
+            Company tempCompany = companyService.loadCompany(companyId);
+            if (tempCompany != null) {
+                return tempCompany.getSupervisor();
+            }
+        }
+
+        return null;
+    }
 
     // Getter and setter
 
