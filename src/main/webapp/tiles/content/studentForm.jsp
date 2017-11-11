@@ -74,7 +74,7 @@
                           onchange="return listSupervisor(this.form)"/>
 
                 <s:iterator value="%{supervisorMap}" var="companyTemp">
-                    <s:if test="companyTemp.key.Id == %{companyId}">
+                    <s:if test="companyTemp.key == %{companyId}">
                         <s:set var="availableSupervisor" value="companyTemp.value"/>
                     </s:if>
                 </s:iterator>
