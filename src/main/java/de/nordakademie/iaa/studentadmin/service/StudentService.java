@@ -104,7 +104,7 @@ public interface StudentService {
      * @param year         The year criteria.
      * @return List of students.
      */
-    List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year);
+    List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, String year);
 
     /**
      * Filter the list of students by certain criteria.

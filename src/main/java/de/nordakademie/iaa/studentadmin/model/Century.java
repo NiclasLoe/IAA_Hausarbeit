@@ -24,8 +24,8 @@ public class Century {
      * The year and part of the id.
      */
     @Id
-    @Column(nullable = false, length = 2)
-    private Integer year;
+    @Column(nullable = false, length = 4)
+    private String year;
     /**
      * The letter code and part of the id.
      */
@@ -46,11 +46,11 @@ public class Century {
         this.fieldOfStudy = fieldOfStudy;
     }
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

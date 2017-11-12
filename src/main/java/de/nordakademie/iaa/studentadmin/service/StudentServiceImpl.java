@@ -97,7 +97,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveNewStudent(Student student, Company company, Century century, Document document, Supervisor supervisor) {
+    public void saveNewStudent(Student student, Company company, Century century,
+                               Document document, Supervisor supervisor) {
         student.setStatus(Status.ENROLLED);
         student.setStudentId(createStudentId());
         student.setUserEmail(createUserMail(student));
@@ -109,7 +110,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, Integer year) {
+    public List<Student> listStudentsByManiple(FieldOfStudy fieldOfStudy, String year) {
         return studentDAO.
                 findStudents(Status.ENROLLED, null, fieldOfStudy, year, null,
                         null, null, null, null, null);
@@ -134,7 +135,7 @@ public class StudentServiceImpl implements StudentService {
         String firstName = null;
         String lastName = null;
         Integer studentId = null;
-        Integer year = null;
+        String year = null;
         FieldOfStudy fieldOfStudy = null;
 
         if (!selectedFirstName.equals("")) {
@@ -149,7 +150,7 @@ public class StudentServiceImpl implements StudentService {
 
         if (century == null) {
             if (!selectedYear.equals("")) {
-                year = Integer.parseInt(selectedYear);
+                year = selectedYear;
             }
             fieldOfStudy = selectedFieldOfStudy;
         }
@@ -166,7 +167,7 @@ public class StudentServiceImpl implements StudentService {
         String firstName = null;
         String lastName = null;
         Integer studentId = null;
-        Integer year = null;
+        String year = null;
         FieldOfStudy fieldOfStudy = null;
 
         if (!selectedFirstName.equals("")) {
@@ -181,7 +182,7 @@ public class StudentServiceImpl implements StudentService {
 
         if (century == null) {
             if (!selectedYear.equals("")) {
-                year = Integer.parseInt(selectedYear);
+                year = selectedYear;
             }
             fieldOfStudy = selectedFieldOfStudy;
         }
@@ -198,7 +199,7 @@ public class StudentServiceImpl implements StudentService {
         String firstName = null;
         String lastName = null;
         Integer studentId = null;
-        Integer year = null;
+        String year = null;
         FieldOfStudy fieldOfStudy = null;
 
         if (!selectedFirstName.equals("")) {
@@ -213,7 +214,7 @@ public class StudentServiceImpl implements StudentService {
 
         if (century == null) {
             if (!selectedYear.equals("") ) {
-                year = Integer.parseInt(selectedYear);
+                year = selectedYear;
             }
             fieldOfStudy = selectedFieldOfStudy;
         }

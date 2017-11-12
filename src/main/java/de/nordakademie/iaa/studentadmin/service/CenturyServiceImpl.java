@@ -32,7 +32,7 @@ public class CenturyServiceImpl implements CenturyService {
 
     @Override
     public CenturyId returnId(String centuryString) {
-        Integer year = Integer.parseInt(centuryString.substring(0, 4));
+        String year = centuryString.substring(0, 4);
         String letterCode = centuryString.substring(4, 5);
         FieldOfStudy fieldOfStudy = FieldOfStudy.valueOf(centuryString.substring(5, centuryString.length()));
         return new CenturyId(year, letterCode, fieldOfStudy);

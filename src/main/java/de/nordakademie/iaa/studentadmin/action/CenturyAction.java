@@ -57,9 +57,11 @@ public class CenturyAction extends ActionSupport {
         validator.fieldValidated(Validator.isNull(century.getFieldOfStudy()),
                 "century.fieldOfStudy", getText("error.fieldOfStudy"));
         validator.fieldValidated(Validator.isStringEmpty(century.getLetterCode())
-                        || century.getLetterCode().length() != 1,
+                        || century.getLetterCode().length() != 1
+                        || century.getLetterCode().matches("[0-9]"),
                 "century.letterCode", getText("error.letterCode"));
-        validator.fieldValidated(Validator.isNull(century.getYear()) || century.getYear().toString().length() != 4,
+        validator.fieldValidated(Validator.isNull(century.getYear())
+                        || century.getYear().toString().length() != 4,
                 "century.year", getText("error.year"));
     }
 

@@ -61,7 +61,7 @@ public class ManipleAction extends ActionSupport {
 
         // Convert selected maniple into fields of year and field of study
         FieldOfStudy fieldOfStudy = manipleService.returnFieldOfStudy(maniple);
-        Integer year = manipleService.returnYear(maniple);
+        String year = manipleService.returnYear(maniple);
         String fieldOfStudyString = "" + fieldOfStudy;
 
         // Load list of student for selected maniple

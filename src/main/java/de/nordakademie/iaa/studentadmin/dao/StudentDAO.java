@@ -57,10 +57,10 @@ public class StudentDAO {
      * @param firstName    First name input.
      * @param lastName     Last name input.
      * @param studentId    Student id input.
-     * @param supervisor
+     * @param supervisor   Supervisor input.
      * @return List of students that match the criteria.
      */
-    public List<Student> findStudents(Status status, Century century, FieldOfStudy fieldOfStudy, Integer year,
+    public List<Student> findStudents(Status status, Century century, FieldOfStudy fieldOfStudy, String year,
                                       String userMail, Company company, String firstName,
                                       String lastName, Integer studentId, Supervisor supervisor) {
         // Create new query

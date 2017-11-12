@@ -46,8 +46,8 @@ public class ManipleServiceImpl implements ManipleService {
     }
 
     @Override
-    public Integer returnYear(String maniple) {
-        return Integer.parseInt(maniple.substring((maniple.length() - 4)));
+    public String returnYear(String maniple) {
+        return maniple.substring((maniple.length() - 4));
     }
 
     public void setCenturyDAO(CenturyDAO centuryDAO) {

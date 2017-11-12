@@ -29,8 +29,8 @@ public interface ManipleService {
     /**
      * Convert maniple string to year.
      *
-     * @param maniple The maniple name as string.
+     * @param maniple The maniple year as string.
      * @return The related year.
      */
-    Integer returnYear(String maniple);
+    String returnYear(String maniple);
 }

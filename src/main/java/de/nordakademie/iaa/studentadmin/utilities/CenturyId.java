@@ -12,7 +12,7 @@ public class CenturyId implements Serializable {
     /**
      * The century's year.
      */
-    private Integer year;
+    private String year;
     /**
      * The century's letter code.
      */
@@ -35,7 +35,7 @@ public class CenturyId implements Serializable {
      * @param letterCode   The century's letter code.
      * @param fieldOfStudy The century's field of study.
      */
-    public CenturyId(Integer year, String letterCode, FieldOfStudy fieldOfStudy) {
+    public CenturyId(String year, String letterCode, FieldOfStudy fieldOfStudy) {
         this.year = year;
         this.letterCode = letterCode;
         this.fieldOfStudy = fieldOfStudy;
@@ -47,8 +47,9 @@ public class CenturyId implements Serializable {
         Integer result = 1;
         result = prime * result
                 + ((fieldOfStudy == null) ? 0 : fieldOfStudy.hashCode())
-                + ((letterCode == null) ? 0 : letterCode.hashCode());
-        result = prime * result + year;
+                + ((letterCode == null) ? 0 : letterCode.hashCode())
+                + ((year == null) ? 0 : year.hashCode());
+        result = prime * result;
         return result;
     }
 
@@ -78,7 +79,7 @@ public class CenturyId implements Serializable {
 
     // Getter and setter
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 

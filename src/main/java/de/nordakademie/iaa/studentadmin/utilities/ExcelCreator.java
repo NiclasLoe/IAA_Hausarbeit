@@ -92,7 +92,7 @@ public class ExcelCreator {
      * @param year         The year of the maniple.
      * @return The created workbook.
      */
-    public HSSFWorkbook createResultList(ArrayList personList, String fieldOfStudy, Integer year) {
+    public HSSFWorkbook createResultList(ArrayList personList, String fieldOfStudy, String year) {
         String sheetName = "Ergebnisliste";
         HSSFSheet sheet = wb.createSheet(sheetName);
 
@@ -121,7 +121,7 @@ public class ExcelCreator {
         cell.setCellValue(new HSSFRichTextString("Jahrgang:"));
         cell = row.createCell(1);
         cell.setCellStyle(headerCellStyle);
-        cell.setCellValue(new HSSFRichTextString("" + year));
+        cell.setCellValue(new HSSFRichTextString(year));
         cell = row.createCell(2);
         cell.setCellStyle(headerCellStyle);
         cell.setCellValue(new HSSFRichTextString("Studiengang:"));
